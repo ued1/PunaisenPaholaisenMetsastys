@@ -2,7 +2,9 @@
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Ase;
+import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Haarniska;
+import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Riepu;
 
 public class Pelaaja {
 
@@ -15,8 +17,8 @@ public class Pelaaja {
     public Pelaaja(String nimi) {
         this.nimi = nimi;
         taso = 1;
-        // ase = nyrkki
-        // haarniska = riepu
+        ase = new Nyrkki();
+        haarniska = new Riepu();
         rahat = 0;
     }
     
@@ -62,6 +64,10 @@ public class Pelaaja {
     
     public int getTaso() {
         return taso;
+    }
+    
+    public void setAse(Ase uusiAse) {
+        ase = uusiAse;
     }
     
     

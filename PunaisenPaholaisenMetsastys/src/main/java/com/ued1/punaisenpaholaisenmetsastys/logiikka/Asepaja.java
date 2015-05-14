@@ -1,8 +1,30 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.logiikka;
 
-public class Asepaja {
+import com.ued1.punaisenpaholaisenmetsastys.aseet.*;
+import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
+import java.util.ArrayList;
 
-    // paikka aseiden ostoon ja myyntiin
+public class Asepaja {
+    
+    private ArrayList<Ase> aseet;
+    
+    public Asepaja() {
+        lisaaAseetValikoimaan();
+    }
+    
+    private void lisaaAseetValikoimaan() {
+        aseet.add(new Keppi());
+    }
+    
+    public boolean ostaAse(Pelaaja pelaaja, int aseenNumero) {
+        // ...
+        return true;
+    }
+    
+    public boolean myyAse(Pelaaja pelaaja, int aseenNumero) {
+        // ...
+        return true;
+    }
     
 }
