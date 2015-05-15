@@ -8,6 +8,8 @@ import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Riepu;
 public class Pelaaja {
 
     private final String nimi;
+    private int vointi;
+    private int maxVointi;
     private int taso;
     private Ase ase;
     private Haarniska haarniska;
@@ -15,22 +17,51 @@ public class Pelaaja {
 
     public Pelaaja(String nimi) {
         this.nimi = nimi;
-        taso = 1;
-        ase = new Nyrkki();
-        haarniska = new Riepu();
-        rahat = 0;
+        this.vointi = 10;
+        this.maxVointi = 10;
+        this.taso = 1;
+        this.ase = new Nyrkki();
+        this.haarniska = new Riepu();
+        this.rahat = 0;
     }
 
     public String getNimi() {
         return nimi;
     }
+    
+    public boolean onkoElossa() {
+        if(vointi > 0) {
+            return true;
+        }
+        return false;
+    }
+    
+    public void laskeVointia() {
+        vointi--;
+        if(vointi < 0) {
+            vointi = 0;
+        }
+    }
+    
+    public void paranna() {
+        vointi = maxVointi;
+    }
 
     public int getTaso() {
         return taso;
     }
+    
+    public int getMaxVointi() {
+        return maxVointi;
+    }
+    
+    public int getVointi() {
+        return vointi;
+    }
 
     public void nostaTasoa() {
         taso++;
+        // nosta maxVointi
     }
 
     public Ase getAse() {
@@ -40,20 +71,21 @@ public class Pelaaja {
     public void setAse(Ase uusiAse) {
         ase = uusiAse;
     }
-
-    public int getVoima() {
-        // määräytyy aseen ja tason mukaan
-        return -1;
+    
+    public int lyo() {
+        return ase.lyo();
     }
 
-    public int getPuolustus() {
-        // määräytyy haarniskan ja tason mukaan
-        return -1;
+    public int suojaa() {
+        return haarniska.suojaa();
     }
 
-    public String getHaarniska() {
-        // palauttaa haarniskan nimen
-        return "";
+    public Haarniska getHaarniska() {
+        return haarniska;
+    }
+    
+    public void setHaarniska(Haarniska uusiHaarniska) {
+        haarniska = uusiHaarniska;
     }
 
     public int getRahat() {

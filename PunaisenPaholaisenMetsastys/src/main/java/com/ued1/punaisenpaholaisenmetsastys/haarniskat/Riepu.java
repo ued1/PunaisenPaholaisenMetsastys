@@ -9,8 +9,13 @@ public class Riepu implements Haarniska {
     }
     
     @Override
-    public String toString() {
+    public String nimi() {
         return "Riepu";
+    }
+    
+    @Override
+    public int arvo() {
+        return 0;
     }
     
 }

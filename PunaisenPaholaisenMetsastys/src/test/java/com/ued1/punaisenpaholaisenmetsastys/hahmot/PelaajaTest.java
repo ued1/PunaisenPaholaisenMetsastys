@@ -70,5 +70,53 @@ public class PelaajaTest {
         pelaaja.muutaRahoja(-999);
         assertEquals(0, pelaaja.getRahat());
     }
+    
+    @Test
+    public void pelaajaAlussaElossaJaVointi10() {
+        assertEquals(10, pelaaja.getVointi());
+        assertEquals(10, pelaaja.getMaxVointi());
+        assertTrue(pelaaja.onkoElossa());
+    }
+    
+    private void laskeVointiaYhdeksalla() {
+        for(int i = 0; i < 9; i++) {
+            pelaaja.laskeVointia();
+        }
+    }
+    
+    @Test
+    public void vointiLaskeeOikein() {
+        laskeVointiaYhdeksalla();
+        assertEquals(1, pelaaja.getVointi());
+        assertEquals(10, pelaaja.getMaxVointi());
+        assertTrue(pelaaja.onkoElossa());
+        laskeVointiaYhdeksalla();
+        assertEquals(0, pelaaja.getVointi());
+        assertEquals(10, pelaaja.getMaxVointi());
+        assertFalse(pelaaja.onkoElossa());
+    }
+    
+    @Test
+    public void pelaajaParantuuOikein() {
+        laskeVointiaYhdeksalla();
+        pelaaja.paranna();
+        assertEquals(10, pelaaja.getVointi());
+        assertEquals(10, pelaaja.getMaxVointi());
+    }
+    
+    @Test
+    public void pelaajaHeraaKuolleistaParantaessa() {
+        laskeVointiaYhdeksalla();
+        laskeVointiaYhdeksalla();
+        assertFalse(pelaaja.onkoElossa());
+        pelaaja.paranna();
+        assertTrue(pelaaja.onkoElossa());
+    }
+    
+    @Test
+    public void aseLyoPelaajanPuolesta() {
+        pelaaja.setAse(new Tikari());
+        assertEquals(new Tikari().lyo(), pelaaja.lyo());
+    }
             
 }
