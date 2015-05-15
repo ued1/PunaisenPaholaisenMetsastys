@@ -5,3 +5,7 @@ uusi repositorio, projektin konfigurointi, aihemäärittely, tuntikirjanpidon al
 14.05.2015
 ~60 min
 suunnittelua, koodausta
+
+15.05.2015
+~90 min
+Asepajan toiminnallisuus, uusia aseita, AsepajaTest, PelaajaTest(osa)
