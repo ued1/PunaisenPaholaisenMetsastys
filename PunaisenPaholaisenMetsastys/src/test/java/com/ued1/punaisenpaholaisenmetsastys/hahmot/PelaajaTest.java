@@ -1,0 +1,74 @@
+
+package com.ued1.punaisenpaholaisenmetsastys.hahmot;
+
+import com.ued1.punaisenpaholaisenmetsastys.aseet.Keppi;
+import com.ued1.punaisenpaholaisenmetsastys.aseet.Tikari;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class PelaajaTest {
+    
+    Pelaaja pelaaja;
+    
+    public PelaajaTest() {
+    }
+    
+    @Before
+    public void setUp() {
+        pelaaja = new Pelaaja("Testipelaaja");
+        
+    }
+    
+    @Test
+    public void konstruktoriAsettaaNimenOikein() {
+        assertEquals("Testipelaaja", pelaaja.getNimi());
+        Pelaaja toinenPelaaja = new Pelaaja("Kilpailija");
+        assertEquals("Kilpailija", toinenPelaaja.getNimi());
+    }
+    
+    @Test
+    public void pelaajanTasoOnAlussaYksi() {
+        assertEquals(1, pelaaja.getTaso());
+    }
+    
+    @Test
+    public void pelaajanTasoNouseeNostaessa() {
+        pelaaja.nostaTasoa();
+        pelaaja.nostaTasoa();
+        assertEquals(3, pelaaja.getTaso());
+    }
+    
+    @Test
+    public void pelaajanAseenaAluksiNyrkki() {
+        assertEquals("Nyrkki", pelaaja.getAse().nimi());
+    }
+    
+    @Test
+    public void pelaajalleVoiAsettaaUudenAseen() {
+        pelaaja.setAse(new Tikari());
+        assertEquals("Tikari", pelaaja.getAse().nimi());
+        pelaaja.setAse(new Keppi());
+        assertEquals("Keppi", pelaaja.getAse().nimi());
+    }
+    
+    @Test
+    public void pelaajanRahatOvatAluksiNolla() {
+        assertEquals(0, pelaaja.getRahat());
+    }
+    
+    @Test
+    public void rahatMuuttuvatOikein() {
+        pelaaja.muutaRahoja(10);
+        pelaaja.muutaRahoja(-3);
+        assertEquals(7, pelaaja.getRahat());
+    }
+    
+    @Test
+    public void rahatEivatMeneNegatiiviseksi() {
+        pelaaja.muutaRahoja(5);
+        pelaaja.muutaRahoja(-999);
+        assertEquals(0, pelaaja.getRahat());
+    }
+            
+}
