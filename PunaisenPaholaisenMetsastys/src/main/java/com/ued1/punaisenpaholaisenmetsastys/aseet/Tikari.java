@@ -1,20 +1,20 @@
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
-public class Keppi implements Ase {
+public class Tikari implements Ase {
 
     @Override
     public int lyo() {
-        return 10;
+        return 15;
     }
 
     @Override
     public String nimi() {
-        return "Keppi";
+        return "Tikari";
     }
 
     @Override
     public int arvo() {
-        return 10;
+        return 50;
     }
 
 }
