@@ -7,5 +7,9 @@ uusi repositorio, projektin konfigurointi, aihemäärittely, tuntikirjanpidon al
 suunnittelua, koodausta
 
 15.05.2015
-~90 min
-Asepajan toiminnallisuus, uusia aseita, AsepajaTest, PelaajaTest(osa)
+~120 min
+Asepajan toiminnallisuus, uusia aseita, AsepajaTest, PelaajaTest(osa), Pelaajalle uusia ominaisuuksia
+
+16.05.2015
+~15 min
+Haarniskakauppa
