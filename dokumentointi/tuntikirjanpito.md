@@ -15,6 +15,6 @@ Asepajan toiminnallisuus, uusia aseita, AsepajaTest, PelaajaTest(osa), Pelaajall
 Haarniskakauppa
 
 17.05.2015
-~15 min
-Monsteri, MonsteriTest
+~120 min
+Abstrakti luokka Hahmo, Pelaajan ja Monsterin päivitys. Yksinkertainen käyttöliittymä
 

@@ -3,22 +3,16 @@ package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
 import java.util.Random;
 
-public class Monsteri {
-    
-    // TODO: abstract class Hahmo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // Monsteri extends Hahmo
-    // Pelaaja extends Hahmo
-    
-    private String nimi;
+public class Monsteri extends Hahmo {
+        
     private int voima;
     private int puolustus;
-    private int vointi;
-        
+            
     public Monsteri(int maxVointi, int voima, int puolustus) {
+        super(null, maxVointi, maxVointi);
         this.voima = voima;
         this.puolustus = puolustus;
-        this.nimi = arvoNimi();
-        this.vointi = maxVointi;
+        super.setNimi(arvoNimi());
     }
     
     private String arvoNimi() {
@@ -28,35 +22,14 @@ public class Monsteri {
         return nimet[randomluku.nextInt(nimet.length)];
     }
     
+    @Override
     public int lyo() {
         return voima;
     }
     
+    @Override
     public int suojaa() {
         return puolustus;
     }
-    
-    public String getNimi() {
-        return nimi;
-    }
-    
-    public boolean onkoElossa() {
-        if(vointi > 0) {
-            return true;
-        }
-        return false;
-    }
-    
-    public void laskeVointia() {
-        vointi--;
-        if(vointi < 0) {
-            vointi = 0;
-        }
-    }
-        
-    public int getVointi() {
-        return vointi;
-    }
-    
     
 }
