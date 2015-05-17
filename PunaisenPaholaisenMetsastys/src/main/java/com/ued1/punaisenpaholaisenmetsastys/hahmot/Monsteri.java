@@ -12,12 +12,13 @@ public class Monsteri {
     private String nimi;
     private int voima;
     private int puolustus;
-    
-    
-    public Monsteri(int voima, int puolustus) {
+    private int vointi;
+        
+    public Monsteri(int maxVointi, int voima, int puolustus) {
         this.voima = voima;
         this.puolustus = puolustus;
-        this.nimi = arvoNimi();        
+        this.nimi = arvoNimi();
+        this.vointi = maxVointi;
     }
     
     private String arvoNimi() {
@@ -38,5 +39,24 @@ public class Monsteri {
     public String getNimi() {
         return nimi;
     }
+    
+    public boolean onkoElossa() {
+        if(vointi > 0) {
+            return true;
+        }
+        return false;
+    }
+    
+    public void laskeVointia() {
+        vointi--;
+        if(vointi < 0) {
+            vointi = 0;
+        }
+    }
+        
+    public int getVointi() {
+        return vointi;
+    }
+    
     
 }

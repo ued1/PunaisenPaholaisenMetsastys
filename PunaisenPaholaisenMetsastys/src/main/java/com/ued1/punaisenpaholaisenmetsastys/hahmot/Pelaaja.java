@@ -99,5 +99,15 @@ public class Pelaaja {
             rahat += muutos;
         }
     }
+    
+    public String tiedotMerkkijonona() {
+        String tiedot = "Nimi: " + nimi;
+        tiedot += "\nTaso: " + taso;
+        tiedot += "\nVointi: " + vointi + "/" + maxVointi;
+        tiedot += "\nAse: " + ase.nimi();
+        tiedot += "\nHaarniska: " + haarniska.nimi();
+        tiedot += "\nRahat: " + rahat;
+        return tiedot;
+    }
 
 }
