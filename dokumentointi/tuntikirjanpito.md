@@ -13,3 +13,8 @@ Asepajan toiminnallisuus, uusia aseita, AsepajaTest, PelaajaTest(osa), Pelaajall
 16.05.2015
 ~15 min
 Haarniskakauppa
+
+17.05.2015
+~15 min
+Monsteri, MonsteriTest
+

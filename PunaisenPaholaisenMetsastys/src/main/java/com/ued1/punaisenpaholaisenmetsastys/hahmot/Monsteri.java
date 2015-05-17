@@ -1,31 +1,38 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
-import com.ued1.punaisenpaholaisenmetsastys.aseet.Ase;
-import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Haarniska;
+import java.util.Random;
 
 public class Monsteri {
-
+    
+    // TODO: abstract class Hahmo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // Monsteri extends Hahmo
+    // Pelaaja extends Hahmo
+    
     private String nimi;
-    private int taso;
-    private Ase ase;
-    private Haarniska haarniska;
+    private int voima;
+    private int puolustus;
     
-    public Monsteri(int taso) {
-        // arpoo nimen
-        this.taso = taso;
-        // arpoo aseen, korkeintaan tasoa vastaava ase
-        // arpoo haarniskan, korkeintaan tasoa vastaava haarniska
+    
+    public Monsteri(int voima, int puolustus) {
+        this.voima = voima;
+        this.puolustus = puolustus;
+        this.nimi = arvoNimi();        
     }
     
-    public int getVoima() {
-        // määräytyy aseen ja tason mukaan
-        return -1;
+    private String arvoNimi() {
+        // TODO: KEKSI NIMET!!!!!!!!!!!!!!!!!!!!!!!
+        String[] nimet = {"nimi0", "nimi1", "jne"};
+        Random randomluku = new Random();
+        return nimet[randomluku.nextInt(nimet.length)];
     }
     
-    public int getPuolustus() {
-        // määräytyy haarniskan ja tason mukaan
-        return -1;
+    public int lyo() {
+        return voima;
+    }
+    
+    public int suojaa() {
+        return puolustus;
     }
     
     public String getNimi() {
