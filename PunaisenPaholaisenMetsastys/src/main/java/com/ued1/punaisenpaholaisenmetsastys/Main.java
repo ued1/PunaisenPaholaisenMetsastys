@@ -4,6 +4,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Monsteri;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import java.util.Scanner;
 
 public class Main {
@@ -18,6 +19,7 @@ public class Main {
     static HaarniskaKauppa haarniskakauppa = new HaarniskaKauppa();
     static Pelaaja pelaaja = new Pelaaja("Testipelaaja");
     static Scanner lukija = new Scanner(System.in);
+    static Metsa metsa = new Metsa(pelaaja);
     
     public static void main(String[] args) {
         
@@ -144,8 +146,8 @@ public class Main {
             System.out.print("Komento: ");
             String komento = lukija.nextLine();
             if(komento.equalsIgnoreCase("e")) {
-                //etsiMonsteri();
-                System.out.println("Monstereita ei ole olemassa");
+                metsa.taistele();
+                System.out.println("[E]tsi monsteri  [L]epää ja parane  [T]iedot  [P]alaa takaisin");
             } else if(komento.equalsIgnoreCase("t")) {
                 System.out.println("");
                 System.out.println(pelaaja.tiedotMerkkijonona());
@@ -158,7 +160,7 @@ public class Main {
                 System.out.println("Vointi: " + pelaaja.getVointi() + "/" + pelaaja.getMaxVointi());
             } else {
                 System.out.println("---METSÄ---");
-                System.out.println("[E]tsi monsteri  [T]iedot  [P]alaa takaisin");
+                System.out.println("[E]tsi monsteri  [L]epää ja parane  [T]iedot  [P]alaa takaisin");
                 System.out.println("Vointi: " + pelaaja.getVointi() + "/" + pelaaja.getMaxVointi());
             }
         }
