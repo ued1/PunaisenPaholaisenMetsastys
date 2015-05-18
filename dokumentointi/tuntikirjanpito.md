@@ -18,3 +18,6 @@ Haarniskakauppa
 ~240 min
 Abstrakti luokka Hahmo, Pelaajan ja Monsterin päivitys. Yksinkertainen käyttöliittymä, Taistelulogiikka ja testit
 
+18.05.2015
+~30 min
+Luokkaan Metsä yksinkertainen logiikka
