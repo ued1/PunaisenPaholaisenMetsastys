@@ -2,6 +2,7 @@
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Keppi;
+import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Tikari;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class PelaajaTest {
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("Testipelaaja");
-        
+        pelaaja.muutaRahoja(-10000);
     }
     
     @Test
@@ -41,15 +42,15 @@ public class PelaajaTest {
     
     @Test
     public void pelaajanAseenaAluksiNyrkki() {
-        assertEquals("Nyrkki", pelaaja.getAse().nimi());
+        assertEquals(new Nyrkki().nimi(), pelaaja.getAse().nimi());
     }
     
     @Test
     public void pelaajalleVoiAsettaaUudenAseen() {
         pelaaja.setAse(new Tikari());
-        assertEquals("Tikari", pelaaja.getAse().nimi());
+        assertEquals(new Tikari().nimi(), pelaaja.getAse().nimi());
         pelaaja.setAse(new Keppi());
-        assertEquals("Keppi", pelaaja.getAse().nimi());
+        assertEquals(new Keppi().nimi(), pelaaja.getAse().nimi());
     }
     
     @Test
@@ -102,6 +103,12 @@ public class PelaajaTest {
         pelaaja.paranna();
         assertEquals(10, pelaaja.getVointi());
         assertEquals(10, pelaaja.getMaxVointi());
+    }
+    
+    @Test
+    public void parantuneenPelaajanParantaminenEiMuutaVointia() {
+        pelaaja.paranna();
+        assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
     }
     
     @Test
