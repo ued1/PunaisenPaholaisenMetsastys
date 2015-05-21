@@ -20,7 +20,7 @@ public class HaarniskaKauppa {
         haarniskat.add(new Vaatteet());
     }
     
-    public boolean voikoOstaaHaarniskat(Pelaaja pelaaja, Haarniska haarniska) {
+    public boolean voikoOstaaHaarniskan(Pelaaja pelaaja, Haarniska haarniska) {
         if(pelaaja.getRahat() < haarniska.arvo()) {
             return false;
         }
@@ -28,8 +28,8 @@ public class HaarniskaKauppa {
     }
     
     // aseista poiketen vanhaa haarniskaa ei myydä eikä siitä saa rahaa takaisin
-    public boolean ostaHaarniska(Pelaaja pelaaja, int haarniskanNumero) {
-        if(voikoOstaaHaarniskat(pelaaja, haarniskat.get(haarniskanNumero))) {
+    public boolean ostaHaarniska(Pelaaja pelaaja, int haarniskanNumero) { // TODO: equals tms numeroinnin sijaan
+        if(voikoOstaaHaarniskan(pelaaja, haarniskat.get(haarniskanNumero))) {
             pelaaja.setHaarniska(haarniskat.get(haarniskanNumero));
             pelaaja.muutaRahoja(0-haarniskat.get(haarniskanNumero).arvo());
             return true;
