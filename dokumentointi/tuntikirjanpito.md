@@ -26,3 +26,6 @@ Luokkaan Metsä yksinkertainen logiikka
 3 tuntia
 Lisää testejä, pit-raportti, luokkakaavio, aihemäärittelyn tarkennus, ohjelman suunnittelua
 
+23.05.2015
+5 tuntia
+GUI-luokkia, GUI-suunnittelua, enum Paikka
