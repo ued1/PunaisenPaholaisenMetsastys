@@ -1,5 +1,6 @@
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
+import com.ued1.punaisenpaholaisenmetsastys.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Ase;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Haarniska;
@@ -11,6 +12,7 @@ public class Pelaaja extends Hahmo {
     private Ase ase;
     private Haarniska haarniska;
     private int rahat;
+    private Paikka paikka;
 
     public Pelaaja(String nimi) {
         super(nimi, 10, 10);
@@ -18,6 +20,7 @@ public class Pelaaja extends Hahmo {
         this.ase = new Nyrkki();
         this.haarniska = new Riepu();
         this.rahat = 0;
+        this.paikka = Paikka.KYLA;
     }
 
     public int getTaso() {
@@ -75,6 +78,14 @@ public class Pelaaja extends Hahmo {
         tiedot += "\nHaarniska: " + haarniska.nimi();
         tiedot += "\nRahat: " + rahat;
         return tiedot;
+    }
+    
+    public Paikka getPaikka() {
+        return paikka;
+    }
+    
+    public void setPaikka(Paikka uusiPaikka) {
+        paikka = uusiPaikka;
     }
 
 }
