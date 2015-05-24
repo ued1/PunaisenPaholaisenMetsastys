@@ -29,3 +29,7 @@ Lisää testejä, pit-raportti, luokkakaavio, aihemäärittelyn tarkennus, ohjel
 23.05.2015
 5 tuntia
 GUI-luokkia, GUI-suunnittelua, enum Paikka
+
+24.05.2015
+8 tuntia
+GUI: asepaja, haarniskakauppa, monsteritaistelu (osa), kolme erikseen päivitettävää paneelia, suunnittelua ja opiskelua
