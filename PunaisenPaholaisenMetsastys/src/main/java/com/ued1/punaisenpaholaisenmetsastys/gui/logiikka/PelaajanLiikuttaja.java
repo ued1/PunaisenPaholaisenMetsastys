@@ -1,7 +1,9 @@
 
-package com.ued1.punaisenpaholaisenmetsastys.gui;
+package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
 
 import com.ued1.punaisenpaholaisenmetsastys.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
+import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 
 public class PelaajanLiikuttaja {

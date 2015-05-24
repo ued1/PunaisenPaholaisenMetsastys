@@ -2,15 +2,19 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class KomentoPanel extends JPanel {
+public class KomentoOsa extends JPanel {
     
     private JTextArea komentoValikko;
+    private Pelaaja pelaaja;
     
-    public KomentoPanel() {
+    public KomentoOsa(Pelaaja pelaaja) {
+        this.pelaaja = pelaaja;
         luoKomponentit();
     }
     
@@ -31,6 +35,16 @@ public class KomentoPanel extends JPanel {
             komentoValikko.setText("[E]tsi monsteri\n[L]epää\n[T]akaisin kylään");
         } else if(uusiPaikka == Paikka.TAISTELUAREENA) {
             komentoValikko.setText("[T]akaisin kylään");
+        } else if(uusiPaikka == Paikka.ASEENOSTO) {
+            String ostettavatAseet = new Asepaja().ostettavatAseetMerkkijonona(pelaaja);
+            komentoValikko.setText(ostettavatAseet);
+        } else if(uusiPaikka == Paikka.ASEENMYYNTI) {
+            if(new Asepaja().voikoMyydaAseen(pelaaja)) {
+                komentoValikko.setText("[K]yllä\n[E]i");
+            } else {
+                komentoValikko.setText("[T]akaisin");
+            }
+            
         }
     }
     

@@ -61,5 +61,26 @@ public class Asepaja {
         }
         return hinnasto;
     }
+    
+    public boolean voikoPelaajaOstaaAseenNumero(Pelaaja pelaaja, int numero) {
+        if(numero > 0 && numero < aseet.size()) {
+            if(pelaaja.getRahat() >= aseet.get(numero).arvo() && pelaaja.getAse().nimi().equals("Nyrkki")) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public String ostettavatAseetMerkkijonona(Pelaaja pelaaja) {
+        String ostettavatAseet = "";
+        for(int i = 1; i < aseet.size(); i++) {
+            if(voikoPelaajaOstaaAseenNumero(pelaaja, i)) {
+                ostettavatAseet += "[" + i + "] " + aseet.get(i).nimi() + "\n";
+            }
+            
+        }
+        ostettavatAseet += "[T]akaisin";
+        return ostettavatAseet;
+    }
 
 }

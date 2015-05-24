@@ -1,6 +1,7 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
+import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.awt.BorderLayout;
 import java.awt.Container;

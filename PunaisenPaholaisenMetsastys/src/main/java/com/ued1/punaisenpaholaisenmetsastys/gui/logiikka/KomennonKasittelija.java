@@ -1,8 +1,11 @@
-package com.ued1.punaisenpaholaisenmetsastys.gui;
+package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
 
 import com.sun.glass.events.KeyEvent;
 import com.ued1.punaisenpaholaisenmetsastys.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
+import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 
 public class KomennonKasittelija {
     
@@ -10,12 +13,14 @@ public class KomennonKasittelija {
     private TarinaPanel tarinaPanel;
     private PelaajaTietoPanel pelaajaTietoPanel;
     private PelaajanLiikuttaja liikuttaja;
+    private Asepaja asepaja;
 
     public KomennonKasittelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel) {
         this.pelaaja = pelaaja;
         this.tarinaPanel = tarinaPanel;
         this.pelaajaTietoPanel = pelaajaTietoPanel;
         this.liikuttaja = new PelaajanLiikuttaja(pelaaja, tarinaPanel, pelaajaTietoPanel);
+        this.asepaja = new Asepaja();
     }
         
     public void kasitteleKomento(Paikka paikka, int komentoKoodi) {
@@ -31,6 +36,10 @@ public class KomennonKasittelija {
             kasitteleTaisteluKomento(komentoKoodi);
         } else if(paikka == Paikka.TAISTELUAREENA) {
             kasitteleTaisteluAreenaKomento(komentoKoodi);
+        } else if(paikka == Paikka.ASEENOSTO) {
+            kasitteleAseenOstoKomento(komentoKoodi);
+        } else if(paikka == Paikka.ASEENMYYNTI) {
+            kasitteleAseenMyyntiKomento(komentoKoodi);
         }
     }
     
@@ -44,7 +53,6 @@ public class KomennonKasittelija {
         } else if(komentoKoodi == KeyEvent.VK_T) {
             liikuttaja.liikuta(Paikka.TAISTELUAREENA);
         }
-        
     }
     
     private void kasitteleMetsaKomento(int komentoKoodi) {
@@ -59,9 +67,9 @@ public class KomennonKasittelija {
     
     private void kasitteleAsepajaKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_O) {
-            // osta
+            liikuttaja.liikuta(Paikka.ASEENOSTO);
         } else if(komentoKoodi == KeyEvent.VK_M) {
-            // myy
+            liikuttaja.liikuta(Paikka.ASEENMYYNTI);
         } else if(komentoKoodi == KeyEvent.VK_T) {
             liikuttaja.liikuta(Paikka.KYLA);
         }
@@ -72,6 +80,24 @@ public class KomennonKasittelija {
             // osta
         } else if(komentoKoodi == KeyEvent.VK_T) {
             liikuttaja.liikuta(Paikka.KYLA);
+        }
+    }
+    
+    private void kasitteleAseenOstoKomento(int komentoKoodi) {
+        if(asepaja.voikoPelaajaOstaaAseenNumero(pelaaja, komentoKoodi-48)) {
+            asepaja.ostaAse(pelaaja, komentoKoodi-48);
+            liikuttaja.liikuta(Paikka.ASEPAJA);
+        } else if(komentoKoodi == KeyEvent.VK_T) {
+            liikuttaja.liikuta(Paikka.ASEPAJA);
+        }
+    }
+    
+    private void kasitteleAseenMyyntiKomento(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_T || komentoKoodi == KeyEvent.VK_E) {
+            liikuttaja.liikuta(Paikka.ASEPAJA);
+        } else if(komentoKoodi == KeyEvent.VK_K) {
+            asepaja.myyAse(pelaaja);
+            liikuttaja.liikuta(Paikka.ASEPAJA);
         }
     }
     
