@@ -31,7 +31,7 @@ public class KomennonValidoija {
             if (koodi == KeyEvent.VK_O || koodi == KeyEvent.VK_T) {
                 return true;
             }
-        } else if (paikka == Paikka.METSA) {
+        } else if (paikka == Paikka.METSA || paikka == Paikka.MONSTERITAISTELUOHI) {
             if (koodi == KeyEvent.VK_E || koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_T) {
                 return true;
             }

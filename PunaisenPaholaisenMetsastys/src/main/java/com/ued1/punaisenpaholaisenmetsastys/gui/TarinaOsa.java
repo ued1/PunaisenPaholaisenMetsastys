@@ -57,6 +57,8 @@ public class TarinaOsa extends JPanel {
             asetaAseenMyynti();
         } else if(pelaaja.getPaikka() == Paikka.MONSTERITAISTELU) {
             asetaMonsteriTaistelu();
+        } else if(pelaaja.getPaikka() == Paikka.MONSTERITAISTELUOHI) {
+            asetaMonsteriTaisteluOhi();
         }
         
         
@@ -99,6 +101,16 @@ public class TarinaOsa extends JPanel {
     private void asetaMonsteriTaistelu() {
         eka.setText("MONSTERITAISTELU");
         toka.setText(metsa.getTaistelu().vastustaja().tiedotMerkkijonona());
+    }
+    
+    private void asetaMonsteriTaisteluOhi() {
+        eka.setText("METSÄ");
+        if(pelaaja.onkoElossa()) {
+            toka.setText("Voitit monsterin! Ansaitsit X kultarahaa" ); // TODO: fix
+        } else {
+            toka.setText("Hävisit! Monsteri vei kaikki rahasi, mutta olet taas voimissasi");
+        }
+        
     }
     
     

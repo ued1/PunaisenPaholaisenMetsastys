@@ -1,6 +1,7 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -58,6 +59,11 @@ public class PelaajaTietoPanel extends JPanel {
         paikkaTeksti.setText("" + pelaaja.getPaikka().toString()); // POISTA
         tasoTeksti.setText("" + pelaaja.getTaso());
         vointiTeksti.setText(pelaaja.getVointi() + "/" + pelaaja.getMaxVointi());
+        if(pelaaja.getVointi() < pelaaja.getMaxVointi()) {
+            vointiTeksti.setForeground(Color.RED);
+        } else {
+            vointiTeksti.setForeground(Color.BLACK);
+        }
         aseTeksti.setText(pelaaja.getAse().nimi());
         voimaTeksti.setText("" + pelaaja.lyo());
         haarniskaTeksti.setText(pelaaja.getHaarniska().nimi());

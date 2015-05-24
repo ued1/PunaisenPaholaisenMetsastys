@@ -32,7 +32,7 @@ public class KomennonKasittelija {
     public void kasitteleKomento(Paikka paikka, int komentoKoodi) {
         if(paikka == Paikka.KYLA) {
             kasitteleKylaKomento(komentoKoodi);
-        } else if(paikka == Paikka.METSA) {
+        } else if(paikka == Paikka.METSA || paikka == Paikka.MONSTERITAISTELUOHI) {
             kasitteleMetsaKomento(komentoKoodi);
         } else if(paikka == Paikka.ASEPAJA) {
             kasitteleAsepajaKomento(komentoKoodi);
@@ -74,7 +74,7 @@ public class KomennonKasittelija {
             liikuttaja.liikuta(Paikka.KYLA);
         }
     }
-    
+        
     private void kasitteleAsepajaKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_O) {
             liikuttaja.liikuta(Paikka.ASEENOSTO);
@@ -123,13 +123,13 @@ public class KomennonKasittelija {
     private void kasitteleMonsteriTaisteluKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_L) {
             if(metsa.getTaistelu().taistele()) {
-                liikuttaja.liikuta(Paikka.METSA);
+                liikuttaja.liikuta(Paikka.MONSTERITAISTELUOHI);
+                metsa.asetaTaistelunTulos();
             } else {
                 liikuttaja.liikuta(Paikka.MONSTERITAISTELU);
             }
             
         } else if(komentoKoodi == KeyEvent.VK_J) {
-            metsa.lopetaTaistelu();
             liikuttaja.liikuta(Paikka.METSA);
         }
     }
@@ -142,27 +142,3 @@ public class KomennonKasittelija {
     
     
 }
-
-/*
-        
-        main:       [M]etsä
-                    [T]aisteluAreena
-                    [A]sekauppa
-                    [H]aarniskakauppa
-                
-        metsä:      [E]tsi monsteri
-                    [L]epää
-                    [T]akaisin
-        
-        taistelu:   [L]yö
-                    [J]uokse
-        
-        asekauppa:  [O]sta
-                    [M]yy
-                    [T]akaisin
-        
-        haarniska:  [O]sta
-                    [T]akaisin
-        
-                
-        */

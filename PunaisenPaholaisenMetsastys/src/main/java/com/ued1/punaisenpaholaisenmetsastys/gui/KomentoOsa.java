@@ -32,7 +32,7 @@ public class KomentoOsa extends JPanel {
             komentoValikko.setText("[O]sta ase\n[M]yy asee\n[T]akaisin");
         } else if(uusiPaikka == Paikka.HAARNISKAKAUPPA) {
             komentoValikko.setText("[O]sta haarniska\n[T]akaisin");
-        } else if(uusiPaikka == Paikka.METSA) {
+        } else if(uusiPaikka == Paikka.METSA || uusiPaikka == Paikka.MONSTERITAISTELUOHI) {
             komentoValikko.setText("[E]tsi monsteri\n[L]epää\n[T]akaisin kylään");
         } else if(uusiPaikka == Paikka.TAISTELUAREENA) {
             komentoValikko.setText("[T]akaisin kylään");
