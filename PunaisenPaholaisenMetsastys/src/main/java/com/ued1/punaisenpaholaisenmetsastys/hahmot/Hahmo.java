@@ -51,5 +51,6 @@ public abstract class Hahmo {
     
     public abstract int suojaa();
     
+    public abstract String tiedotMerkkijonona();
             
 }

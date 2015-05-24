@@ -3,7 +3,7 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
-import java.awt.CardLayout;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
@@ -14,11 +14,11 @@ public class TarinaPanel extends JPanel {
     private KomentoOsa komentoOsa;
     private TarinaOsa tarinaOsa;
     
-    public TarinaPanel(Pelaaja pelaaja) {
+    public TarinaPanel(Pelaaja pelaaja, Metsa metsa) {
         super(new GridLayout(2,1));
         this.pelaaja = pelaaja;
         this.komentoOsa = new KomentoOsa(pelaaja);
-        this.tarinaOsa = new TarinaOsa(pelaaja);
+        this.tarinaOsa = new TarinaOsa(pelaaja, metsa);
         luoKomponentit();
     }
     

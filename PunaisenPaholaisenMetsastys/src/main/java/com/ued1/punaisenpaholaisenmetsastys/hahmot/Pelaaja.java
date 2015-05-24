@@ -70,6 +70,7 @@ public class Pelaaja extends Hahmo {
         }
     }
     
+    @Override
     public String tiedotMerkkijonona() {
         String tiedot = "Nimi: " + super.getNimi();
         tiedot += "\nTaso: " + taso;

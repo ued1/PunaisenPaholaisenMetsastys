@@ -17,7 +17,7 @@ public class Monsteri extends Hahmo {
     
     private String arvoNimi() {
         // TODO: KEKSI NIMET!!!!!!!!!!!!!!!!!!!!!!!
-        String[] nimet = {"nimi0", "nimi1", "jne"};
+        String[] nimet = {"nimi0", "nimi1", "nimi2", "nimi3"};
         Random randomluku = new Random();
         return nimet[randomluku.nextInt(nimet.length)];
     }
@@ -30,6 +30,15 @@ public class Monsteri extends Hahmo {
     @Override
     public int suojaa() {
         return puolustus;
+    }
+    
+    @Override
+    public String tiedotMerkkijonona() {
+        String tiedot = "Monsteri: " + getNimi();
+        tiedot += "\nVointi: " + getVointi() + "/" + getMaxVointi();
+        tiedot += "\nVoima: " + voima;
+        tiedot += "\nPuolustus: " + puolustus;
+        return tiedot;
     }
     
 }

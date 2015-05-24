@@ -2,9 +2,11 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.hahmot.Hahmo;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
@@ -17,12 +19,14 @@ public class TarinaOsa extends JPanel {
     private HaarniskaKauppa haarniskaKauppa;
     private JTextArea eka;
     private JTextArea toka;
+    private Metsa metsa;
     
-    public TarinaOsa(Pelaaja pelaaja) {
+    public TarinaOsa(Pelaaja pelaaja, Metsa metsa) {
         super(new GridLayout(2,1));
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
         this.haarniskaKauppa = new HaarniskaKauppa();
+        this.metsa = metsa;
         luoKomponentit();
     }
     
@@ -51,6 +55,8 @@ public class TarinaOsa extends JPanel {
             asetaAseenOsto();
         } else if(pelaaja.getPaikka() == Paikka.ASEENMYYNTI) {
             asetaAseenMyynti();
+        } else if(pelaaja.getPaikka() == Paikka.MONSTERITAISTELU) {
+            asetaMonsteriTaistelu();
         }
         
         
@@ -88,6 +94,11 @@ public class TarinaOsa extends JPanel {
         } else {
             toka.setText("Et voi myydä omaa nyrkkiäsi");
         }
+    }
+    
+    private void asetaMonsteriTaistelu() {
+        eka.setText("MONSTERITAISTELU");
+        toka.setText(metsa.getTaistelu().vastustaja().tiedotMerkkijonona());
     }
     
     

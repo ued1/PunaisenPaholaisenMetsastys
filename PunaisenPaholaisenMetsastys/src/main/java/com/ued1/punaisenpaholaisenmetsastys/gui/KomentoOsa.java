@@ -4,6 +4,7 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -44,7 +45,11 @@ public class KomentoOsa extends JPanel {
             } else {
                 komentoValikko.setText("[T]akaisin");
             }
-            
+        } else if(uusiPaikka == Paikka.HAARNISKANOSTO) {
+            String ostettavatHaarniskat = new HaarniskaKauppa().ostettavissaOlevatHaarniskatMerkkijonona(pelaaja);
+            komentoValikko.setText(ostettavatHaarniskat);
+        } else if(uusiPaikka == Paikka.MONSTERITAISTELU) {
+            komentoValikko.setText("[L]yö\n[J]uokse");
         }
     }
     

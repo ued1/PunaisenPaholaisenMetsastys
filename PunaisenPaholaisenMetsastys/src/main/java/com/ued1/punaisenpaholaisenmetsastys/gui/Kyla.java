@@ -3,6 +3,7 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -14,9 +15,11 @@ public class Kyla implements Runnable {
     private JFrame frame;
     private Pelaaja pelaaja;
     private TarinaPanel tarinaPanel;
+    private Metsa metsa;
     
     public Kyla(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
+        this.metsa = new Metsa(pelaaja);
     }
         
     @Override
@@ -31,10 +34,10 @@ public class Kyla implements Runnable {
     
     private void luoKomponentit(Container container) {
         PelaajaTietoPanel pelaajaTietoPanel = new PelaajaTietoPanel(pelaaja);
-        tarinaPanel = new TarinaPanel(pelaaja);
+        tarinaPanel = new TarinaPanel(pelaaja, metsa);
         container.add(pelaajaTietoPanel, BorderLayout.EAST);
         container.add(tarinaPanel);
-        frame.addKeyListener(new KomennonKuuntelija(pelaaja,tarinaPanel,pelaajaTietoPanel));
+        frame.addKeyListener(new KomennonKuuntelija(pelaaja,tarinaPanel,pelaajaTietoPanel,metsa));
     }
         
     

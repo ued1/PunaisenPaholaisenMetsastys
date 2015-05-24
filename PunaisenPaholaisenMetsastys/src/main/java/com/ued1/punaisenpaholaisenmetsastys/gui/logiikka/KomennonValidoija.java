@@ -3,16 +3,19 @@ package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
 import com.ued1.punaisenpaholaisenmetsastys.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
 import java.awt.event.KeyEvent;
 
 public class KomennonValidoija {
 
     private Pelaaja pelaaja;
     private Asepaja asepaja;
+    private HaarniskaKauppa haarniskaKauppa;
 
     public KomennonValidoija(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
+        this.haarniskaKauppa = new HaarniskaKauppa();
     }
 
     public boolean onkoKomento(Paikka paikka, int koodi) {
@@ -32,7 +35,7 @@ public class KomennonValidoija {
             if (koodi == KeyEvent.VK_E || koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_T) {
                 return true;
             }
-        } else if (paikka == Paikka.TAISTELU) {
+        } else if (paikka == Paikka.MONSTERITAISTELU) {
             if (koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_J) {
                 return true;
             }
@@ -49,6 +52,10 @@ public class KomennonValidoija {
             if ((koodi == KeyEvent.VK_K || koodi == KeyEvent.VK_E) && asepaja.voikoMyydaAseen(pelaaja)) {
                 return true;
             } else if (koodi == KeyEvent.VK_T) {
+                return true;
+            }
+        } else if(paikka == Paikka.HAARNISKANOSTO) {
+            if(haarniskaKauppa.voikoOstaaHaarniskanNumero(pelaaja, koodi-48) || koodi == KeyEvent.VK_T) {
                 return true;
             }
         }

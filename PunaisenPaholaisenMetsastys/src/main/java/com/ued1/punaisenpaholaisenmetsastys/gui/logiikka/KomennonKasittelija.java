@@ -6,6 +6,8 @@ import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 
 public class KomennonKasittelija {
     
@@ -14,13 +16,17 @@ public class KomennonKasittelija {
     private PelaajaTietoPanel pelaajaTietoPanel;
     private PelaajanLiikuttaja liikuttaja;
     private Asepaja asepaja;
+    private HaarniskaKauppa haarniskaKauppa;
+    private Metsa metsa;
 
-    public KomennonKasittelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel) {
+    public KomennonKasittelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa) {
         this.pelaaja = pelaaja;
         this.tarinaPanel = tarinaPanel;
         this.pelaajaTietoPanel = pelaajaTietoPanel;
         this.liikuttaja = new PelaajanLiikuttaja(pelaaja, tarinaPanel, pelaajaTietoPanel);
         this.asepaja = new Asepaja();
+        this.haarniskaKauppa = new HaarniskaKauppa();
+        this.metsa = metsa;
     }
         
     public void kasitteleKomento(Paikka paikka, int komentoKoodi) {
@@ -32,14 +38,16 @@ public class KomennonKasittelija {
             kasitteleAsepajaKomento(komentoKoodi);
         } else if(paikka == Paikka.HAARNISKAKAUPPA) {
             kasitteleHaarniskaKauppaKomento(komentoKoodi);
-        } else if(paikka == Paikka.TAISTELU) {
-            kasitteleTaisteluKomento(komentoKoodi);
+        } else if(paikka == Paikka.MONSTERITAISTELU) {
+            kasitteleMonsteriTaisteluKomento(komentoKoodi);
         } else if(paikka == Paikka.TAISTELUAREENA) {
             kasitteleTaisteluAreenaKomento(komentoKoodi);
         } else if(paikka == Paikka.ASEENOSTO) {
             kasitteleAseenOstoKomento(komentoKoodi);
         } else if(paikka == Paikka.ASEENMYYNTI) {
             kasitteleAseenMyyntiKomento(komentoKoodi);
+        } else if(paikka == Paikka.HAARNISKANOSTO) {
+            kasitteleHaarniskanOstoKomento(komentoKoodi);
         }
     }
     
@@ -57,9 +65,11 @@ public class KomennonKasittelija {
     
     private void kasitteleMetsaKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_E) {
-            // etsi monsteri
+            metsa.aloitaUusiTaistelu();
+            liikuttaja.liikuta(Paikka.MONSTERITAISTELU);
         } else if(komentoKoodi == KeyEvent.VK_L) {
-            // lepää
+            pelaaja.paranna();
+            liikuttaja.liikuta(Paikka.METSA);
         } else if(komentoKoodi == KeyEvent.VK_T) {
             liikuttaja.liikuta(Paikka.KYLA);
         }
@@ -77,12 +87,12 @@ public class KomennonKasittelija {
     
     private void kasitteleHaarniskaKauppaKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_O) {
-            // osta
+            liikuttaja.liikuta(Paikka.HAARNISKANOSTO);
         } else if(komentoKoodi == KeyEvent.VK_T) {
             liikuttaja.liikuta(Paikka.KYLA);
         }
     }
-    
+        
     private void kasitteleAseenOstoKomento(int komentoKoodi) {
         if(asepaja.voikoPelaajaOstaaAseenNumero(pelaaja, komentoKoodi-48)) {
             asepaja.ostaAse(pelaaja, komentoKoodi-48);
@@ -91,7 +101,7 @@ public class KomennonKasittelija {
             liikuttaja.liikuta(Paikka.ASEPAJA);
         }
     }
-    
+        
     private void kasitteleAseenMyyntiKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_T || komentoKoodi == KeyEvent.VK_E) {
             liikuttaja.liikuta(Paikka.ASEPAJA);
@@ -101,11 +111,26 @@ public class KomennonKasittelija {
         }
     }
     
-    private void kasitteleTaisteluKomento(int komentoKoodi) {
+    private void kasitteleHaarniskanOstoKomento(int komentoKoodi) {
+        if(haarniskaKauppa.voikoOstaaHaarniskanNumero(pelaaja, komentoKoodi-48)) {
+            haarniskaKauppa.ostaHaarniska(pelaaja, komentoKoodi-48);
+            liikuttaja.liikuta(Paikka.HAARNISKAKAUPPA);
+        } else if(komentoKoodi == KeyEvent.VK_T) {
+            liikuttaja.liikuta(Paikka.HAARNISKAKAUPPA);
+        }
+    }
+    
+    private void kasitteleMonsteriTaisteluKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_L) {
-            // lyö
+            if(metsa.getTaistelu().taistele()) {
+                liikuttaja.liikuta(Paikka.METSA);
+            } else {
+                liikuttaja.liikuta(Paikka.MONSTERITAISTELU);
+            }
+            
         } else if(komentoKoodi == KeyEvent.VK_J) {
-            // juokse
+            metsa.lopetaTaistelu();
+            liikuttaja.liikuta(Paikka.METSA);
         }
     }
     

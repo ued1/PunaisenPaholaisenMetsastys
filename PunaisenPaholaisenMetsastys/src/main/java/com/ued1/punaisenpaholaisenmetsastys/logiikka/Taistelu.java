@@ -43,5 +43,9 @@ public class Taistelu {
     public int getTokaIsku() {
         return tokaIsku;
     }
+    
+    public Hahmo vastustaja() {
+        return tokaTaistelija;
+    }
 
 }
