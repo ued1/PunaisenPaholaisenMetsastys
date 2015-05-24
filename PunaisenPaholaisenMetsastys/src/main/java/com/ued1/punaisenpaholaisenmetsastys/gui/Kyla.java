@@ -30,11 +30,9 @@ public class Kyla implements Runnable {
     
     private void luoKomponentit(Container container) {
         PelaajaTietoPanel pelaajaTietoPanel = new PelaajaTietoPanel(pelaaja);
-        TarinaPanel tarinaPanel = new TarinaPanel(pelaaja);
-        KomentoPanel komentoPanel = new KomentoPanel(pelaaja);
+        tarinaPanel = new TarinaPanel(pelaaja);
         container.add(pelaajaTietoPanel, BorderLayout.EAST);
         container.add(tarinaPanel);
-        container.add(komentoPanel, BorderLayout.SOUTH);
         frame.addKeyListener(new KomennonKuuntelija(pelaaja,tarinaPanel,pelaajaTietoPanel));
     }
         

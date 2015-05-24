@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 public class PelaajaTietoPanel extends JPanel {
 
     private Pelaaja pelaaja;
+    private JLabel paikkaTeksti;    // poista
     private JLabel tasoTeksti;
     private JLabel vointiTeksti;
     private JLabel aseTeksti;
@@ -20,6 +21,7 @@ public class PelaajaTietoPanel extends JPanel {
     public PelaajaTietoPanel(Pelaaja pelaaja) {
         super(new GridLayout(8, 2));
         this.pelaaja = pelaaja;
+        paikkaTeksti = new JLabel();    // poista
         tasoTeksti = new JLabel();
         vointiTeksti = new JLabel();
         aseTeksti = new JLabel();
@@ -32,8 +34,10 @@ public class PelaajaTietoPanel extends JPanel {
 
     private void luoKomponentit() {
         paivitaTiedot();
-        add(new JLabel("Nimi:"));
-        add(new JLabel(pelaaja.getNimi()));
+        // add(new JLabel("Nimi:"));    // Korvattu väliaikaisesti paikkatiedolla
+        add(new JLabel("Paikka:"));     // poista
+        add(paikkaTeksti);              // poista
+        // add(new JLabel(pelaaja.getNimi())); // Korvattu väliaikaisesti paikkatiedolla
         add(new JLabel("Taso:"));
         add(tasoTeksti);
         add(new JLabel("Vointi:"));
@@ -51,6 +55,7 @@ public class PelaajaTietoPanel extends JPanel {
     }
 
     private void paivitaTiedot() {
+        paikkaTeksti.setText("" + pelaaja.getPaikka().toString()); // POISTA
         tasoTeksti.setText("" + pelaaja.getTaso());
         vointiTeksti.setText(pelaaja.getVointi() + "/" + pelaaja.getMaxVointi());
         aseTeksti.setText(pelaaja.getAse().nimi());
