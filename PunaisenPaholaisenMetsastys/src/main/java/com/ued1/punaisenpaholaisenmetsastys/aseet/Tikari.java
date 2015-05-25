@@ -4,7 +4,7 @@ public class Tikari implements Ase {
 
     @Override
     public int lyo() {
-        return 15;
+        return 50;
     }
 
     @Override
@@ -14,7 +14,7 @@ public class Tikari implements Ase {
 
     @Override
     public int arvo() {
-        return 50;
+        return 5000;
     }
 
 }

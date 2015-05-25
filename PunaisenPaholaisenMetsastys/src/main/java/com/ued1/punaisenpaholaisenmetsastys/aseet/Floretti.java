@@ -1,20 +1,23 @@
+
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
-public class Keppi implements Ase {
+public class Floretti implements Ase {
 
     @Override
     public int lyo() {
-        return 10;
+        return 80;
     }
 
     @Override
     public String nimi() {
-        return "Keppi";
+        return "Floretti";
     }
 
     @Override
     public int arvo() {
-        return 50;
+        return 100000;
     }
-
+    
+    
+    
 }

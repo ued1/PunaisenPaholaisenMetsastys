@@ -16,9 +16,19 @@ public class Asepaja {
     private void lisaaAseetValikoimaan() {
         aseet.add(new Nyrkki()); // oletusase, ei näy valikoimassa
         aseet.add(new Keppi());
+        aseet.add(new Maila());
+        aseet.add(new Puukko());
+        aseet.add(new Leka());
         aseet.add(new Tikari());
         aseet.add(new Kirves());
-        aseet.add(new Miekka());
+        aseet.add(new Hukari());
+        aseet.add(new Floretti());
+        aseet.add(new Wakizashi());
+        aseet.add(new Gladius());
+        aseet.add(new Sapeli());
+        aseet.add(new Pitkamiekka());
+        aseet.add(new Katana());
+        aseet.add(new Excalibur());
     }
 
     public boolean ostaAse(Pelaaja pelaaja, int aseenNumero) {

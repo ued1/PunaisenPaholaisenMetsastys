@@ -4,7 +4,7 @@ public class Kirves implements Ase {
 
     @Override
     public int lyo() {
-        return 20;
+        return 60;
     }
 
     @Override
@@ -14,7 +14,7 @@ public class Kirves implements Ase {
 
     @Override
     public int arvo() {
-        return 100;
+        return 10000;
     }
 
 }
