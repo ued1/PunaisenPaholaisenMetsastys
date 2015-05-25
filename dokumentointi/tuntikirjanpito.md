@@ -35,6 +35,5 @@ GUI-luokkia, GUI-suunnittelua, enum Paikka
 GUI: asepaja, haarniskakauppa, monsteritaistelu (osa), kolme erikseen päivitettävää paneelia, suunnittelua ja opiskelua
 
 25.05.2015
-4 tuntia
-Taisteluareena, Monsteritaistelu, Kilpailija, Pelaajalle kokemus
-
+8 tuntia
+Taisteluareena, Monsteritaistelu, Kilpailija, Pelaajalle kokemus, uusia Aseita ja Haarniskoja, pelilogiikkaan liittyviä vakioita
