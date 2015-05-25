@@ -78,7 +78,7 @@ public class Areena {
         int maxVointi = pelaaja.getMaxVointi() + 5; // TODO: muuta sopivaksi
         int voima = pelaaja.lyo() + 2;              // TODO: muuta sopivaksi
         int puolustus = pelaaja.suojaa() + 1;       // TODO: muuta sopivaksi
-        Hahmo kilpailija = new Kilpailija(maxVointi, voima, puolustus, "-nimi-");
+        Hahmo kilpailija = new Kilpailija(maxVointi, voima, puolustus);
         return kilpailija;
     }
     
