@@ -1,9 +1,12 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
+import com.ued1.punaisenpaholaisenmetsastys.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Keppi;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Tikari;
+import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Riepu;
+import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Vaatteet;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -124,6 +127,72 @@ public class PelaajaTest {
     public void aseLyoPelaajanPuolesta() {
         pelaaja.setAse(new Tikari());
         assertEquals(new Tikari().lyo(), pelaaja.lyo());
+    }
+    
+    @Test
+    public void pelaaJanKokemusOnAluksiNolla() {
+        assertEquals(0, pelaaja.getKokemus());
+    }
+    
+    @Test
+    public void pelaajanKokemusMuuttuuOikein() {
+        pelaaja.muutaKokemusta(-1);
+        assertEquals(0, pelaaja.getKokemus());
+        pelaaja.muutaKokemusta(11);
+        assertEquals(11, pelaaja.getKokemus());
+        pelaaja.muutaKokemusta(-111);
+        assertEquals(0, pelaaja.getKokemus());
+    }
+    
+    @Test
+    public void pelaajaOnAluksiKylassa() {
+        assertEquals(Paikka.KYLA, pelaaja.getPaikka());
+    }
+    
+    @Test
+    public void pelaajanPaikkaaVoiMuuttaa() {
+        pelaaja.setPaikka(Paikka.ASEPAJA);
+        assertEquals(Paikka.ASEPAJA, pelaaja.getPaikka());
+    }
+    
+    @Test
+    public void pelaajanTiedoissaOnAseenNimi() {
+        assertTrue(pelaaja.tiedotMerkkijonona().contains(pelaaja.getAse().nimi()));
+    }
+    
+    @Test
+    public void pelaajallaOnAluksiRiepu() {
+        assertEquals(new Riepu().nimi(), pelaaja.getHaarniska().nimi());
+    }
+    
+    @Test
+    public void pelaajanHaarniskanVoiVaihtaa() {
+        pelaaja.setHaarniska(new Vaatteet());
+        assertEquals(new Vaatteet().nimi(), pelaaja.getHaarniska().nimi());
+    }
+    
+    @Test
+    public void haarniskaSuojaaPelaajanPuolesta() {
+        pelaaja.setHaarniska(new Vaatteet());
+        assertEquals(new Vaatteet().suojaa(), pelaaja.suojaa());
+    }
+    
+    @Test
+    public void pelaajanTasoaNostaessaMaxVointiKasvaa() {
+        int maxVointi = pelaaja.getMaxVointi();
+        pelaaja.nostaTasoa();
+        assertTrue(maxVointi < pelaaja.getMaxVointi());
+        maxVointi = pelaaja.getMaxVointi();
+        pelaaja.nostaTasoa();
+        assertTrue(maxVointi < pelaaja.getMaxVointi());
+    }
+    
+    @Test
+    public void pelaajanTasonNostaminenParantaaPelaajan() {
+        pelaaja.nostaTasoa();
+        assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
+        pelaaja.nostaTasoa();
+        assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
     }
             
 }

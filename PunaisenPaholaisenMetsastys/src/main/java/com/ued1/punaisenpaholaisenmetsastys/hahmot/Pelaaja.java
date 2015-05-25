@@ -32,6 +32,7 @@ public class Pelaaja extends Hahmo {
     public void nostaTasoa() {
         taso++;
         setMaxVointi(10 * taso);
+        paranna();
     }
 
     public Ase getAse() {
@@ -76,6 +77,7 @@ public class Pelaaja extends Hahmo {
     public String tiedotMerkkijonona() {
         String tiedot = "Nimi: " + super.getNimi();
         tiedot += "\nTaso: " + taso;
+        tiedot += "\nKokemus: " + kokemus;
         tiedot += "\nVointi: " + super.getVointi() + "/" + super.getMaxVointi();
         tiedot += "\nAse: " + ase.nimi();
         tiedot += "\nHaarniska: " + haarniska.nimi();
