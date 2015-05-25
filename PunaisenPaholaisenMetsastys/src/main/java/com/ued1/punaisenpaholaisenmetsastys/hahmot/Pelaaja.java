@@ -16,7 +16,7 @@ public class Pelaaja extends Hahmo {
     private int kokemus;
 
     public Pelaaja(String nimi) {
-        super(nimi, 10, 10);
+        super(nimi, 20, 20);
         this.taso = 1;
         this.ase = new Nyrkki();
         this.haarniska = new Riepu();
@@ -30,9 +30,11 @@ public class Pelaaja extends Hahmo {
     }
         
     public void nostaTasoa() {
-        taso++;
-        setMaxVointi(10 * taso);
-        paranna();
+        if(taso < 10) {
+            setMaxVointi(20 + 40 * taso);
+            taso++;
+            paranna();
+        }
     }
 
     public Ase getAse() {

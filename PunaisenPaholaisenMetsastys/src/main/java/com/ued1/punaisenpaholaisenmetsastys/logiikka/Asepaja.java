@@ -30,6 +30,8 @@ public class Asepaja {
         aseet.add(new Katana());
         aseet.add(new Excalibur());
     }
+    
+    // TODO: BUGI, ei voi ostaa kaikkia aseita koska numeroa >9 ei voi painaa yhdellä napilla
 
     public boolean ostaAse(Pelaaja pelaaja, int aseenNumero) {
         if (voikoOstaaAseen(pelaaja, aseet.get(aseenNumero))) {

@@ -1,6 +1,7 @@
 package com.ued1.punaisenpaholaisenmetsastys.logiikka;
 
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Hahmo;
+import java.util.Random;
 
 public class Taistelu {
 
@@ -8,26 +9,33 @@ public class Taistelu {
     private final Hahmo tokaTaistelija;
     private int ekaIsku;
     private int tokaIsku;
+    private Random random;
 
     public Taistelu(Hahmo eka, Hahmo toka) {
         ekaTaistelija = eka;
         tokaTaistelija = toka;
         ekaIsku = -999;
         tokaIsku = -999;
+        random = new Random();
     }
 
     public boolean taistele() {
-        ekaIsku = Math.max(0, ekaTaistelija.lyo() - tokaTaistelija.suojaa());
+        ekaIsku = Math.max(1, laskeLyontiVoima(ekaTaistelija.lyo(), tokaTaistelija.suojaa()));
         laskeVointia(tokaTaistelija, ekaIsku);
         if (!tokaTaistelija.onkoElossa()) {
             return true;
         }
-        tokaIsku = Math.max(0, tokaTaistelija.lyo() - ekaTaistelija.suojaa());
+        tokaIsku = Math.max(0, laskeLyontiVoima(tokaTaistelija.lyo(), ekaTaistelija.suojaa()));
         laskeVointia(ekaTaistelija, tokaIsku);
         if (!ekaTaistelija.onkoElossa()) {
             return true;
         }
         return false;
+    }
+    
+    private int laskeLyontiVoima(int lyonti, int suojaus) {
+        int osuma = lyonti/2 + random.nextInt(lyonti/2 + 1) - suojaus;
+        return osuma;
     }
 
     private void laskeVointia(Hahmo kenen, int paljonko) {

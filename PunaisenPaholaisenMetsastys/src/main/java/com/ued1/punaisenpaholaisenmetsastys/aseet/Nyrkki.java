@@ -4,7 +4,7 @@ public class Nyrkki implements Ase {
 
     @Override
     public int lyo() {
-        return 5;
+        return 6;
     }
 
     @Override

@@ -31,6 +31,8 @@ public class HaarniskaKauppa {
         haarniskat.add(new PinkitTrigoot());
     }
     
+    // TODO: BUGI, ei voi ostaa kaikkia haarniskoita koska ei voi painaa nappia 10 tai suurempi
+    
     public boolean voikoOstaaHaarniskan(Pelaaja pelaaja, Haarniska haarniska) {
         if(pelaaja.getRahat() < haarniska.arvo()) {
             return false;
