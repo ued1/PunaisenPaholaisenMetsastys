@@ -25,10 +25,10 @@ public class Kilpailija extends Hahmo {
 
     @Override
     public String tiedotMerkkijonona() {
-        String tiedot = "Kilpailija: " + getNimi();
-        tiedot += "\nVointi: " + getVointi() + "/" + getMaxVointi();
-        tiedot += "\nVoima: " + voima;
-        tiedot += "\nPuolustus: " + puolustus;
+        String tiedot = "Vastustajasi on " + getNimi();
+        tiedot += "\n  Vointi: " + getVointi() + "/" + getMaxVointi();
+        tiedot += "\n  Voima: " + voima;
+        tiedot += "\n  Puolustus: " + puolustus;
         return tiedot;
     }
 

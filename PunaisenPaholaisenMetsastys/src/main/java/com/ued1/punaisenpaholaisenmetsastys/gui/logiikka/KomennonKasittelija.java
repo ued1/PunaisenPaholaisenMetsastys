@@ -55,6 +55,10 @@ public class KomennonKasittelija {
             kasitteleMonsteriTaisteluTappioKomento(komentoKoodi);
         } else if(paikka == Paikka.TAISTELUAREENAEI) {
             kasitteleTaisteluAreenaEi(komentoKoodi);
+        } else if(paikka == Paikka.AREENATAISTELU) {
+            kasitteleAreenaTaistelu(komentoKoodi);
+        } else if(paikka == Paikka.TAISTELUAREENATULOS) {
+            kasitteleTaisteluAreenaTulos(komentoKoodi);
         }
     }
     
@@ -149,6 +153,17 @@ public class KomennonKasittelija {
         }
     }
     
+    private void kasitteleAreenaTaistelu(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_L) {
+            if(areena.getTaistelu().taistele()) {
+                liikuttaja.liikuta(Paikka.TAISTELUAREENATULOS);
+                
+            } else {
+                liikuttaja.liikuta(Paikka.AREENATAISTELU);
+            }
+        }
+    }
+    
     private void kasitteleMonsteriTaisteluTappioKomento(int komentoKoodi) {
         
         // TODO: [Q] Lopeta peli
@@ -160,14 +175,23 @@ public class KomennonKasittelija {
     }
     
     private void kasitteleTaisteluAreenaKomento(int komentoKoodi) {
-        // TODO: taistelun aloittaminen
+        if(komentoKoodi == KeyEvent.VK_T) {
+            liikuttaja.liikuta(Paikka.KYLA);
+        } else if(komentoKoodi == KeyEvent.VK_A) {
+            areena.aloitaUusiTaistelu();
+            liikuttaja.liikuta(Paikka.AREENATAISTELU);
+        }
+        
+    }
+    
+    private void kasitteleTaisteluAreenaEi(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_T) {
             liikuttaja.liikuta(Paikka.KYLA);
         }
     }
     
-    private void kasitteleTaisteluAreenaEi(int komentoKoodi) {
-        if(komentoKoodi == KeyEvent.VK_T) {
+    private void kasitteleTaisteluAreenaTulos(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_J) {
             liikuttaja.liikuta(Paikka.KYLA);
         }
     }

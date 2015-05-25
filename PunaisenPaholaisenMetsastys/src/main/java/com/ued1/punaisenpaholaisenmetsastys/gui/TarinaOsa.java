@@ -7,6 +7,7 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
@@ -65,6 +66,10 @@ public class TarinaOsa extends JPanel {
             asetaTaisteluAreena();
         } else if(pelaaja.getPaikka() == Paikka.TAISTELUAREENAEI) {
             asetaTaisteluAreenaEi();
+        } else if(pelaaja.getPaikka() == Paikka.AREENATAISTELU) {
+            asetaAreenaTaistelu();
+        } else if(pelaaja.getPaikka() == Paikka.TAISTELUAREENATULOS) {
+            asetaTaisteluAreenaTulos();
         }
         
         
@@ -109,6 +114,11 @@ public class TarinaOsa extends JPanel {
         toka.setText(metsa.getTaistelu().vastustaja().tiedotMerkkijonona());
     }
     
+    private void asetaAreenaTaistelu() {
+        eka.setText("AREENATAISTELU");
+        toka.setText(areena.getVastustajanTiedot());
+    }
+    
     private void asetaMonsteriTaisteluTappio() {
         eka.setText("METSÄ");
         String tokateksti = ("Hävisit taistelun!\n\nMonsteri päätti säästää henkesi,");
@@ -123,9 +133,9 @@ public class TarinaOsa extends JPanel {
     private void asetaTaisteluAreena() {
         eka.setText("TAISTELUAREENA");
         String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Noustaksesi seuraavalle";
-        tokateksti += "\ntasolle sinun on voitettava vielä " + areena.getOtteluitaJaljella() + " ottelua.";
-        // tiedot ensimmäisestä vastustajasta
-        // kerrotaan mitä tapahtuu kun voittaa/häviää
+        tokateksti += "\ntasolle sinun on voitettava vielä " + areena.getOtteluitaJaljella() + " ottelua.\n\n";
+        tokateksti += areena.getVastustajanTiedot();
+        
         toka.setText(tokateksti);
     }
     
@@ -134,10 +144,22 @@ public class TarinaOsa extends JPanel {
         // TODO: teksti jos on jo level 10
         String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Haastaaksesi kilpailijoita";
         tokateksti += "\nja noustaksesi seuraavalle tasolle tarvitset";
-        tokateksti += "\nlisää kokemusta.";
+        tokateksti += "\n" + (areena.seuraavanTasonKokemus() - pelaaja.getKokemus()) + " lisää kokemusta.";
         tokateksti += "\n\nKokemuksesi: " + pelaaja.getKokemus();
-        tokateksti += "\nTarvittava kokemus: XXX";
+        tokateksti += "\nTarvittava kokemus: " + areena.seuraavanTasonKokemus();
         toka.setText(tokateksti);
+    }
+    
+    private void asetaTaisteluAreenaTulos() {
+        eka.setText("TAISTELUAREENATULOS");
+        String tokateksti = "";
+        if(pelaaja.onkoElossa()) {
+            tokateksti += "Voitit taistelun!";
+        } else {
+            tokateksti += "Hävisit taistelun.";
+        }
+        toka.setText(tokateksti);
+        areena.asetaTaistelunTulos();
     }
         
     @Override

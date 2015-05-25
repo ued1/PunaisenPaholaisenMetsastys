@@ -34,6 +34,14 @@ public class Areena {
         }
         return true;
     }
+    
+    public int seuraavanTasonKokemus() {
+        if(pelaaja.getTaso() >= 0 && pelaaja.getTaso() < 10) {
+            return tarvittavaKokemus[pelaaja.getTaso()];
+        } else {
+            return -1;
+        }
+    }
         
     public int getOtteluitaJaljella() {
         return pelaaja.getTaso() + 1 - voitetut;
@@ -43,8 +51,12 @@ public class Areena {
         if(pelaaja.onkoElossa()) {
             taistelu = null;
             vastustaja = null;
-            pelaaja.nostaTasoa();
-            voitetut = 0;
+            if(getOtteluitaJaljella() < 2) {
+                pelaaja.nostaTasoa();
+                voitetut = 0;
+            } else {
+                voitetut++;
+            }
         } else {
             vastustaja.paranna();
             pelaaja.paranna();
@@ -55,6 +67,8 @@ public class Areena {
         if(vastustaja == null) {
             vastustaja = generoiUusiVastustaja();
         }
+        vastustaja.paranna();
+        pelaaja.paranna();
         taistelu = new Taistelu(pelaaja, vastustaja);
     }
     
@@ -63,13 +77,21 @@ public class Areena {
     private Hahmo generoiUusiVastustaja() {
         int maxVointi = pelaaja.getMaxVointi() + 5; // TODO: muuta sopivaksi
         int voima = pelaaja.lyo() + 2;              // TODO: muuta sopivaksi
-        int puolusuts = pelaaja.suojaa() + 1;       // TODO: muuta sopivaksi
-        Hahmo kilpailija = new Kilpailija(10, 10, 10, "-nimi-");
+        int puolustus = pelaaja.suojaa() + 1;       // TODO: muuta sopivaksi
+        Hahmo kilpailija = new Kilpailija(maxVointi, voima, puolustus, "-nimi-");
         return kilpailija;
     }
     
     public Taistelu getTaistelu() {
         return taistelu;
+    }
+    
+    public String getVastustajanTiedot() {
+        if(vastustaja == null) {
+            return "Seuraava vastustajasi selviää kun\naloitat taistelun ensimmäisen kerran";
+        } else {
+            return vastustaja.tiedotMerkkijonona();
+        }
     }
     
 }

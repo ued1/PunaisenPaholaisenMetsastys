@@ -54,6 +54,10 @@ public class KomentoOsa extends JPanel {
             komentoValikko.setText("[J]atka peliä\n");
         } else if(uusiPaikka == Paikka.TAISTELUAREENAEI) {
             komentoValikko.setText("[T]akaisin");
+        } else if(uusiPaikka == Paikka.AREENATAISTELU) {
+            komentoValikko.setText("[L]yö");
+        } else if(uusiPaikka == Paikka.TAISTELUAREENATULOS) {
+            komentoValikko.setText("[J]atka");
         }
     }
     

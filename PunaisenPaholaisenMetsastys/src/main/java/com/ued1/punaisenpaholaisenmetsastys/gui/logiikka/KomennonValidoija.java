@@ -74,6 +74,10 @@ public class KomennonValidoija {
             if (koodi == KeyEvent.VK_T) {
                 return true;
             }
+        } else if(paikka == Paikka.AREENATAISTELU) {
+            if (koodi == KeyEvent.VK_L) {
+                return true;
+            }
         }
         
         
