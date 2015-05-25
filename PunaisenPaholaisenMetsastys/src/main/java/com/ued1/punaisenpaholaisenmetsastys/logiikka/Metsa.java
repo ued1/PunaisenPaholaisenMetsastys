@@ -23,6 +23,7 @@ public class Metsa {
     public void asetaTaistelunTulos() {
         if(pelaaja.onkoElossa()) {
             pelaaja.muutaRahoja(5 * pelaaja.getTaso());
+            pelaaja.muutaKokemusta(5 * pelaaja.getTaso());
         } else {
             // TODO: korjaa tai muuta aihemäärittely
             pelaaja.muutaRahoja(-99999);

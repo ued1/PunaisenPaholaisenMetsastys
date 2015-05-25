@@ -2,8 +2,8 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.Paikka;
-import com.ued1.punaisenpaholaisenmetsastys.hahmot.Hahmo;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
@@ -20,13 +20,15 @@ public class TarinaOsa extends JPanel {
     private JTextArea eka;
     private JTextArea toka;
     private Metsa metsa;
+    private Areena areena;
     
-    public TarinaOsa(Pelaaja pelaaja, Metsa metsa) {
+    public TarinaOsa(Pelaaja pelaaja, Metsa metsa, Areena areena) {
         super(new GridLayout(2,1));
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
         this.haarniskaKauppa = new HaarniskaKauppa();
         this.metsa = metsa;
+        this.areena = areena;
         luoKomponentit();
     }
     
@@ -57,8 +59,12 @@ public class TarinaOsa extends JPanel {
             asetaAseenMyynti();
         } else if(pelaaja.getPaikka() == Paikka.MONSTERITAISTELU) {
             asetaMonsteriTaistelu();
-        } else if(pelaaja.getPaikka() == Paikka.MONSTERITAISTELUOHI) {
-            asetaMonsteriTaisteluOhi();
+        } else if(pelaaja.getPaikka() == Paikka.MONSTERITAISTELUTAPPIO) {
+            asetaMonsteriTaisteluTappio();
+        } else if(pelaaja.getPaikka() == Paikka.TAISTELUAREENA) {
+            asetaTaisteluAreena();
+        } else if(pelaaja.getPaikka() == Paikka.TAISTELUAREENAEI) {
+            asetaTaisteluAreenaEi();
         }
         
         
@@ -103,17 +109,37 @@ public class TarinaOsa extends JPanel {
         toka.setText(metsa.getTaistelu().vastustaja().tiedotMerkkijonona());
     }
     
-    private void asetaMonsteriTaisteluOhi() {
+    private void asetaMonsteriTaisteluTappio() {
         eka.setText("METSÄ");
-        if(pelaaja.onkoElossa()) {
-            toka.setText("Voitit monsterin! Ansaitsit X kultarahaa" ); // TODO: fix
-        } else {
-            toka.setText("Hävisit! Monsteri vei kaikki rahasi, mutta olet taas voimissasi");
+        String tokateksti = ("Hävisit taistelun!\n\nMonsteri päätti säästää henkesi,");
+        if(pelaaja.getRahat() > 0) {
+            tokateksti += "\nmutta vie voittopalkkiona kultarahasi,";
+            tokateksti += "\n" + pelaaja.getRahat() + ",";
         }
-        
+        tokateksti += "\nlevättyäsi olet taas voimissasi";
+        toka.setText(tokateksti);
     }
     
+    private void asetaTaisteluAreena() {
+        eka.setText("TAISTELUAREENA");
+        String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Noustaksesi seuraavalle";
+        tokateksti += "\ntasolle sinun on voitettava vielä " + areena.getOtteluitaJaljella() + " ottelua.";
+        // tiedot ensimmäisestä vastustajasta
+        // kerrotaan mitä tapahtuu kun voittaa/häviää
+        toka.setText(tokateksti);
+    }
     
+    private void asetaTaisteluAreenaEi() {
+        eka.setText("TAISTELUAREENA");
+        // TODO: teksti jos on jo level 10
+        String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Haastaaksesi kilpailijoita";
+        tokateksti += "\nja noustaksesi seuraavalle tasolle tarvitset";
+        tokateksti += "\nlisää kokemusta.";
+        tokateksti += "\n\nKokemuksesi: " + pelaaja.getKokemus();
+        tokateksti += "\nTarvittava kokemus: XXX";
+        toka.setText(tokateksti);
+    }
+        
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

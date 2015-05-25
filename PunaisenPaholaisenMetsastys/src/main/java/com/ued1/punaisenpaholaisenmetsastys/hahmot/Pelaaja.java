@@ -13,6 +13,7 @@ public class Pelaaja extends Hahmo {
     private Haarniska haarniska;
     private int rahat;
     private Paikka paikka;
+    private int kokemus;
 
     public Pelaaja(String nimi) {
         super(nimi, 10, 10);
@@ -21,6 +22,7 @@ public class Pelaaja extends Hahmo {
         this.haarniska = new Riepu();
         this.rahat = 0;
         this.paikka = Paikka.KYLA;
+        this.kokemus = 0;
     }
 
     public int getTaso() {
@@ -29,7 +31,7 @@ public class Pelaaja extends Hahmo {
         
     public void nostaTasoa() {
         taso++;
-        // nosta maxVointi
+        setMaxVointi(10 * taso);
     }
 
     public Ase getAse() {
@@ -87,6 +89,14 @@ public class Pelaaja extends Hahmo {
     
     public void setPaikka(Paikka uusiPaikka) {
         paikka = uusiPaikka;
+    }
+    
+    public int getKokemus() {
+        return kokemus;
+    }
+    
+    public void muutaKokemusta(int muutos) {
+        kokemus = Math.max(0, kokemus+muutos);
     }
 
 }

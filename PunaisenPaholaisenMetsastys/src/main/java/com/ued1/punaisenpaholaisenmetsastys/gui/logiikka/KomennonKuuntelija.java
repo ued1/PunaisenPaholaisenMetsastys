@@ -4,6 +4,7 @@ import com.ued1.punaisenpaholaisenmetsastys.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -15,10 +16,10 @@ public class KomennonKuuntelija implements KeyListener {
     private Pelaaja pelaaja;
     private PelaajaTietoPanel pelaajaTietoPanel; // rivin voi poistaa kun CHEAT poistetaan
 
-    public KomennonKuuntelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa) {
+    public KomennonKuuntelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa, Areena areena) {
         this.pelaaja = pelaaja;
         this.pelaajaTietoPanel = pelaajaTietoPanel; // rivin voi poistaa kun CHEAT poistetaan
-        this.kasittelija = new KomennonKasittelija(pelaaja, tarinaPanel, pelaajaTietoPanel, metsa);
+        this.kasittelija = new KomennonKasittelija(pelaaja, tarinaPanel, pelaajaTietoPanel, metsa, areena);
         this.validoija = new KomennonValidoija(pelaaja);
         
     }

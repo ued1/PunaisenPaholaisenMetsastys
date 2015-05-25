@@ -12,6 +12,7 @@ public class PelaajaTietoPanel extends JPanel {
     private Pelaaja pelaaja;
     private JLabel paikkaTeksti;    // poista
     private JLabel tasoTeksti;
+    private JLabel kokemusTeksti;
     private JLabel vointiTeksti;
     private JLabel aseTeksti;
     private JLabel voimaTeksti;
@@ -20,10 +21,11 @@ public class PelaajaTietoPanel extends JPanel {
     private JLabel rahaTeksti;
 
     public PelaajaTietoPanel(Pelaaja pelaaja) {
-        super(new GridLayout(8, 2));
+        super(new GridLayout(9, 2));    // pienennä poisteassa paikkatieto
         this.pelaaja = pelaaja;
         paikkaTeksti = new JLabel();    // poista
         tasoTeksti = new JLabel();
+        kokemusTeksti = new JLabel();
         vointiTeksti = new JLabel();
         aseTeksti = new JLabel();
         voimaTeksti = new JLabel();
@@ -43,6 +45,8 @@ public class PelaajaTietoPanel extends JPanel {
         add(tasoTeksti);
         add(new JLabel("Vointi:"));
         add(vointiTeksti);
+        add(new JLabel("Kokemus:"));
+        add(kokemusTeksti);
         add(new JLabel("Ase:"));
         add(aseTeksti);
         add(new JLabel("Voima:"));
@@ -58,6 +62,7 @@ public class PelaajaTietoPanel extends JPanel {
     private void paivitaTiedot() {
         paikkaTeksti.setText("" + pelaaja.getPaikka().toString()); // POISTA
         tasoTeksti.setText("" + pelaaja.getTaso());
+        kokemusTeksti.setText("" + pelaaja.getKokemus());
         vointiTeksti.setText(pelaaja.getVointi() + "/" + pelaaja.getMaxVointi());
         if(pelaaja.getVointi() < pelaaja.getMaxVointi()) {
             vointiTeksti.setForeground(Color.RED);

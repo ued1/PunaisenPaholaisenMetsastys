@@ -36,6 +36,10 @@ public abstract class Hahmo {
         return maxVointi;
     }
     
+    public void setMaxVointi(int uusiMaxVointi) {
+        maxVointi = uusiMaxVointi;
+    }
+    
     public void laskeVointia() {
         vointi--;
         if(vointi < 0) {

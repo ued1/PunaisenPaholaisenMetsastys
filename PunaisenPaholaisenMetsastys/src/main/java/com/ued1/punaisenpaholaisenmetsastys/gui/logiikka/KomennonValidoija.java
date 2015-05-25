@@ -31,7 +31,7 @@ public class KomennonValidoija {
             if (koodi == KeyEvent.VK_O || koodi == KeyEvent.VK_T) {
                 return true;
             }
-        } else if (paikka == Paikka.METSA || paikka == Paikka.MONSTERITAISTELUOHI) {
+        } else if (paikka == Paikka.METSA) {
             if (koodi == KeyEvent.VK_E || koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_T) {
                 return true;
             }
@@ -40,8 +40,7 @@ public class KomennonValidoija {
                 return true;
             }
         } else if (paikka == Paikka.TAISTELUAREENA) {
-            // TODO
-            if (koodi == KeyEvent.VK_T) {
+            if (koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_A) {
                 return true;
             }
         } else if (paikka == Paikka.ASEENOSTO) {
@@ -58,7 +57,27 @@ public class KomennonValidoija {
             if(haarniskaKauppa.voikoOstaaHaarniskanNumero(pelaaja, koodi-48) || koodi == KeyEvent.VK_T) {
                 return true;
             }
+        } else if(paikka == Paikka.MONSTERITAISTELUTAPPIO) {
+            
+            // TODO: Q - lopeta peli
+            
+            if (koodi == KeyEvent.VK_J) {
+                return true;
+            }
+        } else if(paikka == Paikka.TAISTELUAREENATULOS) {
+            
+            if (koodi == KeyEvent.VK_J) {
+                return true;
+            }
+        } else if(paikka == Paikka.TAISTELUAREENAEI) {
+            
+            if (koodi == KeyEvent.VK_T) {
+                return true;
+            }
         }
+        
+        
+        
         return false;
     }
 
