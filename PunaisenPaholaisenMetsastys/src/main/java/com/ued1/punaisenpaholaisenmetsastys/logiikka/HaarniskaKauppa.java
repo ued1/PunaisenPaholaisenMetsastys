@@ -18,6 +18,17 @@ public class HaarniskaKauppa {
     private void lisaaHaarniskatValikoimaan() {
         haarniskat.add(new Riepu());
         haarniskat.add(new Vaatteet());
+        haarniskat.add(new Takki());
+        haarniskat.add(new Nahkatakki());
+        haarniskat.add(new Rengashaarniska());
+        haarniskat.add(new Pronssihaarniska());
+        haarniskat.add(new Rautahaarniska());
+        haarniskat.add(new Titanhaarniska());
+        haarniskat.add(new Timanttihaarniska());
+        haarniskat.add(new BatmanAsu());
+        haarniskat.add(new PotterinViitta());
+        haarniskat.add(new PomminPurkuPuku());
+        haarniskat.add(new PinkitTrigoot());
     }
     
     public boolean voikoOstaaHaarniskan(Pelaaja pelaaja, Haarniska haarniska) {

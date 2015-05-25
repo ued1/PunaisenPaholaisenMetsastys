@@ -10,12 +10,12 @@ public class Vaatteet implements Haarniska {
 
     @Override
     public int suojaa() {
-        return 2;
+        return 10;
     }
 
     @Override
     public int arvo() {
-        return 2;
+        return 100;
     }
     
 }
