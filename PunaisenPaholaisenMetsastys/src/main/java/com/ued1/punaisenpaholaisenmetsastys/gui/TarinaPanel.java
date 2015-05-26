@@ -15,6 +15,8 @@ public class TarinaPanel extends JPanel {
     private KomentoOsa komentoOsa;
     private TarinaOsa tarinaOsa;
     
+    // TODO: paneelit sopivan kokosiksi
+    
     public TarinaPanel(Pelaaja pelaaja, Metsa metsa, Areena areena) {
         super(new GridLayout(2,1));
         this.pelaaja = pelaaja;

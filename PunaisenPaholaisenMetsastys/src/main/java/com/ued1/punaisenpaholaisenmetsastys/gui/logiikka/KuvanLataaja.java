@@ -31,6 +31,7 @@ public class KuvanLataaja {
         lisaa("/kuvat/sword.png", "Ase");
         lisaa("/kuvat/armor.png", "Haarniska");
         lisaa("/kuvat/gold.png", "Rahat");
+        lisaa("/kuvat/exp.png", "Kokemus");
         
     // TODO: muut ikonit
         
@@ -41,6 +42,8 @@ public class KuvanLataaja {
         lisaa("/kuvat/metsa.png", "Metsä");
         lisaa("/kuvat/kyla.png", "Kylä");
         lisaa("/kuvat/areena.png", "Taisteluareena");
+        lisaa("/kuvat/tappio.png", "Taistelutappio");
+        lisaa("/kuvat/asepaja.png", "Asepaja");
     }
     
     private void lisaa(String sijainti, String kuvaus) {

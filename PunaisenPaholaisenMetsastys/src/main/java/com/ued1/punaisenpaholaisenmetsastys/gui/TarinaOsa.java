@@ -123,7 +123,7 @@ public class TarinaOsa extends JPanel {
     }
     
     private void asetaMonsteriTaisteluTappio() {
-        eka.setText("METSÄ");
+        kuvanAsettaja.asetaKuva(eka, "Taistelutappio");
         String tokateksti = ("Hävisit taistelun!\n\nMonsteri päätti säästää henkesi,");
         if(pelaaja.getRahat() > 0) {
             tokateksti += "\nmutta vie voittopalkkiona kultarahasi,";
@@ -154,11 +154,12 @@ public class TarinaOsa extends JPanel {
     }
     
     private void asetaTaisteluAreenaTulos() {
-        eka.setText("TAISTELUAREENATULOS");
         String tokateksti = "";
         if(pelaaja.onkoElossa()) {
+            eka.setText("TAISTELUAREENATULOS");
             tokateksti += "Voitit taistelun!";
         } else {
+            kuvanAsettaja.asetaKuva(eka, "Taistelutappio");
             tokateksti += "Hävisit taistelun.";
         }
         toka.setText(tokateksti);

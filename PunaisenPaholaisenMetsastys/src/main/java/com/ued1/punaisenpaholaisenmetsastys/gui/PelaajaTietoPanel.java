@@ -48,7 +48,7 @@ public class PelaajaTietoPanel extends JPanel {
         add(tasoTeksti);
         add(ikoninAsettaja.asetaIkoni("Vointi"));
         add(vointiTeksti);
-        add(new JLabel("Kokemus:"));
+        add(ikoninAsettaja.asetaIkoni("Kokemus"));
         add(kokemusTeksti);
         add(ikoninAsettaja.asetaIkoni("Ase"));
         add(aseTeksti);
