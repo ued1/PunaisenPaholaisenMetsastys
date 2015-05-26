@@ -2,14 +2,15 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
-import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -18,10 +19,11 @@ public class TarinaOsa extends JPanel {
     private Pelaaja pelaaja;
     private Asepaja asepaja;
     private HaarniskaKauppa haarniskaKauppa;
-    private JTextArea eka;
+    private JLabel eka;
     private JTextArea toka;
     private Metsa metsa;
     private Areena areena;
+    private KuvanAsettaja kuvanAsettaja;
     
     public TarinaOsa(Pelaaja pelaaja, Metsa metsa, Areena areena) {
         super(new GridLayout(2,1));
@@ -30,11 +32,12 @@ public class TarinaOsa extends JPanel {
         this.haarniskaKauppa = new HaarniskaKauppa();
         this.metsa = metsa;
         this.areena = areena;
+        kuvanAsettaja = new KuvanAsettaja();
         luoKomponentit();
     }
     
     private void luoKomponentit() {
-        eka = new JTextArea();
+        eka = new JLabel();
         toka = new JTextArea();
         paivita();
         eka.setFocusable(false);
@@ -76,32 +79,32 @@ public class TarinaOsa extends JPanel {
     }
     
     private void asetaKyla() {
-        eka.setText("KYLÄ");
+        kuvanAsettaja.asetaKuva(eka, "Kylä");
         toka.setText("kylä");
     }
     
     private void asetaAsepaja() {
-        eka.setText("ASEPAJA");
+        kuvanAsettaja.asetaKuva(eka, "Asepaja");
         toka.setText(asepaja.hinnastoMerkkijonona());
     }
     
     private void asetaHaarniskaKauppa() {
-        eka.setText("HAARNISKAKAUPPA");
+        kuvanAsettaja.asetaKuva(eka, "Haarniskakauppa");
         toka.setText(haarniskaKauppa.hinnastoMerkkijonona());
     }
     
     private void asetaMetsa() {
-        eka.setText("METSÄ");
+        kuvanAsettaja.asetaKuva(eka, "Metsä");
         toka.setText("metsä");
     }
     
     private void asetaAseenOsto() {
-        eka.setText("ASEENOSTO");
+        kuvanAsettaja.asetaKuva(eka, "AseenOsto");
         toka.setText("ostettavat aseet...");
     }
     
     private void asetaAseenMyynti() {
-        eka.setText("ASEENMYYNTI");
+        kuvanAsettaja.asetaKuva(eka, "AseenMyynti");
         if(asepaja.voikoMyydaAseen(pelaaja)) {
             toka.setText("ohje aseen myyntiin");
         } else {
@@ -115,7 +118,7 @@ public class TarinaOsa extends JPanel {
     }
     
     private void asetaAreenaTaistelu() {
-        eka.setText("AREENATAISTELU");
+        kuvanAsettaja.asetaKuva(eka, "AreenaTaistelu");
         toka.setText(areena.getVastustajanTiedot());
     }
     
@@ -131,7 +134,7 @@ public class TarinaOsa extends JPanel {
     }
     
     private void asetaTaisteluAreena() {
-        eka.setText("TAISTELUAREENA");
+        kuvanAsettaja.asetaKuva(eka, "Taisteluareena");;
         String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Noustaksesi seuraavalle";
         tokateksti += "\ntasolle sinun on voitettava vielä " + areena.getOtteluitaJaljella() + " ottelua.\n\n";
         tokateksti += areena.getVastustajanTiedot();
@@ -140,7 +143,7 @@ public class TarinaOsa extends JPanel {
     }
     
     private void asetaTaisteluAreenaEi() {
-        eka.setText("TAISTELUAREENA");
+        kuvanAsettaja.asetaKuva(eka, "Taisteluareena");;
         // TODO: teksti jos on jo level 10
         String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Haastaaksesi kilpailijoita";
         tokateksti += "\nja noustaksesi seuraavalle tasolle tarvitset";

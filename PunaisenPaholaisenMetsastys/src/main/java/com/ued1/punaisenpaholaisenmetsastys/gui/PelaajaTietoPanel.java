@@ -1,5 +1,6 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
+import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -19,6 +20,7 @@ public class PelaajaTietoPanel extends JPanel {
     private JLabel haarniskaTeksti;
     private JLabel puolustusTeksti;
     private JLabel rahaTeksti;
+    private KuvanAsettaja ikoninAsettaja;
 
     public PelaajaTietoPanel(Pelaaja pelaaja) {
         super(new GridLayout(9, 2));    // pienennä poisteassa paikkatieto
@@ -32,6 +34,7 @@ public class PelaajaTietoPanel extends JPanel {
         haarniskaTeksti = new JLabel();
         puolustusTeksti = new JLabel();
         rahaTeksti = new JLabel();
+        ikoninAsettaja = new KuvanAsettaja();
         luoKomponentit();
     }
 
@@ -41,24 +44,24 @@ public class PelaajaTietoPanel extends JPanel {
         add(new JLabel("Paikka:"));     // poista
         add(paikkaTeksti);              // poista
         // add(new JLabel(pelaaja.getNimi())); // Korvattu väliaikaisesti paikkatiedolla
-        add(new JLabel("Taso:"));
+        add(ikoninAsettaja.asetaIkoni("Taso"));
         add(tasoTeksti);
-        add(new JLabel("Vointi:"));
+        add(ikoninAsettaja.asetaIkoni("Vointi"));
         add(vointiTeksti);
         add(new JLabel("Kokemus:"));
         add(kokemusTeksti);
-        add(new JLabel("Ase:"));
+        add(ikoninAsettaja.asetaIkoni("Ase"));
         add(aseTeksti);
         add(new JLabel("Voima:"));
         add(voimaTeksti);
-        add(new JLabel("Haarniska:"));
+        add(ikoninAsettaja.asetaIkoni("Haarniska"));
         add(haarniskaTeksti);
         add(new JLabel("Puolustus:"));
         add(puolustusTeksti);
-        add(new JLabel("Rahat:"));
+        add(ikoninAsettaja.asetaIkoni("Rahat"));
         add(rahaTeksti);
     }
-
+    
     private void paivitaTiedot() {
         paikkaTeksti.setText("" + pelaaja.getPaikka().toString()); // POISTA
         tasoTeksti.setText("" + pelaaja.getTaso());
