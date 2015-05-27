@@ -24,6 +24,8 @@ public class PelaajaTest {
         pelaaja.muutaRahoja(-10000);
     }
     
+    // Seuraavat testit testaavat alkutietoja
+    
     @Test
     public void konstruktoriAsettaaNimenOikein() {
         assertEquals("Testipelaaja", pelaaja.getNimi());
@@ -37,29 +39,95 @@ public class PelaajaTest {
     }
     
     @Test
-    public void pelaajanTasoNouseeNostaessa() {
-        pelaaja.nostaTasoa();
-        pelaaja.nostaTasoa();
-        assertEquals(3, pelaaja.getTaso());
-    }
-    
-    @Test
     public void pelaajanAseenaAluksiNyrkki() {
         assertEquals(new Nyrkki().nimi(), pelaaja.getAse().nimi());
     }
     
     @Test
-    public void pelaajalleVoiAsettaaUudenAseen() {
-        pelaaja.setAse(new Tikari());
-        assertEquals(new Tikari().nimi(), pelaaja.getAse().nimi());
-        pelaaja.setAse(new Keppi());
-        assertEquals(new Keppi().nimi(), pelaaja.getAse().nimi());
+    public void pelaajanHaarniskaOnAluksiRiepu() {
+        assertEquals(new Riepu().nimi(), pelaaja.getHaarniska().nimi());
     }
     
     @Test
     public void pelaajanRahatOvatAluksiNolla() {
         assertEquals(0, pelaaja.getRahat());
     }
+    
+    @Test
+    public void pelaajaAlussaElossaJaVointi20() {
+        assertEquals(20, pelaaja.getVointi());
+        assertEquals(20, pelaaja.getMaxVointi());
+        assertTrue(pelaaja.onkoElossa());
+    }
+    
+    @Test
+    public void pelaajanKokemusAluksiNolla() {
+        assertEquals(0, pelaaja.getKokemus());
+    }
+    
+    @Test
+    public void pelaajaOnAluksiKylassa() {
+        assertEquals(Paikka.KYLA, pelaaja.getPaikka());
+    }
+    
+    // public boolean onkoElossa()
+    @Test
+    public void pelaajaElossaKunVointiPositiivinen() {
+        laskeVointia(pelaaja.getVointi() - 1);
+        assertTrue(pelaaja.onkoElossa());
+        laskeVointia(1);
+        assertFalse(pelaaja.onkoElossa());
+        laskeVointia(3);
+        assertFalse(pelaaja.onkoElossa());
+    }
+    
+    // public void laskeVointia()
+    @Test
+    public void vointiLaskeeOikein() {
+        int maxVointiAlussa = pelaaja.getMaxVointi();
+        int vointiAlussa = pelaaja.getVointi();
+        laskeVointia(3);
+        assertEquals(vointiAlussa - 3, pelaaja.getVointi());
+        assertEquals(maxVointiAlussa, pelaaja.getMaxVointi());
+        laskeVointia(pelaaja.getVointi());
+        assertEquals(0, pelaaja.getVointi());
+        assertEquals(maxVointiAlussa, pelaaja.getMaxVointi());
+        laskeVointia(1);
+        assertEquals(0, pelaaja.getVointi());
+        assertEquals(maxVointiAlussa, pelaaja.getMaxVointi());
+    }
+    
+    private void laskeVointia(int paljonko) {
+        for(int i = 0; i < paljonko; i++) {
+            pelaaja.laskeVointia();
+        }
+    }
+    
+    //  public void paranna()
+    @Test
+    public void pelaajaParantuuOikein() {
+        laskeVointia(3);
+        int laskettuVointi = pelaaja.getVointi();
+        pelaaja.paranna();
+        assertEquals(laskettuVointi + 3, pelaaja.getVointi());
+        assertEquals(laskettuVointi + 3, pelaaja.getMaxVointi());
+    }
+    
+    @Test
+    public void parantuneenPelaajanParantaminenEiMuutaVointia() {
+        pelaaja.paranna();
+        assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
+    }
+    
+    @Test
+    public void pelaajaHeraaKuolleistaParantaessa() {
+        laskeVointia(9999);
+        assertFalse(pelaaja.onkoElossa());
+        pelaaja.paranna();
+        assertTrue(pelaaja.onkoElossa());
+    }
+    
+    // public void muutaRahoja(int muutos)
     
     @Test
     public void rahatMuuttuvatOikein() {
@@ -75,53 +143,23 @@ public class PelaajaTest {
         assertEquals(0, pelaaja.getRahat());
     }
     
-    @Test
-    public void pelaajaAlussaElossaJaVointi10() {
-        assertEquals(10, pelaaja.getVointi());
-        assertEquals(10, pelaaja.getMaxVointi());
-        assertTrue(pelaaja.onkoElossa());
-    }
+    // uusi ase ja haarniska
     
-    private void laskeVointiaYhdeksalla() {
-        for(int i = 0; i < 9; i++) {
-            pelaaja.laskeVointia();
-        }
+    @Test
+    public void pelaajalleVoiAsettaaUudenAseen() {
+        pelaaja.setAse(new Tikari());
+        assertEquals(new Tikari().nimi(), pelaaja.getAse().nimi());
+        pelaaja.setAse(new Keppi());
+        assertEquals(new Keppi().nimi(), pelaaja.getAse().nimi());
     }
     
     @Test
-    public void vointiLaskeeOikein() {
-        laskeVointiaYhdeksalla();
-        assertEquals(1, pelaaja.getVointi());
-        assertEquals(10, pelaaja.getMaxVointi());
-        assertTrue(pelaaja.onkoElossa());
-        laskeVointiaYhdeksalla();
-        assertEquals(0, pelaaja.getVointi());
-        assertEquals(10, pelaaja.getMaxVointi());
-        assertFalse(pelaaja.onkoElossa());
+    public void pelaajanHaarniskanVoiVaihtaa() {
+        pelaaja.setHaarniska(new Vaatteet());
+        assertEquals(new Vaatteet().nimi(), pelaaja.getHaarniska().nimi());
     }
-    
-    @Test
-    public void pelaajaParantuuOikein() {
-        laskeVointiaYhdeksalla();
-        pelaaja.paranna();
-        assertEquals(10, pelaaja.getVointi());
-        assertEquals(10, pelaaja.getMaxVointi());
-    }
-    
-    @Test
-    public void parantuneenPelaajanParantaminenEiMuutaVointia() {
-        pelaaja.paranna();
-        assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
-    }
-    
-    @Test
-    public void pelaajaHeraaKuolleistaParantaessa() {
-        laskeVointiaYhdeksalla();
-        laskeVointiaYhdeksalla();
-        assertFalse(pelaaja.onkoElossa());
-        pelaaja.paranna();
-        assertTrue(pelaaja.onkoElossa());
-    }
+        
+    // lyominen ja suojaaminen
     
     @Test
     public void aseLyoPelaajanPuolesta() {
@@ -130,51 +168,36 @@ public class PelaajaTest {
     }
     
     @Test
-    public void pelaaJanKokemusOnAluksiNolla() {
-        assertEquals(0, pelaaja.getKokemus());
+    public void haarniskaSuojaaPelaajanPuolesta() {
+        pelaaja.setHaarniska(new Vaatteet());
+        assertEquals(new Vaatteet().suojaa(), pelaaja.suojaa());
     }
     
-    @Test
-    public void pelaajanKokemusMuuttuuOikein() {
-        pelaaja.muutaKokemusta(-1);
-        assertEquals(0, pelaaja.getKokemus());
-        pelaaja.muutaKokemusta(11);
-        assertEquals(11, pelaaja.getKokemus());
-        pelaaja.muutaKokemusta(-111);
-        assertEquals(0, pelaaja.getKokemus());
-    }
-    
-    @Test
-    public void pelaajaOnAluksiKylassa() {
-        assertEquals(Paikka.KYLA, pelaaja.getPaikka());
-    }
-    
-    @Test
-    public void pelaajanPaikkaaVoiMuuttaa() {
-        pelaaja.setPaikka(Paikka.ASEPAJA);
-        assertEquals(Paikka.ASEPAJA, pelaaja.getPaikka());
-    }
+    // pelaajan tiedot
     
     @Test
     public void pelaajanTiedoissaOnAseenNimi() {
         assertTrue(pelaaja.tiedotMerkkijonona().contains(pelaaja.getAse().nimi()));
     }
+       
+    // paikan muuttaminen
     
     @Test
-    public void pelaajallaOnAluksiRiepu() {
-        assertEquals(new Riepu().nimi(), pelaaja.getHaarniska().nimi());
+    public void pelaajanPaikkaaVoiMuuttaa() {
+        pelaaja.setPaikka(Paikka.METSA);
+        assertEquals(Paikka.METSA, pelaaja.getPaikka());
+        pelaaja.setPaikka(Paikka.ASEPAJA);
+        assertEquals(Paikka.ASEPAJA, pelaaja.getPaikka());
     }
+        
+    // tason nostaminen
     
     @Test
-    public void pelaajanHaarniskanVoiVaihtaa() {
-        pelaaja.setHaarniska(new Vaatteet());
-        assertEquals(new Vaatteet().nimi(), pelaaja.getHaarniska().nimi());
-    }
-    
-    @Test
-    public void haarniskaSuojaaPelaajanPuolesta() {
-        pelaaja.setHaarniska(new Vaatteet());
-        assertEquals(new Vaatteet().suojaa(), pelaaja.suojaa());
+    public void pelaajanTasoNouseeNostaessa() {
+        int pelaajanTasoAlussa = pelaaja.getTaso();
+        pelaaja.nostaTasoa();
+        pelaaja.nostaTasoa();
+        assertEquals(pelaajanTasoAlussa + 2, pelaaja.getTaso());
     }
     
     @Test
@@ -194,5 +217,35 @@ public class PelaajaTest {
         pelaaja.nostaTasoa();
         assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
     }
-            
+    
+    @Test
+    public void viimeinenTasoOnKymmenen() {
+        for(int i = 0; i < 15; i++) {
+            pelaaja.nostaTasoa();
+        }
+        assertEquals(10, pelaaja.getTaso());
+    }
+        
+    // kokemus
+    
+    @Test
+    public void pelaajanKokemusMuuttuuOikein() {
+        int kokemusAlussa = pelaaja.getKokemus();
+        pelaaja.muutaKokemusta(-kokemusAlussa);
+        assertEquals(0, pelaaja.getKokemus());
+        pelaaja.muutaKokemusta(-1);
+        assertEquals(0, pelaaja.getKokemus());
+        pelaaja.muutaKokemusta(11);
+        assertEquals(11, pelaaja.getKokemus());
+        pelaaja.muutaKokemusta(-666);
+        assertEquals(0, pelaaja.getKokemus());
+    }
+    
+    // rahojen nollaus
+    public void nollausNollaaRahat() {
+        pelaaja.muutaRahoja(11);
+        pelaaja.nollaaRahat();
+        assertEquals(0, pelaaja.getRahat());
+    }
+                
 }

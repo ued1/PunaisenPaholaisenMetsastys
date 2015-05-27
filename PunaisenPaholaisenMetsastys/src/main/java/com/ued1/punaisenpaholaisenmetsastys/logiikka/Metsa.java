@@ -26,8 +26,7 @@ public class Metsa {
             pelaaja.muutaRahoja(tasollaRahaaTarjolla[pelaaja.getTaso()]);
             pelaaja.muutaKokemusta(tasollaKokemustaTarjolla[pelaaja.getTaso()]);
         } else {
-            // TODO: korjaa tai muuta aihemäärittely
-            pelaaja.muutaRahoja(-99999);
+            pelaaja.nollaaRahat();
             pelaaja.paranna();
         }
     }

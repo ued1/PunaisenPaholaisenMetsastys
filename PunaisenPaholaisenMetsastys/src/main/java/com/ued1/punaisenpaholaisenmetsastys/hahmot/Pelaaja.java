@@ -75,6 +75,10 @@ public class Pelaaja extends Hahmo {
         }
     }
     
+    public void nollaaRahat() {
+        muutaRahoja(-rahat);
+    }
+    
     @Override
     public String tiedotMerkkijonona() {
         String tiedot = "Nimi: " + super.getNimi();
