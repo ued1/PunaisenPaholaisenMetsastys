@@ -39,6 +39,7 @@ public class TaisteluTest {
         paattyyHeti = new Taistelu(pelaaja, kuoleeHetiMonsteri);
     }
 
+    /*  // taistelun logiikkaa muutettu, taistelu ei enää etene näin, TODO: korvaava testi
     @Test
     public void taistelunIskujenVoimatOnLaskettuOikein() {
         int pelaajanIsku = Math.max(0, pelaaja.lyo() - tasainenMonsteri.suojaa());
@@ -47,7 +48,9 @@ public class TaisteluTest {
         assertEquals(pelaajanIsku, tasainenTaistelu.getEkaIsku());
         assertEquals(monsterinIsku, tasainenTaistelu.getTokaIsku());
     }
+    */
 
+    
     @Test
     public void taistelussaVointiLaskeeOikein() {
         hutiTaistelu.taistele();
@@ -59,6 +62,7 @@ public class TaisteluTest {
         assertEquals(tasainenTaistelu.getTokaIsku(), pelaaja.getMaxVointi() - pelaaja.getVointi());
     }
 
+    /* // TODO: taistelu ei enää etene näin, korvaava testi
     @Test
     public void molempienLyodessaHutejaEiKummankaanVointiLaske() {
         taisteleMontaKertaa(eiTaistelua, 10);
@@ -67,13 +71,16 @@ public class TaisteluTest {
         assertEquals(0, eiTaistelua.getEkaIsku());
         assertEquals(0, eiTaistelua.getTokaIsku());
     }
+    */
 
+    /* // TODI: uusi testi, taistelulogiikka vaihtunut
     @Test
     public void metodiPalauttaaTrueJosToinenKuolee() {
         assertTrue(kovisTaistelu.taistele());
         pelaaja.paranna();
         assertFalse(hutiTaistelu.taistele());
     }
+    */
 
     @Test
     public void toinenTaistelijaEiLyoJosEnsimmainenVoittaaHeti() {
@@ -83,6 +90,7 @@ public class TaisteluTest {
         assertFalse(kuoleeHetiMonsteri.onkoElossa());
     }
     
+    /* lyöntivoima muutettu max --> max/2..max
     @Test
     public void taisteluEteneeJaPaattyyOikein() {
         // 10 5 1 vs 17 4 1
@@ -97,6 +105,7 @@ public class TaisteluTest {
         assertFalse(pelaaja.onkoElossa());
         assertTrue(tasainenMonsteri.onkoElossa());
     }
+    */
 
     private void taisteleMontaKertaa(Taistelu taistelu, int kerrat) {
         for (int i = 0; i < kerrat; i++) {

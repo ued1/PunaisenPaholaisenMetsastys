@@ -1,6 +1,7 @@
 package com.ued1.punaisenpaholaisenmetsastys.logiikka;
 
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Keppi;
+import com.ued1.punaisenpaholaisenmetsastys.aseet.Maila;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Tikari;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
@@ -93,10 +94,10 @@ public class AsepajaTest {
 
     @Test
     public void aseenOstaessaRahatVahenevatOikein() {
-        int alkuraha = 666;
+        int alkuraha = 10000;
         pelaaja.muutaRahoja(alkuraha);
-        asepaja.ostaAse(pelaaja, 2); // TODO: fix
-        assertEquals(alkuraha - new Tikari().arvo(), pelaaja.getRahat());
+        asepaja.ostaAse(pelaaja, 2);
+        assertEquals(alkuraha - new Maila().arvo(), pelaaja.getRahat());
     }
 
 }
