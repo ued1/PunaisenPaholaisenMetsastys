@@ -12,15 +12,15 @@ com.ued1.punaisenpaholaisenmetsastys.gui.KomentoOsa.java
 
 com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanLataaja.java
 
-Luokka lataa ohjelman tarvitsevia kuvia resource/kuvat hakemistosta ja tallentaa niitä KuvanAsettajalle annettavaan Map-olioon.
+Luokka lataa ohjelman tarvitsemia kuvia resource/kuvat hakemistosta ja tallentaa niitä KuvanAsettajalle annettavaan Map-olioon.
 
 Luokkaa on testattu kokeilemalla yhdessä KuvanAsettajan kanssa. Ohjelma on rakennettu niin että kuvien puuttuessa kyseiset kuvat korvataan tekstillä.
 
 com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja.java
 
-Luokka asettaa KuvanLataajalta saamia BufferedImage-olioita JLabel-olioiden ikoneiksi. Mikäli ohjelma ei pysty lataamaan tai ei löydä haluttua kuvaa, asetetetaan JLabel-olioon ikonin sijaan kuvaus. Mikäli kuvan asettaminen onnistuu, asetetaan kuvaus ToolTip-tekstiksi.
+Luokka asettaa KuvanLataajalta saamia BufferedImage-olioita JLabel-olioiden ikoneiksi. Mikäli ohjelma ei pysty lataamaan tai ei löydä haluttua kuvaa, asetetaan JLabel-olioon ikonin sijaan kuvaus. Mikäli kuvan asettaminen onnistuu, asetetaan kuvaus ToolTip-tekstiksi.
 
-Luokkaa on testattu kokeilemalla siten, että aluksi kuvien nimet tai polut on annettu tahalteen väärin. Kun kuvan nimi tai polku on tahalteen kirjoitettu väärin, pirtyy kyseinen JLabel-olio ilman ikonia, sisältäen pelkästään ikonin kuvauksen JLabelin tekstinä.
+Luokkaa on testattu kokeilemalla siten, että aluksi kuvien nimet tai polut on annettu tahalteen väärin. Kun kuvan nimi tai polku on tahalteen kirjoitettu väärin, piirtyy kyseinen JLabel-olio ilman ikonia, sisältäen pelkästään ikonin kuvauksen JLabelin tekstinä.
 
 com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonValidoija.java
 com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonKasittelija.java
