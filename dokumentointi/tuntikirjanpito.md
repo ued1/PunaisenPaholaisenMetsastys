@@ -37,3 +37,7 @@ GUI: asepaja, haarniskakauppa, monsteritaistelu (osa), kolme erikseen päivitett
 25.05.2015
 8 tuntia
 Taisteluareena, Monsteritaistelu, Kilpailija, Pelaajalle kokemus, uusia Aseita ja Haarniskoja, pelilogiikkaan liittyviä vakioita
+
+26.05.2015
+6 tuntia
+Grafiikkaa peliin
