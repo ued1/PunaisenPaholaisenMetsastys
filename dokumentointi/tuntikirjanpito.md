@@ -41,3 +41,7 @@ Taisteluareena, Monsteritaistelu, Kilpailija, Pelaajalle kokemus, uusia Aseita j
 26.05.2015
 6 tuntia
 Grafiikkaa peliin
+
+27.05.2015
+2 tuntia
+Lisää testejä, pit päivitetty, testausdokumentti.md
