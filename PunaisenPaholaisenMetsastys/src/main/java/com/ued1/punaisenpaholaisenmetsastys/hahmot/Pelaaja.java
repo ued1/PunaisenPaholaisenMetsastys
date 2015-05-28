@@ -1,6 +1,6 @@
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
-import com.ued1.punaisenpaholaisenmetsastys.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Ase;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Haarniska;

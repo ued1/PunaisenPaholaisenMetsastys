@@ -1,18 +1,18 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
 
-import com.ued1.punaisenpaholaisenmetsastys.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 
-public class PelaajanLiikuttaja {
+public class PelitilanteenPaivittaja {
 
     private Pelaaja pelaaja;
     private TarinaPanel tarinaPanel;
     private PelaajaTietoPanel pelaajaTietoPanel;
     
-    public PelaajanLiikuttaja(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel) {
+    public PelitilanteenPaivittaja(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel) {
         this.pelaaja = pelaaja;
         this.tarinaPanel = tarinaPanel;
         this.pelaajaTietoPanel = pelaajaTietoPanel;

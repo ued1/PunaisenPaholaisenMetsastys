@@ -1,7 +1,7 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
 
 import com.sun.glass.events.KeyEvent;
-import com.ued1.punaisenpaholaisenmetsastys.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
@@ -15,7 +15,7 @@ public class KomennonKasittelija {
     private Pelaaja pelaaja;
     private TarinaPanel tarinaPanel;
     private PelaajaTietoPanel pelaajaTietoPanel;
-    private PelaajanLiikuttaja liikuttaja;
+    private PelitilanteenPaivittaja liikuttaja;
     private Asepaja asepaja;
     private HaarniskaKauppa haarniskaKauppa;
     private Metsa metsa;
@@ -25,7 +25,7 @@ public class KomennonKasittelija {
         this.pelaaja = pelaaja;
         this.tarinaPanel = tarinaPanel;
         this.pelaajaTietoPanel = pelaajaTietoPanel;
-        this.liikuttaja = new PelaajanLiikuttaja(pelaaja, tarinaPanel, pelaajaTietoPanel);
+        this.liikuttaja = new PelitilanteenPaivittaja(pelaaja, tarinaPanel, pelaajaTietoPanel);
         this.asepaja = new Asepaja();
         this.haarniskaKauppa = new HaarniskaKauppa();
         this.metsa = metsa;

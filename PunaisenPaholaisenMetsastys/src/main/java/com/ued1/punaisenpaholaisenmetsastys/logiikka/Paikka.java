@@ -1,5 +1,5 @@
 
-package com.ued1.punaisenpaholaisenmetsastys;
+package com.ued1.punaisenpaholaisenmetsastys.logiikka;
 
 public enum Paikka {
     KYLA, ASEPAJA, HAARNISKAKAUPPA,
