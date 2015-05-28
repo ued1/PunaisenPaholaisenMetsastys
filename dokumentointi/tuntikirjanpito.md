@@ -44,4 +44,9 @@ Grafiikkaa peliin
 
 27.05.2015
 2 tuntia
-Lisää testejä, pit päivitetty, testausdokumentti.md
+Lisää testejä, pit-raportti päivitetty, testausdokumentti.md
+
+28.05.2015
+3 tuntia
+Luokkakaavion päivitys, GUI:n parantelua
+

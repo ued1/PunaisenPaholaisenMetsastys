@@ -18,10 +18,10 @@ public class Monsteri extends Hahmo {
 
         String[] nimet = {"Käärmefasaani", "Mörköläinen", "Jättiläinen",
             "Kaksipäinen Haamu", "Mörrimöykky", "Pöllökarhu", "Innostunut Sonni",
-            "Hyytelöhirvi", "Röllipeikko", "Kaljamahainen Örkki", "Perkele",
+            "Hyytelöhirvi", "Röllipeikko", "Iso Paha Susi", "Perkele",
             "Karvaperse", "Mörköpeikko", "Hymyilevä Kummitus", "Kiimainen Hirvi",
-            "Yksisarvinen Krokotiili", "Isojalka", "Päätön Kana", "Kutistunut Jätti",
-            "Isoperseinen Lehmä", "Hullu Muurahainen", "Kolmijalkainen Torakka"};
+            "Hampaaton Krokotiili", "Isojalka", "Päätön Kana", "Kutistunut Jätti",
+            "Isoperseinen Punkki", "Hullu Muurahainen", "Jalaton Torakka"};
         Random randomluku = new Random();
         return nimet[randomluku.nextInt(nimet.length)];
     }
@@ -38,8 +38,8 @@ public class Monsteri extends Hahmo {
 
     @Override
     public String tiedotMerkkijonona() {
-        String tiedot = "Monsteri: " + getNimi();
-        tiedot += "\nVointi: " + getVointi() + "/" + getMaxVointi();
+        String tiedot = "\nMonsteri: " + getNimi();
+        tiedot += "\n\nVointi: " + getVointi() + "/" + getMaxVointi();
         tiedot += "\nVoima: " + voima;
         tiedot += "\nPuolustus: " + puolustus;
         return tiedot;

@@ -23,11 +23,22 @@ public class Taistelu {
         ekaIsku = Math.max(1, laskeLyontiVoima(ekaTaistelija.lyo(), tokaTaistelija.suojaa()));
         laskeVointia(tokaTaistelija, ekaIsku);
         if (!tokaTaistelija.onkoElossa()) {
+            ekaIsku = -999;
+            tokaIsku = -999;
             return true;
         }
         tokaIsku = Math.max(0, laskeLyontiVoima(tokaTaistelija.lyo(), ekaTaistelija.suojaa()));
         laskeVointia(ekaTaistelija, tokaIsku);
         if (!ekaTaistelija.onkoElossa()) {
+            ekaIsku = -999;
+            tokaIsku = -999;
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean onkoAlkanut() {
+        if(ekaIsku > -1 && tokaIsku > -1) {
             return true;
         }
         return false;

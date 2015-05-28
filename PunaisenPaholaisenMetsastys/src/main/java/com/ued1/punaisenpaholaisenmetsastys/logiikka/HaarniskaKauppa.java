@@ -59,8 +59,8 @@ public class HaarniskaKauppa {
         
     public String hinnastoMerkkijonona() {
         String hinnasto = "";
-        for (int i = 0; i < haarniskat.size(); i++) {
-            hinnasto += "" + i + " " + haarniskat.get(i).nimi() + "  \t" + haarniskat.get(i).arvo() + "\n";
+        for (int i = 1; i < haarniskat.size(); i++) {
+            hinnasto += "" + i + " " + haarniskat.get(i).nimi() + "\t" + haarniskat.get(i).arvo() + "\n";
         }
         return hinnasto;
     }

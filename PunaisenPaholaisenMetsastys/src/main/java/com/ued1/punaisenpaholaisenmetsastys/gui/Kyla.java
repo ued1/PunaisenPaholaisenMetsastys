@@ -5,9 +5,9 @@ import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -28,19 +28,22 @@ public class Kyla implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("PunaisenPaholaisenMetsastys");
+        luoKomponentit(frame.getContentPane());
         frame.setPreferredSize(new Dimension(600,600));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        luoKomponentit(frame.getContentPane());
+        frame.setResizable(false);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     
     private void luoKomponentit(Container container) {
-        container.setLayout(new GridLayout(1,2));
         PelaajaTietoPanel pelaajaTietoPanel = new PelaajaTietoPanel(pelaaja);
+        pelaajaTietoPanel.setPreferredSize(new Dimension(300, 600));
         tarinaPanel = new TarinaPanel(pelaaja, metsa, areena);
-        container.add(tarinaPanel);
-        container.add(pelaajaTietoPanel);
+        tarinaPanel.setPreferredSize(new Dimension(300,600));
+        container.add(tarinaPanel, BorderLayout.WEST);
+        container.add(pelaajaTietoPanel, BorderLayout.EAST);
         frame.addKeyListener(new KomennonKuuntelija(pelaaja,tarinaPanel,pelaajaTietoPanel,metsa, areena));
     }
         

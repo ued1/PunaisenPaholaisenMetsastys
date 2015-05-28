@@ -67,9 +67,9 @@ public class Asepaja {
     }
 
     public String hinnastoMerkkijonona() {
-        String hinnasto = "";
+        String hinnasto = "Myynnissä oleva ase\tHinta\n";
         for (int i = 1; i < aseet.size(); i++) {
-            hinnasto += "" + i + " " + aseet.get(i).nimi() + "  \t" + aseet.get(i).arvo() + "\n";
+            hinnasto += "" + i + ". " + aseet.get(i).nimi() + "           \t" + aseet.get(i).arvo() + "\n";
         }
         return hinnasto;
     }

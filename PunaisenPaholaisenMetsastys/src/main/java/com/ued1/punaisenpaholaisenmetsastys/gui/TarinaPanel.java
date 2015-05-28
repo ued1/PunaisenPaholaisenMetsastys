@@ -5,8 +5,12 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 public class TarinaPanel extends JPanel {
@@ -14,11 +18,8 @@ public class TarinaPanel extends JPanel {
     private Pelaaja pelaaja;
     private KomentoOsa komentoOsa;
     private TarinaOsa tarinaOsa;
-    
-    // TODO: paneelit sopivan kokosiksi
-    
+        
     public TarinaPanel(Pelaaja pelaaja, Metsa metsa, Areena areena) {
-        super(new GridLayout(2,1));
         this.pelaaja = pelaaja;
         this.komentoOsa = new KomentoOsa(pelaaja);
         this.tarinaOsa = new TarinaOsa(pelaaja, metsa, areena);
@@ -26,6 +27,9 @@ public class TarinaPanel extends JPanel {
     }
     
     private void luoKomponentit() {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        tarinaOsa.setPreferredSize(new Dimension(300,450));
+        komentoOsa.setPreferredSize(new Dimension(300,150));
         add(tarinaOsa);
         add(komentoOsa);
     }

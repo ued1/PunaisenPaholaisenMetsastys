@@ -80,7 +80,14 @@ public class TarinaOsa extends JPanel {
     
     private void asetaKyla() {
         kuvanAsettaja.asetaKuva(eka, "Kylä");
-        toka.setText("kylä");
+        String kuvaus = "\nTämä on kyläsi.";
+        kuvaus += "\n\nAsepajassa voit ostaa uusia aseita.";
+        kuvaus += "\n\nHaarniskakaupassa voit päivittää haarniskasi.";
+        kuvaus += "\n\nTaisteluareenalla voit kehittyä taistelijana";
+        kuvaus += "\nja nousta seuraavalla tasolle.";
+        kuvaus += "\n\nMetsästä löytyy monstereita, joita tappamalla";
+        kuvaus += "\nsaat lisää kultarahoja.";
+        toka.setText(kuvaus);
     }
     
     private void asetaAsepaja() {
@@ -95,7 +102,9 @@ public class TarinaOsa extends JPanel {
     
     private void asetaMetsa() {
         kuvanAsettaja.asetaKuva(eka, "Metsä");
-        toka.setText("metsä");
+        String kuvaus = "\nOlet saapunut kylääsi ympäröivään metsään.";
+        // TODO
+        toka.setText(kuvaus);
     }
     
     private void asetaAseenOsto() {
@@ -114,7 +123,17 @@ public class TarinaOsa extends JPanel {
     
     private void asetaMonsteriTaistelu() {
         eka.setText("MONSTERITAISTELU");
-        toka.setText(metsa.getTaistelu().vastustaja().tiedotMerkkijonona());
+        String tilanne = metsa.getTaistelu().vastustaja().tiedotMerkkijonona();
+        if(metsa.getTaistelu().onkoAlkanut()) {
+            tilanne += "\n\nOsuit monsteriin: " + metsa.getTaistelu().getEkaIsku() + " osumapistettä";
+            tilanne += "\n" + metsa.getTaistelu().vastustaja().getNimi();
+            if(metsa.getTaistelu().getTokaIsku() < 1) {
+                tilanne += " ei osunut sinuun.";
+            } else {
+                tilanne += " osui sinuun: " + metsa.getTaistelu().getTokaIsku() + " osumapistettä";
+            }
+        }
+        toka.setText(tilanne);
     }
     
     private void asetaAreenaTaistelu() {

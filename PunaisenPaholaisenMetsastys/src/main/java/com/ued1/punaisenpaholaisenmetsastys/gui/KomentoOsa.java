@@ -5,6 +5,7 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
+import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -22,6 +23,7 @@ public class KomentoOsa extends JPanel {
     private void luoKomponentit() {
         komentoValikko = new JTextArea("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[T]aisteluareena");
         komentoValikko.setFocusable(false);
+        komentoValikko.setFont(new Font("SansSerif Bold", Font.BOLD, 12));
         add(komentoValikko);
     }
     
