@@ -1,5 +1,8 @@
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Nyrkki on pelaajan oletusase, jonka lyöntivoima on 6. Nyrkkiä ei voi myydä.
+ */
 public class Nyrkki implements Ase {
 
     @Override
@@ -8,7 +11,7 @@ public class Nyrkki implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Nyrkki";
     }
 

@@ -7,16 +7,18 @@ import java.util.ArrayList;
 /**
  * Luokka hoitaa pelin asepajan logiikan.
  */
-public class Asepaja {
-
-    private ArrayList<Ase> aseet;
-
+public class Asepaja extends Kauppa {
+    
+    /**
+     * Konstruktori antaa valmiin hinnaston yläluokalle (Kauppa) kutsuessaan
+     * yläluokan konstruktoria.
+     */
     public Asepaja() {
-        aseet = new ArrayList<>();
-        lisaaAseetValikoimaan();
+        super(lisaaAseetValikoimaan());
     }
 
-    private void lisaaAseetValikoimaan() {
+    private static ArrayList<Ase> lisaaAseetValikoimaan() {
+        ArrayList<Ase> aseet = new ArrayList<>();
         aseet.add(new Nyrkki()); // oletusase, ei näy valikoimassa
         aseet.add(new Keppi());
         aseet.add(new Maila());
@@ -32,21 +34,21 @@ public class Asepaja {
         aseet.add(new Pitkamiekka());
         aseet.add(new Katana());
         aseet.add(new Excalibur());
+        return aseet;
     }
-    
-    // TODO: BUGI, ei voi ostaa kaikkia aseita koska numeroa >9 ei voi painaa yhdellä napilla
+        
     /**
      * Metodia käytetään aseen ostamiseen. 
      * @param pelaaja Pelaaja, jolle ase ostetaan
      * @param aseenNumero Asevalikoimassa näkyvän aseen numero
      * @return oston onnistumisesta kertova totuusarvo, true jos osto onnistui 
      */
-    public boolean ostaAse(Pelaaja pelaaja, int aseenNumero) {
-        if(aseenNumero >= aseet.size() || aseenNumero < 0) {
+    public boolean osta(Pelaaja pelaaja, int aseenNumero) {
+        if(aseenNumero >= getValikoima().size() || aseenNumero < 0) {
             return false;
-        } else if(voikoOstaaAseen(pelaaja, aseet.get(aseenNumero))) {
-            pelaaja.setAse(aseet.get(aseenNumero));
-            pelaaja.muutaRahoja(0 - (aseet.get(aseenNumero).arvo()));
+        } else if(voikoOstaaAseen(pelaaja, (Ase)getValikoima().get(aseenNumero))) {
+            pelaaja.setAse((Ase)getValikoima().get(aseenNumero));
+            pelaaja.muutaRahoja(0 - (((Ase)getValikoima().get(aseenNumero)).arvo()));
             return true;
         }
         return false;
@@ -57,7 +59,7 @@ public class Asepaja {
      * @param pelaaja Pelaaja, jonka ase halutaan myydä
      * @return myynnin onnistumisesta kertova totuusarvo, true jos myynti onnistui
      */
-    public boolean myyAse(Pelaaja pelaaja) {
+    public boolean myy(Pelaaja pelaaja) {
         if (voikoMyydaAseen(pelaaja)) {
             pelaaja.muutaRahoja(pelaaja.getAse().arvo() / 2); // 50% takaisin vanhasta aseesta
             pelaaja.setAse(new Nyrkki());
@@ -73,7 +75,7 @@ public class Asepaja {
      * @return totuusarvo, true jos myynti on mahdollinen
      */
     public boolean voikoMyydaAseen(Pelaaja pelaaja) {
-        if (pelaaja.getAse().nimi().equals("Nyrkki")) {
+        if (pelaaja.getAse().toString().equals("Nyrkki")) {
             return false;
         }
         return true;
@@ -87,8 +89,7 @@ public class Asepaja {
      * @return totuusarvo, true jos osto on mahdollinen
      */
     public boolean voikoOstaaAseen(Pelaaja pelaaja, Ase ase) {
-        // asetta ei voi ostaa jos kädessä on jo ase
-        if (pelaaja.getRahat() >= ase.arvo() && (pelaaja.getAse().nimi().equals("Nyrkki"))) {
+        if (pelaaja.getRahat() >= ase.arvo() && (pelaaja.getAse().toString().equals("Nyrkki"))) {
             return true;
         }
         return false;
@@ -99,54 +100,9 @@ public class Asepaja {
      * ja hinnoiteltuina.
      * @return asepajan hinnasto merkkijonona
      */
+    @Override
     public String hinnastoMerkkijonona() {
-        String hinnasto = "Myynnissä oleva ase\tHinta\n";
-        for (int i = 1; i < aseet.size(); i++) {
-            hinnasto += "" + i + ". " + aseet.get(i).nimi() + "           \t" + aseet.get(i).arvo() + "\n";
-        }
-        return hinnasto;
+        return "Myynnissä oleva ase\tHinta\n" + super.hinnastoMerkkijonona();
     }
     
-    /**
-     * Metodi tarkistaa voiko pelaaja ostaa hinnastosta aseen.
-     * @param pelaaja Pelaaja, jolle ollaan asetta ostamassa
-     * @param numero Hinnastossa olevan aseen numero
-     * @return totuusarvo, joka kertoo onko osto mahdollinen, true jos on
-     */
-    public boolean voikoPelaajaOstaaAseenNumero(Pelaaja pelaaja, int numero) {
-        if(numero > 0 && numero < aseet.size()) {
-            if(pelaaja.getRahat() >= aseet.get(numero).arvo() && pelaaja.getAse().nimi().equals("Nyrkki")) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    /**
-     * Metodi palauttaa komentovalikkoon sopivan merkkijonon ostettavissa
-     * olevista aseista, sekä [T]akaisin komennon listan lopussa.
-     * @param pelaaja Pelaaja, joka on aseita ostamassa
-     * @return aseenostokomennot merkkijonona
-     */
-    public String aseenOstoKomennot(Pelaaja pelaaja) {
-        String ostettavatAseet = "";
-        for(int i = 1; i < aseet.size(); i++) {
-            if(voikoPelaajaOstaaAseenNumero(pelaaja, i)) {
-                if(i > 9) {
-                    ostettavatAseet += "[" + aseet.get(i).nimi().charAt(0);
-                } else {
-                    ostettavatAseet += "[" + i;
-                }
-                ostettavatAseet += "] " + aseet.get(i).nimi();
-                if(i%2==0) {
-                    ostettavatAseet += "\n";
-                } else {
-                    ostettavatAseet += "\t";
-                }
-            }
-        }
-        ostettavatAseet += "[T]akaisin";
-        return ostettavatAseet;
-    }
-
 }

@@ -55,5 +55,6 @@ Luokkakaavion päivitys, GUI:n parantelua
 Tarpeettoman luokan poisto, suunnittelua
 
 30.05.2015
-2 tuntia
-JavaDoc aloitus, Asepajaan parannuksia, uusi luokka Kauppa, suunnittelua
+8 tuntia
+JavaDoc (55 luokkaa), Asepajaan ja Haarniskakauppaan muutoksia, uusi geneerinen abstrakti luokka Kauppa, suunnittelua
+

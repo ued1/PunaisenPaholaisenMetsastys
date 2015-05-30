@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Leka on Ase, jonka lyöntivoima on 40 ja hinta 1000.
+ */
 public class Leka implements Ase {
 
     @Override
@@ -9,7 +11,7 @@ public class Leka implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Leka";
     }
 
@@ -17,5 +19,5 @@ public class Leka implements Ase {
     public int arvo() {
         return 1000;
     }
-    
+
 }

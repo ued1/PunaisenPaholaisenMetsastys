@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.haarniskat;
 
+/**
+ * Nahkatakki on Haarniska, jonka puolustusvoima on 20 ja arvo 1000.
+ */
 public class Nahkatakki implements Haarniska {
 
     @Override
@@ -9,7 +11,7 @@ public class Nahkatakki implements Haarniska {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Nahkatakki";
     }
 
@@ -17,5 +19,5 @@ public class Nahkatakki implements Haarniska {
     public int arvo() {
         return 1000;
     }
-    
+
 }

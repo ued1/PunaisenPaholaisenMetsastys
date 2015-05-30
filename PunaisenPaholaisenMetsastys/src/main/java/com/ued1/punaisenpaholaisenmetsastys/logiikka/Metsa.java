@@ -5,6 +5,10 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Monsteri;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.util.Random;
 
+/**
+ * Luokka Metsa hoitaa metsän toiminnallisuuden. Metsässä voi taistella monstereita
+ * vastaan ja ansaita kultarahoja. Pelin lopussa metsään ilmestuu luola.
+ */
 public class Metsa {
            
     private Pelaaja pelaaja;
@@ -17,10 +21,19 @@ public class Metsa {
         this.taistelu = null;
     }
     
+    /**
+     * Metodi alustaa uuden monsteritaistelun. Vastustaja generoidaan sopivaksi
+     * perustuen pelaajan ominaisuuksiin.
+     */
     public void aloitaUusiTaistelu() {
         taistelu = new Taistelu(pelaaja, etsiUusiMonsteriTaisteluun());
     }
     
+    /**
+     * Metodi asettaa taistelun tuloksen. Pelaajan voittaessa pelaaja saa lisää
+     * rahaa ja kokemusta. Pelaajan hävitessä monsteri varastaa pelaajan rahat,
+     * mutta voitosta poiketen pelaaja parantuu.
+     */
     public void asetaTaistelunTulos() {
         if(pelaaja.onkoElossa()) {
             pelaaja.muutaRahoja(tasollaRahaaTarjolla[pelaaja.getTaso()]);
@@ -44,6 +57,12 @@ public class Metsa {
         return monsteri;
     }
     
+    /**
+     * Metodi palauttaa meneillään olevan taistelun tai null arvon, mikäli 
+     * taistelua ei ole käynnissä.
+     * 
+     * @return meneillään oleva Taistelu tai null jos taistelua ei ole
+     */
     public Taistelu getTaistelu() {
         return taistelu;
     }

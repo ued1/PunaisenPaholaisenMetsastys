@@ -13,6 +13,11 @@ import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+/**
+ * TarinaPanel on JPanel, joka koostuu komento- ja tarinaosasta. Tarinaosassa
+ * kerrotaan pelin tarinaa kuvilla ja teksteillä. Komento-osassa listataan
+ * komennot, mitkä ovat käytettävissä kullakin hetkellä.
+ */
 public class TarinaPanel extends JPanel {
     
     private Pelaaja pelaaja;
@@ -34,6 +39,12 @@ public class TarinaPanel extends JPanel {
         add(komentoOsa);
     }
     
+    /**
+     * Metodi antaa päivityskäskyn komento- ja tarinaosalle. Uusi paikka
+     * asetetaan näkyville ja uuden paikan komennot listataan.
+     * 
+     * @param uusiPaikka uusi paikka, joka asetetaan näkyviin
+     */
     public void setPaikka(Paikka uusiPaikka) {
         tarinaOsa.paivita();
         komentoOsa.setPaikka(uusiPaikka);

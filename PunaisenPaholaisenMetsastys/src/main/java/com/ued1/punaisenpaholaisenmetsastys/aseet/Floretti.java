@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Floretti on Ase, jonka lyöntivoima on 80 ja hinta 100000.
+ */
 public class Floretti implements Ase {
 
     @Override
@@ -9,7 +11,7 @@ public class Floretti implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Floretti";
     }
 
@@ -17,7 +19,5 @@ public class Floretti implements Ase {
     public int arvo() {
         return 100000;
     }
-    
-    
-    
+
 }

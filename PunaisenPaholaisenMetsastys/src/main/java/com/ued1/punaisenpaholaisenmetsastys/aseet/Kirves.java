@@ -1,5 +1,8 @@
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Kirves on Ase, jonka lyöntivoima on 60 ja hinta 10000.
+ */
 public class Kirves implements Ase {
 
     @Override
@@ -8,7 +11,7 @@ public class Kirves implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Kirves";
     }
 

@@ -121,23 +121,23 @@ public class KomennonKasittelija {
     private void kasitteleAseenOstoKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.liikuta(Paikka.ASEPAJA);
-        } else if(komentoKoodi == KeyEvent.VK_G) {
+        } else if(komentoKoodi == KeyEvent.VK_A) {
             ostaPelaajalleAseJaLiiku(10);
-        } else if(komentoKoodi == KeyEvent.VK_S) {
+        } else if(komentoKoodi == KeyEvent.VK_B) {
             ostaPelaajalleAseJaLiiku(11);
-        } else if(komentoKoodi == KeyEvent.VK_P) {
+        } else if(komentoKoodi == KeyEvent.VK_C) {
             ostaPelaajalleAseJaLiiku(12);
-        } else if(komentoKoodi == KeyEvent.VK_K) {
+        } else if(komentoKoodi == KeyEvent.VK_D) {
             ostaPelaajalleAseJaLiiku(13);
         } else if(komentoKoodi == KeyEvent.VK_E) {
             ostaPelaajalleAseJaLiiku(14);
-        } else if(asepaja.voikoPelaajaOstaaAseenNumero(pelaaja, komentoKoodi-48)) {
+        } else if(asepaja.voikoPelaajaOstaaOstoksen(pelaaja, komentoKoodi-48)) {
             ostaPelaajalleAseJaLiiku(komentoKoodi-48);
         }
     }
     
     private void ostaPelaajalleAseJaLiiku(int aseenNumero) {
-        if(asepaja.ostaAse(pelaaja, aseenNumero)) {
+        if(asepaja.osta(pelaaja, aseenNumero)) {
             // TODO: ilmoitus uudesta aseesta
         }
         paivittaja.liikuta(Paikka.ASEPAJA); // fix
@@ -147,14 +147,14 @@ public class KomennonKasittelija {
         if(komentoKoodi == KeyEvent.VK_T || komentoKoodi == KeyEvent.VK_E) {
             paivittaja.liikuta(Paikka.ASEPAJA);
         } else if(komentoKoodi == KeyEvent.VK_K) {
-            asepaja.myyAse(pelaaja);
+            asepaja.myy(pelaaja);
             paivittaja.liikuta(Paikka.ASEPAJA);
         }
     }
     
     private void kasitteleHaarniskanOstoKomento(int komentoKoodi) {
-        if(haarniskaKauppa.voikoOstaaHaarniskanNumero(pelaaja, komentoKoodi-48)) {
-            haarniskaKauppa.ostaHaarniska(pelaaja, komentoKoodi-48);
+        if(haarniskaKauppa.voikoPelaajaOstaaOstoksen(pelaaja, komentoKoodi-48)) {
+            haarniskaKauppa.osta(pelaaja, komentoKoodi-48);
             paivittaja.liikuta(Paikka.HAARNISKAKAUPPA);
         } else if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.liikuta(Paikka.HAARNISKAKAUPPA);

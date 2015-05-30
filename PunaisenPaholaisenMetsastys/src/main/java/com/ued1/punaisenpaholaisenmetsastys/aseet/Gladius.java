@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Gladius on Ase, jonka lyöntivoima on 100 ja hinta 1000000.
+ */
 public class Gladius implements Ase {
 
     @Override
@@ -9,7 +11,7 @@ public class Gladius implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Gladius";
     }
 
@@ -17,7 +19,5 @@ public class Gladius implements Ase {
     public int arvo() {
         return 1000000;
     }
-    
-    
-    
+
 }

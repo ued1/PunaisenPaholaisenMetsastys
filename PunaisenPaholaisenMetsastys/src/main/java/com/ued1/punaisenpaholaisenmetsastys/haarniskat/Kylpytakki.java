@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.haarniskat;
 
+/**
+ * Kylpytakki on Haarniska, jonka puolustusvoima on 5 ja arvo 50.
+ */
 public class Kylpytakki implements Haarniska {
 
     @Override
@@ -9,7 +11,7 @@ public class Kylpytakki implements Haarniska {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Kylpytakki";
     }
 
@@ -17,5 +19,5 @@ public class Kylpytakki implements Haarniska {
     public int arvo() {
         return 50;
     }
-    
+
 }

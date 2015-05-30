@@ -1,5 +1,8 @@
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Pitkamiekka on Ase, jonka lyöntivoima on 120 ja hinta 10000000.
+ */
 public class Pitkamiekka implements Ase {
 
     @Override
@@ -8,7 +11,7 @@ public class Pitkamiekka implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Pitkamiekka";
     }
 

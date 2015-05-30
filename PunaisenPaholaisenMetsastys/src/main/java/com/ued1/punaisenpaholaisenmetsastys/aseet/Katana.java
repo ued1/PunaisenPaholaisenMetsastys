@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Katana on Ase, jonka lyöntivoima on 130 ja hinta 50000000.
+ */
 public class Katana implements Ase {
 
     @Override
@@ -9,7 +11,7 @@ public class Katana implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Katana";
     }
 
@@ -18,6 +20,4 @@ public class Katana implements Ase {
         return 50000000;
     }
 
-    
-    
 }

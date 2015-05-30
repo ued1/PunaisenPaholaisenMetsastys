@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.haarniskat;
 
+/**
+ * Pronssihaarniska on Haarniska, jonka puolustusvoima on 30 ja arvo 10000.
+ */
 public class Pronssihaarniska implements Haarniska {
 
     @Override
@@ -9,7 +11,7 @@ public class Pronssihaarniska implements Haarniska {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Pronssihaarniska";
     }
 
@@ -17,5 +19,5 @@ public class Pronssihaarniska implements Haarniska {
     public int arvo() {
         return 10000;
     }
-    
+
 }

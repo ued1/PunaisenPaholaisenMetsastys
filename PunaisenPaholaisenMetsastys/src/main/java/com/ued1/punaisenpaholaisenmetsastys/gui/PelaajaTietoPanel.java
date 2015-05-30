@@ -9,6 +9,11 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Luokka piirtää ja ylläpitää ruudun oikeassa laidassa olevaan
+ * pelaajatietopaneelia. Paneelissa on esillä pelaajan ominaisuudet, jotka
+ * päivittyvät muutosten tapahtuessa.
+ */
 public class PelaajaTietoPanel extends JPanel {
 
     private Pelaaja pelaaja;
@@ -73,13 +78,16 @@ public class PelaajaTietoPanel extends JPanel {
         } else {
             vointiTeksti.setForeground(Color.BLACK);
         }
-        aseTeksti.setText(pelaaja.getAse().nimi());
+        aseTeksti.setText(pelaaja.getAse().toString());
         voimaTeksti.setText("" + pelaaja.lyo());
-        haarniskaTeksti.setText(pelaaja.getHaarniska().nimi());
+        haarniskaTeksti.setText(pelaaja.getHaarniska().toString());
         puolustusTeksti.setText("" + pelaaja.suojaa());
         rahaTeksti.setText("" + pelaaja.getRahat());
     }
 
+    /**
+     * Metodi päivittää pelaajapaneelin saadessaan repaint() käskyn.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         paivitaTiedot();

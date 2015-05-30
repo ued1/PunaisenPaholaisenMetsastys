@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.haarniskat;
 
+/**
+ * Riepu on pelin oletushaarniska Haarniska, jonka puolustusvoima on 1 ja arvo 0.
+ */
 public class Riepu implements Haarniska {
 
     @Override
@@ -9,7 +11,7 @@ public class Riepu implements Haarniska {
     }
     
     @Override
-    public String nimi() {
+    public String toString() {
         return "Riepu";
     }
     

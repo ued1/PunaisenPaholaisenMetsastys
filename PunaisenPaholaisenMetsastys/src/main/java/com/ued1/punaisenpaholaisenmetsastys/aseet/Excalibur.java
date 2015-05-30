@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Excalibur on pelin paras Ase, jonka lyöntivoima on 140 ja hinta 100000000.
+ */
 public class Excalibur implements Ase {
 
     @Override
@@ -9,7 +11,7 @@ public class Excalibur implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Excalibur";
     }
 
@@ -17,5 +19,5 @@ public class Excalibur implements Ase {
     public int arvo() {
         return 100000000;
     }
-    
+
 }

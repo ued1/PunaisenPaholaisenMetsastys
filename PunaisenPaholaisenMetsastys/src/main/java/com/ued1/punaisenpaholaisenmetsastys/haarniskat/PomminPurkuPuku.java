@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.haarniskat;
 
+/**
+ * PomminPurkuPuku on Haarniska, jonka puolustusvoima on 60 ja arvo 10000000.
+ */
 public class PomminPurkuPuku implements Haarniska {
 
     @Override
@@ -9,7 +11,7 @@ public class PomminPurkuPuku implements Haarniska {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "PomminPurkuPuku";
     }
 
@@ -17,5 +19,5 @@ public class PomminPurkuPuku implements Haarniska {
     public int arvo() {
         return 10000000;
     }
-    
+
 }

@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Wakizashi on Ase, jonka lyöntivoima on 90 ja hinta 500000.
+ */
 public class Wakizashi implements Ase {
 
     @Override
@@ -9,7 +11,7 @@ public class Wakizashi implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Wakizashi";
     }
 
@@ -17,7 +19,5 @@ public class Wakizashi implements Ase {
     public int arvo() {
         return 500000;
     }
-    
-    
-    
+
 }

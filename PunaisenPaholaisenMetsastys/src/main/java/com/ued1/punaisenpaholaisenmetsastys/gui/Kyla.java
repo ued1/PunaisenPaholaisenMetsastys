@@ -11,6 +11,10 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+/**
+ * Käynnistämällä Kyla käynnistyy peli. Luokka luo ja alustaa JFramen ja asettaa
+ * kaiken tarvittavan paikoilleen.
+ */
 public class Kyla implements Runnable {
     
     private JFrame frame;

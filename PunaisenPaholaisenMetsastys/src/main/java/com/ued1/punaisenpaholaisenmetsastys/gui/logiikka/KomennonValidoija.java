@@ -75,18 +75,18 @@ public class KomennonValidoija {
         // Aseen osto: [aseenNumeroTaiKirjain] [T]akaisin
             
         } else if (paikka == Paikka.ASEENOSTO) {
-            if (asepaja.voikoPelaajaOstaaAseenNumero(pelaaja, koodi-48) || koodi == KeyEvent.VK_T) {
+            if (asepaja.voikoPelaajaOstaaOstoksen(pelaaja, koodi-48) || koodi == KeyEvent.VK_T) {
                 return true;
-            } else if (koodi == KeyEvent.VK_G) {
-                return asepaja.voikoPelaajaOstaaAseenNumero(pelaaja, 10);
-            } else if (koodi == KeyEvent.VK_S) {
-                return asepaja.voikoPelaajaOstaaAseenNumero(pelaaja, 11);
-            } else if (koodi == KeyEvent.VK_P) {
-                return asepaja.voikoPelaajaOstaaAseenNumero(pelaaja, 12);
-            } else if (koodi == KeyEvent.VK_K) {
-                return asepaja.voikoPelaajaOstaaAseenNumero(pelaaja, 13);
+            } else if (koodi == KeyEvent.VK_A) {
+                return asepaja.voikoPelaajaOstaaOstoksen(pelaaja, 10);
+            } else if (koodi == KeyEvent.VK_B) {
+                return asepaja.voikoPelaajaOstaaOstoksen(pelaaja, 11);
+            } else if (koodi == KeyEvent.VK_C) {
+                return asepaja.voikoPelaajaOstaaOstoksen(pelaaja, 12);
+            } else if (koodi == KeyEvent.VK_D) {
+                return asepaja.voikoPelaajaOstaaOstoksen(pelaaja, 13);
             } else if (koodi == KeyEvent.VK_E) {
-                return asepaja.voikoPelaajaOstaaAseenNumero(pelaaja, 14);
+                return asepaja.voikoPelaajaOstaaOstoksen(pelaaja, 14);
             }
             
         // Aseen myynti: [K]yllä [E]i [T]akaisin
@@ -101,7 +101,7 @@ public class KomennonValidoija {
         // Haarniskan osto: [haarniskanNumeroTaiKirjain] [T]akaisin
             
         } else if(paikka == Paikka.HAARNISKANOSTO) {
-            if(haarniskaKauppa.voikoOstaaHaarniskanNumero(pelaaja, koodi-48) || koodi == KeyEvent.VK_T) {
+            if(haarniskaKauppa.voikoPelaajaOstaaOstoksen(pelaaja, koodi-48) || koodi == KeyEvent.VK_T) {
                 return true;
             }
             

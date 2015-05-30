@@ -1,12 +1,24 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
+/**
+ * Luokka Hahmo on pelin hahmojen yläluokka. Luokka on abstracti ja 
+ * määrittelee ja ylläpitää hahmoilta vaadittuja toimintoja ja ominaisuuksia.
+ */
 public abstract class Hahmo {
     
     private String nimi;
     private int vointi;
     private int maxVointi;
     
+    /**
+     * Hahmon konstruktorille annetaan nimi, vointi ja maksimivointi. Lyöminen
+     * ja suojaaminen on annettu alaluokkien toteutettavaksi.
+     * 
+     * @param nimi Hahmon nimi
+     * @param vointi Hahmon vointi
+     * @param maxVointi Hahmon maksimiVointi
+     */
     public Hahmo(String nimi, int vointi, int maxVointi) {
         this.nimi = nimi;
         this.vointi = vointi;
@@ -21,6 +33,12 @@ public abstract class Hahmo {
         nimi = uusiNimi;
     }
     
+    /**
+     * Metodi tarkistaa onko hahmo elossa. Hahmo on elossa kun sen
+     * vointi on enemmän kuin nolla.
+     * 
+     * @return totuusarvo joka kertoo onko hahmo elossa
+     */
     public boolean onkoElossa() {
         if(vointi > 0) {
             return true;
@@ -40,6 +58,9 @@ public abstract class Hahmo {
         maxVointi = uusiMaxVointi;
     }
     
+    /**
+     * Metodi laskee vointia yhdellä, jos vointi on enemmän kuin nolla.
+     */
     public void laskeVointia() {
         vointi--;
         if(vointi < 0) {
@@ -47,6 +68,9 @@ public abstract class Hahmo {
         }
     }
     
+    /**
+     * Parantaa hahmon. Hahmon vointi asetetaan yhtäsuureksi kuin maksimivointi.
+     */
     public void paranna() {
         vointi = maxVointi;
     }

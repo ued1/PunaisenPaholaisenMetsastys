@@ -40,12 +40,12 @@ public class PelaajaTest {
     
     @Test
     public void pelaajanAseenaAluksiNyrkki() {
-        assertEquals(new Nyrkki().nimi(), pelaaja.getAse().nimi());
+        assertEquals(new Nyrkki().toString(), pelaaja.getAse().toString());
     }
     
     @Test
     public void pelaajanHaarniskaOnAluksiRiepu() {
-        assertEquals(new Riepu().nimi(), pelaaja.getHaarniska().nimi());
+        assertEquals(new Riepu().toString(), pelaaja.getHaarniska().toString());
     }
     
     @Test
@@ -148,15 +148,15 @@ public class PelaajaTest {
     @Test
     public void pelaajalleVoiAsettaaUudenAseen() {
         pelaaja.setAse(new Tikari());
-        assertEquals(new Tikari().nimi(), pelaaja.getAse().nimi());
+        assertEquals(new Tikari().toString(), pelaaja.getAse().toString());
         pelaaja.setAse(new Keppi());
-        assertEquals(new Keppi().nimi(), pelaaja.getAse().nimi());
+        assertEquals(new Keppi().toString(), pelaaja.getAse().toString());
     }
     
     @Test
     public void pelaajanHaarniskanVoiVaihtaa() {
         pelaaja.setHaarniska(new Vaatteet());
-        assertEquals(new Vaatteet().nimi(), pelaaja.getHaarniska().nimi());
+        assertEquals(new Vaatteet().toString(), pelaaja.getHaarniska().toString());
     }
         
     // lyominen ja suojaaminen
@@ -177,7 +177,7 @@ public class PelaajaTest {
     
     @Test
     public void pelaajanTiedoissaOnAseenNimi() {
-        assertTrue(pelaaja.tiedotMerkkijonona().contains(pelaaja.getAse().nimi()));
+        assertTrue(pelaaja.tiedotMerkkijonona().contains(pelaaja.getAse().toString()));
     }
        
     // paikan muuttaminen

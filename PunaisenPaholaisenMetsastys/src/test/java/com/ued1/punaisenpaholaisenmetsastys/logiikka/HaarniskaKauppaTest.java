@@ -24,8 +24,8 @@ public class HaarniskaKauppaTest {
 
     @Test
     public void riepuJaVaatteetLoytyvatValikoimasta() {
-        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Riepu().nimi()));
-        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Vaatteet().nimi()));
+        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Riepu().toString()));
+        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Vaatteet().toString()));
     }
 
     @Test
@@ -42,40 +42,40 @@ public class HaarniskaKauppaTest {
 
     @Test
     public void metodiOstaHaarniskaPalauttaaFalseJosEiVoiOstaa() {
-        assertFalse(kauppa.ostaHaarniska(pelaaja, 1)); // TODO: equals tms numeroinnin sijaan
+        assertFalse(kauppa.osta(pelaaja, 1)); // TODO: equals tms numeroinnin sijaan
     }
 
     @Test
     public void haarniskaEiVaihduJosEiVoiOstaa() {
-        kauppa.ostaHaarniska(pelaaja, 1); // TODO: fix
-        assertEquals(new Riepu().nimi(), pelaaja.getHaarniska().nimi());
+        kauppa.osta(pelaaja, 1); // TODO: fix
+        assertEquals(new Riepu().toString(), pelaaja.getHaarniska().toString());
     }
 
     @Test
     public void metodiOstaHaarniskaPalauttaaTrueJosVoiOstaa() {
         pelaaja.muutaRahoja(new Vaatteet().arvo());
-        assertTrue(kauppa.ostaHaarniska(pelaaja, 1));
+        assertTrue(kauppa.osta(pelaaja, 1));
     }
 
     @Test
     public void haarniskaVaihtuuKunOstoOnnistuu() {
         pelaaja.muutaRahoja(new Vaatteet().arvo());
-        kauppa.ostaHaarniska(pelaaja, 1); // TODO: fix
-        assertEquals(new Vaatteet().nimi(), pelaaja.getHaarniska().nimi());
+        kauppa.osta(pelaaja, 1); // TODO: fix
+        assertEquals(new Vaatteet().toString(), pelaaja.getHaarniska().toString());
     }
 
     @Test
     public void rahatVahenevatOikein() {
         int rahamaara = 666;
         pelaaja.muutaRahoja(rahamaara);
-        kauppa.ostaHaarniska(pelaaja, 1); // TODO: fix
+        kauppa.osta(pelaaja, 1); // TODO: fix
         assertEquals(rahamaara - new Vaatteet().arvo(), pelaaja.getRahat());
     }
 
     @Test
     public void vaatteetjaRiepuLoytyvatHinnastosta() {
-        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Riepu().nimi()));
-        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Vaatteet().nimi()));
+        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Riepu().toString()));
+        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Vaatteet().toString()));
     }
 
 }

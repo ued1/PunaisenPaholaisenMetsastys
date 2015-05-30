@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.haarniskat;
 
+/**
+ * Rengashaarniska on Haarniska, jonka puolustusvoima on 25 ja arvo 5000.
+ */
 public class Rengashaarniska implements Haarniska {
 
     @Override
@@ -9,7 +11,7 @@ public class Rengashaarniska implements Haarniska {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Rengashaarniska";
     }
 
@@ -17,5 +19,5 @@ public class Rengashaarniska implements Haarniska {
     public int arvo() {
         return 5000;
     }
-    
+
 }

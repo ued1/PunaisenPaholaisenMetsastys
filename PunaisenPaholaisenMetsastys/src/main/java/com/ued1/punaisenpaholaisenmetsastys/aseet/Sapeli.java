@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Sapeli on Ase, jonka lyöntivoima on 110 ja hinta 5000000.
+ */
 public class Sapeli implements Ase {
 
     @Override
@@ -9,7 +11,7 @@ public class Sapeli implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Sapeli";
     }
 
@@ -17,7 +19,5 @@ public class Sapeli implements Ase {
     public int arvo() {
         return 5000000;
     }
-    
-    
-    
+
 }

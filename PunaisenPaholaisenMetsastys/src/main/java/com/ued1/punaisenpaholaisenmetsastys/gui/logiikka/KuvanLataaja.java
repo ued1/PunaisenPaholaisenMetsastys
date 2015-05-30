@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
 
+/**
+ * Luokan tehtävänä on ladata pelin tarvitsevat kuvat ja ikonit.
+ */
 public class KuvanLataaja {
     
     private Map<String, BufferedImage> kuvat;
@@ -14,11 +17,18 @@ public class KuvanLataaja {
         kuvat = new HashMap<>();
     }
     
+    /**
+     * Lataa pelaajatietopaneelissa ikonit ja palauttaa ne Map-oliona.
+     * @return 
+     */
     public Map lataaIkonit() {
         lisaaIkonit();
         return kuvat;
     }
     
+    /**
+     * Lataa pelissa näytettävät kuvat ja palauttaa ne Map-oliona.
+     */
     public Map lataaKuvat() {
         lisaaKuvat();
         return kuvat;

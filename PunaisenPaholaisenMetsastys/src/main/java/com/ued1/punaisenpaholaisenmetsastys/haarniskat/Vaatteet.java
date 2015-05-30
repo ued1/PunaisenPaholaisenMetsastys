@@ -1,10 +1,12 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.haarniskat;
 
+/**
+ * Vaatteet on Haarniska, jonka puolustusvoima on 10 ja arvo 100.
+ */
 public class Vaatteet implements Haarniska {
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Vaatteet";
     }
 
@@ -17,5 +19,5 @@ public class Vaatteet implements Haarniska {
     public int arvo() {
         return 100;
     }
-    
+
 }

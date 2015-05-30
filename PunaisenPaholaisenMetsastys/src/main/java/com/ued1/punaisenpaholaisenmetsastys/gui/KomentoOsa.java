@@ -10,6 +10,10 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/**
+ * KomentoOsa on JPanel TarinaPanel-luokan paneelissa. Luokan tehtävänä on
+ * piirtää ja päivittää komentovalikko jokaiseen tilanteeseen sopivaksi.
+ */
 public class KomentoOsa extends JPanel {
     
     private JTextArea komentoValikko;
@@ -27,6 +31,11 @@ public class KomentoOsa extends JPanel {
         add(komentoValikko);
     }
     
+    /**
+     * Metodi aseettaa uuden paikan jonka perusteella piirretään uudet komennot.
+     * 
+     * @param uusiPaikka uusi paikka, jonka komennot piirretään
+     */
     public void setPaikka(Paikka uusiPaikka) {
         if(uusiPaikka == Paikka.KYLA) {
             komentoValikko.setText("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[T]aisteluareena");
@@ -39,7 +48,7 @@ public class KomentoOsa extends JPanel {
         } else if(uusiPaikka == Paikka.TAISTELUAREENA) {
             komentoValikko.setText("[A]stu taisteluareenaan\n[T]akaisin kylään");
         } else if(uusiPaikka == Paikka.ASEENOSTO) {
-            String ostettavatAseet = new Asepaja().aseenOstoKomennot(pelaaja);
+            String ostettavatAseet = new Asepaja().ostokomennot(pelaaja);
             komentoValikko.setText(ostettavatAseet);
         } else if(uusiPaikka == Paikka.ASEENMYYNTI) {
             if(new Asepaja().voikoMyydaAseen(pelaaja)) {
@@ -48,7 +57,7 @@ public class KomentoOsa extends JPanel {
                 komentoValikko.setText("[T]akaisin");
             }
         } else if(uusiPaikka == Paikka.HAARNISKANOSTO) {
-            String ostettavatHaarniskat = new HaarniskaKauppa().haarniskanOstoKomennot(pelaaja);
+            String ostettavatHaarniskat = new HaarniskaKauppa().ostokomennot(pelaaja);
             komentoValikko.setText(ostettavatHaarniskat);
         } else if(uusiPaikka == Paikka.MONSTERITAISTELU) {
             komentoValikko.setText("[L]yö\n[J]uokse");

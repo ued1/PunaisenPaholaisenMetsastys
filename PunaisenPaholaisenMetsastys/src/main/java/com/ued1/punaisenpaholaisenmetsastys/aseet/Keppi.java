@@ -1,5 +1,8 @@
 package com.ued1.punaisenpaholaisenmetsastys.aseet;
 
+/**
+ * Keppi on Ase, jonka lyöntivoima 10 on ja hinta 50.
+ */
 public class Keppi implements Ase {
 
     @Override
@@ -8,7 +11,7 @@ public class Keppi implements Ase {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Keppi";
     }
 

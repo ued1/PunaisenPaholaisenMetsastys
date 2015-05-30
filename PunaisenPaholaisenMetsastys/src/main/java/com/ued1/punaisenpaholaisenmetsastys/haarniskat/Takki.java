@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.haarniskat;
 
+/**
+ * Takki on Haarniska, jonka puolustusvoima on 15 ja arvo 500.
+ */
 public class Takki implements Haarniska {
 
     @Override
@@ -9,7 +11,7 @@ public class Takki implements Haarniska {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Nahkatakki";
     }
 
@@ -17,5 +19,5 @@ public class Takki implements Haarniska {
     public int arvo() {
         return 500;
     }
-    
+
 }

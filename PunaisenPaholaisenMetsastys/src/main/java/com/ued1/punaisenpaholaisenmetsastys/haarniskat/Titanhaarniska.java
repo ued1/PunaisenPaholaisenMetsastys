@@ -1,6 +1,8 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.haarniskat;
 
+/**
+ * Titanhaarniska on Haarniska, jonka puolustusvoima on 40 ja arvo 100000.
+ */
 public class Titanhaarniska implements Haarniska {
 
     @Override
@@ -9,7 +11,7 @@ public class Titanhaarniska implements Haarniska {
     }
 
     @Override
-    public String nimi() {
+    public String toString() {
         return "Titanhaarniska";
     }
 
@@ -17,5 +19,5 @@ public class Titanhaarniska implements Haarniska {
     public int arvo() {
         return 100000;
     }
-    
+
 }

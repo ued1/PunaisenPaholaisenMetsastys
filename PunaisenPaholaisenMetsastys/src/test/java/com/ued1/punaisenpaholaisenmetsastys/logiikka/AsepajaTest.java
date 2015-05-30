@@ -19,9 +19,9 @@ public class AsepajaTest {
     String tikariString;
 
     public AsepajaTest() {
-        nyrkkiString = new Nyrkki().nimi();
-        keppiString = new Keppi().nimi();
-        tikariString = new Tikari().nimi();
+        nyrkkiString = new Nyrkki().toString();
+        keppiString = new Keppi().toString();
+        tikariString = new Tikari().toString();
     }
 
     private void lahjoitaPelaajalleKeppi(Pelaaja pelaaja) {
@@ -44,59 +44,59 @@ public class AsepajaTest {
     @Test
     public void omaaNyrkkiaEiVoiMyyda() {
         assertTrue(!asepaja.voikoMyydaAseen(pelaaja));
-        assertTrue(!asepaja.myyAse(pelaaja));
-        assertEquals(nyrkkiString, pelaaja.getAse().nimi());
+        assertTrue(!asepaja.myy(pelaaja));
+        assertEquals(nyrkkiString, pelaaja.getAse().toString());
     }
 
     @Test
     public void aseenVoiMyyda() {
         lahjoitaPelaajalleKeppi(pelaaja);
         assertTrue(asepaja.voikoMyydaAseen(pelaaja));
-        assertTrue(asepaja.myyAse(pelaaja));
-        assertEquals(nyrkkiString, pelaaja.getAse().nimi());
+        assertTrue(asepaja.myy(pelaaja));
+        assertEquals(nyrkkiString, pelaaja.getAse().toString());
     }
 
     @Test
     public void toistaAsettaEiVoiOstaa() {
         lahjoitaPelaajalleKeppi(pelaaja);
         pelaaja.muutaRahoja(1000);
-        assertTrue(!asepaja.ostaAse(pelaaja, 2)); // TODO: fix
-        assertEquals(keppiString, pelaaja.getAse().nimi());
+        assertTrue(!asepaja.osta(pelaaja, 2)); // TODO: fix
+        assertEquals(keppiString, pelaaja.getAse().toString());
     }
 
     @Test
     public void aseenVoiOstaaKunOnNyrkki() {
-        assertEquals(nyrkkiString, pelaaja.getAse().nimi());
+        assertEquals(nyrkkiString, pelaaja.getAse().toString());
         pelaaja.muutaRahoja(1000);
-        assertTrue(asepaja.ostaAse(pelaaja, 1)); // TODO: fix
-        assertEquals(keppiString, pelaaja.getAse().nimi());
+        assertTrue(asepaja.osta(pelaaja, 1)); // TODO: fix
+        assertEquals(keppiString, pelaaja.getAse().toString());
     }
 
     @Test
     public void aseenMyydessaSaaRahaaOikein() {
         int rahaaAlussa = pelaaja.getRahat();
         lahjoitaPelaajalleKeppi(pelaaja);
-        asepaja.myyAse(pelaaja);
+        asepaja.myy(pelaaja);
         assertEquals(rahaaAlussa + (new Keppi()).arvo() / 2, pelaaja.getRahat());
     }
 
     @Test
     public void asettaEiVoiOstaaJosEiTarpeeksiRahaa() {
         pelaaja.muutaRahoja((new Keppi()).arvo() - 1);
-        assertTrue(!asepaja.ostaAse(pelaaja, 1)); // TODO: fix
+        assertTrue(!asepaja.osta(pelaaja, 1)); // TODO: fix
     }
 
     @Test
     public void aseenVoiOstaaKunTarpeeksiRahaa() {
         pelaaja.muutaRahoja((new Keppi()).arvo());
-        assertTrue(asepaja.ostaAse(pelaaja, 1)); // TODO: fix
+        assertTrue(asepaja.osta(pelaaja, 1)); // TODO: fix
     }
 
     @Test
     public void aseenOstaessaRahatVahenevatOikein() {
         int alkuraha = 10000;
         pelaaja.muutaRahoja(alkuraha);
-        asepaja.ostaAse(pelaaja, 2);
+        asepaja.osta(pelaaja, 2);
         assertEquals(alkuraha - new Maila().arvo(), pelaaja.getRahat());
     }
 

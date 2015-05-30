@@ -6,6 +6,10 @@ import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 
+/**
+ * Luokan tehtävänä on antaa päivityskäsky paneeleille ja asettaa pelaajan
+ * paikkatieto vastaavaan uutta paikkaa.
+ */
 public class PelitilanteenPaivittaja {
 
     private Pelaaja pelaaja;
@@ -18,6 +22,11 @@ public class PelitilanteenPaivittaja {
         this.pelaajaTietoPanel = pelaajaTietoPanel;
     }
     
+    /**
+     * Metodi asettaa pelaajalle uuden paikan ja antaa päivityskäskyn paneeleille.
+     * 
+     * @param uusiPaikka uusi paikka
+     */
     public void liikuta(Paikka uusiPaikka) {
         pelaaja.setPaikka(uusiPaikka);
         tarinaPanel.setPaikka(uusiPaikka);
