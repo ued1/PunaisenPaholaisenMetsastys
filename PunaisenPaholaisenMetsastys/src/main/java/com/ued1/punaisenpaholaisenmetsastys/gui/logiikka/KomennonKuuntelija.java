@@ -9,6 +9,9 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * KomennonKuuntelija kuuntelee näppämistön näppien painelua.
+ */
 public class KomennonKuuntelija implements KeyListener {
 
     private KomennonKasittelija kasittelija;
@@ -30,9 +33,9 @@ public class KomennonKuuntelija implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // väliaikainen CHEAT kehityksen tueksi, +50 rahaa kun painaa kylässä [x]
+        // väliaikainen CHEAT kehityksen tueksi, +5000 rahaa kun painaa kylässä [x]
         if(pelaaja.getPaikka() == Paikka.KYLA && e.getKeyCode() == KeyEvent.VK_X) {
-            pelaaja.muutaRahoja(50);
+            pelaaja.muutaRahoja(500000);
             pelaajaTietoPanel.repaint();
         }
         

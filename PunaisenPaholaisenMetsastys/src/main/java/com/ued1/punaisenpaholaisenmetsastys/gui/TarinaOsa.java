@@ -14,6 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/**
+ * Luokka hoitaa tarinapaneelin tarinaosan päivittämisen asettamalla
+ * tilanteeseen sopivan tekstin käyttäjän näkyville.
+ */
 public class TarinaOsa extends JPanel {
         
     private Pelaaja pelaaja;
@@ -46,8 +50,9 @@ public class TarinaOsa extends JPanel {
         add(toka);
     }
     
-    
-    
+    /**
+     * Metodi päivittää tarinapaneelin tarinaosan.
+     */
     public void paivita() {
         if(pelaaja.getPaikka() == Paikka.KYLA) {
             asetaKyla();
@@ -179,15 +184,12 @@ public class TarinaOsa extends JPanel {
             tokateksti += "Voitit taistelun!";
         } else {
             kuvanAsettaja.asetaKuva(eka, "Taistelutappio");
-            tokateksti += "Hävisit taistelun.";
+            tokateksti += "Hävisit taistelun.\n\nVoit halutessasi yrittää heti uudestaan,";
+            tokateksti += "\nmutta paremmilla varusteilla voisi taistelu";
+            tokateksti += "\nolla helpompaa!";
         }
         toka.setText(tokateksti);
         areena.asetaTaistelunTulos();
-    }
-        
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
     }
         
 }

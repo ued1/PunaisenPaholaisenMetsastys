@@ -68,10 +68,11 @@ public class Pelaaja extends Hahmo {
     }
 
     public void muutaRahoja(int muutos) {
-        if (rahat + muutos < 0) {
+        rahat += muutos;
+        if (rahat < 0) {
             rahat = 0;
-        } else {
-            rahat += muutos;
+        } else if (rahat > 200000000) {
+            rahat = 200000000;
         }
     }
     

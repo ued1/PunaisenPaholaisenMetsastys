@@ -39,7 +39,7 @@ public class KomentoOsa extends JPanel {
         } else if(uusiPaikka == Paikka.TAISTELUAREENA) {
             komentoValikko.setText("[A]stu taisteluareenaan\n[T]akaisin kylään");
         } else if(uusiPaikka == Paikka.ASEENOSTO) {
-            String ostettavatAseet = new Asepaja().ostettavatAseetMerkkijonona(pelaaja);
+            String ostettavatAseet = new Asepaja().aseenOstoKomennot(pelaaja);
             komentoValikko.setText(ostettavatAseet);
         } else if(uusiPaikka == Paikka.ASEENMYYNTI) {
             if(new Asepaja().voikoMyydaAseen(pelaaja)) {
@@ -48,7 +48,7 @@ public class KomentoOsa extends JPanel {
                 komentoValikko.setText("[T]akaisin");
             }
         } else if(uusiPaikka == Paikka.HAARNISKANOSTO) {
-            String ostettavatHaarniskat = new HaarniskaKauppa().ostettavissaOlevatHaarniskatMerkkijonona(pelaaja);
+            String ostettavatHaarniskat = new HaarniskaKauppa().haarniskanOstoKomennot(pelaaja);
             komentoValikko.setText(ostettavatHaarniskat);
         } else if(uusiPaikka == Paikka.MONSTERITAISTELU) {
             komentoValikko.setText("[L]yö\n[J]uokse");
