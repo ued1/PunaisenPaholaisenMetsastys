@@ -50,3 +50,10 @@ Lisää testejä, pit-raportti päivitetty, testausdokumentti.md
 3 tuntia
 Luokkakaavion päivitys, GUI:n parantelua
 
+29.05.2015
+1 tunti
+Tarpeettoman luokan poisto, suunnittelua
+
+30.05.2015
+2 tuntia
+JavaDoc aloitus, Asepajaan parannuksia, uusi luokka Kauppa, suunnittelua
