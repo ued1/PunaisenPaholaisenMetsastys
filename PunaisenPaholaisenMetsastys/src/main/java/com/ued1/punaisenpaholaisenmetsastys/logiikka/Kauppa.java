@@ -1,6 +1,8 @@
 package com.ued1.punaisenpaholaisenmetsastys.logiikka;
 
 // Yläluokka kaupoille: Asepaja, Haarniskakauppa, Välinekauppa(TODO)
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Apu;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.KossuPotion;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Ase;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Haarniska;
@@ -105,6 +107,8 @@ public abstract class Kauppa<T> {
             return ((Ase) valikoima.get(i)).arvo();
         } else if (valikoima.get(0).getClass() == new Riepu().getClass()) {
             return ((Haarniska) valikoima.get(i)).arvo();
+        } else if(valikoima.get(0).getClass() == KossuPotion.class) {
+            return ((Apu) valikoima.get(i)).arvo();
         }
         return 0; // TODO
     }

@@ -7,8 +7,9 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,14 +29,18 @@ public class TarinaOsa extends JPanel {
     private Metsa metsa;
     private Areena areena;
     private KuvanAsettaja kuvanAsettaja;
+    private Kapakka kapakka;
+    private Luola luola;
     
-    public TarinaOsa(Pelaaja pelaaja, Metsa metsa, Areena areena) {
+    public TarinaOsa(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola) {
         super(new GridLayout(2,1));
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
         this.haarniskaKauppa = new HaarniskaKauppa();
         this.metsa = metsa;
         this.areena = areena;
+        this.kapakka = new Kapakka(pelaaja);
+        this.luola = luola;
         kuvanAsettaja = new KuvanAsettaja();
         luoKomponentit();
     }
@@ -78,7 +83,16 @@ public class TarinaOsa extends JPanel {
             asetaAreenaTaistelu();
         } else if(pelaaja.getPaikka() == Paikka.TAISTELUAREENATULOS) {
             asetaTaisteluAreenaTulos();
+        } else if(pelaaja.getPaikka() == Paikka.KAPAKKA) {
+            asetaKapakka();
+        } else if(pelaaja.getPaikka() == Paikka.LUOLA) {
+            asetaLuola();
+        } else if(pelaaja.getPaikka() == Paikka.PAHOLAINEN) {
+            asetaPaholainen();
+        } else if(pelaaja.getPaikka() == Paikka.PAHOLAINENTAPPIO) {
+            asetaPaholainenTappio();
         }
+        
         
         
     }
@@ -88,6 +102,7 @@ public class TarinaOsa extends JPanel {
         String kuvaus = "\nTämä on kyläsi.";
         kuvaus += "\n\nAsepajassa voit ostaa uusia aseita.";
         kuvaus += "\n\nHaarniskakaupassa voit päivittää haarniskasi.";
+        kuvaus += "\n\nKapakasta löytyy kaikenlaista hyödyllista\nja hyödytöntä.";
         kuvaus += "\n\nTaisteluareenalla voit kehittyä taistelijana";
         kuvaus += "\nja nousta seuraavalla tasolle.";
         kuvaus += "\n\nMetsästä löytyy monstereita, joita tappamalla";
@@ -105,6 +120,11 @@ public class TarinaOsa extends JPanel {
         toka.setText(haarniskaKauppa.hinnastoMerkkijonona());
     }
     
+    private void asetaKapakka() {
+        kuvanAsettaja.asetaKuva(eka, "Kapakka");
+        toka.setText(kapakka.hinnastoMerkkijonona());
+    }
+    
     private void asetaMetsa() {
         kuvanAsettaja.asetaKuva(eka, "Metsä");
         String kuvaus = "\nOlet saapunut kylääsi ympäröivään metsään.";
@@ -112,6 +132,11 @@ public class TarinaOsa extends JPanel {
         toka.setText(kuvaus);
     }
     
+    private void asetaLuola() {
+        kuvanAsettaja.asetaKuva(eka, "Luola");
+        toka.setText("luola");
+    }
+        
     private void asetaAseenOsto() {
         kuvanAsettaja.asetaKuva(eka, "AseenOsto");
         toka.setText("ostettavat aseet...");
@@ -141,6 +166,13 @@ public class TarinaOsa extends JPanel {
         toka.setText(tilanne);
     }
     
+    // TODO: yhdistä ylä ja ala
+    
+    private void asetaPaholainen() {
+        kuvanAsettaja.asetaKuva(eka, "Paholainen");
+        toka.setText(luola.getTaistelu().vastustaja().tiedotMerkkijonona());
+    }
+    
     private void asetaAreenaTaistelu() {
         kuvanAsettaja.asetaKuva(eka, "AreenaTaistelu");
         toka.setText(areena.getVastustajanTiedot());
@@ -155,6 +187,13 @@ public class TarinaOsa extends JPanel {
         }
         tokateksti += "\nlevättyäsi olet taas voimissasi";
         toka.setText(tokateksti);
+    }
+    
+    private void asetaPaholainenTappio() {
+        String teksti = "Hävisit paholaiselle.";
+        teksti += "\n\nPaholainen ottaa haarniskasi ja kaikki rahasi,";
+        teksti += "\nmutta säästää henkesi.";
+        toka.setText(teksti);
     }
     
     private void asetaTaisteluAreena() {

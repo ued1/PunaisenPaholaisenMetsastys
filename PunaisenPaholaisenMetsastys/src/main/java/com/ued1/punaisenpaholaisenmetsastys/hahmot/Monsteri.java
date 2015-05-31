@@ -24,6 +24,12 @@ public class Monsteri extends Hahmo {
         this.puolustus = puolustus;
         super.setNimi(arvoNimi());
     }
+    
+    public Monsteri(int maxVointi, int voima, int puolustus, String nimi) {
+        super(nimi, maxVointi, maxVointi);
+        this.voima = voima;
+        this.puolustus = puolustus;
+    }
 
     private String arvoNimi() {
         String[] nimet = {"Käärmefasaani", "Mörköläinen", "Jättiläinen",

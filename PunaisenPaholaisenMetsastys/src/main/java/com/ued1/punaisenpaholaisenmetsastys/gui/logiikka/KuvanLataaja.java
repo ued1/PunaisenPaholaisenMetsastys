@@ -54,6 +54,9 @@ public class KuvanLataaja {
         lisaa("/kuvat/areena.png", "Taisteluareena");
         lisaa("/kuvat/tappio.png", "Taistelutappio");
         lisaa("/kuvat/asepaja.png", "Asepaja");
+        lisaa("/kuvat/tavern.png", "Kapakka");
+        lisaa("/kuvat/luola.png", "Luola");
+        lisaa("/kuvat/paholainen.png", "Paholainen");
     }
     
     private void lisaa(String sijainti, String kuvaus) {

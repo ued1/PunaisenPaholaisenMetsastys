@@ -33,7 +33,7 @@ public class KomennonValidoija {
         // Kylä: [M]etsa [A]sepaja [H]aarniskakauppa [T]aisteluareena
         
         if (paikka == Paikka.KYLA) {
-            if (koodi == KeyEvent.VK_M || koodi == KeyEvent.VK_A || koodi == KeyEvent.VK_H || koodi == KeyEvent.VK_T) {
+            if (koodi == KeyEvent.VK_M || koodi == KeyEvent.VK_A || koodi == KeyEvent.VK_H || koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_K) {
                 return true;
             }
         
@@ -46,15 +46,17 @@ public class KomennonValidoija {
         
         // Haarniskakaupan päävalikko: [O]sta [T]akaisin
         
-        } else if (paikka == Paikka.HAARNISKAKAUPPA) {
+        } else if (paikka == Paikka.HAARNISKAKAUPPA || paikka == Paikka.KAPAKKA) {
             if (koodi == KeyEvent.VK_O || koodi == KeyEvent.VK_T) {
                 return true;
             }
             
-        // Metsän päävalikko: [E]tsi [L]epää [T]akaisin
+        // Metsän päävalikko: [E]tsi [L]epää [T]akaisin [P]unainen Paholainen
             
         } else if (paikka == Paikka.METSA) {
             if (koodi == KeyEvent.VK_E || koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_T) {
+                return true;
+            } else if(pelaaja.getTaso() == 10 && koodi == KeyEvent.VK_P) {
                 return true;
             }
             
@@ -107,7 +109,7 @@ public class KomennonValidoija {
             
         // Monsteritaistelutappio: [J]atka
             
-        } else if(paikka == Paikka.MONSTERITAISTELUTAPPIO) {
+        } else if(paikka == Paikka.MONSTERITAISTELUTAPPIO || paikka == Paikka.PAHOLAINENTAPPIO) {
             
             if (koodi == KeyEvent.VK_J) {
                 return true;
@@ -129,13 +131,23 @@ public class KomennonValidoija {
                 return true;
             }
             
-        // Areenataistelu: [L]yö
+        // Areenataistelu: [L]yö   Paholainen: [L]yö
             
-        } else if(paikka == Paikka.AREENATAISTELU) {
+        } else if(paikka == Paikka.AREENATAISTELU || paikka == Paikka.PAHOLAINEN) {
             if (koodi == KeyEvent.VK_L) {
                 return true;
             }
+            
+        // Luola: [E]tsi Punainen Paholainen [T]akaisin
+            
+        } else if(paikka == Paikka.LUOLA) {
+            if (koodi == KeyEvent.VK_E || koodi == KeyEvent.VK_T) {
+                return true;
+            }
+            
+            
         }
+        
         return false;
     }
 

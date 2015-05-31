@@ -8,6 +8,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 
 /**
@@ -24,8 +25,9 @@ public class KomennonKasittelija {
     private HaarniskaKauppa haarniskaKauppa;
     private Metsa metsa;
     private Areena areena;
+    private Luola luola;
 
-    public KomennonKasittelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa, Areena areena) {
+    public KomennonKasittelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa, Areena areena, Luola luola) {
         this.pelaaja = pelaaja;
         this.tarinaPanel = tarinaPanel;
         this.pelaajaTietoPanel = pelaajaTietoPanel;
@@ -34,6 +36,7 @@ public class KomennonKasittelija {
         this.haarniskaKauppa = new HaarniskaKauppa();
         this.metsa = metsa;
         this.areena = areena;
+        this.luola = luola;
     }
     
     /**
@@ -69,6 +72,14 @@ public class KomennonKasittelija {
             kasitteleAreenaTaistelu(komentoKoodi);
         } else if(paikka == Paikka.TAISTELUAREENATULOS) {
             kasitteleTaisteluAreenaTulos(komentoKoodi);
+        } else if(paikka == Paikka.KAPAKKA) {
+            kasitteleKapakkaKomento(komentoKoodi);
+        } else if(paikka == Paikka.LUOLA) {
+            kasitteleLuolaKomento(komentoKoodi);
+        } else if(paikka == Paikka.PAHOLAINEN) {
+            kasittelePaholainenKomento(komentoKoodi);
+        } else if(paikka == Paikka.PAHOLAINENTAPPIO) {
+            kasittelePaholainenTappio(komentoKoodi);
         }
     }
     
@@ -85,6 +96,8 @@ public class KomennonKasittelija {
             } else {
                 paivittaja.liikuta(Paikka.TAISTELUAREENAEI);
             }
+        } else if(komentoKoodi == KeyEvent.VK_K) {
+            paivittaja.liikuta(Paikka.KAPAKKA);
         }
     }
     
@@ -97,6 +110,8 @@ public class KomennonKasittelija {
             paivittaja.liikuta(Paikka.METSA);
         } else if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.liikuta(Paikka.KYLA);
+        } else if(pelaaja.getTaso() == 10 && komentoKoodi == KeyEvent.VK_P) {
+            paivittaja.liikuta(Paikka.LUOLA);
         }
     }
         
@@ -117,7 +132,27 @@ public class KomennonKasittelija {
             paivittaja.liikuta(Paikka.KYLA);
         }
     }
+    
+    // TODO: yhtistä ylä ja alapuoli
         
+    private void kasitteleKapakkaKomento(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_O) {
+            // TODO
+        } else if(komentoKoodi == KeyEvent.VK_T) {
+            paivittaja.liikuta(Paikka.KYLA);
+        }
+    }
+    
+    private void kasitteleLuolaKomento(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_E) {
+            luola.haastaPaholainen();
+            paivittaja.liikuta(Paikka.PAHOLAINEN);
+        } else if(komentoKoodi == KeyEvent.VK_T) {
+            paivittaja.liikuta(Paikka.METSA);
+        }
+        
+    }
+    
     private void kasitteleAseenOstoKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.liikuta(Paikka.ASEPAJA);
@@ -179,6 +214,22 @@ public class KomennonKasittelija {
         }
     }
     
+    private void kasittelePaholainenKomento(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_L) {
+            if(luola.getTaistelu().taistele()) {
+                if(pelaaja.onkoElossa()) {
+                    paivittaja.liikuta(Paikka.LOPPU);
+                } else {
+                    paivittaja.liikuta(Paikka.PAHOLAINENTAPPIO);
+                }
+            } else {
+                luola.asetaTulos();
+                paivittaja.liikuta(Paikka.PAHOLAINEN);
+            }
+        }
+        
+    }
+    
     private void kasitteleAreenaTaistelu(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_L) {
             if(areena.getTaistelu().taistele()) {
@@ -194,6 +245,13 @@ public class KomennonKasittelija {
                 
         if(komentoKoodi == KeyEvent.VK_J) {
             metsa.asetaTaistelunTulos();
+            paivittaja.liikuta(Paikka.METSA);
+        }
+    }
+    
+    private void kasittelePaholainenTappio(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_J) {
+            luola.asetaTulos();
             paivittaja.liikuta(Paikka.METSA);
         }
     }

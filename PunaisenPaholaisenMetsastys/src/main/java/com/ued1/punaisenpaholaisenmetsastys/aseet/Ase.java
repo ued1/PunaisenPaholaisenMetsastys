@@ -29,8 +29,6 @@ public interface Ase {
      * @return aseen arvo
      */
     public int arvo();
-    // piirra
-    // kulu
-    // onkoEhjä
+    
 
 }

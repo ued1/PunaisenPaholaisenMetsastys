@@ -25,7 +25,7 @@ public class KomentoOsa extends JPanel {
     }
     
     private void luoKomponentit() {
-        komentoValikko = new JTextArea("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[T]aisteluareena");
+        komentoValikko = new JTextArea("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[K]apakka\n[T]aisteluareena");
         komentoValikko.setFocusable(false);
         komentoValikko.setFont(new Font("SansSerif Bold", Font.BOLD, 12));
         add(komentoValikko);
@@ -38,13 +38,17 @@ public class KomentoOsa extends JPanel {
      */
     public void setPaikka(Paikka uusiPaikka) {
         if(uusiPaikka == Paikka.KYLA) {
-            komentoValikko.setText("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[T]aisteluareena");
+            komentoValikko.setText("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[K]apakka\n[T]aisteluareena");
         } else if(uusiPaikka == Paikka.ASEPAJA) {
             komentoValikko.setText("[O]sta ase\n[M]yy asee\n[T]akaisin");
         } else if(uusiPaikka == Paikka.HAARNISKAKAUPPA) {
             komentoValikko.setText("[O]sta haarniska\n[T]akaisin");
         } else if(uusiPaikka == Paikka.METSA) {
-            komentoValikko.setText("[E]tsi monsteri\n[L]epää\n[T]akaisin kylään");
+            String metsaKomento = "[E]tsi monsteri";
+            if(pelaaja.getTaso() == 10) {
+                metsaKomento += "\n[P]unainen Paholainen";
+            }
+            komentoValikko.setText(metsaKomento + "\n[L]epää\n[T]akaisin kylään");
         } else if(uusiPaikka == Paikka.TAISTELUAREENA) {
             komentoValikko.setText("[A]stu taisteluareenaan\n[T]akaisin kylään");
         } else if(uusiPaikka == Paikka.ASEENOSTO) {
@@ -61,14 +65,18 @@ public class KomentoOsa extends JPanel {
             komentoValikko.setText(ostettavatHaarniskat);
         } else if(uusiPaikka == Paikka.MONSTERITAISTELU) {
             komentoValikko.setText("[L]yö\n[J]uokse");
-        } else if(uusiPaikka == Paikka.MONSTERITAISTELUTAPPIO) {
+        } else if(uusiPaikka == Paikka.MONSTERITAISTELUTAPPIO || uusiPaikka == Paikka.PAHOLAINENTAPPIO) {
             komentoValikko.setText("[J]atka peliä\n");
         } else if(uusiPaikka == Paikka.TAISTELUAREENAEI) {
             komentoValikko.setText("[T]akaisin");
-        } else if(uusiPaikka == Paikka.AREENATAISTELU) {
+        } else if(uusiPaikka == Paikka.AREENATAISTELU || uusiPaikka == Paikka.PAHOLAINEN) {
             komentoValikko.setText("[L]yö");
         } else if(uusiPaikka == Paikka.TAISTELUAREENATULOS) {
             komentoValikko.setText("[J]atka");
+        } else if(uusiPaikka == Paikka.KAPAKKA) {
+            komentoValikko.setText("[O]sta\n[T]akaisin");
+        } else if(uusiPaikka == Paikka.LUOLA) {
+            komentoValikko.setText("[E]tsi Punainen Paholainen\n[T]akaisin metsään");
         }
     }
     

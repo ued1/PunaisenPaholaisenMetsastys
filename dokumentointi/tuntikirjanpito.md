@@ -58,3 +58,7 @@ Tarpeettoman luokan poisto, suunnittelua
 8 tuntia
 JavaDoc (55 luokkaa), Asepajaan ja Haarniskakauppaan muutoksia, uusi geneerinen abstrakti luokka Kauppa, suunnittelua
 
+31.05.2015
+3 tuntia
+Kapakka, Luola
+
