@@ -43,9 +43,9 @@ public class TarinaPanel extends JPanel {
      * 
      * @param uusiPaikka uusi paikka, joka asetetaan näkyviin
      */
-    public void setPaikka(Paikka uusiPaikka) {
+    public void paivita(Paikka uusiPaikka) {
         tarinaOsa.paivita();
-        komentoOsa.setPaikka(uusiPaikka);
+        komentoOsa.paivita(uusiPaikka);
         repaint();
     }
     

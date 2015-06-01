@@ -8,9 +8,9 @@ import java.util.ArrayList;
 /**
  * Luokka hoitaa pelin haarniskakaupan logiikan.
  */
-public class HaarniskaKauppa extends Kauppa {
+public class Haarniskakauppa extends Kauppa {
     
-    public HaarniskaKauppa() {
+    public Haarniskakauppa() {
         super(lisaaHaarniskatValikoimaan());
     }
     

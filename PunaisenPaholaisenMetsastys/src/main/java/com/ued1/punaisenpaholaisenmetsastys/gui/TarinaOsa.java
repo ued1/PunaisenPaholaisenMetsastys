@@ -6,7 +6,7 @@ import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
@@ -23,7 +23,7 @@ public class TarinaOsa extends JPanel {
         
     private Pelaaja pelaaja;
     private Asepaja asepaja;
-    private HaarniskaKauppa haarniskaKauppa;
+    private Haarniskakauppa haarniskaKauppa;
     private JLabel eka;
     private JTextArea toka;
     private Metsa metsa;
@@ -36,7 +36,7 @@ public class TarinaOsa extends JPanel {
         super(new GridLayout(2,1));
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
-        this.haarniskaKauppa = new HaarniskaKauppa();
+        this.haarniskaKauppa = new Haarniskakauppa();
         this.metsa = metsa;
         this.areena = areena;
         this.kapakka = new Kapakka(pelaaja);
@@ -91,6 +91,10 @@ public class TarinaOsa extends JPanel {
             asetaPaholainen();
         } else if(pelaaja.getPaikka() == Paikka.PAHOLAINENTAPPIO) {
             asetaPaholainenTappio();
+        } else if(pelaaja.getPaikka() == Paikka.KAPAKKAOSTO) {
+            asetaKapakkaOsto();
+        } else if(pelaaja.getPaikka() == Paikka.KANNI) {
+            asetaKanni();
         }
         
         
@@ -125,10 +129,20 @@ public class TarinaOsa extends JPanel {
         toka.setText(kapakka.hinnastoMerkkijonona());
     }
     
+    private void asetaKanni() {
+        kuvanAsettaja.asetaKuva(eka, "Känni");
+        String kanni = "\nHumaltuminen laskee vointiasi yhdellä!\n\n";
+        kanni += kapakka.hinnastoMerkkijonona();
+        toka.setText(kanni);
+    }
+    
     private void asetaMetsa() {
         kuvanAsettaja.asetaKuva(eka, "Metsä");
-        String kuvaus = "\nOlet saapunut kylääsi ympäröivään metsään.";
-        // TODO
+        String kuvaus = "\nMetsässä voit taistella monstereita vastaan";
+        kuvaus += "\nja ansaita kultarahoja. Jos häviät monsterille";
+        kuvaus += "\nmenetät kaikki rahasi.";
+        kuvaus += "\n\nVoit levätä ja parantaa vointiasi milloin vain";
+        kuvaus += "\nkun et ole taistelussa.";
         toka.setText(kuvaus);
     }
     
@@ -151,12 +165,17 @@ public class TarinaOsa extends JPanel {
         }
     }
     
+    private void asetaKapakkaOsto() {
+        kuvanAsettaja.asetaKuva(eka, "Kapakka");
+        toka.setText("kapakka osto..");
+    }
+    
     private void asetaMonsteriTaistelu() {
         eka.setText("MONSTERITAISTELU");
         String tilanne = metsa.getTaistelu().vastustaja().tiedotMerkkijonona();
         if(metsa.getTaistelu().onkoAlkanut()) {
             tilanne += "\n\nOsuit monsteriin: " + metsa.getTaistelu().getEkaIsku() + " osumapistettä";
-            tilanne += "\n" + metsa.getTaistelu().vastustaja().getNimi();
+            tilanne += "\nMonsteri";
             if(metsa.getTaistelu().getTokaIsku() < 1) {
                 tilanne += " ei osunut sinuun.";
             } else {

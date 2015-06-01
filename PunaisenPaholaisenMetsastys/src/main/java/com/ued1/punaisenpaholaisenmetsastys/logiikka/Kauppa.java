@@ -77,7 +77,7 @@ public abstract class Kauppa<T> {
                     ostettavatOstokset += "[" + i;
                 }
                 ostettavatOstokset += "] " + valikoima.get(i).toString();
-                if (i % 2 == 0) {
+                if (i % 2 == 0 || hinnastossaApuja()) {
                     ostettavatOstokset += "\n";
                 } else {
                     ostettavatOstokset += "\t";
@@ -97,7 +97,12 @@ public abstract class Kauppa<T> {
     public String hinnastoMerkkijonona() {
         String hinnasto = "";
         for (int i = 1; i < valikoima.size(); i++) {
-            hinnasto += "" + i + ". " + valikoima.get(i).toString() + "           \t" + hinta(i) + "\n";
+            hinnasto += "" + i + ". " + valikoima.get(i).toString();
+            if(valikoima.get(i).toString().length() > 10) {
+                hinnasto += "\t" + hinta(i) + "\n";
+            } else {
+                hinnasto += "\t\t" + hinta(i) + "\n";
+            }
         }
         return hinnasto;
     }
@@ -115,6 +120,13 @@ public abstract class Kauppa<T> {
 
     private boolean hinnastossaAseita() {
         if (valikoima.size() > 0 && valikoima.get(0).getClass() == new Nyrkki().getClass()) {
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean hinnastossaApuja() {
+        if (valikoima.size() > 0 && valikoima.get(0).getClass() == new KossuPotion(new Pelaaja("")).getClass()) {
             return true;
         }
         return false;

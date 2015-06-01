@@ -7,17 +7,17 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class HaarniskaKauppaTest {
+public class HaarniskakauppaTest {
 
-    private HaarniskaKauppa kauppa;
+    private Haarniskakauppa kauppa;
     private Pelaaja pelaaja;
 
-    public HaarniskaKauppaTest() {
+    public HaarniskakauppaTest() {
     }
 
     @Before
     public void setUp() {
-        kauppa = new HaarniskaKauppa();
+        kauppa = new Haarniskakauppa();
         pelaaja = new Pelaaja("Testipelaaja");
         pelaaja.muutaRahoja(-10000);
     }

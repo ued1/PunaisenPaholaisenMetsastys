@@ -3,7 +3,8 @@ package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
 import java.awt.event.KeyEvent;
 
 /**
@@ -13,12 +14,14 @@ public class KomennonValidoija {
 
     private Pelaaja pelaaja;
     private Asepaja asepaja;
-    private HaarniskaKauppa haarniskaKauppa;
+    private Haarniskakauppa haarniskaKauppa;
+    private Kapakka kapakka;
 
     public KomennonValidoija(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
-        this.haarniskaKauppa = new HaarniskaKauppa();
+        this.haarniskaKauppa = new Haarniskakauppa();
+        this.kapakka = new Kapakka(pelaaja);
     }
 
     /**
@@ -104,6 +107,19 @@ public class KomennonValidoija {
             
         } else if(paikka == Paikka.HAARNISKANOSTO) {
             if(haarniskaKauppa.voikoPelaajaOstaaOstoksen(pelaaja, koodi-48) || koodi == KeyEvent.VK_T) {
+                return true;
+            } else if (koodi == KeyEvent.VK_A) {
+                return haarniskaKauppa.voikoPelaajaOstaaOstoksen(pelaaja, 10);
+            } else if (koodi == KeyEvent.VK_B) {
+                return haarniskaKauppa.voikoPelaajaOstaaOstoksen(pelaaja, 11);
+            } else if (koodi == KeyEvent.VK_C) {
+                return haarniskaKauppa.voikoPelaajaOstaaOstoksen(pelaaja, 12);
+            }
+            
+        // Kapakka osto: [numero] [T]akaisin
+            
+        } else if(paikka == Paikka.KAPAKKAOSTO) {
+            if(kapakka.voikoPelaajaOstaaOstoksen(pelaaja, koodi-48) || koodi == KeyEvent.VK_T) {
                 return true;
             }
             

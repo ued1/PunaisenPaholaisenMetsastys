@@ -27,9 +27,9 @@ public class PelitilanteenPaivittaja {
      * 
      * @param uusiPaikka uusi paikka
      */
-    public void liikuta(Paikka uusiPaikka) {
+    public void paivita(Paikka uusiPaikka) {
         pelaaja.setPaikka(uusiPaikka);
-        tarinaPanel.setPaikka(uusiPaikka);
+        tarinaPanel.paivita(uusiPaikka);
         pelaajaTietoPanel.repaint();
     }
     

@@ -43,8 +43,6 @@ public class KuvanLataaja {
         lisaa("/kuvat/gold.png", "Rahat");
         lisaa("/kuvat/exp.png", "Kokemus");
         
-    // TODO: muut ikonit
-        
     }
     
     private void lisaaKuvat() {
@@ -57,6 +55,7 @@ public class KuvanLataaja {
         lisaa("/kuvat/tavern.png", "Kapakka");
         lisaa("/kuvat/luola.png", "Luola");
         lisaa("/kuvat/paholainen.png", "Paholainen");
+        lisaa("/kuvat/drunk.png", "Känni");
     }
     
     private void lisaa(String sijainti, String kuvaus) {

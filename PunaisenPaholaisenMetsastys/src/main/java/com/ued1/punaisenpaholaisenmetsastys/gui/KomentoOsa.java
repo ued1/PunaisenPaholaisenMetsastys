@@ -4,7 +4,8 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.HaarniskaKauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
 import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -32,11 +33,11 @@ public class KomentoOsa extends JPanel {
     }
     
     /**
-     * Metodi aseettaa uuden paikan jonka perusteella piirretään uudet komennot.
+     * Metodi päivittää komentovalikon vastaamaan pelitilannetta.
      * 
      * @param uusiPaikka uusi paikka, jonka komennot piirretään
      */
-    public void setPaikka(Paikka uusiPaikka) {
+    public void paivita(Paikka uusiPaikka) {
         if(uusiPaikka == Paikka.KYLA) {
             komentoValikko.setText("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[K]apakka\n[T]aisteluareena");
         } else if(uusiPaikka == Paikka.ASEPAJA) {
@@ -61,7 +62,7 @@ public class KomentoOsa extends JPanel {
                 komentoValikko.setText("[T]akaisin");
             }
         } else if(uusiPaikka == Paikka.HAARNISKANOSTO) {
-            String ostettavatHaarniskat = new HaarniskaKauppa().ostokomennot(pelaaja);
+            String ostettavatHaarniskat = new Haarniskakauppa().ostokomennot(pelaaja);
             komentoValikko.setText(ostettavatHaarniskat);
         } else if(uusiPaikka == Paikka.MONSTERITAISTELU) {
             komentoValikko.setText("[L]yö\n[J]uokse");
@@ -73,10 +74,13 @@ public class KomentoOsa extends JPanel {
             komentoValikko.setText("[L]yö");
         } else if(uusiPaikka == Paikka.TAISTELUAREENATULOS) {
             komentoValikko.setText("[J]atka");
-        } else if(uusiPaikka == Paikka.KAPAKKA) {
+        } else if(uusiPaikka == Paikka.KAPAKKA || uusiPaikka == Paikka.KANNI) {
             komentoValikko.setText("[O]sta\n[T]akaisin");
         } else if(uusiPaikka == Paikka.LUOLA) {
             komentoValikko.setText("[E]tsi Punainen Paholainen\n[T]akaisin metsään");
+        } else if(uusiPaikka == Paikka.KAPAKKAOSTO) {
+            String ostettavatAvut = new Kapakka(pelaaja).ostokomennot(pelaaja);
+            komentoValikko.setText(ostettavatAvut);
         }
     }
     
