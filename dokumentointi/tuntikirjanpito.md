@@ -62,3 +62,7 @@ JavaDoc (55 luokkaa), Asepajaan ja Haarniskakauppaan muutoksia, uusi geneerinen 
 3 tuntia
 Kapakka, Luola
 
+01.06.2015
+20 minuuttia
+LuolaTest, korjattu muita testiluokkia
+

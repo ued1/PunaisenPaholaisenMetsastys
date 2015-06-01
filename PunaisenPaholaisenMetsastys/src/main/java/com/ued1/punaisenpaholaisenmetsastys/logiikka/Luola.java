@@ -10,7 +10,6 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
  * Luokka Luola määrittelee luolan toiminnallisuuden. Luola on pelin loppu
  * ja ilmestyy metsään kun pelaaja on korkeimmalla mahdollisella tasolla.
  */
-
 public class Luola {
 
     private Pelaaja pelaaja;
@@ -20,7 +19,7 @@ public class Luola {
     public Luola(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
         this.taistelu = null;
-        this.paholainen = new Monsteri(1000,1000,1000, "Punainen Paholainen");
+        this.paholainen = new Monsteri(1000,150,65, "Punainen Paholainen");
     }
     
     /**
@@ -39,6 +38,11 @@ public class Luola {
         return taistelu;
     }
     
+    /**
+     * Metodi asettaa taistelun tuloksen. Pelaajan hävitessä rahat laskevat
+     * nollaan ja pelaaja menettää haarniskan. Pelaaja kuitenkin parantuu ja
+     * voi jatkaa peliä. Pelaajan voittessa peli loppuu.
+     */
     public void asetaTulos() {
         if(pelaaja.onkoElossa()) {
             //TODO
@@ -48,7 +52,6 @@ public class Luola {
             pelaaja.paranna();
         }
     }
-    
     
     
 }

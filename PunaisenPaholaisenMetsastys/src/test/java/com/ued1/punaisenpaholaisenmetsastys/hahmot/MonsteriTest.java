@@ -13,10 +13,10 @@ public class MonsteriTest {
     Monsteri tokaMonsteri;
     private String[] nimet = {"Käärmefasaani", "Mörköläinen", "Jättiläinen",
             "Kaksipäinen Haamu", "Mörrimöykky", "Pöllökarhu", "Innostunut Sonni",
-            "Hyytelöhirvi", "Röllipeikko", "Kaljamahainen Örkki", "Perkele",
+            "Hyytelöhirvi", "Röllipeikko", "Iso Paha Susi", "Perkele",
             "Karvaperse", "Mörköpeikko", "Hymyilevä Kummitus", "Kiimainen Hirvi",
-            "Yksisarvinen Krokotiili", "Isojalka", "Päätön Kana", "Kutistunut Jätti",
-            "Isoperseinen Lehmä", "Hullu Muurahainen", "Kolmijalkainen Torakka"};
+            "Hampaaton Krokotiili", "Isojalka", "Päätön Kana", "Kutistunut Jätti",
+            "Isoperseinen Punkki", "Hullu Muurahainen", "Jalaton Torakka"};
     
     
     public MonsteriTest() {
