@@ -6,6 +6,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.BoxLayout;
@@ -14,7 +15,7 @@ import javax.swing.JPanel;
 /**
  * TarinaPanel on JPanel, joka koostuu komento- ja tarinaosasta. Tarinaosassa
  * kerrotaan pelin tarinaa kuvilla ja teksteillä. Komento-osassa listataan
- * komennot, mitkä ovat käytettävissä kullakin hetkellä.
+ * komennot, jotka ovat käytettävissä kullakin hetkellä.
  */
 public class TarinaPanel extends JPanel {
     
@@ -22,10 +23,10 @@ public class TarinaPanel extends JPanel {
     private KomentoOsa komentoOsa;
     private TarinaOsa tarinaOsa;
         
-    public TarinaPanel(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola) {
+    public TarinaPanel(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja) {
         this.pelaaja = pelaaja;
         this.komentoOsa = new KomentoOsa(pelaaja);
-        this.tarinaOsa = new TarinaOsa(pelaaja, metsa, areena, luola);
+        this.tarinaOsa = new TarinaOsa(pelaaja, metsa, areena, luola, parantaja);
         luoKomponentit();
     }
     

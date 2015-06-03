@@ -4,7 +4,7 @@ package com.ued1.punaisenpaholaisenmetsastys.apuvalineet;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 
 /**
- *
+ * KossuPotion on Apu, joka laskee pelaajan vointia yhdellä.
  */
 public class KossuPotion implements Apu {
     
@@ -35,7 +35,7 @@ public class KossuPotion implements Apu {
 
     @Override
     public int arvo() {
-        return 1;
+        return 2;
     }
     
 }

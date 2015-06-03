@@ -10,6 +10,7 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
 
 /**
  * KomennonKasittelija käsittelee käyttäjän antamat komennot ja antaa
@@ -26,8 +27,9 @@ public class KomennonKasittelija {
     private Metsa metsa;
     private Areena areena;
     private Luola luola;
+    private Parantaja parantaja;
 
-    public KomennonKasittelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa, Areena areena, Luola luola) {
+    public KomennonKasittelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja) {
         this.pelaaja = pelaaja;
         this.tarinaPanel = tarinaPanel;
         this.pelaajaTietoPanel = pelaajaTietoPanel;
@@ -82,6 +84,8 @@ public class KomennonKasittelija {
             kasittelePaholainenTappio(komentoKoodi);
         } else if(paikka == Paikka.KAPAKKAOSTO) {
             kasitteleAvunOstoKomento(komentoKoodi);
+        } else if(paikka == Paikka.PARANTAJA) {
+            kasitteleParantajaKomento(komentoKoodi);
         }
     }
     
@@ -100,6 +104,8 @@ public class KomennonKasittelija {
             }
         } else if(komentoKoodi == KeyEvent.VK_K) {
             paivittaja.paivita(Paikka.KAPAKKA);
+        } else if(komentoKoodi == KeyEvent.VK_P) {
+            paivittaja.paivita(Paikka.PARANTAJA);
         }
     }
     
@@ -153,6 +159,15 @@ public class KomennonKasittelija {
             paivittaja.paivita(Paikka.METSA);
         }
         
+    }
+    
+    private void kasitteleParantajaKomento(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_P) {
+            pelaaja.paranna();
+            paivittaja.paivita(Paikka.PARANTAJA);
+        } else if(komentoKoodi == KeyEvent.VK_T) {
+            paivittaja.paivita(Paikka.KYLA);
+        }
     }
     
     private void kasitteleAseenOstoKomento(int komentoKoodi) {

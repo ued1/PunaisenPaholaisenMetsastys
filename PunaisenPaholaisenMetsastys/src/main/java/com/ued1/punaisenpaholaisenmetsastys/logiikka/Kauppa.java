@@ -77,7 +77,9 @@ public abstract class Kauppa<T> {
                     ostettavatOstokset += "[" + i;
                 }
                 ostettavatOstokset += "] " + valikoima.get(i).toString();
-                if (i % 2 == 0 || hinnastossaApuja()) {
+                if(hinnastossaHaarniskoja() && (i == 1 || i == 3 || i == 9)) {
+                    ostettavatOstokset += "      \t";
+                } else if(i % 2 == 0 || hinnastossaApuja()) {
                     ostettavatOstokset += "\n";
                 } else {
                     ostettavatOstokset += "\t";
@@ -87,6 +89,51 @@ public abstract class Kauppa<T> {
         ostettavatOstokset += "[T]akaisin";
         return ostettavatOstokset;
     }
+    
+    /**
+     * Metodi palauttaa tarinapaneeliin sopivan merkkijonon ostettavissa
+     * olevista ostoksista
+     * 
+     * @param pelaaja Pelaaja, joka on ostamassa kaupan tavaroita
+     * @return tarinapaneelin ostettavissa olevat tavarat
+     */
+    public String ostettavissaOlevat(Pelaaja pelaaja) {
+        String merkkijono = "";
+        if(!voikoPelaajaOstaaOstoksen(pelaaja, 1)) {
+            merkkijono += "\nRahasi eivät riitä mihinkään.";
+            if(pelaaja.getRahat() == 0) {
+                merkkijono += "\n\nSinulla ei ole yhtään rahaa ja";
+            } else {
+                merkkijono += "\nSinulla on " + pelaaja.getRahat() + " kultarahaa ja";
+            }
+            merkkijono += "\nhalvin ostos, " + valikoima.get(1).toString();
+            merkkijono += ", maksaa " + hinta(1);
+            merkkijono += "\nkultarahaa.";
+            merkkijono += "\n\nTarvitset lisää rahaa tehdäkseen";
+            merkkijono += "\nostoksia täällä.";
+        } else {
+            merkkijono += "Rahasi riittävät seuraaviin ostoksiin:\n";
+            merkkijono += lisaaOstettavissaOlevat(pelaaja);
+        }
+        return merkkijono;
+    }
+    
+    private String lisaaOstettavissaOlevat(Pelaaja pelaaja) {
+        String ostettavat = "";
+        for(int i = 1; i < valikoima.size(); i++) {
+            if (voikoPelaajaOstaaOstoksen(pelaaja, i)) {
+                ostettavat += valikoima.get(i).toString();
+                if(hinnastossaHaarniskoja() && (i < 4 || i > 8)) {
+                    ostettavat += "         \t";
+                } else {
+                    ostettavat += "\t";
+                }
+                ostettavat += "hinta: " + hinta(i) + "\n";
+            }
+        }
+        return ostettavat;
+    }
+        
 
     /**
      * Metodi palauttaa hinnaston, joka sisältää tavaroiden nimien lisäksi hinnan
@@ -99,9 +146,9 @@ public abstract class Kauppa<T> {
         for (int i = 1; i < valikoima.size(); i++) {
             hinnasto += "" + i + ". " + valikoima.get(i).toString();
             if(valikoima.get(i).toString().length() > 10) {
-                hinnasto += "\t" + hinta(i) + "\n";
+                hinnasto += "\t" + arvo(i) + "\n";
             } else {
-                hinnasto += "\t\t" + hinta(i) + "\n";
+                hinnasto += "\t\t" + arvo(i) + "\n";
             }
         }
         return hinnasto;
@@ -115,7 +162,18 @@ public abstract class Kauppa<T> {
         } else if(valikoima.get(0).getClass() == KossuPotion.class) {
             return ((Apu) valikoima.get(i)).arvo();
         }
-        return 0; // TODO
+        return 0;
+    }
+    
+    private int arvo(int i) {
+        if (valikoima.get(0).getClass() == new Nyrkki().getClass()) {
+            return ((Ase) valikoima.get(i)).lyo();
+        } else if (valikoima.get(0).getClass() == new Riepu().getClass()) {
+            return ((Haarniska) valikoima.get(i)).suojaa();
+        } else if(valikoima.get(0).getClass() == KossuPotion.class) {
+            return ((Apu) valikoima.get(i)).arvo();                 // TODO
+        }
+        return 0;
     }
 
     private boolean hinnastossaAseita() {
@@ -127,6 +185,13 @@ public abstract class Kauppa<T> {
     
     private boolean hinnastossaApuja() {
         if (valikoima.size() > 0 && valikoima.get(0).getClass() == new KossuPotion(new Pelaaja("")).getClass()) {
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean hinnastossaHaarniskoja() {
+        if(valikoima.size() > 0 && valikoima.get(0).getClass() == new Riepu().getClass()) {
             return true;
         }
         return false;

@@ -42,7 +42,8 @@ public class KuvanLataaja {
         lisaa("/kuvat/armor.png", "Haarniska");
         lisaa("/kuvat/gold.png", "Rahat");
         lisaa("/kuvat/exp.png", "Kokemus");
-        
+        lisaa("/kuvat/voima.png", "Voima");
+        lisaa("/kuvat/puolustus.png", "Puolustus");
     }
     
     private void lisaaKuvat() {
@@ -51,11 +52,14 @@ public class KuvanLataaja {
         lisaa("/kuvat/kyla.png", "Kylä");
         lisaa("/kuvat/areena.png", "Taisteluareena");
         lisaa("/kuvat/tappio.png", "Taistelutappio");
+        lisaa("/kuvat/victory.png", "Taisteluvoitto");
         lisaa("/kuvat/asepaja.png", "Asepaja");
         lisaa("/kuvat/tavern.png", "Kapakka");
         lisaa("/kuvat/luola.png", "Luola");
         lisaa("/kuvat/paholainen.png", "Paholainen");
         lisaa("/kuvat/drunk.png", "Känni");
+        lisaa("/kuvat/hkauppa.png", "Haarniskakauppa");
+        lisaa("/kuvat/doctor.png", "Parantaja");
     }
     
     private void lisaa(String sijainti, String kuvaus) {

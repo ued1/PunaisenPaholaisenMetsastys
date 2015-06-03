@@ -8,7 +8,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 
 /**
  * Luokan tehtävänä on antaa päivityskäsky paneeleille ja asettaa pelaajan
- * paikkatieto vastaavaan uutta paikkaa.
+ * paikkatieto vastaamaan uutta paikkaa.
  */
 public class PelitilanteenPaivittaja {
 

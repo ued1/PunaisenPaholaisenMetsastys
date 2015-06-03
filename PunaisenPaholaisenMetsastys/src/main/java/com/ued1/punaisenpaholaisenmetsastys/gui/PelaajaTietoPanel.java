@@ -58,11 +58,11 @@ public class PelaajaTietoPanel extends JPanel {
         add(kokemusTeksti);
         add(ikoninAsettaja.asetaIkoni("Ase"));
         add(aseTeksti);
-        add(new JLabel("Voima:"));
+        add(ikoninAsettaja.asetaIkoni("Voima"));
         add(voimaTeksti);
         add(ikoninAsettaja.asetaIkoni("Haarniska"));
         add(haarniskaTeksti);
-        add(new JLabel("Puolustus:"));
+        add(ikoninAsettaja.asetaIkoni("Puolustus"));
         add(puolustusTeksti);
         add(ikoninAsettaja.asetaIkoni("Rahat"));
         add(rahaTeksti);

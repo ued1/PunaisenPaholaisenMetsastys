@@ -40,6 +40,7 @@ public class Kapakka extends Kauppa {
     public String hinnastoMerkkijonona() {
         String kuvaus = "Kapakassa voit ostaa hyödyllisiä tai hyödyttömiä";
         kuvaus += "\nasioita. Kokeileminen omalla vastuulla!\n\n";
+        kuvaus += "Nimi\t\tHinta\n\n";
         return kuvaus += super.hinnastoMerkkijonona();
     }
     

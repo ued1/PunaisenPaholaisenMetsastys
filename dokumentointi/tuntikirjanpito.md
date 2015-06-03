@@ -66,3 +66,11 @@ Kapakka, Luola
 2 tuntia
 LuolaTest, korjattu testiluokkia, lisäyksiä ja muutoksia peliin
 
+02.06.2015
+10 minuuttia
+Luokan KomennonValidoija siivous
+
+03.06.2015
+4 tuntia
+Lisää toiminnallisuutta, lisää grafiikkaa, korjattu hinnastojen ja valikoimien tulostusta, JavaDoc
+

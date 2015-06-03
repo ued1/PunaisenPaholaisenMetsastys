@@ -6,6 +6,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -24,12 +25,14 @@ public class Kyla implements Runnable {
     private Metsa metsa;
     private Areena areena;
     private Luola luola;
+    private Parantaja parantaja;
     
     public Kyla(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
         this.metsa = new Metsa(pelaaja);
         this.areena = new Areena(pelaaja);
         this.luola = new Luola(pelaaja);
+        this.parantaja = new Parantaja(pelaaja);
     }
         
     @Override
@@ -47,11 +50,11 @@ public class Kyla implements Runnable {
     private void luoKomponentit(Container container) {
         PelaajaTietoPanel pelaajaTietoPanel = new PelaajaTietoPanel(pelaaja);
         pelaajaTietoPanel.setPreferredSize(new Dimension(300, 600));
-        tarinaPanel = new TarinaPanel(pelaaja, metsa, areena, luola);
+        tarinaPanel = new TarinaPanel(pelaaja, metsa, areena, luola, parantaja);
         tarinaPanel.setPreferredSize(new Dimension(300,600));
         container.add(tarinaPanel, BorderLayout.WEST);
         container.add(pelaajaTietoPanel, BorderLayout.EAST);
-        frame.addKeyListener(new KomennonKuuntelija(pelaaja,tarinaPanel,pelaajaTietoPanel,metsa, areena,luola));
+        frame.addKeyListener(new KomennonKuuntelija(pelaaja,tarinaPanel,pelaajaTietoPanel,metsa, areena,luola, parantaja));
     }
         
     

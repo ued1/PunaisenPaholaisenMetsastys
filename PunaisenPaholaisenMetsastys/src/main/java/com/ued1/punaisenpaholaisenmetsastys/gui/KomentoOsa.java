@@ -19,16 +19,18 @@ public class KomentoOsa extends JPanel {
     
     private JTextArea komentoValikko;
     private Pelaaja pelaaja;
+    private Font fontti;
     
     public KomentoOsa(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
+        fontti = new Font("SansSerif Bold", Font.BOLD, 12);
         luoKomponentit();
     }
     
     private void luoKomponentit() {
-        komentoValikko = new JTextArea("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[K]apakka\n[T]aisteluareena");
+        komentoValikko = new JTextArea("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[T]aisteluareena");
         komentoValikko.setFocusable(false);
-        komentoValikko.setFont(new Font("SansSerif Bold", Font.BOLD, 12));
+        komentoValikko.setFont(fontti);
         add(komentoValikko);
     }
     
@@ -38,8 +40,9 @@ public class KomentoOsa extends JPanel {
      * @param uusiPaikka uusi paikka, jonka komennot piirretään
      */
     public void paivita(Paikka uusiPaikka) {
+        komentoValikko.setFont(fontti);
         if(uusiPaikka == Paikka.KYLA) {
-            komentoValikko.setText("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[K]apakka\n[T]aisteluareena");
+            komentoValikko.setText("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[T]aisteluareena");
         } else if(uusiPaikka == Paikka.ASEPAJA) {
             komentoValikko.setText("[O]sta ase\n[M]yy asee\n[T]akaisin");
         } else if(uusiPaikka == Paikka.HAARNISKAKAUPPA) {
@@ -63,6 +66,7 @@ public class KomentoOsa extends JPanel {
             }
         } else if(uusiPaikka == Paikka.HAARNISKANOSTO) {
             String ostettavatHaarniskat = new Haarniskakauppa().ostokomennot(pelaaja);
+            komentoValikko.setFont(new Font("SansSerif Bold", Font.BOLD, 10));
             komentoValikko.setText(ostettavatHaarniskat);
         } else if(uusiPaikka == Paikka.MONSTERITAISTELU) {
             komentoValikko.setText("[L]yö\n[J]uokse");
@@ -81,6 +85,8 @@ public class KomentoOsa extends JPanel {
         } else if(uusiPaikka == Paikka.KAPAKKAOSTO) {
             String ostettavatAvut = new Kapakka(pelaaja).ostokomennot(pelaaja);
             komentoValikko.setText(ostettavatAvut);
+        } else if(uusiPaikka == Paikka.PARANTAJA) {
+            komentoValikko.setText("[P]aranna\n[T]akaisin");
         }
     }
     

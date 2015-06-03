@@ -2,7 +2,7 @@
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
 /**
- * Luokka Hahmo on pelin hahmojen yläluokka. Luokka on abstracti ja 
+ * Luokka Hahmo on pelin hahmojen yläluokka. Luokka on abstrakti ja 
  * määrittelee ja ylläpitää hahmoilta vaadittuja toimintoja ja ominaisuuksia.
  */
 public abstract class Hahmo {

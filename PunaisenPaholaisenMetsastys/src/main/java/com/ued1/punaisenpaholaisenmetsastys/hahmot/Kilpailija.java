@@ -4,7 +4,6 @@ import java.util.Random;
 
 /**
  * Luokka määrittelee ja ylläpitää taisteluareenalla taistelevia kilpailijoita.
- * 
  */
 public class Kilpailija extends Hahmo {
 

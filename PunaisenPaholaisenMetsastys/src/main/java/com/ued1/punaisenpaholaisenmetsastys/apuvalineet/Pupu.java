@@ -3,6 +3,9 @@ package com.ued1.punaisenpaholaisenmetsastys.apuvalineet;
 
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 
+/**
+ * Pupu on Apu, joka ...
+ */
 public class Pupu implements Apu {
     
     private Pelaaja pelaaja;

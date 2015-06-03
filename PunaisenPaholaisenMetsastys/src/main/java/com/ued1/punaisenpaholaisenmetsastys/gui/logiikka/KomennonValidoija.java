@@ -60,13 +60,15 @@ public class KomennonValidoija {
             return hoidaLyonti(koodi);
         } else if (paikka == Paikka.LUOLA) {
             return hoidaLuola(koodi);
+        } else if (paikka == Paikka.PARANTAJA) {
+            return hoidaParantaja(koodi);
         }
         return false;
     }
 
-    // Kylä: [M]etsa [A]sepaja [H]aarniskakauppa [T]aisteluareena
+    // Kylä: [M]etsa [A]sepaja [H]aarniskakauppa [T]aisteluareena [K]apakka [P]arantaja
     private boolean hoidaKyla(int koodi) {
-        if (koodi == KeyEvent.VK_M || koodi == KeyEvent.VK_A || koodi == KeyEvent.VK_H || koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_K) {
+        if (koodi == KeyEvent.VK_M || koodi == KeyEvent.VK_A || koodi == KeyEvent.VK_H || koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_K || koodi == KeyEvent.VK_P) {
             return true;
         }
         return false;
@@ -109,6 +111,14 @@ public class KomennonValidoija {
     // Taisteluareena: [A]stu areenaan [T]akaisin
     private boolean hoidaTaisteluAreena(int koodi) {
         if (koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_A) {
+            return true;
+        }
+        return false;
+    }
+    
+    // Parantaja: [P]aranna [T]akaisin
+    private boolean hoidaParantaja(int koodi) {
+        if (koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_T) {
             return true;
         }
         return false;
