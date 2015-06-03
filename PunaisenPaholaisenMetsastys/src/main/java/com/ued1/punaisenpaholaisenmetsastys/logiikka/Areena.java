@@ -42,7 +42,7 @@ public class Areena {
      * @return tarvittava kokemus kokonaislukuna
      */
     public int seuraavanTasonKokemus() {
-        if (pelaaja.getTaso() >= 0 && pelaaja.getTaso() < 10) {
+        if (pelaaja.getTaso() > 0 && pelaaja.getTaso() < 10) {
             return tarvittavaKokemus[pelaaja.getTaso()];
         } else {
             return -1;

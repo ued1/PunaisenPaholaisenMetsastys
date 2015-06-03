@@ -143,6 +143,16 @@ public class PelaajaTest {
         assertEquals(0, pelaaja.getRahat());
     }
     
+    @Test
+    public void rahatEivatMeneYliRajojen() {
+        int maximi = 200000000;
+        pelaaja.muutaRahoja(maximi-10);
+        pelaaja.muutaRahoja(10);
+        assertEquals(maximi, pelaaja.getRahat());
+        pelaaja.muutaRahoja(1);
+        assertEquals(maximi, pelaaja.getRahat());
+    }
+    
     // uusi ase ja haarniska
     
     @Test

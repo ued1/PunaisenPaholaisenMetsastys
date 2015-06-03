@@ -75,10 +75,26 @@ public abstract class Hahmo {
         vointi = maxVointi;
     }
         
+    /**
+     * Metodi palauttaa hahmon lyöntivoiman.
+     * 
+     * @return lyöntivoima kokonaislukuna
+     */
     public abstract int lyo();
     
+    /**
+     * Metodi palauttaa hahmon puolustusvoiman.
+     * 
+     * @return puolustusvoima kokonaislukuna
+     */
     public abstract int suojaa();
     
+    /**
+     * Metodi palauttaa hahmon tiedot merkkijonona tarinapaneelin
+     * tarinaosaan sopivassa muodossa.
+     * 
+     * @return hahmon tiedot merkkijonona
+     */
     public abstract String tiedotMerkkijonona();
             
 }

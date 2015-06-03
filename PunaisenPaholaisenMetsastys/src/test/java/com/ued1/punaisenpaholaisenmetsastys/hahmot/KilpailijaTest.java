@@ -41,5 +41,10 @@ public class KilpailijaTest {
         assertEquals(5, kilpailija.suojaa());
     }
     
+    @Test
+    public void tarinaPaneeliinTulostuvissaTiedoissaKilpailijanNimi() {
+        assertTrue(kilpailija.tiedotMerkkijonona().contains(kilpailija.getNimi()));
+    }
+    
     
 }

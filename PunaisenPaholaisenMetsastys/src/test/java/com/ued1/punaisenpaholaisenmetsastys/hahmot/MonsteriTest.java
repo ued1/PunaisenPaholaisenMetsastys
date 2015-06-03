@@ -73,5 +73,18 @@ public class MonsteriTest {
         ekaMonsteri.laskeVointia();
         assertFalse(ekaMonsteri.onkoElossa());
     }
+    
+    @Test
+    public void tarinapaneeliinTulostuvissaTiedoissaMonsterinNimi() {
+        assertTrue(ekaMonsteri.tiedotMerkkijonona().contains(ekaMonsteri.getNimi()));
+    }
+    
+    @Test
+    public void monsterinVointiLaskeeOikein() {
+        ekaMonsteri.laskeVointia();
+        assertEquals(0, ekaMonsteri.getVointi());
+        ekaMonsteri.laskeVointia();
+        assertEquals(0, ekaMonsteri.getVointi());
+    }
 
 }

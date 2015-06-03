@@ -6,6 +6,7 @@ import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Tikari;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -98,6 +99,30 @@ public class AsepajaTest {
         pelaaja.muutaRahoja(alkuraha);
         asepaja.osta(pelaaja, 2);
         assertEquals(alkuraha - new Maila().arvo(), pelaaja.getRahat());
+    }
+    
+    @Test
+    public void ostokomennoissaEiNyrkkia() {
+        assertFalse(asepaja.ostokomennot(pelaaja).contains(new Nyrkki().toString()));
+    }
+    
+    @Test
+    public void ostokomennoissaEiKeppiaJosEiRahaa() {
+        assertFalse(asepaja.ostokomennot(pelaaja).contains(new Keppi().toString()));
+    }
+    
+    @Test
+    public void ostokomennoissaKeppiJosRahaa() {
+        pelaaja.muutaRahoja(10000);
+        assertTrue(asepaja.ostokomennot(pelaaja).contains(new Keppi().toString()));
+    }
+    
+    @Test
+    public void eiVoiOstaaAsettaTaulukonUlkopuolelta() {
+        pelaaja.muutaRahoja(200000000);
+        assertFalse(asepaja.osta(pelaaja, asepaja.getValikoima().size()));
+        assertFalse(asepaja.osta(pelaaja, asepaja.getValikoima().size()+1));
+        assertFalse(asepaja.osta(pelaaja, -1));
     }
 
 }

@@ -174,4 +174,10 @@ public class AreenaTest {
         }
     }
     
+    @Test
+    public void viimeisellaTasollaEiSeuraavanTasonKokemusta() {
+        nostaTasolle(10);
+        assertEquals(-1, areena.seuraavanTasonKokemus());        
+    }
+    
 }
