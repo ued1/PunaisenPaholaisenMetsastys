@@ -124,5 +124,13 @@ public class AsepajaTest {
         assertFalse(asepaja.osta(pelaaja, asepaja.getValikoima().size()+1));
         assertFalse(asepaja.osta(pelaaja, -1));
     }
+    
+    @Test
+    public void taulukonUlkopuoleltaEiVoiOstaaAsetta() {
+        pelaaja.muutaRahoja(200000000);
+        assertFalse(asepaja.osta(pelaaja, -1));
+        assertFalse(asepaja.osta(pelaaja, 666));
+        assertFalse(asepaja.osta(pelaaja, asepaja.getValikoima().size()));
+    }
 
 }

@@ -4,13 +4,12 @@ package com.ued1.punaisenpaholaisenmetsastys.logiikka;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Apu;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.KossuPotion;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
-import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.VihannesPotion;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.util.ArrayList;
 
 /**
  * Luokka hoitaa kylän kapakan toiminnallisuuden. Kapakasta voi ostaa taisteluihin
- * apuvälineitä tai laskea omaa vointia juomalla itsensä jumalaan.
+ * apuvälineitä tai laskea omaa vointia juomalla itsensä humalaan.
  */
 public class Kapakka extends Kauppa {
     
@@ -25,7 +24,6 @@ public class Kapakka extends Kauppa {
         ArrayList<Apu> avut = new ArrayList<>();
         avut.add(new KossuPotion(pelaaja)); // ei näy listassa
         avut.add(new KossuPotion(pelaaja));
-        avut.add(new VihannesPotion(pelaaja));
         avut.add(new Pupu(pelaaja));
         return avut;
     }

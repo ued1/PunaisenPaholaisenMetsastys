@@ -39,6 +39,7 @@ public class KomennonKasittelija {
         this.metsa = metsa;
         this.areena = areena;
         this.luola = luola;
+        this.parantaja = parantaja;
     }
     
     /**
@@ -163,7 +164,7 @@ public class KomennonKasittelija {
     
     private void kasitteleParantajaKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_P) {
-            pelaaja.paranna();
+            parantaja.paranna(pelaaja);
             paivittaja.paivita(Paikka.PARANTAJA);
         } else if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.paivita(Paikka.KYLA);

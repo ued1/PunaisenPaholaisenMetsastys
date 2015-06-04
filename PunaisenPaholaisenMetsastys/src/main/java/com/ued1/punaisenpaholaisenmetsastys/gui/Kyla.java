@@ -32,7 +32,7 @@ public class Kyla implements Runnable {
         this.metsa = new Metsa(pelaaja);
         this.areena = new Areena(pelaaja);
         this.luola = new Luola(pelaaja);
-        this.parantaja = new Parantaja(pelaaja);
+        this.parantaja = new Parantaja();
     }
         
     @Override

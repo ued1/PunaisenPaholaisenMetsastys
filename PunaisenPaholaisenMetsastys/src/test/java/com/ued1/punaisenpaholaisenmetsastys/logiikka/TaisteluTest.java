@@ -38,18 +38,6 @@ public class TaisteluTest {
         eiTaistelua = new Taistelu(pelaaja, eiTaisteluaMonsteri);
         paattyyHeti = new Taistelu(pelaaja, kuoleeHetiMonsteri);
     }
-
-    /*  // taistelun logiikkaa muutettu, taistelu ei enää etene näin, TODO: korvaava testi
-    @Test
-    public void taistelunIskujenVoimatOnLaskettuOikein() {
-        int pelaajanIsku = Math.max(0, pelaaja.lyo() - tasainenMonsteri.suojaa());
-        int monsterinIsku = Math.max(0, tasainenMonsteri.lyo() - pelaaja.suojaa());
-        tasainenTaistelu.taistele();
-        assertEquals(pelaajanIsku, tasainenTaistelu.getEkaIsku());
-        assertEquals(monsterinIsku, tasainenTaistelu.getTokaIsku());
-    }
-    */
-
     
     @Test
     public void taistelussaVointiLaskeeOikein() {
@@ -62,26 +50,6 @@ public class TaisteluTest {
         assertEquals(tasainenTaistelu.getTokaIsku(), pelaaja.getMaxVointi() - pelaaja.getVointi());
     }
 
-    /* // TODO: taistelu ei enää etene näin, korvaava testi
-    @Test
-    public void molempienLyodessaHutejaEiKummankaanVointiLaske() {
-        taisteleMontaKertaa(eiTaistelua, 10);
-        assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
-        assertEquals(eiTaisteluaMonsteri.getVointi(), eiTaisteluaMonsteri.getMaxVointi());
-        assertEquals(0, eiTaistelua.getEkaIsku());
-        assertEquals(0, eiTaistelua.getTokaIsku());
-    }
-    */
-
-    /* // TODI: uusi testi, taistelulogiikka vaihtunut
-    @Test
-    public void metodiPalauttaaTrueJosToinenKuolee() {
-        assertTrue(kovisTaistelu.taistele());
-        pelaaja.paranna();
-        assertFalse(hutiTaistelu.taistele());
-    }
-    */
-
     @Test
     public void toinenTaistelijaEiLyoJosEnsimmainenVoittaaHeti() {
         assertTrue(paattyyHeti.taistele());
@@ -90,22 +58,12 @@ public class TaisteluTest {
         assertFalse(kuoleeHetiMonsteri.onkoElossa());
     }
     
-    /* lyöntivoima muutettu max --> max/2..max
     @Test
-    public void taisteluEteneeJaPaattyyOikein() {
-        // 10 5 1 vs 17 4 1
+    public void taisteluAlkanutKunMolemmatLyo() {
         tasainenTaistelu.taistele();
-        assertEquals(13, tasainenMonsteri.getVointi());
-        assertEquals(7, pelaaja.getVointi());
-        taisteleMontaKertaa(tasainenTaistelu, 2);
-        assertEquals(5, tasainenMonsteri.getVointi());
-        assertEquals(1, pelaaja.getVointi());
-        assertTrue(tasainenTaistelu.taistele());
-        assertEquals(1,tasainenMonsteri.getVointi());
-        assertFalse(pelaaja.onkoElossa());
-        assertTrue(tasainenMonsteri.onkoElossa());
+        tasainenTaistelu.onkoAlkanut();
     }
-    */
+    
 
     private void taisteleMontaKertaa(Taistelu taistelu, int kerrat) {
         for (int i = 0; i < kerrat; i++) {
