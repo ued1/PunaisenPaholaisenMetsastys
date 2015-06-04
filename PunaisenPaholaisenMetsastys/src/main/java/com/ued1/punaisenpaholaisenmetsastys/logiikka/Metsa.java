@@ -26,7 +26,7 @@ public class Metsa {
      * perustuen pelaajan ominaisuuksiin.
      */
     public void aloitaUusiTaistelu() {
-        taistelu = new Taistelu(pelaaja, etsiUusiMonsteriTaisteluun());
+        taistelu = new Taistelu(pelaaja, generoiUusiMonsteriTaisteluun());
     }
     
     /**
@@ -49,7 +49,7 @@ public class Metsa {
         return (1 + arpoja.nextInt(korkeintaan));
     }
     
-    private Monsteri etsiUusiMonsteriTaisteluun() {
+    private Monsteri generoiUusiMonsteriTaisteluun() {
         int monsterinVointi = arvoPositiivinenLuku(2 * pelaaja.getMaxVointi());
         int monsterinVoima = arvoPositiivinenLuku(pelaaja.lyo());
         int monsterinPuolustus = arvoPositiivinenLuku(pelaaja.suojaa());

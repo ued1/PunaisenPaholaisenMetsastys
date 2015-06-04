@@ -74,3 +74,7 @@ Luokan KomennonValidoija siivous
 4 tuntia
 Lisää toiminnallisuutta, lisää grafiikkaa, korjattu hinnastojen ja valikoimien tulostusta, JavaDoc
 
+04.06.2015
+5 tuntia
+Testien parantelua, uusi pit, sekvenssikaaviot ym. dokumentoinnin päivitykset, parannuksia peliin
+

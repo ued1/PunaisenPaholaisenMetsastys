@@ -34,14 +34,14 @@ public class Taistelu {
      * @return totuusarvo taistelun päättymisestä, true jos taistelu on saatu päätöḱseen
      */
     public boolean taistele() {
-        ekaIsku = Math.max(1, laskeLyontiVoima(ekaTaistelija.lyo(), tokaTaistelija.suojaa()));
+        ekaIsku = Math.max(1, laskeVahinko(ekaTaistelija.lyo(), tokaTaistelija.suojaa()));
         laskeVointia(tokaTaistelija, ekaIsku);
         if (!tokaTaistelija.onkoElossa()) {
             ekaIsku = -999;
             tokaIsku = -999;
             return true;
         }
-        tokaIsku = Math.max(0, laskeLyontiVoima(tokaTaistelija.lyo(), ekaTaistelija.suojaa()));
+        tokaIsku = Math.max(0, laskeVahinko(tokaTaistelija.lyo(), ekaTaistelija.suojaa()));
         laskeVointia(ekaTaistelija, tokaIsku);
         if (!ekaTaistelija.onkoElossa()) {
             ekaIsku = -999;
@@ -63,7 +63,7 @@ public class Taistelu {
         return false;
     }
     
-    private int laskeLyontiVoima(int lyonti, int suojaus) {
+    private int laskeVahinko(int lyonti, int suojaus) {
         int osuma = lyonti/2 + random.nextInt(lyonti/2 + 1) - suojaus;
         return osuma;
     }
