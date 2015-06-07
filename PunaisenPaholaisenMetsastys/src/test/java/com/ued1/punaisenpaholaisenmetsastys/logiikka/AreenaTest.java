@@ -1,6 +1,7 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.logiikka;
 
+import com.ued1.punaisenpaholaisenmetsastys.hahmot.Hahmo;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -58,13 +59,16 @@ public class AreenaTest {
     }
     
     @Test
-    public void pelaajanHavitessaPelaajaParantuu() {
+    public void pelaajanHavitessaPelaajaJaVastustajaParantuu() {
         areena.aloitaUusiTaistelu();
+        areena.getTaistelu().taistele();
         tapaPelaaja();
         assertFalse(pelaaja.onkoElossa());
         areena.asetaTaistelunTulos();
         assertTrue(pelaaja.onkoElossa());
         assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
+        Hahmo vastustaja = areena.getTaistelu().vastustaja();
+        assertEquals(vastustaja.getVointi(), vastustaja.getMaxVointi());
     }
     
     @Test
@@ -84,9 +88,7 @@ public class AreenaTest {
     @Test
     public void pelaajanHavitessaOtteluitaVoitettavaSailyy() {
         int jaljellaAlussa = areena.getOtteluitaJaljella();
-        areena.aloitaUusiTaistelu();
-        tapaPelaaja();
-        areena.asetaTaistelunTulos();
+        taisteleJaHavia();
         assertEquals(jaljellaAlussa, areena.getOtteluitaJaljella());
     }
     
@@ -178,6 +180,14 @@ public class AreenaTest {
     public void viimeisellaTasollaEiSeuraavanTasonKokemusta() {
         nostaTasolle(10);
         assertEquals(-1, areena.seuraavanTasonKokemus());        
+    }
+    
+    @Test
+    public void metodiGetVastustajanTiedotToimii() {
+        assertTrue(areena.getVastustajanTiedot().contains("vastustajasi selviää kun"));
+        areena.aloitaUusiTaistelu();
+        String vastustajanNimi = areena.getTaistelu().vastustaja().getNimi();
+        assertTrue(areena.getVastustajanTiedot().contains(vastustajanNimi));
     }
     
 }

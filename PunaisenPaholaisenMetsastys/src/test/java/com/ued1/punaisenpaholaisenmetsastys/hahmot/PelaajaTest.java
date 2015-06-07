@@ -252,10 +252,29 @@ public class PelaajaTest {
     }
     
     // rahojen nollaus
+    @Test
     public void nollausNollaaRahat() {
         pelaaja.muutaRahoja(11);
         pelaaja.nollaaRahat();
         assertEquals(0, pelaaja.getRahat());
+    }
+    
+    // potionit
+    @Test
+    public void pelaajallaEiAlussaPotioneja() {
+        assertEquals(0, pelaaja.getPotionit());
+    }
+        
+    @Test
+    public void pelaajanPotionitAsetetaanOikein() {
+        pelaaja.setPotionit(-1);
+        assertEquals(0, pelaaja.getPotionit());
+        pelaaja.setPotionit(0);
+        assertEquals(0, pelaaja.getPotionit());
+        pelaaja.setPotionit(5);
+        assertEquals(5, pelaaja.getPotionit());
+        pelaaja.setPotionit(6);
+        assertEquals(5, pelaaja.getPotionit());
     }
                 
 }

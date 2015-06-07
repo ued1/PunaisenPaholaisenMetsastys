@@ -58,10 +58,11 @@ public class TaisteluTest {
         assertFalse(kuoleeHetiMonsteri.onkoElossa());
     }
     
+        
     @Test
     public void taisteluAlkanutKunMolemmatLyo() {
-        tasainenTaistelu.taistele();
-        tasainenTaistelu.onkoAlkanut();
+        assertFalse(tasainenTaistelu.taistele());
+        assertTrue(tasainenTaistelu.onkoAlkanut());
     }
     
 
@@ -70,5 +71,24 @@ public class TaisteluTest {
             taistelu.taistele();
         }
     }
+    
+    @Test
+    public void taisteluEiAlkanutJosKumpikaanEiLyonyt() {
+        assertFalse(tasainenTaistelu.onkoAlkanut());
+    }
+    
+    @Test
+    public void taisteluAsetetaanEiAlkaneeksiKunSeLoppuu() {
+        int vointi = pelaaja.getVointi();
+        for(int i = 0; i < vointi-1; i++) {
+            pelaaja.laskeVointia();
+        }
+        assertTrue(kovisTaistelu.taistele());
+        assertFalse(kovisTaistelu.onkoAlkanut());
+    }
+    
+    
+    
+    
 
 }
