@@ -33,7 +33,11 @@ public class TarinaPanel extends JPanel {
     private void luoKomponentit() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         tarinaOsa.setPreferredSize(new Dimension(300,450));
+        tarinaOsa.setMinimumSize(new Dimension(300,450));
+        tarinaOsa.setMaximumSize(new Dimension(300,450));
         komentoOsa.setPreferredSize(new Dimension(300,150));
+        komentoOsa.setMinimumSize(new Dimension(300,150));
+        komentoOsa.setMaximumSize(new Dimension(300,150));
         add(tarinaOsa);
         add(komentoOsa);
     }

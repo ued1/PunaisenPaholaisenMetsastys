@@ -116,9 +116,9 @@ public class KomennonValidoija {
         return false;
     }
     
-    // Parantaja: [P]aranna [T]akaisin
+    // Parantaja: [P]aranna [T]akaisin [O]sta potion
     private boolean hoidaParantaja(int koodi) {
-        if (koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_T) {
+        if (koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_O) {
             return true;
         }
         return false;

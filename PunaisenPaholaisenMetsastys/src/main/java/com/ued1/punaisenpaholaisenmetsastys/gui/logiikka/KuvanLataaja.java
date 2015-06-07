@@ -44,6 +44,7 @@ public class KuvanLataaja {
         lisaa("/kuvat/exp.png", "Kokemus");
         lisaa("/kuvat/voima.png", "Voima");
         lisaa("/kuvat/puolustus.png", "Puolustus");
+        lisaa("/kuvat/potion.png", "VihannesPotion");
     }
     
     private void lisaaKuvat() {

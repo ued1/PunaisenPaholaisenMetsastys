@@ -168,6 +168,10 @@ public class KomennonKasittelija {
             paivittaja.paivita(Paikka.PARANTAJA);
         } else if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.paivita(Paikka.KYLA);
+        } else if(komentoKoodi == KeyEvent.VK_O && parantaja.voikoOstaa(pelaaja)) {
+            // TODO: K/E ja viesti ostetusta potionista
+            parantaja.ostaPotion(pelaaja);
+            paivittaja.paivita(Paikka.PARANTAJA);
         }
     }
     

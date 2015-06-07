@@ -3,9 +3,9 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 public class PelaajaTietoPanel extends JPanel {
 
     private Pelaaja pelaaja;
-    private JLabel paikkaTeksti;    // poista
     private JLabel tasoTeksti;
     private JLabel kokemusTeksti;
     private JLabel vointiTeksti;
@@ -26,12 +25,12 @@ public class PelaajaTietoPanel extends JPanel {
     private JLabel haarniskaTeksti;
     private JLabel puolustusTeksti;
     private JLabel rahaTeksti;
+    private JLabel potionTeksti;
     private KuvanAsettaja ikoninAsettaja;
 
     public PelaajaTietoPanel(Pelaaja pelaaja) {
-        super(new GridLayout(9, 2));    // pienennä poisteassa paikkatieto
+        super(new GridLayout(10, 2));    // pienennä poisteassa paikkatieto
         this.pelaaja = pelaaja;
-        paikkaTeksti = new JLabel();    // poista
         tasoTeksti = new JLabel();
         kokemusTeksti = new JLabel();
         vointiTeksti = new JLabel();
@@ -41,15 +40,14 @@ public class PelaajaTietoPanel extends JPanel {
         puolustusTeksti = new JLabel();
         rahaTeksti = new JLabel();
         ikoninAsettaja = new KuvanAsettaja();
+        potionTeksti = new JLabel();
         luoKomponentit();
     }
 
     private void luoKomponentit() {
         paivitaTiedot();
-        // add(new JLabel("Nimi:"));    // Korvattu väliaikaisesti paikkatiedolla
-        add(new JLabel("Paikka:"));     // poista
-        add(paikkaTeksti);              // poista
-        // add(new JLabel(pelaaja.getNimi())); // Korvattu väliaikaisesti paikkatiedolla
+        add(new JLabel("           Nimi:"));
+        add(new JLabel(pelaaja.getNimi()));
         add(ikoninAsettaja.asetaIkoni("Taso"));
         add(tasoTeksti);
         add(ikoninAsettaja.asetaIkoni("Vointi"));
@@ -66,10 +64,11 @@ public class PelaajaTietoPanel extends JPanel {
         add(puolustusTeksti);
         add(ikoninAsettaja.asetaIkoni("Rahat"));
         add(rahaTeksti);
+        add(ikoninAsettaja.asetaIkoni("VihannesPotion"));
+        add(potionTeksti);
     }
     
     private void paivitaTiedot() {
-        paikkaTeksti.setText("" + pelaaja.getPaikka().toString()); // POISTA
         tasoTeksti.setText("" + pelaaja.getTaso());
         kokemusTeksti.setText("" + pelaaja.getKokemus());
         vointiTeksti.setText(pelaaja.getVointi() + "/" + pelaaja.getMaxVointi());
@@ -83,6 +82,7 @@ public class PelaajaTietoPanel extends JPanel {
         haarniskaTeksti.setText(pelaaja.getHaarniska().toString());
         puolustusTeksti.setText("" + pelaaja.suojaa());
         rahaTeksti.setText("" + pelaaja.getRahat());
+        potionTeksti.setText("" + pelaaja.getPotionit());
     }
 
     /**

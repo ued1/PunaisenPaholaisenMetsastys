@@ -6,6 +6,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
 import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -86,7 +87,11 @@ public class KomentoOsa extends JPanel {
             String ostettavatAvut = new Kapakka(pelaaja).ostokomennot(pelaaja);
             komentoValikko.setText(ostettavatAvut);
         } else if(uusiPaikka == Paikka.PARANTAJA) {
-            komentoValikko.setText("[P]aranna\n[T]akaisin");
+            if(new Parantaja().voikoOstaa(pelaaja)) {
+                komentoValikko.setText("[P]aranna\n[O]sta VihannesPotion\n[T]akaisin");
+            } else {
+                komentoValikko.setText("[P]aranna\n[T]akaisin");
+            }
         }
     }
     

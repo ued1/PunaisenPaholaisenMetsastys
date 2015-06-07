@@ -17,6 +17,7 @@ public class Pelaaja extends Hahmo {
     private int rahat;
     private Paikka paikka;
     private int kokemus;
+    private int potionit;
 
     public Pelaaja(String nimi) {
         super(nimi, 20, 20);
@@ -26,6 +27,7 @@ public class Pelaaja extends Hahmo {
         this.rahat = 0;
         this.paikka = Paikka.KYLA;
         this.kokemus = 0;
+        this.potionit = 0;
     }
 
     public int getTaso() {
@@ -82,6 +84,19 @@ public class Pelaaja extends Hahmo {
 
     public int getRahat() {
         return rahat;
+    }
+    
+    public int getPotionit() {
+        return potionit;
+    }
+    
+    public void setPotionit(int maara) {
+        potionit = maara;
+        if(potionit < 0) {
+            potionit = 0;
+        } else if(potionit > 5) {
+            potionit = 5;
+        }
     }
 
     /**

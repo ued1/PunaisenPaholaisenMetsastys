@@ -110,7 +110,7 @@ public class TarinaOsa extends JPanel {
     
     private void asetaKyla() {
         kuvanAsettaja.asetaKuva(eka, "Kylä");
-        String kuvaus = "\nTämä on kyläsi.";
+        String kuvaus = "Tämä on kyläsi.";
         kuvaus += "\n\nAsepajassa voit ostaa uusia aseita.";
         kuvaus += "\n\nHaarniskakaupassa voit päivittää haarniskasi.";
         kuvaus += "\n\nKapakasta löytyy kaikenlaista hyödyllista\nja hyödytöntä.";
@@ -145,7 +145,7 @@ public class TarinaOsa extends JPanel {
     
     private void asetaParantaja() {
         kuvanAsettaja.asetaKuva(eka, "Parantaja");
-        toka.setText("parantaja..");
+        toka.setText(parantaja.getKuvaus(pelaaja));
     }
     
     private void asetaMetsa() {
