@@ -187,7 +187,6 @@ public class TarinaOsa extends JPanel {
     }
     
     private void asetaMonsteriTaistelu() {
-        eka.setText("MONSTERITAISTELU");
         String tilanne = metsa.getTaistelu().vastustaja().tiedotMerkkijonona();
         if(metsa.getTaistelu().onkoAlkanut()) {
             tilanne += "\n\nOsuit monsteriin: " + metsa.getTaistelu().getEkaIsku() + " osumapistettä";
@@ -197,6 +196,7 @@ public class TarinaOsa extends JPanel {
             } else {
                 tilanne += " osui sinuun: " + metsa.getTaistelu().getTokaIsku() + " osumapistettä";
             }
+            tilanne += "\n\nVointisi: " + pelaaja.getVointi() + "/" + pelaaja.getMaxVointi();
         }
         toka.setText(tilanne);
     }
