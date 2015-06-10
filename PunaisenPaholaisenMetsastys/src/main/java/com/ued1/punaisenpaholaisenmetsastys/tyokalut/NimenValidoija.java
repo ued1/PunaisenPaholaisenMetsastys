@@ -22,6 +22,9 @@ public class NimenValidoija {
      * @return totuusarvo, true jos nimi on kelvollinen
      */
     public boolean tarkista(String tarkistettavaNimi) {
+        if(tarkistettavaNimi == null) {
+            return false;
+        }
         String nimi = tarkistettavaNimi.trim();
         if(!onkoSopivaPituus(nimi) || !onkoVainKirjaimia(nimi)) {
             return false;

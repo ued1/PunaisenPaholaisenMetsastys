@@ -4,13 +4,10 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.AlkuvalikonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import sun.swing.FilePane;
 
 /**
  * AlkuvalikkoPanel on pelin alkuvalikko, jossa voi valita uuden pelin,

@@ -38,10 +38,12 @@
                     <targetClasses>
                         <param>com.ued1.punaisenpaholaisenmetsastys.hahmot.*</param>
                         <param>com.ued1.punaisenpaholaisenmetsastys.logiikka.*</param>
+                        <param>com.ued1.punaisenpaholaisenmetsastys.tyokalut.NimenValidoija</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.ued1.punaisenpaholaisenmetsastys.hahmot.*</param>
                         <param>com.ued1.punaisenpaholaisenmetsastys.logiikka.*</param>
+                        <param>com.ued1.punaisenpaholaisenmetsastys.tyokalut.NimenValidoijaTest</param>
                     </targetTests>
                 </configuration>
             </plugin>

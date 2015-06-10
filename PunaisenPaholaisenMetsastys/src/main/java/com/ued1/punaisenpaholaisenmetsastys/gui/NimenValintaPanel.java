@@ -1,11 +1,8 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.NimenValinnanKuuntelija;
-import com.ued1.punaisenpaholaisenmetsastys.tyokalut.NimenValidoija;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
