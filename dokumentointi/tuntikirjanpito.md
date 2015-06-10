@@ -83,5 +83,6 @@ Testien parantelua, uusi pit, sekvenssikaaviot ym. dokumentoinnin päivitykset, 
 Korjattu grafiikkaa, lisätty potionien osto ym
 
 10.06.2015
-3 tuntia
-Alkuvalikko ja nimen valinta
+6 tuntia
+Alkuvalikot ja nimen valinta
+

@@ -1,6 +1,7 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
+import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.AlkuvalikonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
@@ -10,7 +11,7 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.KeyListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -28,13 +29,20 @@ public class Kyla implements Runnable {
     private Luola luola;
     private Parantaja parantaja;
     
+    private AlkuvalikkoPanel alkuvalikkoPanel;
+    private OhjePanel ohjePanel;
+    private NimenValintaPanel nimenValintaPanel;
+    
+    
+    
     public Kyla() {
     }
         
     @Override
     public void run() {
+        luoAlkuvalikonPaneelit();
         frame = new JFrame("PunaisenPaholaisenMetsastys");
-        luoAlkuvalikko(frame.getContentPane());
+        frame.getContentPane().add(alkuvalikkoPanel);
         frame.setPreferredSize(new Dimension(600,600));
         frame.setMinimumSize(new Dimension(600,600));
         frame.setMaximumSize(new Dimension(600,600));
@@ -53,7 +61,13 @@ public class Kyla implements Runnable {
         this.parantaja = new Parantaja();
     }
     
-    private void luoPeliNakyma(Container container, String pelaajanNimi) {
+    private void luoAlkuvalikonPaneelit() {
+        alkuvalikkoPanel = new AlkuvalikkoPanel(this);
+        nimenValintaPanel = new NimenValintaPanel(this);
+        ohjePanel = new OhjePanel(this);
+    }
+    
+    private void luoPelinakyma(Container container, String pelaajanNimi) {
         asetaPelaajaJaAlustaPelialue(pelaajanNimi);
         PelaajaTietoPanel pelaajaTietoPanel = new PelaajaTietoPanel(pelaaja);
         pelaajaTietoPanel.setPreferredSize(new Dimension(300, 600));
@@ -68,28 +82,40 @@ public class Kyla implements Runnable {
         frame.addKeyListener(new KomennonKuuntelija(pelaaja,tarinaPanel,pelaajaTietoPanel,metsa, areena,luola, parantaja));
     }
     
-    private void luoAlkuvalikko(Container container) {
-        AlkuvalikkoPanel alkuvalikko = new AlkuvalikkoPanel(this);
-        container.add(alkuvalikko);
-    }
-    
     /**
      * Asettaa pelinäkymän ja aloittaa uuden pelin.
      * @param pelaajanNimi uuden pelaajan nimi
      */
     public void aloitaUusiPeli(String pelaajanNimi) {
         tyhjenna();
-        luoPeliNakyma(frame.getContentPane(), pelaajanNimi);
+        luoPelinakyma(frame.getContentPane(), pelaajanNimi);
         piirraJaAsetaFokus();
     }
     
     /**
      * Asettaa näkymän nimen valintaa varten.
      */
-    public void uusiNimenValinta() {
+    public void asetaNimenValinta() {
         tyhjenna();
-        NimenValintaPanel nimenValinta = new NimenValintaPanel(this);
-        frame.getContentPane().add(nimenValinta);
+        frame.getContentPane().add(nimenValintaPanel);
+        piirraJaAsetaFokus();
+    }
+    
+    /**
+     * Asettaa alkuvalikon näkyviin.
+     */
+    public void asetaAlkuvalikko() {
+        tyhjenna();
+        frame.getContentPane().add(alkuvalikkoPanel);
+        piirraJaAsetaFokus();
+    }
+    
+    /**
+     * Asettaa ohjeen näkyviin.
+     */
+    public void asetaOhje() {
+        tyhjenna();
+        frame.getContentPane().add(ohjePanel);
         piirraJaAsetaFokus();
     }
     
