@@ -78,3 +78,10 @@ Lisää toiminnallisuutta, lisää grafiikkaa, korjattu hinnastojen ja valikoimi
 5 tuntia
 Testien parantelua, uusi pit, sekvenssikaaviot ym. dokumentoinnin päivitykset, parannuksia peliin
 
+07.06.2015
+3 tuntia
+Korjattu grafiikkaa, lisätty potionien osto ym
+
+10.06.2015
+3 tuntia
+Alkuvalikko ja nimen valinta
