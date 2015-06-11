@@ -1,6 +1,6 @@
 Dynaaminen tekstipohjainen rooli/seikkailupeli, jossa tavoitteena on etsiä ja tappaa kylääsi piinaava Punainen Paholainen. Tarina etenee tekstimuodossa, mutta käyttöliittymä ja toiminnot ovat graafisessa muodossa ja pelissä on tilanteeseen sopivia kuvia.
 
-Kylää ympäröivässä metsässä on monstereita, joita vastaan taistelemalla ansaitsee kultarahoja. Kultarahoilla voi ostaa parempia aseita, haarniskoja ja muita apuvälineitä, joiden avulla pärjää paremmin taisteluissa. Kylän taisteluareenalla voi haastaa kilpailevia taistelijoita ja edetä seuraavalle tasolle. Kun on tarpeeksi korkealla tasolla, voi lopulta etsia ja haastaa Punaisen Paholaisen.
+Kylää ympäröivässä metsässä on monstereita, joita vastaan taistelemalla voi ansaita kultarahoja. Kultarahoilla voi ostaa parempia aseita, haarniskoja ja muita apuvälineitä, joiden avulla pärjää paremmin taisteluissa. Kylän taisteluareenalla voi haastaa kilpailevia taistelijoita ja edetä seuraavalle tasolle. Kun on tarpeeksi korkealla tasolla, voi lopulta etsia ja haastaa Punaisen Paholaisen.
 
 Kylän asepajassa voi ostaa parempia aseita.
 - Aseen ostaminen: uuden aseen voi ostaa, jos pelaajalla on tarpeeksi rahaa ja hän on ensin myynyt vanhan aseensa. Ostaessa aseen hinta vähennetään pelaajan kultarahoista ja pelaaja saa aseen käteensä.
@@ -11,7 +11,8 @@ Haarniskakaupassa voi ostaa parempaa suojausta itselleen
 
 Taisteluareenalla voi kehittää omaa osaamistaan.
 - Haastetaan kilpailijoita (pelin hahmoja, jotka kilpailevat kanssasi siitä, kuka tappaa Punaisen Paholaisen ensimmäisenä. Kilpailijat eivät oikeasti kuitenkaan koskaan tule haastamaan Punaista Paholaista) taisteluun. Tarpeeksi voittopisteitä kerättyään nousee seuraavalle tasolle, jolloin metsästä löytyy kovempia ja rahakkaampia monstereita (rahalla saa parempia varusteita, joilla puolestaan on mahdollista nousta seuraavalla tasolle, jne.).
-- Kilpailijoita tulee jokaisella tasolla vastaan (taso+1) kappaletta. He ovat huomattavasti monstereite vahvempia, mutta yrittää voi kuinka monta kertaa tahansa.
+- Kilpailijoita tulee jokaisella tasolla vastaan (taso+1) kappaletta. He ovat huomattavasti monstereite vahvempia, mutta yrittää voi kuinka monta kertaa tahansa eikä sanktioita. Joissain tilanteissa varusteiden päivittäminen saattaa olla lähes välttämätöntä.
+- Ensimmäisen yrityksen alussa kilpailijat generoidaan perustuen pelaajaan vahvuuteen. Kilpailijan vahvuus säilyy alkuperäisenä uusissa yrityksissä vaikka pelaaja välillä päivittäisi varusteitaan.
 
 Metsässä taistellaan monstereita vastaan ja ansaitaan rahaa parempia varusteita varten
 - Etsimällä monsteria peli generoi sopivan tasoisen monsterin taisteluun. Monsterin vaikeus määräytyy pelaajan tason, lyontivoiman ja suojausvoiman perusteella. Voittamalla monsterin pelaajalla on enemmän kultarahoja käytettävissään, häviämällä menettää kaikki rahat. Useimmat monstereista ovat voitettavissa, loppujen kanssa tulee osata juosta karkuun välttääkseen kuoleman ja pelin loppumisen. Monsterien nimet arvotaan sattumanvaraisesti, mikään nimi ei ole sidoksissa tietyn tasoiseen monsteriin.

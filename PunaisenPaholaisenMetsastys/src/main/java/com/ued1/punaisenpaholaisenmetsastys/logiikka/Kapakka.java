@@ -31,6 +31,12 @@ public class Kapakka extends Kauppa {
     
     @Override
     public boolean osta(Pelaaja pelaaja, int ostoksenNumero) {
+        if(voikoPelaajaOstaaOstoksen(pelaaja, ostoksenNumero)) {
+            pelaaja.muutaRahoja(0 - (((Apu)getValikoima().get(ostoksenNumero)).arvo()));
+            ((Apu)getValikoima().get(ostoksenNumero)).auta();
+            return true;
+        }
+        
         return false;
     }
     

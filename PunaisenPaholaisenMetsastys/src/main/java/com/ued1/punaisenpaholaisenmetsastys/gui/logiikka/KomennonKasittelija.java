@@ -8,6 +8,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
@@ -196,9 +197,7 @@ public class KomennonKasittelija {
         if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.paivita(Paikka.KAPAKKA);
         } else if(komentoKoodi == KeyEvent.VK_1) {
-            if(pelaaja.getVointi() > 1) {
-                pelaaja.laskeVointia();
-            }
+            new Kapakka(pelaaja).osta(pelaaja, 1);
             paivittaja.paivita(Paikka.KANNI);
             pelaaja.setPaikka(Paikka.KAPAKKA);
         }

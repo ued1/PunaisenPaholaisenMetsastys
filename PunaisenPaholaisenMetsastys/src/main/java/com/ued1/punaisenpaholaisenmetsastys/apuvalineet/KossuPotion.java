@@ -21,7 +21,7 @@ public class KossuPotion implements Apu {
 
     @Override
     public boolean auta() {
-        if(pelaaja.onkoElossa()) {
+        if(pelaaja.getVointi()>1) {
             pelaaja.laskeVointia();
             return true;
         }

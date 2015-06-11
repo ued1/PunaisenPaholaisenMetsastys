@@ -43,6 +43,7 @@ public class Asepaja extends Kauppa {
      * @param aseenNumero Asevalikoimassa näkyvän aseen numero
      * @return oston onnistumisesta kertova totuusarvo, true jos osto onnistui 
      */
+    @Override
     public boolean osta(Pelaaja pelaaja, int aseenNumero) {
         if(aseenNumero >= getValikoima().size() || aseenNumero < 0) {
             return false;

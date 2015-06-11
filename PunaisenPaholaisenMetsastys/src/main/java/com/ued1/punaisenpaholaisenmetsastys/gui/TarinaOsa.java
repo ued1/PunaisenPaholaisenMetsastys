@@ -135,7 +135,13 @@ public class TarinaOsa extends JPanel {
 
     private void asetaKanni() {
         kuvanAsettaja.asetaKuva(eka, "Känni");
-        String kanni = "\nHumaltuminen laskee vointiasi yhdellä!\n\n";
+        String kanni = "";
+        if(pelaaja.getVointi() < 2) {
+            kanni += "\nOlet niin kännissä ettei vointisi\nvoi enää enempää laskea!";
+            kanni += "\nRahamääräsi kuitenkin jatkaa laskua.\n\n";
+        } else {
+            kanni = "\nHumaltuminen laskee vointiasi yhdellä!\n\n";
+        }
         kanni += kapakka.hinnastoMerkkijonona();
         toka.setText(kanni);
     }
