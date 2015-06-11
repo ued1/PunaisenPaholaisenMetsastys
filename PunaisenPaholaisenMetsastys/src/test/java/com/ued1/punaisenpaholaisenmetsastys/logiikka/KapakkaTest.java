@@ -52,5 +52,19 @@ public class KapakkaTest {
         assertTrue(kapakka.voikoPelaajaOstaaOstoksen(pelaaja, 2));
     }
     
+    @Test
+    public void pelaajaEiVoiOstaaValikoimanUlkopuolelta() {
+        assertFalse(kapakka.osta(pelaaja, -1));
+        assertFalse(kapakka.osta(pelaaja, 444));
+    }
+    
+    @Test
+    public void pelaajaVoiOstaaKossunKunRahaa() {
+        assertFalse(kapakka.osta(pelaaja, 1));
+        pelaaja.muutaRahoja(3);
+        assertTrue(kapakka.osta(pelaaja, 1));
+        pelaaja.muutaRahoja(1);
+        assertTrue(kapakka.osta(pelaaja, 1));
+    }
             
 }

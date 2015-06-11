@@ -87,6 +87,6 @@ Korjattu grafiikkaa, lisätty potionien osto ym
 Alkuvalikot ja nimen valinta, testejä, pit, ym
 
 11.06.2015
-5 tuntia
-JavaDoc lisäyksiä, Kapakan parantelua, sekvenssikaaviot, muiden dokumenttien päivitys
+8 tuntia
+Kylään lisätty Casino, Kapakan parantelua, JavaDoc lisäyksiä, sekvenssikaaviot, testejä, pit, ja muiden dokumenttien päivitys
 
