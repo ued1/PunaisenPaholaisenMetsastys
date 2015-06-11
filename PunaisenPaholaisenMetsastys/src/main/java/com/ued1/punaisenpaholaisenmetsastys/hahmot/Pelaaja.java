@@ -55,7 +55,7 @@ public class Pelaaja extends Hahmo {
     }
     
     /**
-     * Metodi palauttaa pelaajan lyöntivoiman.
+     * Metodi palauttaa pelaajan maksimilyöntivoiman.
      * 
      * @return lyöntivoima kokonaislukuna
      */
@@ -86,10 +86,21 @@ public class Pelaaja extends Hahmo {
         return rahat;
     }
     
+    
+    /**
+     * Palauttaa pelaajalla olevien potionien määrän.
+     * 
+     * @return potionien määrä, kokonaisluku 0..5.
+     */
     public int getPotionit() {
         return potionit;
     }
     
+    /**
+     * Metodi asettaa potionien määrän. Potioneja voi olla 0-5.
+     * 
+     * @param maara potionien uusi määrä, pakotetaan välille 0-5.
+     */
     public void setPotionit(int maara) {
         potionit = maara;
         if(potionit < 0) {
@@ -103,7 +114,7 @@ public class Pelaaja extends Hahmo {
      * Metodi muuttaa pelaajan rahoja. Pelaajan rahat voiva olla väliltä
      * 0..200000000.
      * 
-     * @param muutos kokonaisluku joka lisätään pelaajan rahoihin 
+     * @param muutos kokonaisluku joka lisätään pelaajan rahoihin
      */
     public void muutaRahoja(int muutos) {
         rahat += muutos;

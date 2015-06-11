@@ -1,4 +1,3 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
@@ -21,7 +20,7 @@ import javax.swing.JTextArea;
  * tilanteeseen sopivan tekstin käyttäjän näkyville.
  */
 public class TarinaOsa extends JPanel {
-        
+
     private Pelaaja pelaaja;
     private Asepaja asepaja;
     private Haarniskakauppa haarniskakauppa;
@@ -33,9 +32,9 @@ public class TarinaOsa extends JPanel {
     private Kapakka kapakka;
     private Luola luola;
     private Parantaja parantaja;
-    
+
     public TarinaOsa(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja) {
-        super(new GridLayout(2,1));
+        super(new GridLayout(2, 1));
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
         this.haarniskakauppa = new Haarniskakauppa();
@@ -47,7 +46,7 @@ public class TarinaOsa extends JPanel {
         kuvanAsettaja = new KuvanAsettaja();
         luoKomponentit();
     }
-    
+
     private void luoKomponentit() {
         eka = new JLabel();
         toka = new JTextArea();
@@ -57,57 +56,55 @@ public class TarinaOsa extends JPanel {
         add(eka);
         add(toka);
     }
-    
+
     /**
      * Metodi päivittää tarinapaneelin tarinaosan.
      */
     public void paivita() {
-        if(pelaaja.getPaikka() == Paikka.KYLA) {
+        if (pelaaja.getPaikka() == Paikka.KYLA) {
             asetaKyla();
-        } else if(pelaaja.getPaikka() == Paikka.ASEPAJA) {
+        } else if (pelaaja.getPaikka() == Paikka.ASEPAJA) {
             asetaAsepaja();
-        } else if(pelaaja.getPaikka() == Paikka.HAARNISKAKAUPPA) {
+        } else if (pelaaja.getPaikka() == Paikka.HAARNISKAKAUPPA) {
             asetaHaarniskaKauppa();
-        } else if(pelaaja.getPaikka() == Paikka.METSA) {
+        } else if (pelaaja.getPaikka() == Paikka.METSA) {
             asetaMetsa();
-        } else if(pelaaja.getPaikka() == Paikka.ASEENOSTO) {
+        } else if (pelaaja.getPaikka() == Paikka.ASEENOSTO) {
             asetaAseenOsto();
-        } else if(pelaaja.getPaikka() == Paikka.ASEENMYYNTI) {
+        } else if (pelaaja.getPaikka() == Paikka.ASEENMYYNTI) {
             asetaAseenMyynti();
-        } else if(pelaaja.getPaikka() == Paikka.MONSTERITAISTELU) {
+        } else if (pelaaja.getPaikka() == Paikka.MONSTERITAISTELU) {
             asetaMonsteriTaistelu();
-        } else if(pelaaja.getPaikka() == Paikka.MONSTERITAISTELUTAPPIO) {
+        } else if (pelaaja.getPaikka() == Paikka.MONSTERITAISTELUTAPPIO) {
             asetaMonsteriTaisteluTappio();
-        } else if(pelaaja.getPaikka() == Paikka.TAISTELUAREENA) {
+        } else if (pelaaja.getPaikka() == Paikka.TAISTELUAREENA) {
             asetaTaisteluAreena();
-        } else if(pelaaja.getPaikka() == Paikka.TAISTELUAREENAEI) {
+        } else if (pelaaja.getPaikka() == Paikka.TAISTELUAREENAEI) {
             asetaTaisteluAreenaEi();
-        } else if(pelaaja.getPaikka() == Paikka.AREENATAISTELU) {
+        } else if (pelaaja.getPaikka() == Paikka.AREENATAISTELU) {
             asetaAreenaTaistelu();
-        } else if(pelaaja.getPaikka() == Paikka.TAISTELUAREENATULOS) {
+        } else if (pelaaja.getPaikka() == Paikka.TAISTELUAREENATULOS) {
             asetaTaisteluAreenaTulos();
-        } else if(pelaaja.getPaikka() == Paikka.KAPAKKA) {
+        } else if (pelaaja.getPaikka() == Paikka.KAPAKKA) {
             asetaKapakka();
-        } else if(pelaaja.getPaikka() == Paikka.LUOLA) {
+        } else if (pelaaja.getPaikka() == Paikka.LUOLA) {
             asetaLuola();
-        } else if(pelaaja.getPaikka() == Paikka.PAHOLAINEN) {
+        } else if (pelaaja.getPaikka() == Paikka.PAHOLAINEN) {
             asetaPaholainen();
-        } else if(pelaaja.getPaikka() == Paikka.PAHOLAINENTAPPIO) {
+        } else if (pelaaja.getPaikka() == Paikka.PAHOLAINENTAPPIO) {
             asetaPaholainenTappio();
-        } else if(pelaaja.getPaikka() == Paikka.KAPAKKAOSTO) {
+        } else if (pelaaja.getPaikka() == Paikka.KAPAKKAOSTO) {
             asetaKapakkaOsto();
-        } else if(pelaaja.getPaikka() == Paikka.KANNI) {
+        } else if (pelaaja.getPaikka() == Paikka.KANNI) {
             asetaKanni();
-        } else if(pelaaja.getPaikka() == Paikka.HAARNISKANOSTO) {
+        } else if (pelaaja.getPaikka() == Paikka.HAARNISKANOSTO) {
             asetaHaarniskaOsto();
-        } else if(pelaaja.getPaikka() == Paikka.PARANTAJA) {
+        } else if (pelaaja.getPaikka() == Paikka.PARANTAJA) {
             asetaParantaja();
         }
-        
-        
-        
+
     }
-    
+
     private void asetaKyla() {
         kuvanAsettaja.asetaKuva(eka, "Kylä");
         String kuvaus = "Tämä on kyläsi.";
@@ -120,34 +117,34 @@ public class TarinaOsa extends JPanel {
         kuvaus += "\nsaat lisää kultarahoja.";
         toka.setText(kuvaus);
     }
-    
+
     private void asetaAsepaja() {
         kuvanAsettaja.asetaKuva(eka, "Asepaja");
         toka.setText(asepaja.hinnastoMerkkijonona());
     }
-    
+
     private void asetaHaarniskaKauppa() {
         kuvanAsettaja.asetaKuva(eka, "Haarniskakauppa");
         toka.setText(haarniskakauppa.hinnastoMerkkijonona());
     }
-    
+
     private void asetaKapakka() {
         kuvanAsettaja.asetaKuva(eka, "Kapakka");
         toka.setText(kapakka.hinnastoMerkkijonona());
     }
-    
+
     private void asetaKanni() {
         kuvanAsettaja.asetaKuva(eka, "Känni");
         String kanni = "\nHumaltuminen laskee vointiasi yhdellä!\n\n";
         kanni += kapakka.hinnastoMerkkijonona();
         toka.setText(kanni);
     }
-    
+
     private void asetaParantaja() {
         kuvanAsettaja.asetaKuva(eka, "Parantaja");
         toka.setText(parantaja.getKuvaus(pelaaja));
     }
-    
+
     private void asetaMetsa() {
         kuvanAsettaja.asetaKuva(eka, "Metsä");
         String kuvaus = "\nMetsässä voit taistella monstereita vastaan";
@@ -157,41 +154,41 @@ public class TarinaOsa extends JPanel {
         kuvaus += "\nkun et ole taistelussa.";
         toka.setText(kuvaus);
     }
-    
+
     private void asetaLuola() {
         kuvanAsettaja.asetaKuva(eka, "Luola");
         String teksti = "Olet löytänyt luolan, missä asuu\n";
         teksti += "Punainen Paholainen.\n\n";
         toka.setText(teksti);
     }
-        
+
     private void asetaAseenOsto() {
         toka.setText(asepaja.ostettavissaOlevat(pelaaja));
     }
-    
+
     private void asetaHaarniskaOsto() {
         toka.setText(haarniskakauppa.ostettavissaOlevat(pelaaja));
     }
-    
+
     private void asetaAseenMyynti() {
-        if(asepaja.voikoMyydaAseen(pelaaja)) {
+        if (asepaja.voikoMyydaAseen(pelaaja)) {
             toka.setText("ohje aseen myyntiin");
         } else {
             toka.setText("Et voi myydä omaa nyrkkiäsi");
         }
     }
-    
+
     private void asetaKapakkaOsto() {
         kuvanAsettaja.asetaKuva(eka, "Kapakka");
         toka.setText(kapakka.ostettavissaOlevat(pelaaja));
     }
-    
+
     private void asetaMonsteriTaistelu() {
         String tilanne = metsa.getTaistelu().vastustaja().tiedotMerkkijonona();
-        if(metsa.getTaistelu().onkoAlkanut()) {
+        if (metsa.getTaistelu().onkoKaynnissa()) {
             tilanne += "\n\nOsuit monsteriin: " + metsa.getTaistelu().getEkaIsku() + " osumapistettä";
             tilanne += "\nMonsteri";
-            if(metsa.getTaistelu().getTokaIsku() < 1) {
+            if (metsa.getTaistelu().getTokaIsku() < 1) {
                 tilanne += " ei osunut sinuun.";
             } else {
                 tilanne += " osui sinuun: " + metsa.getTaistelu().getTokaIsku() + " osumapistettä";
@@ -200,46 +197,44 @@ public class TarinaOsa extends JPanel {
         }
         toka.setText(tilanne);
     }
-    
-    // TODO: yhdistä ylä ja ala
-    
+
     private void asetaPaholainen() {
         kuvanAsettaja.asetaKuva(eka, "Paholainen");
         toka.setText(luola.getTaistelu().vastustaja().tiedotMerkkijonona());
     }
-    
+
     private void asetaAreenaTaistelu() {
         kuvanAsettaja.asetaKuva(eka, "AreenaTaistelu");
         toka.setText(areena.getVastustajanTiedot());
     }
-    
+
     private void asetaMonsteriTaisteluTappio() {
         kuvanAsettaja.asetaKuva(eka, "Taistelutappio");
         String tokateksti = ("Hävisit taistelun!\n\nMonsteri päätti säästää henkesi,");
-        if(pelaaja.getRahat() > 0) {
+        if (pelaaja.getRahat() > 0) {
             tokateksti += "\nmutta vie voittopalkkiona kultarahasi,";
             tokateksti += "\n" + pelaaja.getRahat() + ",";
         }
         tokateksti += "\nlevättyäsi olet taas voimissasi";
         toka.setText(tokateksti);
     }
-    
+
     private void asetaPaholainenTappio() {
         String teksti = "Hävisit paholaiselle.";
         teksti += "\n\nPaholainen ottaa haarniskasi ja kaikki rahasi,";
         teksti += "\nmutta säästää henkesi.";
         toka.setText(teksti);
     }
-    
+
     private void asetaTaisteluAreena() {
         kuvanAsettaja.asetaKuva(eka, "Taisteluareena");;
         String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Noustaksesi seuraavalle";
         tokateksti += "\ntasolle sinun on voitettava vielä " + areena.getOtteluitaJaljella() + " ottelua.\n\n";
         tokateksti += areena.getVastustajanTiedot();
-        
+
         toka.setText(tokateksti);
     }
-    
+
     private void asetaTaisteluAreenaEi() {
         kuvanAsettaja.asetaKuva(eka, "Taisteluareena");;
         // TODO: teksti jos on jo level 10
@@ -250,10 +245,10 @@ public class TarinaOsa extends JPanel {
         tokateksti += "\nTarvittava kokemus: " + areena.seuraavanTasonKokemus();
         toka.setText(tokateksti);
     }
-    
+
     private void asetaTaisteluAreenaTulos() {
         String tokateksti = "";
-        if(pelaaja.onkoElossa()) {
+        if (pelaaja.onkoElossa()) {
             kuvanAsettaja.asetaKuva(eka, "Taisteluvoitto");
             tokateksti += "Voitit taistelun!\n\n";
             tokateksti += "Voit palata takaisin areenaan heti kun\n";
@@ -267,5 +262,5 @@ public class TarinaOsa extends JPanel {
         toka.setText(tokateksti);
         areena.asetaTaistelunTulos();
     }
-        
+
 }

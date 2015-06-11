@@ -62,7 +62,7 @@ public class TaisteluTest {
     @Test
     public void taisteluAlkanutKunMolemmatLyo() {
         assertFalse(tasainenTaistelu.taistele());
-        assertTrue(tasainenTaistelu.onkoAlkanut());
+        assertTrue(tasainenTaistelu.onkoKaynnissa());
     }
     
 
@@ -74,7 +74,7 @@ public class TaisteluTest {
     
     @Test
     public void taisteluEiAlkanutJosKumpikaanEiLyonyt() {
-        assertFalse(tasainenTaistelu.onkoAlkanut());
+        assertFalse(tasainenTaistelu.onkoKaynnissa());
     }
     
     @Test
@@ -84,7 +84,7 @@ public class TaisteluTest {
             pelaaja.laskeVointia();
         }
         assertTrue(kovisTaistelu.taistele());
-        assertFalse(kovisTaistelu.onkoAlkanut());
+        assertFalse(kovisTaistelu.onkoKaynnissa());
     }
     
     

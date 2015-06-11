@@ -20,6 +20,7 @@ public class NimenValintaPanel extends JPanel {
     private JButton takaisin;
     private JTextField nimikentta;
     private JTextArea virhekentta;
+    private JLabel valitseNimi;
     private NimenValinnanKuuntelija kuuntelija;
     private final String ohje;
 
@@ -31,8 +32,7 @@ public class NimenValintaPanel extends JPanel {
         this.nimikentta = new JTextField("");
         this.virhekentta = new JTextArea(ohje);
         this.kuuntelija = new NimenValinnanKuuntelija(this, kyla, aloita, takaisin, nimikentta, virhekentta);
-        
-        luoKomponentit();
+        alusta();
     }
     
     private String luoOhje() {
@@ -43,9 +43,11 @@ public class NimenValintaPanel extends JPanel {
         return ohjeTeksti;
     }
 
-    private void luoKomponentit() {
+    private void alusta() {
+        
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.BLACK);
+        
         nimikentta.setMaximumSize(new Dimension(100, 25));
         nimikentta.setAlignmentX(CENTER_ALIGNMENT);
         virhekentta.setEditable(false);
@@ -54,13 +56,17 @@ public class NimenValintaPanel extends JPanel {
         virhekentta.setMinimumSize(new Dimension(300, 75));
         virhekentta.setAlignmentX(CENTER_ALIGNMENT);
         
-        JLabel valitseNimi = new JLabel("Valitse pelaajanimesi:");
+        valitseNimi = new JLabel("Valitse pelaajanimesi:");
         valitseNimi.setForeground(Color.RED);
         valitseNimi.setAlignmentX(CENTER_ALIGNMENT);
         
         asetaNormaaliTila();
         lisaaKuuntelijat();
+        lisaaKomponentit();
         
+    }
+    
+    private void lisaaKomponentit() {
         add(new JLabel(" "));
         add(new JLabel(" "));
         add(valitseNimi);
@@ -72,7 +78,6 @@ public class NimenValintaPanel extends JPanel {
         add(aloita);
         add(new JLabel(" "));
         add(takaisin);
-        
     }
     
     private void lisaaKuuntelijat() {

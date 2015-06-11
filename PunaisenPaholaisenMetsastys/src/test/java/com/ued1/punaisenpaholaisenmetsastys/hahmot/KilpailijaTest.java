@@ -12,9 +12,9 @@ public class KilpailijaTest {
     
     private Kilpailija kilpailija;
     private Kilpailija toinenKilpailija;
-    private String[] nimet = {"Ajeltu Luolamies", "Pillastunut Assari", "Pasi Puunhalaaja",
+    private String[] nimet = {"Ajeltu Luolamies", "Pillastunut Assari",
             "Alaston Anoppi", "Usko Eevertti", "Kenraali Kalsareissa", "Parraton Gandalf",
-            "Karannut Vanki", "Kapteeni Koukku", "Tekstaileva Ministeri", "Batman Valeasussa",
+            "Karannut Vanki", "Kapteeni Koukku", "Batman Valeasussa",
             "Per Saukko", "Veli Sikiö", "Raitis Juoppo", "Karvainen Munkki",
             "Isoperseinen Anorektikko", "Kuntoileva Pyhimys", "Pullisteleva Putin"};
     

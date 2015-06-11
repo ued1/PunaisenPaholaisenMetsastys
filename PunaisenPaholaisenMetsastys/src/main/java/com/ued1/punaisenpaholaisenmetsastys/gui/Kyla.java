@@ -1,7 +1,6 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
-import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.AlkuvalikonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
@@ -11,7 +10,6 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -32,9 +30,7 @@ public class Kyla implements Runnable {
     private AlkuvalikkoPanel alkuvalikkoPanel;
     private OhjePanel ohjePanel;
     private NimenValintaPanel nimenValintaPanel;
-    
-    
-    
+        
     public Kyla() {
     }
         
@@ -87,7 +83,7 @@ public class Kyla implements Runnable {
      * @param pelaajanNimi uuden pelaajan nimi
      */
     public void aloitaUusiPeli(String pelaajanNimi) {
-        tyhjenna();
+        tyhjennaFrame();
         luoPelinakyma(frame.getContentPane(), pelaajanNimi);
         piirraJaAsetaFokus();
     }
@@ -96,7 +92,7 @@ public class Kyla implements Runnable {
      * Asettaa näkymän nimen valintaa varten.
      */
     public void asetaNimenValinta() {
-        tyhjenna();
+        tyhjennaFrame();
         frame.getContentPane().add(nimenValintaPanel);
         piirraJaAsetaFokus();
     }
@@ -105,7 +101,7 @@ public class Kyla implements Runnable {
      * Asettaa alkuvalikon näkyviin.
      */
     public void asetaAlkuvalikko() {
-        tyhjenna();
+        tyhjennaFrame();
         frame.getContentPane().add(alkuvalikkoPanel);
         piirraJaAsetaFokus();
     }
@@ -114,17 +110,17 @@ public class Kyla implements Runnable {
      * Asettaa ohjeen näkyviin.
      */
     public void asetaOhje() {
-        tyhjenna();
+        tyhjennaFrame();
         frame.getContentPane().add(ohjePanel);
         piirraJaAsetaFokus();
     }
-    
-    private void tyhjenna() {
+        
+    private void tyhjennaFrame() {
         frame.getContentPane().removeAll();
         frame.getContentPane().invalidate();
         frame.getContentPane().revalidate();
     }
-    
+        
     private void piirraJaAsetaFokus() {
         frame.repaint();
         frame.requestFocusInWindow();

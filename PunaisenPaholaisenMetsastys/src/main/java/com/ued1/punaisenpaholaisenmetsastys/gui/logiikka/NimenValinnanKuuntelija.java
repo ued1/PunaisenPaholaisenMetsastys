@@ -38,7 +38,7 @@ public class NimenValinnanKuuntelija implements ActionListener {
         } else if (e.getSource() == aloita) {
             hoidaAloitaNappi();
         } else if(e.getSource() == nimikentta) {
-            hoidaEnterNappi();
+            hoidaEnterNappain();
         }
     }
 
@@ -52,7 +52,7 @@ public class NimenValinnanKuuntelija implements ActionListener {
         }
     }
 
-    private void hoidaEnterNappi() {
+    private void hoidaEnterNappain() {
         NimenValidoija validoija = new NimenValidoija();
         if (!validoija.tarkista(nimikentta.getText())) {
             nimenValintaPanel.asetaVirheTila();

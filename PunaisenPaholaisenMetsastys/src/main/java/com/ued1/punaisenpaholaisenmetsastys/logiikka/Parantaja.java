@@ -1,7 +1,5 @@
 package com.ued1.punaisenpaholaisenmetsastys.logiikka;
 
-import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Apu;
-import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.VihannesPotion;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 
 /**
@@ -10,6 +8,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
  */
 public class Parantaja {
 
+    // Tasokohtainen hinta.
     private final int[] hinta = {0, 150, 300, 1500, 3000, 15000, 150000, 300000, 1500000, 3000000, 15000000};
 
     public Parantaja() {
@@ -77,7 +76,6 @@ public class Parantaja {
             kuvaus += "\nrahaa. Tarvitset " + (erotus);
             kuvaus += " lisää.";
         }
-
         kuvaus += "\n\nVoit kantaa enintään viittä VihannesPotionia";
         kuvaus += "\nsamaan aikaan.";
         return kuvaus;

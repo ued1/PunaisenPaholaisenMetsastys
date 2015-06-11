@@ -5,12 +5,11 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * Luokka piirtää ja ylläpitää ruudun oikeassa laidassa olevaan
+ * Luokka piirtää ja ylläpitää ruudun oikeassa laidassa olevaa
  * pelaajatietopaneelia. Paneelissa on esillä pelaajan ominaisuudet, jotka
  * päivittyvät muutosten tapahtuessa.
  */
@@ -29,7 +28,7 @@ public class PelaajaTietoPanel extends JPanel {
     private KuvanAsettaja ikoninAsettaja;
 
     public PelaajaTietoPanel(Pelaaja pelaaja) {
-        super(new GridLayout(10, 2));    // pienennä poisteassa paikkatieto
+        super(new GridLayout(10, 2));
         this.pelaaja = pelaaja;
         tasoTeksti = new JLabel();
         kokemusTeksti = new JLabel();

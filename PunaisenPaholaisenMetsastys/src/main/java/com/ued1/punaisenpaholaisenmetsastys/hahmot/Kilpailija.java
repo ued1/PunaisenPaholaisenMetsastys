@@ -26,9 +26,9 @@ public class Kilpailija extends Hahmo {
     }
 
     private String arvoNimi() {
-        String[] nimet = {"Ajeltu Luolamies", "Pillastunut Assari", "Pasi Puunhalaaja",
+        String[] nimet = {"Ajeltu Luolamies", "Pillastunut Assari",
             "Alaston Anoppi", "Usko Eevertti", "Kenraali Kalsareissa", "Parraton Gandalf",
-            "Karannut Vanki", "Kapteeni Koukku", "Tekstaileva Ministeri", "Batman Valeasussa",
+            "Karannut Vanki", "Kapteeni Koukku", "Batman Valeasussa",
             "Per Saukko", "Veli Sikiö", "Raitis Juoppo", "Karvainen Munkki",
             "Isoperseinen Anorektikko", "Kuntoileva Pyhimys", "Pullisteleva Putin"};
         Random randomluku = new Random();

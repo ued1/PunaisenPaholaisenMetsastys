@@ -37,7 +37,7 @@ public class LuolaTest {
     
     @Test
     public void taisteluEiAlaItsestaan() {
-        assertFalse(luola.getTaistelu().onkoAlkanut());
+        assertFalse(luola.getTaistelu().onkoKaynnissa());
     }
     
     @Test
