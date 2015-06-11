@@ -4,6 +4,7 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Casino;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
@@ -29,7 +30,7 @@ public class KomentoOsa extends JPanel {
     }
     
     private void luoKomponentit() {
-        komentoValikko = new JTextArea("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[T]aisteluareena");
+        komentoValikko = new JTextArea("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[C]asino\n[T]aisteluareena");
         komentoValikko.setFocusable(false);
         komentoValikko.setFont(fontti);
         add(komentoValikko);
@@ -43,7 +44,7 @@ public class KomentoOsa extends JPanel {
     public void paivita(Paikka uusiPaikka) {
         komentoValikko.setFont(fontti);
         if(uusiPaikka == Paikka.KYLA) {
-            komentoValikko.setText("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[T]aisteluareena");
+            komentoValikko.setText("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[C]asino\n[T]aisteluareena");
         } else if(uusiPaikka == Paikka.ASEPAJA) {
             komentoValikko.setText("[O]sta ase\n[M]yy asee\n[T]akaisin");
         } else if(uusiPaikka == Paikka.HAARNISKAKAUPPA) {
@@ -92,6 +93,13 @@ public class KomentoOsa extends JPanel {
             } else {
                 komentoValikko.setText("[P]aranna\n[T]akaisin");
             }
+        } else if(uusiPaikka == Paikka.CASINO) {
+            String komennot = new Casino().getKomennot(pelaaja);
+            komentoValikko.setText(komennot);
+        } else if(uusiPaikka == Paikka.PEUKKUPELI) {
+            komentoValikko.setText("[A]loita\n[T]akaisin");
+        } else if(uusiPaikka == Paikka.PEUKKUTULOS) {
+            komentoValikko.setText("[T]akaisin");
         }
     }
     

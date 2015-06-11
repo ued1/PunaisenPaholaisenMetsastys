@@ -4,6 +4,7 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Casino;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
@@ -23,10 +24,10 @@ public class TarinaPanel extends JPanel {
     private KomentoOsa komentoOsa;
     private TarinaOsa tarinaOsa;
         
-    public TarinaPanel(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja) {
+    public TarinaPanel(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja, Casino casino) {
         this.pelaaja = pelaaja;
         this.komentoOsa = new KomentoOsa(pelaaja);
-        this.tarinaOsa = new TarinaOsa(pelaaja, metsa, areena, luola, parantaja);
+        this.tarinaOsa = new TarinaOsa(pelaaja, metsa, areena, luola, parantaja, casino);
         luoKomponentit();
     }
     

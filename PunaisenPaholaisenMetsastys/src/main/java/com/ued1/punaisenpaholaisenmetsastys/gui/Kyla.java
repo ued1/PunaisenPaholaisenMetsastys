@@ -4,6 +4,7 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Casino;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
@@ -26,6 +27,7 @@ public class Kyla implements Runnable {
     private Areena areena;
     private Luola luola;
     private Parantaja parantaja;
+    private Casino casino;
     
     private AlkuvalikkoPanel alkuvalikkoPanel;
     private OhjePanel ohjePanel;
@@ -55,6 +57,7 @@ public class Kyla implements Runnable {
         this.areena = new Areena(pelaaja);
         this.luola = new Luola(pelaaja);
         this.parantaja = new Parantaja();
+        this.casino = new Casino();
     }
     
     private void luoAlkuvalikonPaneelit() {
@@ -69,7 +72,7 @@ public class Kyla implements Runnable {
         pelaajaTietoPanel.setPreferredSize(new Dimension(300, 600));
         pelaajaTietoPanel.setMinimumSize(new Dimension(300, 600));
         pelaajaTietoPanel.setMaximumSize(new Dimension(300, 600));
-        tarinaPanel = new TarinaPanel(pelaaja, metsa, areena, luola, parantaja);
+        tarinaPanel = new TarinaPanel(pelaaja, metsa, areena, luola, parantaja, casino);
         tarinaPanel.setPreferredSize(new Dimension(300,600));
         tarinaPanel.setMinimumSize(new Dimension(300,600));
         tarinaPanel.setMaximumSize(new Dimension(300,600));

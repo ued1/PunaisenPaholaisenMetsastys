@@ -5,6 +5,7 @@ import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Casino;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
@@ -32,8 +33,9 @@ public class TarinaOsa extends JPanel {
     private Kapakka kapakka;
     private Luola luola;
     private Parantaja parantaja;
+    private Casino casino;
 
-    public TarinaOsa(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja) {
+    public TarinaOsa(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja, Casino casino) {
         super(new GridLayout(2, 1));
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
@@ -43,6 +45,7 @@ public class TarinaOsa extends JPanel {
         this.kapakka = new Kapakka(pelaaja);
         this.luola = luola;
         this.parantaja = parantaja;
+        this.casino = casino;
         kuvanAsettaja = new KuvanAsettaja();
         luoKomponentit();
     }
@@ -101,6 +104,12 @@ public class TarinaOsa extends JPanel {
             asetaHaarniskaOsto();
         } else if (pelaaja.getPaikka() == Paikka.PARANTAJA) {
             asetaParantaja();
+        } else if (pelaaja.getPaikka() == Paikka.CASINO) {
+            asetaCasino();
+        } else if (pelaaja.getPaikka() == Paikka.PEUKKUPELI) {
+            asetaPeukkupeli();
+        } else if (pelaaja.getPaikka() == Paikka.PEUKKUTULOS) {
+            asetaPeukkupeliTulos();
         }
 
     }
@@ -131,6 +140,27 @@ public class TarinaOsa extends JPanel {
     private void asetaKapakka() {
         kuvanAsettaja.asetaKuva(eka, "Kapakka");
         toka.setText(kapakka.hinnastoMerkkijonona());
+    }
+    
+    private void asetaCasino() {
+        kuvanAsettaja.asetaKuva(eka, "Casino");
+        toka.setText(casino.getCasinoKuvaus(pelaaja));
+    }
+    
+    private void asetaPeukkupeli() {
+        kuvanAsettaja.asetaKuva(eka, "Peukkupeli");
+        toka.setText(casino.getPeukkupeliKuvaus());
+    }
+    
+    private void asetaPeukkupeliTulos() {
+        if(new Casino().pelaaPeukkua(pelaaja)) {
+            kuvanAsettaja.asetaKuva(eka, "Peukku ylös");
+            toka.setText("\nVoitit! Rahasi on tuplattu!");
+        } else {
+            kuvanAsettaja.asetaKuva(eka, "Peukku alas");
+            toka.setText("\nHävisit. Menenit kaikki rahasi.");
+        }
+        
     }
 
     private void asetaKanni() {

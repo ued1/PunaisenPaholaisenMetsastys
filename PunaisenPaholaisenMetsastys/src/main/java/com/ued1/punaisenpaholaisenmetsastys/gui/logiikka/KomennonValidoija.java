@@ -42,7 +42,7 @@ public class KomennonValidoija {
             return hoidaMetsa(koodi);
         } else if (paikka == Paikka.MONSTERITAISTELU) {
             return hoidaMonsteritaistelu(koodi);
-        } else if (paikka == Paikka.TAISTELUAREENA) {
+        } else if (paikka == Paikka.TAISTELUAREENA || paikka == Paikka.PEUKKUPELI) {
             return hoidaTaisteluAreena(koodi);
         } else if (paikka == Paikka.ASEENOSTO) {
             return hoidaAseenOsto(koodi);
@@ -54,7 +54,7 @@ public class KomennonValidoija {
             return hoidaKapakkaOsto(koodi);
         } else if (paikka == Paikka.MONSTERITAISTELUTAPPIO || paikka == Paikka.PAHOLAINENTAPPIO || paikka == Paikka.TAISTELUAREENATULOS) {
             return hoidaJatka(koodi);
-        } else if (paikka == Paikka.TAISTELUAREENAEI) {
+        } else if (paikka == Paikka.TAISTELUAREENAEI || paikka == Paikka.PEUKKUTULOS) {
             return hoidaTakaisin(koodi);
         } else if (paikka == Paikka.AREENATAISTELU || paikka == Paikka.PAHOLAINEN) {
             return hoidaLyonti(koodi);
@@ -62,13 +62,15 @@ public class KomennonValidoija {
             return hoidaLuola(koodi);
         } else if (paikka == Paikka.PARANTAJA) {
             return hoidaParantaja(koodi);
+        } else if (paikka == Paikka.CASINO) {
+            return hoidaCasino(koodi);
         }
         return false;
     }
 
     // Kylä: [M]etsa [A]sepaja [H]aarniskakauppa [T]aisteluareena [K]apakka [P]arantaja
     private boolean hoidaKyla(int koodi) {
-        if (koodi == KeyEvent.VK_M || koodi == KeyEvent.VK_A || koodi == KeyEvent.VK_H || koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_K || koodi == KeyEvent.VK_P) {
+        if (koodi == KeyEvent.VK_M || koodi == KeyEvent.VK_A || koodi == KeyEvent.VK_H || koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_K || koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_C) {
             return true;
         }
         return false;
@@ -108,7 +110,7 @@ public class KomennonValidoija {
         return false;
     }
 
-    // Taisteluareena: [A]stu areenaan [T]akaisin
+    // Taisteluareena, Peukkupeli: [A] [T]akaisin
     private boolean hoidaTaisteluAreena(int koodi) {
         if (koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_A) {
             return true;
@@ -205,5 +207,14 @@ public class KomennonValidoija {
         }
         return false;
     }
+    
+    // Casino: [P]eukku [T]akaisin
+    private boolean hoidaCasino(int koodi) {
+        if ((koodi == KeyEvent.VK_P && pelaaja.getRahat() > 0) || koodi == KeyEvent.VK_T) {
+            return true;
+        }
+        return false;
+    }
+        
 
 }

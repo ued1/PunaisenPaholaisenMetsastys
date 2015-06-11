@@ -88,6 +88,12 @@ public class KomennonKasittelija {
             kasitteleAvunOstoKomento(komentoKoodi);
         } else if(paikka == Paikka.PARANTAJA) {
             kasitteleParantajaKomento(komentoKoodi);
+        } else if(paikka == Paikka.CASINO) {
+            kasitteleCasinoKomento(komentoKoodi);
+        } else if(paikka == Paikka.PEUKKUPELI) {
+            kasittelePeukkupeliKomento(komentoKoodi);
+        } else if(paikka == Paikka.PEUKKUTULOS) {
+            kasittelePeukkuTulosKomento(komentoKoodi);
         }
     }
     
@@ -108,6 +114,8 @@ public class KomennonKasittelija {
             paivittaja.paivita(Paikka.KAPAKKA);
         } else if(komentoKoodi == KeyEvent.VK_P) {
             paivittaja.paivita(Paikka.PARANTAJA);
+        } else if(komentoKoodi == KeyEvent.VK_C) {
+            paivittaja.paivita(Paikka.CASINO);
         }
     }
     
@@ -150,6 +158,22 @@ public class KomennonKasittelija {
             paivittaja.paivita(Paikka.KAPAKKAOSTO);
         } else if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.paivita(Paikka.KYLA);
+        }
+    }
+    
+    private void kasitteleCasinoKomento(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_P) {
+            paivittaja.paivita(Paikka.PEUKKUPELI);
+        } else if(komentoKoodi == KeyEvent.VK_T) {
+            paivittaja.paivita(Paikka.KYLA);
+        }
+    }
+    
+    private void kasittelePeukkupeliKomento(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_A) {
+            paivittaja.paivita(Paikka.PEUKKUTULOS);
+        } else if(komentoKoodi == KeyEvent.VK_T) {
+            paivittaja.paivita(Paikka.CASINO);
         }
     }
     
@@ -308,6 +332,12 @@ public class KomennonKasittelija {
     private void kasitteleTaisteluAreenaTulos(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_J) {
             paivittaja.paivita(Paikka.KYLA);
+        }
+    }
+    
+    private void kasittelePeukkuTulosKomento(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_T) {
+            paivittaja.paivita(Paikka.CASINO);
         }
     }
     

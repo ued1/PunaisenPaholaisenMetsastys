@@ -27,5 +27,7 @@ Kylässä on myös kapakka, mistä voi ostaa apuvälineitä. Apuvälineet auttav
 
 Kylän parantaja parantaa pelaajan tarvittaessa. Parantajalta voi myös ostaa potioneja, joilla voi itse parantaa itsensä.
 
+Kylän Casinolla voi pelata uhkapelejä. Peleissä on mahdollista mm. tuplata tai hävitä kaikki rahansa.
+
 Hahmojen ominaisuuksia ovat vointi, voima, puolustus, taso ja kokemus. Vointi määräytyy pelaajan tason mukaan; mitä korkeampi taso sitä parempi vointi. Voinnin laskiessa nollaan saa pelaaja jonkinlaisen sanktion (esim. rahojen menetys). Vointia voi paranpaa lepäämällä milloin tahansa kunhan ei ole taistelu käynnissä. Voima määräytyy pelaajan aseen mukaan. Mitä suurempi lyöntivoima, sitä enemmän vahinkoa on mahdollista tehdä vastustajaan. Puolustusvoima määräytyy haarniskan mukaan.
 
