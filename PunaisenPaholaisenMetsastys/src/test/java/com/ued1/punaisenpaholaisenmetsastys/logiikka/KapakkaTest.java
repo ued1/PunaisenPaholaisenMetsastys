@@ -66,5 +66,21 @@ public class KapakkaTest {
         pelaaja.muutaRahoja(1);
         assertTrue(kapakka.osta(pelaaja, 1));
     }
+    
+    @Test
+    public void eiVoiOstaaKahtaPupua() {
+        pelaaja.muutaRahoja(new Pupu(pelaaja).arvo() * 2);
+        assertTrue(kapakka.voikoPelaajaOstaaOstoksen(pelaaja, 2));
+        assertTrue(kapakka.osta(pelaaja, 2));
+        assertFalse(kapakka.osta(pelaaja, 2));
+    }
+    
+    @Test
+    public void voiOstaaKaksiEriApua() {
+        pelaaja.muutaRahoja(99999999);
+        assertTrue(kapakka.osta(pelaaja, 2));
+        assertTrue(kapakka.osta(pelaaja, 3));
+        assertFalse(kapakka.osta(pelaaja, 3));
+    }
             
 }

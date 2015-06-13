@@ -1,6 +1,8 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.OhraPotion;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Keppi;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
@@ -275,6 +277,66 @@ public class PelaajaTest {
         assertEquals(10, pelaaja.getPotionit());
         pelaaja.setPotionit(11);
         assertEquals(10, pelaaja.getPotionit());
+    }
+    
+    @Test
+    public void pelaajallaEiAlussaOlePupua() {
+        pelaaja.onkoPelaajallaApu(new Pupu(pelaaja));
+    }
+    
+    @Test
+    public void pelaajallaOnPupuKunPupuLisataan() {
+        assertTrue(pelaaja.lisaaApu(new Pupu(pelaaja)));
+        assertTrue(pelaaja.onkoPelaajallaApu(new Pupu(pelaaja)));
+    }
+    
+    @Test
+    public void pelaajallaEiVoiOllaKahtaSamaaApua() {
+        assertTrue(pelaaja.lisaaApu(new Pupu(pelaaja)));
+        assertFalse(pelaaja.lisaaApu(new Pupu(pelaaja)));
+    }
+    
+    @Test
+    public void pelaajallaVoiOllaKaksiEriApua() {
+        assertTrue(pelaaja.lisaaApu(new Pupu(pelaaja)));
+        assertTrue(pelaaja.lisaaApu(new OhraPotion(pelaaja)));
+        assertTrue(pelaaja.onkoPelaajallaApu(new Pupu(pelaaja)));
+        assertTrue(pelaaja.onkoPelaajallaApu(new OhraPotion(pelaaja)));
+    }
+    
+    @Test
+    public void metodiSetVointiAsettaaVoinninOikein() {
+        pelaaja.setVointi(0);
+        assertEquals(0,pelaaja.getVointi());
+        pelaaja.setVointi(-1);
+        assertEquals(0,pelaaja.getVointi());
+        pelaaja.setVointi(99);
+        assertEquals(99,pelaaja.getVointi());
+    }
+    
+    @Test
+    public void parantaminenLaskeeVoinninMaxVointiin() {
+        pelaaja.setVointi(99);
+        assertTrue(pelaaja.getVointi() > pelaaja.getMaxVointi());
+        pelaaja.paranna();
+        assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
+    }
+    
+    @Test
+    public void vointiBuustiParantaaJosVointiAllePuolet() {
+        pelaaja.setVointi(pelaaja.getMaxVointi() / 2 - 1);
+        pelaaja.vointiBuusti();
+        assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
+    }
+    
+    @Test
+    public void vointiBuustiNostaaVoinninOikein() {
+        pelaaja.vointiBuusti();
+        assertTrue(pelaaja.getVointi() <= pelaaja.getMaxVointi()*1.5);
+        int vointi = pelaaja.getMaxVointi() / 2 + 1;
+        pelaaja.setVointi(vointi);
+        pelaaja.vointiBuusti();
+        assertEquals(vointi * 2, pelaaja.getVointi());
     }
                 
 }

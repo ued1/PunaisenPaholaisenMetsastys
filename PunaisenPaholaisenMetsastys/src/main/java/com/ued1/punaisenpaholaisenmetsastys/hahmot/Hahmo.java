@@ -69,6 +69,16 @@ public abstract class Hahmo {
     }
     
     /**
+     * Metodi asettaa hahmon voinnin. Vointi voi hetkellisesti olla myös 
+     * suurempi kuin maxVointi.
+     * 
+     * @param uusiVointi Vointi, joka asetetaan
+     */
+    public void setVointi(int uusiVointi) {
+        vointi = Math.max(0, uusiVointi);
+    }
+    
+    /**
      * Parantaa hahmon. Hahmon vointi asetetaan yhtäsuureksi kuin maksimivointi.
      */
     public void paranna() {

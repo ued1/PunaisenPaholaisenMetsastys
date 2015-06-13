@@ -218,13 +218,18 @@ public class KomennonKasittelija {
     }
     
     private void kasitteleAvunOstoKomento(int komentoKoodi) {
+        Kapakka kapakka = new Kapakka(pelaaja);
         if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.paivita(Paikka.KAPAKKA);
         } else if(komentoKoodi == KeyEvent.VK_1) {
-            new Kapakka(pelaaja).osta(pelaaja, 1);
+            kapakka.osta(pelaaja, 1);
             paivittaja.paivita(Paikka.KANNI);
             pelaaja.setPaikka(Paikka.KAPAKKA);
+        } else if(kapakka.voikoPelaajaOstaaOstoksen(pelaaja, komentoKoodi-48)) {
+            kapakka.osta(pelaaja, komentoKoodi-48);
+            paivittaja.paivita(Paikka.KAPAKKA);
         }
+        
     }
         
     private void kasitteleAseenMyyntiKomento(int komentoKoodi) {

@@ -1,10 +1,14 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Apu;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.OhraPotion;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -25,10 +29,12 @@ public class PelaajaTietoPanel extends JPanel {
     private JLabel puolustusTeksti;
     private JLabel rahaTeksti;
     private JLabel potionTeksti;
+    private JLabel ekaApu;
+    private JLabel tokaApu;
     private KuvanAsettaja ikoninAsettaja;
 
     public PelaajaTietoPanel(Pelaaja pelaaja) {
-        super(new GridLayout(10, 2));
+        super(new GridLayout(11, 2));
         this.pelaaja = pelaaja;
         tasoTeksti = new JLabel();
         kokemusTeksti = new JLabel();
@@ -40,6 +46,10 @@ public class PelaajaTietoPanel extends JPanel {
         rahaTeksti = new JLabel();
         ikoninAsettaja = new KuvanAsettaja();
         potionTeksti = new JLabel();
+        ekaApu = ikoninAsettaja.asetaIkoni("Pupu");
+        tokaApu = ikoninAsettaja.asetaIkoni("OhraPotion");
+        ekaApu.setVisible(false);
+        tokaApu.setVisible(false);
         luoKomponentit();
     }
 
@@ -65,6 +75,8 @@ public class PelaajaTietoPanel extends JPanel {
         add(rahaTeksti);
         add(ikoninAsettaja.asetaIkoni("VihannesPotion"));
         add(potionTeksti);
+        add(ekaApu);
+        add(tokaApu);
     }
     
     private void paivitaTiedot() {
@@ -82,6 +94,22 @@ public class PelaajaTietoPanel extends JPanel {
         puolustusTeksti.setText("" + pelaaja.suojaa());
         rahaTeksti.setText("" + pelaaja.getRahat());
         potionTeksti.setText("" + pelaaja.getPotionit());
+        paivitaApuIkonit();
+    }
+    
+                                    // TODO: parempi toteutus
+    private void paivitaApuIkonit() {
+        ArrayList<Apu> avut = pelaaja.getAvut();
+        if(avut.contains(new Pupu(pelaaja))) {
+            ekaApu.setVisible(true);
+        } else {
+            ekaApu.setVisible(false);
+        }
+        if(avut.contains(new OhraPotion(pelaaja))) {
+            tokaApu.setVisible(true);
+        } else {
+            tokaApu.setVisible(false);
+        }
     }
 
     /**

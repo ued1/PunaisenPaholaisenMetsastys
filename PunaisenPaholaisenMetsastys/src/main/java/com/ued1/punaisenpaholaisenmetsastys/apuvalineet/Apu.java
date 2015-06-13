@@ -4,7 +4,7 @@ package com.ued1.punaisenpaholaisenmetsastys.apuvalineet;
 /**
  * Apuvälineet auttavat pelaajaa taisteluissa.
  */
-public interface Apu {
+public abstract class Apu {
     
     /**
      * Palauttaa avun nimen.
@@ -12,7 +12,7 @@ public interface Apu {
      * @return avun nimi merkkijonona
      */
     @Override
-    public String toString();
+    public abstract String toString();
     
     /**
      * Metodi auta auttaa pelaajaa. Jokainen apu määrittelee itse miten
@@ -20,20 +20,31 @@ public interface Apu {
      * 
      * @return totuusarvo true jos auttaminen onnistui
      */
-    public boolean auta();
+    public abstract boolean auta();
     
     /**
      * Metodi palauttaa tarinapaneeliin sopivan kuvauksen siitä mitä tapahtuu.
      * 
      * @return tarinapaneeliin kuvaus merkkijonona
      */
-    public String kuvaus();
+    public abstract String kuvaus();
     
     /**
      * Metodi palauttaa avun arvon, mitä tarvitaan kapakassa apuja ostaessa.
      * 
      * @return avun arvo
      */
-    public int arvo();
+    public abstract int arvo();
+    
+    @Override
+    public boolean equals(Object olio) {
+        return this.toString().equals(((Apu)olio).toString());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
     
 }

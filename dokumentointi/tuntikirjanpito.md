@@ -91,6 +91,6 @@ Alkuvalikot ja nimen valinta, testejä, pit, ym
 Kylään lisätty Casino, Kapakan parantelua, JavaDoc lisäyksiä, sekvenssikaaviot, testejä, pit, ja muiden dokumenttien päivitys
 
 13.06.2015
-4 tuntia
-Alkuvalikko paremmaksi, potioneiden toiminta, kilpailijoiden heikkeneminen
+7 tuntia
+Alkuvalikko paremmaksi, potionien toiminta, kilpailijoiden heikkeneminen, Apuvälineiden osto, testejä lisätty, ym.
 

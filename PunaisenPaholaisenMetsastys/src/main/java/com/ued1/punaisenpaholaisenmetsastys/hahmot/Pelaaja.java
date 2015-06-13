@@ -1,10 +1,12 @@
 package com.ued1.punaisenpaholaisenmetsastys.hahmot;
 
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Apu;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Ase;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Haarniska;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Riepu;
+import java.util.ArrayList;
 
 /**
  * Luokka pelaaja määrittelee pelin pelaajan ja ylläpitää pelaajan ominaisuuksia.
@@ -18,6 +20,7 @@ public class Pelaaja extends Hahmo {
     private Paikka paikka;
     private int kokemus;
     private int potionit;
+    private ArrayList<Apu> avut;
 
     public Pelaaja(String nimi) {
         super(nimi, 20, 20);
@@ -28,6 +31,7 @@ public class Pelaaja extends Hahmo {
         this.paikka = Paikka.KYLA;
         this.kokemus = 0;
         this.potionit = 0;
+        this.avut = new ArrayList();
     }
 
     public int getTaso() {
@@ -174,5 +178,50 @@ public class Pelaaja extends Hahmo {
     public void muutaKokemusta(int muutos) {
         kokemus = Math.max(0, kokemus+muutos);
     }
-
+    
+    /**
+     * Metodi antaa pelaajalle vointibuustin lisäämällä pelaajan vointia
+     * hetkellisesti. Uusi vointi on vähintään maxVointi ja enintään
+     * maxVointi * 1.5.
+     */
+    public void vointiBuusti() {
+        if(getVointi() < getMaxVointi()/2) {
+            paranna();
+        } else {
+            setVointi(Math.min(getVointi()*2, (int)(getMaxVointi()*1.5)));
+        }
+    }
+    
+    /**
+     * Metodi lisää pelaajalle avun jos pelaajalla ei kyseistä apua ole.
+     * 
+     * @param apu Apu joka lisätään
+     * @return totuusarvo, true jos lisääminen onnistui
+     */
+    public boolean lisaaApu(Apu apu) {
+        if(!onkoPelaajallaApu(apu)) {
+            avut.add(apu);
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Metodi tarkistaa onko pelaajalla kyseistä apua.
+     * 
+     * @param apu Apu joka tarkistetaan.
+     * @return totuusarvo, true jos pelaajalla on apu
+     */
+    public boolean onkoPelaajallaApu(Apu apu) {
+        return avut.contains(apu);
+    }
+    
+    /**
+     * Metodi palauttaa pelaajan avut.
+     * 
+     * @return Pelaajan avut ArrayList-oliona
+     */
+    public ArrayList<Apu> getAvut() {
+        return avut;
+    }
 }

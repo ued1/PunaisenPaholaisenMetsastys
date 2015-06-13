@@ -4,35 +4,36 @@ package com.ued1.punaisenpaholaisenmetsastys.apuvalineet;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 
 /**
- * Pupu on "Apu", joka varastaa pelaajan rahat.
+ * OhraPotion on Apu, joka auttaa areenataistelussa.
  */
-public class Pupu extends Apu {
+public class OhraPotion extends Apu {
     
+    private int[] hinta = {0, 50, 100, 500, 1000, 5000, 50000, 100000, 500000, 1000000, 5000000};
     private Pelaaja pelaaja;
     
-    public Pupu(Pelaaja pelaaja) {
+    public OhraPotion(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
     }
     
     @Override
     public String toString() {
-        return "Pupu";
+        return "OhraPotion";
     }
     
     @Override
     public boolean auta() {
-        pelaaja.muutaRahoja(-pelaaja.getRahat());
+        pelaaja.vointiBuusti();
         return true;
     }
 
     @Override
     public String kuvaus() {
-        return "Pupu varastaa kaikki rahasi\nja loikkii tiehensä!";
+        return "OhraPotion nostattaa hetkellisesti vointia";
     }
 
     @Override
     public int arvo() {
-        return 10;
+        return hinta[pelaaja.getTaso()];
     }
     
 }

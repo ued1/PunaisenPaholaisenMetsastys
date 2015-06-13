@@ -6,7 +6,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 /**
  * KossuPotion on Apu, joka laskee pelaajan vointia yhdellä.
  */
-public class KossuPotion implements Apu {
+public class KossuPotion extends Apu {
     
     private Pelaaja pelaaja;
     
