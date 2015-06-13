@@ -11,16 +11,18 @@ import javax.swing.JButton;
  */
 public class AlkuvalikonKuuntelija implements ActionListener {
     
-    private JButton aloita;
     private JButton jatka;
+    private JButton aloita;
+    private JButton lataa;
     private JButton ohje;
     private JButton lopeta;
     private Kyla kyla;
 
-    public AlkuvalikonKuuntelija(Kyla kyla, JButton aloita, JButton jatka, JButton ohje, JButton lopeta) {
+    public AlkuvalikonKuuntelija(Kyla kyla, JButton jatka, JButton aloita, JButton lataa, JButton ohje, JButton lopeta) {
+        this.jatka = jatka;
         this.kyla = kyla;
         this.aloita = aloita;
-        this.jatka = jatka;
+        this.lataa = lataa;
         this.ohje = ohje;
         this.lopeta = lopeta;
     }
@@ -29,13 +31,20 @@ public class AlkuvalikonKuuntelija implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == aloita) {
             hoidaAloita();
-        } else if(e.getSource() == jatka) {
-            hoidaJatka();
+        } else if(e.getSource() == lataa) {
+            hoidaLataa();
         } else if(e.getSource() == ohje) {
             hoidaOhje();
         } else if(e.getSource() == lopeta) {
             hoidaLopeta();
-        } 
+        } else if(e.getSource() == jatka && kyla.onkoPeliKaynnissa()) {
+            hoidaJatka();
+        }
+    }
+    
+    // Jatkaa peliä
+    private void hoidaJatka() {
+        kyla.jatkaPelia();
     }
     
     // Aloittaa uuden pelin
@@ -43,8 +52,8 @@ public class AlkuvalikonKuuntelija implements ActionListener {
         kyla.asetaNimenValinta();
     }
     
-    // Jatkaa aikaisempaa peliä
-    private void hoidaJatka() {
+    // Lataa aikaisempaa pelin
+    private void hoidaLataa() {
         
     }
     

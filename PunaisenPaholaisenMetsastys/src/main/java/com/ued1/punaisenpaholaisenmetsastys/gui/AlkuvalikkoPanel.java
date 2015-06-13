@@ -15,19 +15,23 @@ import javax.swing.JPanel;
  */
 public class AlkuvalikkoPanel extends JPanel {
     
-    private JButton aloita;
     private JButton jatka;
+    private JButton aloita;
+    private JButton lataa;
     private JButton ohje;
     private JButton lopeta;
     private AlkuvalikonKuuntelija kuuntelija;
     private JLabel paholainen;
+    private Kyla kyla;
     
     public AlkuvalikkoPanel(Kyla kyla) {
+        jatka = new JButton("Takaisin peliin");
         aloita = new JButton("Aloita uusi peli");
-        jatka = new JButton("Jatka aikaisempaa peliä");
+        lataa = new JButton("Lataa tallennettu peli");
         ohje = new JButton("Pelin ohjeet");
         lopeta = new JButton("Lopeta peli");
-        kuuntelija = new AlkuvalikonKuuntelija(kyla, aloita, jatka, ohje, lopeta);
+        this.kyla = kyla;
+        kuuntelija = new AlkuvalikonKuuntelija(kyla, jatka, aloita, lataa, ohje, lopeta);
         paholainen = new JLabel();
         luoKomponentit();
     }
@@ -45,25 +49,31 @@ public class AlkuvalikkoPanel extends JPanel {
     }
     
     private void lisaaKuuntelijat() {
-        aloita.addActionListener(kuuntelija);
         jatka.addActionListener(kuuntelija);
+        aloita.addActionListener(kuuntelija);
+        lataa.addActionListener(kuuntelija);
         ohje.addActionListener(kuuntelija);
         lopeta.addActionListener(kuuntelija);
     }
     
     private void asetaSuuntaus() {
         paholainen.setAlignmentX(CENTER_ALIGNMENT);
-        aloita.setAlignmentX(CENTER_ALIGNMENT);
         jatka.setAlignmentX(CENTER_ALIGNMENT);
+        aloita.setAlignmentX(CENTER_ALIGNMENT);
+        lataa.setAlignmentX(CENTER_ALIGNMENT);
         ohje.setAlignmentX(CENTER_ALIGNMENT);
         lopeta.setAlignmentX(CENTER_ALIGNMENT);
     }
     
     private void lisaaOsat() {
         add(paholainen);
+        if(kyla.onkoPeliKaynnissa()) {
+            add(jatka);
+            add(new JLabel(" "));
+        }
         add(aloita);
         add(new JLabel(" "));
-        add(jatka);
+        add(lataa);
         add(new JLabel(" "));
         add(ohje);
         add(new JLabel(" "));

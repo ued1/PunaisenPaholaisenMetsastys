@@ -271,10 +271,10 @@ public class PelaajaTest {
         assertEquals(0, pelaaja.getPotionit());
         pelaaja.setPotionit(0);
         assertEquals(0, pelaaja.getPotionit());
-        pelaaja.setPotionit(5);
-        assertEquals(5, pelaaja.getPotionit());
-        pelaaja.setPotionit(6);
-        assertEquals(5, pelaaja.getPotionit());
+        pelaaja.setPotionit(10);
+        assertEquals(10, pelaaja.getPotionit());
+        pelaaja.setPotionit(11);
+        assertEquals(10, pelaaja.getPotionit());
     }
                 
 }

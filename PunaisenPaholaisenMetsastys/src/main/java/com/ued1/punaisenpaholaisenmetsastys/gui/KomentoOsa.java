@@ -30,10 +30,14 @@ public class KomentoOsa extends JPanel {
     }
     
     private void luoKomponentit() {
-        komentoValikko = new JTextArea("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[C]asino\n[T]aisteluareena");
+        komentoValikko = new JTextArea(kylaValikko());
         komentoValikko.setFocusable(false);
         komentoValikko.setFont(fontti);
         add(komentoValikko);
+    }
+    
+    private String kylaValikko() {
+        return "[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[C]asino\n[T]aisteluareena\n[ESC] Takaisin valikkoon";
     }
     
     /**
@@ -44,9 +48,9 @@ public class KomentoOsa extends JPanel {
     public void paivita(Paikka uusiPaikka) {
         komentoValikko.setFont(fontti);
         if(uusiPaikka == Paikka.KYLA) {
-            komentoValikko.setText("[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[C]asino\n[T]aisteluareena");
+            komentoValikko.setText(kylaValikko());
         } else if(uusiPaikka == Paikka.ASEPAJA) {
-            komentoValikko.setText("[O]sta ase\n[M]yy asee\n[T]akaisin");
+            komentoValikko.setText("[O]sta ase\n[M]yy ase\n[T]akaisin");
         } else if(uusiPaikka == Paikka.HAARNISKAKAUPPA) {
             komentoValikko.setText("[O]sta haarniska\n[T]akaisin");
         } else if(uusiPaikka == Paikka.METSA) {
@@ -54,7 +58,8 @@ public class KomentoOsa extends JPanel {
             if(pelaaja.getTaso() == 10) {
                 metsaKomento += "\n[P]unainen Paholainen";
             }
-            komentoValikko.setText(metsaKomento + "\n[L]epää\n[T]akaisin kylään");
+                metsaKomento += "\n[V]ihannesPotion(" + pelaaja.getPotionit() + ")";
+            komentoValikko.setText(metsaKomento + "\n[T]akaisin kylään");
         } else if(uusiPaikka == Paikka.TAISTELUAREENA) {
             komentoValikko.setText("[A]stu taisteluareenaan\n[T]akaisin kylään");
         } else if(uusiPaikka == Paikka.ASEENOSTO) {

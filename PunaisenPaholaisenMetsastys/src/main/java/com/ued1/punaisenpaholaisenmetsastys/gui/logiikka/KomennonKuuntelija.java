@@ -1,5 +1,6 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
 
+import com.ued1.punaisenpaholaisenmetsastys.gui.Kyla;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
@@ -19,14 +20,15 @@ public class KomennonKuuntelija implements KeyListener {
     private KomennonKasittelija kasittelija;
     private KomennonValidoija validoija;
     private Pelaaja pelaaja;
+    private Kyla kyla;
     private PelaajaTietoPanel pelaajaTietoPanel; // rivin voi poistaa kun CHEAT poistetaan
 
-    public KomennonKuuntelija(Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja) {
+    public KomennonKuuntelija(Kyla kyla, Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja) {
         this.pelaaja = pelaaja;
         this.pelaajaTietoPanel = pelaajaTietoPanel; // rivin voi poistaa kun CHEAT poistetaan
         this.kasittelija = new KomennonKasittelija(pelaaja, tarinaPanel, pelaajaTietoPanel, metsa, areena, luola, parantaja);
         this.validoija = new KomennonValidoija(pelaaja);
-        
+        this.kyla = kyla;
     }
 
     @Override
@@ -49,6 +51,8 @@ public class KomennonKuuntelija implements KeyListener {
         
         if (validoija.onkoKomento(pelaaja.getPaikka(), e.getKeyCode())) {
             kasittelija.kasitteleKomento(pelaaja.getPaikka(), e.getKeyCode());
+        } else if(pelaaja.getPaikka() == Paikka.KYLA && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            kyla.pelistaValikkoon();
         }
     }
 

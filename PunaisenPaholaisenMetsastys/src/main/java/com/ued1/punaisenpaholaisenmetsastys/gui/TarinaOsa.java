@@ -186,8 +186,15 @@ public class TarinaOsa extends JPanel {
         String kuvaus = "\nMetsässä voit taistella monstereita vastaan";
         kuvaus += "\nja ansaita kultarahoja. Jos häviät monsterille";
         kuvaus += "\nmenetät kaikki rahasi.";
-        kuvaus += "\n\nVoit levätä ja parantaa vointiasi milloin vain";
-        kuvaus += "\nkun et ole taistelussa.";
+        if(pelaaja.getPotionit() > 0) {
+            kuvaus += "\n\nVoit käyttää VihannesPotioneja";
+            kuvaus += "\nparantaakseen vointiasi kun et ole";
+            kuvaus += "\ntaistelussa.";
+        } else {
+            kuvaus += "\n\nTarvitset kylän Parantajalta";
+            kuvaus += "\nVihannesPotioneja, jotta voit parantaa";
+            kuvaus += "\nitseäsi metsässä taistelujen välissä.";
+        }
         toka.setText(kuvaus);
     }
 

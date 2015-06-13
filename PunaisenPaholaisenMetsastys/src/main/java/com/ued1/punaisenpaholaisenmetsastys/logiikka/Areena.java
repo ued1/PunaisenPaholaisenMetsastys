@@ -77,13 +77,16 @@ public class Areena {
             }
         } else {
             vastustaja.paranna();
+            ((Kilpailija)vastustaja).heikenna();
             pelaaja.paranna();
         }
     }
 
     /**
      * Metodi alustaa uuden taistelun. Vastustaja arvotaan sopivaksi perustuen
-     * pelaajan vahvuuteen.
+     * pelaajan vahvuuteen. Mikäli pelaaja hävisi edellisen taistelun,
+     * on vastustaja sama. Vastustajan lyönti- ja puolustusvoimaa on kuitenkin
+     * laskettu.
      */
     public void aloitaUusiTaistelu() {
         if (vastustaja == null) {
@@ -92,6 +95,11 @@ public class Areena {
         vastustaja.paranna();
         pelaaja.paranna();
         taistelu = new Taistelu(pelaaja, vastustaja);
+    }
+    
+    private void heikennaVastustajaa() {
+        
+        
     }
 
     private Hahmo generoiUusiVastustaja() {

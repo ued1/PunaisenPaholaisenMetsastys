@@ -123,8 +123,8 @@ public class KomennonKasittelija {
         if(komentoKoodi == KeyEvent.VK_E) {
             metsa.aloitaUusiTaistelu();
             paivittaja.paivita(Paikka.MONSTERITAISTELU);
-        } else if(komentoKoodi == KeyEvent.VK_L) {
-            pelaaja.paranna();
+        } else if(komentoKoodi == KeyEvent.VK_V) {
+            new Parantaja().parannaPotionilla(pelaaja);
             paivittaja.paivita(Paikka.METSA);
         } else if(komentoKoodi == KeyEvent.VK_T) {
             paivittaja.paivita(Paikka.KYLA);

@@ -94,7 +94,7 @@ public class KomennonValidoija {
 
     // Metsän päävalikko: [E]tsi [L]epää [T]akaisin [P]unainen Paholainen
     private boolean hoidaMetsa(int koodi) {
-        if (koodi == KeyEvent.VK_E || koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_T) {
+        if (koodi == KeyEvent.VK_E || koodi == KeyEvent.VK_V || koodi == KeyEvent.VK_T) {
             return true;
         } else if (pelaaja.getTaso() == 10 && koodi == KeyEvent.VK_P) {
             return true;

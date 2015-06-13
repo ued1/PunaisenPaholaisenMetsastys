@@ -9,7 +9,7 @@ import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 public class Parantaja {
 
     // Tasokohtainen hinta.
-    private final int[] hinta = {0, 150, 300, 1500, 3000, 15000, 150000, 300000, 1500000, 3000000, 15000000};
+    private final int[] hinta = {0, 5, 10, 50, 100, 500, 5000, 10000, 50000, 100000, 500000};
 
     public Parantaja() {
     }
@@ -24,6 +24,22 @@ public class Parantaja {
     }
 
     /**
+     * Metodi parantaa pelaajan käyttäen pelaajan omia potioneja. Parannus on
+     * mahdollista vain jos pelaajalla on potioneja jäljellä.
+     *
+     * @param pelaaja Pelaaja, joka parannetaan
+     * @return totuusarvo, true jos pelaaja parannettiin
+     */
+    public boolean parannaPotionilla(Pelaaja pelaaja) {
+        if (pelaaja.getPotionit() < 1) {
+            return false;
+        }
+        pelaaja.paranna();
+        pelaaja.setPotionit(pelaaja.getPotionit()-1);
+        return true;
+    }
+
+    /**
      * Metodi tarkistaa voiko pelaaja ostaa VihannesPotionin. Osto on
      * mahdollinen jos pelaajalla on tarpeeksi rahaa ja pelaajalla on potioneja
      * korkeintaan 4.
@@ -32,7 +48,7 @@ public class Parantaja {
      * @return totuusarvo, true jos voi ostaa
      */
     public boolean voikoOstaa(Pelaaja pelaaja) {
-        if (hinta[pelaaja.getTaso()] <= pelaaja.getRahat() && pelaaja.getPotionit() < 5) {
+        if (hinta[pelaaja.getTaso()] <= pelaaja.getRahat() && pelaaja.getPotionit() < 10) {
             return true;
         }
         return false;
@@ -76,8 +92,8 @@ public class Parantaja {
             kuvaus += "\nrahaa. Tarvitset " + (erotus);
             kuvaus += " lisää.";
         }
-        kuvaus += "\n\nVoit kantaa enintään viittä VihannesPotionia";
-        kuvaus += "\nsamaan aikaan.";
+        kuvaus += "\n\nVoit kantaa enintään kymmentä";
+        kuvaus += "\nVihannesPotionia samaan aikaan.";
         return kuvaus;
     }
 

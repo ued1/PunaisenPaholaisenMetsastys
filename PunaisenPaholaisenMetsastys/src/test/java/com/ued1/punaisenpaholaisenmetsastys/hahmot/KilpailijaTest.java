@@ -46,5 +46,25 @@ public class KilpailijaTest {
         assertTrue(kilpailija.tiedotMerkkijonona().contains(kilpailija.getNimi()));
     }
     
+    @Test
+    public void kilpailijaHeikkeneeHeikentaessa() {
+        int voima = kilpailija.lyo();
+        int puolustusvoima = kilpailija.suojaa();
+        kilpailija.heikenna();
+        assertEquals(voima-1, kilpailija.lyo());
+        assertEquals(puolustusvoima-1, kilpailija.suojaa());
+        kilpailija.heikenna();
+        assertEquals(voima-2, kilpailija.lyo());
+        assertEquals(puolustusvoima-2, kilpailija.suojaa());
+    }
+    
+    @Test
+    public void kilpailijaEiHeikkeneLiianHeikoksi() {
+        Kilpailija heikkoKilpailija = new Kilpailija(1, 2, 2);
+        heikkoKilpailija.heikenna();
+        heikkoKilpailija.heikenna();
+        assertEquals(1, heikkoKilpailija.lyo());
+        assertEquals(1, heikkoKilpailija.suojaa());
+    }
     
 }

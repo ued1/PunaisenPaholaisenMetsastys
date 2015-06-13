@@ -1,6 +1,8 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.logiikka;
 
+import com.ued1.punaisenpaholaisenmetsastys.aseet.Maila;
+import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Vaatteet;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Hahmo;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import static org.junit.Assert.assertEquals;
@@ -188,6 +190,19 @@ public class AreenaTest {
         areena.aloitaUusiTaistelu();
         String vastustajanNimi = areena.getTaistelu().vastustaja().getNimi();
         assertTrue(areena.getVastustajanTiedot().contains(vastustajanNimi));
+    }
+    
+    @Test
+    public void vastustajaHeikkeneeVoittaessa() {
+        pelaaja.setAse(new Maila());
+        pelaaja.setHaarniska(new Vaatteet());
+        areena.aloitaUusiTaistelu();
+        int vastustajanVoima = areena.getTaistelu().vastustaja().lyo();
+        int vastustajanPuolustusVoima = areena.getTaistelu().vastustaja().suojaa();
+        tapaPelaaja();
+        areena.asetaTaistelunTulos();
+        assertEquals(vastustajanVoima - 1, areena.getTaistelu().vastustaja().lyo());
+        assertEquals(vastustajanPuolustusVoima - 1, areena.getTaistelu().vastustaja().suojaa());
     }
     
 }

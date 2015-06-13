@@ -71,5 +71,18 @@ public class Kilpailija extends Hahmo {
         tiedot += "\n  Puolustus: " + puolustus;
         return tiedot;
     }
+    
+    /**
+     * Metodi heikentää kilpailijaa laskemalla kilpailijan lyönti- ja
+     * puolutusvoimaa yhdellä. Voimat eivät voi laskea nollaan.
+     */
+    public void heikenna() {
+        if(voima > 1) {
+            voima--;
+        }
+        if(puolustus > 1) {
+            puolustus--;
+        }
+    }
 
 }

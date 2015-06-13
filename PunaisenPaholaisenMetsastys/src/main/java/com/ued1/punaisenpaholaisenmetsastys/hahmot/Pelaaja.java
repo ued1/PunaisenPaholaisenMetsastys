@@ -97,16 +97,16 @@ public class Pelaaja extends Hahmo {
     }
     
     /**
-     * Metodi asettaa potionien määrän. Potioneja voi olla 0-5.
+     * Metodi asettaa potionien määrän. Potioneja voi olla 0-10.
      * 
-     * @param maara potionien uusi määrä, pakotetaan välille 0-5.
+     * @param maara potionien uusi määrä, pakotetaan välille 0-10.
      */
     public void setPotionit(int maara) {
         potionit = maara;
         if(potionit < 0) {
             potionit = 0;
-        } else if(potionit > 5) {
-            potionit = 5;
+        } else if(potionit > 10) {
+            potionit = 10;
         }
     }
 
