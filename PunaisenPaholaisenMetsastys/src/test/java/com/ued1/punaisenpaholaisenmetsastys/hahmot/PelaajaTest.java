@@ -9,6 +9,7 @@ import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Tikari;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Riepu;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Vaatteet;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Vaikeus;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -16,6 +17,7 @@ import static org.junit.Assert.*;
 public class PelaajaTest {
     
     Pelaaja pelaaja;
+    Pelaaja helppoPelaaja;
     
     public PelaajaTest() {
     }
@@ -23,7 +25,7 @@ public class PelaajaTest {
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("Testipelaaja");
-        pelaaja.muutaRahoja(-10000);
+        helppoPelaaja = new Pelaaja("Helppotestaaja", Vaikeus.HELPPO);
     }
     
     // Seuraavat testit testaavat alkutietoja
@@ -263,8 +265,9 @@ public class PelaajaTest {
     
     // potionit
     @Test
-    public void pelaajallaEiAlussaPotioneja() {
-        assertEquals(0, pelaaja.getPotionit());
+    public void pelaajallaAlussaPotioneja() {
+        assertEquals(5, pelaaja.getPotionit());
+        assertEquals(10, helppoPelaaja.getPotionit());
     }
         
     @Test
@@ -337,6 +340,33 @@ public class PelaajaTest {
         pelaaja.setVointi(vointi);
         pelaaja.vointiBuusti();
         assertEquals(vointi * 2, pelaaja.getVointi());
+    }
+    
+    @Test
+    public void pelaajanVaikeusAsteAsetetaanOikein() {
+        assertTrue(pelaaja.getVaikeus() == Vaikeus.NORMAALI);
+        assertTrue(helppoPelaaja.getVaikeus() == Vaikeus.HELPPO);
+    }
+    
+    @Test
+    public void pelaajanVaikeusAsteenVoiVaihtaa() {
+        pelaaja.setVaikeus(Vaikeus.HELPPO);
+        helppoPelaaja.setVaikeus(Vaikeus.NORMAALI);
+        assertFalse(pelaaja.getVaikeus() == Vaikeus.NORMAALI);
+        assertFalse(helppoPelaaja.getVaikeus() == Vaikeus.HELPPO);
+    }
+    
+    @Test
+    public void pelaajallaEiAluksiApuja() {
+        assertTrue(pelaaja.getAvut().isEmpty());
+    }
+    
+    @Test
+    public void avunVoiPoistaaJosPelaajallaSeOn() {
+        assertFalse(pelaaja.poistaApu(new Pupu(pelaaja)));
+        pelaaja.lisaaApu(new Pupu(pelaaja));
+        assertTrue(pelaaja.poistaApu(new Pupu(pelaaja)));
+        assertFalse(pelaaja.onkoPelaajallaApu(new Pupu(pelaaja)));
     }
                 
 }

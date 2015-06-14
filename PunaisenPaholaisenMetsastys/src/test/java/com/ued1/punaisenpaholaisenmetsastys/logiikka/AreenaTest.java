@@ -14,15 +14,19 @@ import org.junit.Test;
 public class AreenaTest {
     
     private Areena areena;
+    private Areena helppoAreena;
     private Pelaaja pelaaja;
+    private Pelaaja helppoPelaaja;
     
     public AreenaTest() {
         pelaaja = new Pelaaja("Testipelaaja");
+        helppoPelaaja = new Pelaaja("Helppopelaaja", Vaikeus.HELPPO);
     }
     
     @Before
     public void setUp() {
         areena = new Areena(pelaaja);
+        helppoAreena = new Areena(helppoPelaaja);
     }
            
     @Test
@@ -53,10 +57,10 @@ public class AreenaTest {
         
     }
     
-    private void tapaPelaaja() {
-        int vointiAlussa = pelaaja.getVointi();
+    private void tapaPelaaja(Pelaaja kohde) {
+        int vointiAlussa = kohde.getVointi();
         for(int i = 0; i < vointiAlussa; i++) {
-            pelaaja.laskeVointia();
+            kohde.laskeVointia();
         }
     }
     
@@ -64,7 +68,7 @@ public class AreenaTest {
     public void pelaajanHavitessaPelaajaJaVastustajaParantuu() {
         areena.aloitaUusiTaistelu();
         areena.getTaistelu().taistele();
-        tapaPelaaja();
+        tapaPelaaja(pelaaja);
         assertFalse(pelaaja.onkoElossa());
         areena.asetaTaistelunTulos();
         assertTrue(pelaaja.onkoElossa());
@@ -76,7 +80,7 @@ public class AreenaTest {
     @Test
     public void pelaajanHavitessaTaisteluJatkuu() {
         areena.aloitaUusiTaistelu();
-        tapaPelaaja();
+        tapaPelaaja(pelaaja);
         areena.asetaTaistelunTulos();
         assertFalse(areena.getTaistelu() == null);
     }
@@ -143,7 +147,7 @@ public class AreenaTest {
     
     private void taisteleJaHavia() {
         areena.aloitaUusiTaistelu();
-        tapaPelaaja();
+        tapaPelaaja(pelaaja);
         areena.asetaTaistelunTulos();
     }
     
@@ -191,18 +195,35 @@ public class AreenaTest {
         String vastustajanNimi = areena.getTaistelu().vastustaja().getNimi();
         assertTrue(areena.getVastustajanTiedot().contains(vastustajanNimi));
     }
+        
+    private void varustaPelaaja(Pelaaja varustettava) {
+        varustettava.setAse(new Maila());
+        varustettava.setHaarniska(new Vaatteet());
+    }
     
     @Test
     public void vastustajaHeikkeneeVoittaessa() {
-        pelaaja.setAse(new Maila());
-        pelaaja.setHaarniska(new Vaatteet());
+        varustaPelaaja(pelaaja);
         areena.aloitaUusiTaistelu();
         int vastustajanVoima = areena.getTaistelu().vastustaja().lyo();
         int vastustajanPuolustusVoima = areena.getTaistelu().vastustaja().suojaa();
-        tapaPelaaja();
+        tapaPelaaja(pelaaja);
         areena.asetaTaistelunTulos();
         assertEquals(vastustajanVoima - 1, areena.getTaistelu().vastustaja().lyo());
         assertEquals(vastustajanPuolustusVoima - 1, areena.getTaistelu().vastustaja().suojaa());
     }
+    
+    @Test
+    public void vastustajaHeikkeneeEnemmanHelpollaTasolla() {
+        varustaPelaaja(pelaaja);
+        taisteleJaHavia();
+        varustaPelaaja(helppoPelaaja);
+        helppoAreena.aloitaUusiTaistelu();
+        tapaPelaaja(helppoPelaaja);
+        helppoAreena.asetaTaistelunTulos();
+        assertTrue(areena.getTaistelu().vastustaja().lyo() > helppoAreena.getTaistelu().vastustaja().lyo());
+        assertTrue(areena.getTaistelu().vastustaja().suojaa() > helppoAreena.getTaistelu().vastustaja().suojaa());
+    }
+    
     
 }

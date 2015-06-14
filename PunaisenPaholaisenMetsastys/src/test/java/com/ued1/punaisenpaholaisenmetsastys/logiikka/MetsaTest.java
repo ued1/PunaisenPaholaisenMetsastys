@@ -11,16 +11,21 @@ import org.junit.Test;
 public class MetsaTest {
     
     private Pelaaja pelaaja;
+    private Pelaaja helppoPelaaja;
     private Metsa metsa;
+    private Metsa helppoMetsa;
     
     public MetsaTest() {
         pelaaja = new Pelaaja("Testipelaaja");
+        helppoPelaaja = new Pelaaja("Helppotestaaja", Vaikeus.HELPPO);
     }
    
     @Before
     public void setUp() {
         metsa = new Metsa(pelaaja);
         metsa.aloitaUusiTaistelu();
+        helppoMetsa = new Metsa(helppoPelaaja);
+        helppoMetsa.aloitaUusiTaistelu();
     }
 
     @Test 
@@ -42,6 +47,14 @@ public class MetsaTest {
         metsa.asetaTaistelunTulos();
         assertTrue(rahatAlussa < pelaaja.getRahat());
         assertTrue(kokemusAlussa < pelaaja.getKokemus());
+    }
+    
+    @Test
+    public void helpollaTasollaSaaEnemmanRahaaJaKokemusta() {
+        metsa.asetaTaistelunTulos();
+        helppoMetsa.asetaTaistelunTulos();
+        assertTrue(pelaaja.getRahat() < helppoPelaaja.getRahat());
+        assertTrue(pelaaja.getKokemus() < helppoPelaaja.getKokemus());
     }
     
     private void tapaPelaaja() {

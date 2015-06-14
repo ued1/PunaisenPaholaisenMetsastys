@@ -31,6 +31,7 @@ public class ParantajaTest {
     
     @Test
     public void pelaajaTarvitseePotioninParantuakseenPotionilla() {
+        pelaaja.setPotionit(0);
         assertFalse(parantaja.parannaPotionilla(pelaaja));
     }
     
@@ -62,6 +63,7 @@ public class ParantajaTest {
     
     @Test
     public void pelaajaVoiOstaaKorkeintaanKymmenenPotionia() {
+        pelaaja.setPotionit(0);
         pelaaja.muutaRahoja(99999);
         for(int i = 0; i < 9; i++) {
             parantaja.ostaPotion(pelaaja);
