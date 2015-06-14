@@ -70,8 +70,8 @@ public class Haarniskakauppa extends Kauppa {
      * @return hinnasto merkkijonona
      */
     @Override
-    public String hinnastoMerkkijonona() {
-        return "Myynnissä oleva haarniska\tPuolustusvoima\n" + super.hinnastoMerkkijonona();
+    public String valikoimaMerkkijonona() {
+        return "Myynnissä oleva haarniska  Puolustusvoima\n" + super.valikoimaMerkkijonona();
     }
     
         

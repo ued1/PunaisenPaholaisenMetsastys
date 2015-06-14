@@ -27,7 +27,7 @@ public class KapakkaTest {
     
     @Test
     public void KossuPotionLoytyyValikoimasta() {
-        assertTrue(kapakka.hinnastoMerkkijonona().contains(kossu.toString()));
+        assertTrue(kapakka.valikoimaMerkkijonona().contains(kossu.toString()));
     }
     
     @Test

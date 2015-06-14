@@ -38,8 +38,8 @@ public class AsepajaTest {
 
     @Test
     public void keppiJaTikariLoytyvatValikoimasta() {
-        assertTrue(asepaja.hinnastoMerkkijonona().contains(keppiString));
-        assertTrue(asepaja.hinnastoMerkkijonona().contains(tikariString));
+        assertTrue(asepaja.valikoimaMerkkijonona().contains(keppiString));
+        assertTrue(asepaja.valikoimaMerkkijonona().contains(tikariString));
     }
 
     @Test

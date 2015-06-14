@@ -63,11 +63,14 @@ public abstract class Kauppa<T> {
     public boolean voikoPelaajaOstaaOstoksen(Pelaaja pelaaja, int ostoksenNumero) {
         boolean aseEhdot = hinnastossaAseita() && pelaaja.getAse().toString().equals("Nyrkki");
         boolean eiAseita = !hinnastossaAseita();
+        if(ostoksenNumero < 1 || ostoksenNumero >= valikoima.size()) {
+            return false;
+        }
         if(hinnastossaApuja() && pelaaja.onkoPelaajallaApu((Apu)valikoima.get(ostoksenNumero))) {
             return false;
         }
         
-        if ((aseEhdot || eiAseita) && ostoksenNumero > 0 && ostoksenNumero < valikoima.size() && pelaaja.getRahat() >= hinta(ostoksenNumero)) {
+        if ((aseEhdot || eiAseita) && pelaaja.getRahat() >= hinta(ostoksenNumero)) {
             return true;
         }
         return false;
@@ -85,21 +88,17 @@ public abstract class Kauppa<T> {
         for (int i = 1; i < valikoima.size(); i++) {
             if (voikoPelaajaOstaaOstoksen(pelaaja, i)) {
                 if (i > 9) {
-                    ostettavatOstokset += "[" + (char) (55 + i);
+                    ostettavatOstokset += String.format("%-3s", " [" + (char) (55 + i));
                 } else {
-                    ostettavatOstokset += "[" + i;
+                    ostettavatOstokset += String.format("%-3s", " [" + i);
                 }
-                ostettavatOstokset += "] " + valikoima.get(i).toString();
-                if (hinnastossaHaarniskoja() && (i == 1 || i == 3 || i == 9)) {
-                    ostettavatOstokset += "      \t";
-                } else if (i % 2 == 0 || hinnastossaApuja()) {
+                ostettavatOstokset += String.format("%-18s", "] " + valikoima.get(i).toString());
+                if (i != valikoima.size()-1 && (i % 2 == 0 || hinnastossaApuja())) {
                     ostettavatOstokset += "\n";
-                } else {
-                    ostettavatOstokset += "\t";
                 }
             }
         }
-        ostettavatOstokset += "[T]akaisin";
+        ostettavatOstokset += "\n [T]akaisin";
         return ostettavatOstokset;
     }
 
@@ -135,34 +134,26 @@ public abstract class Kauppa<T> {
         String ostettavat = "";
         for (int i = 1; i < valikoima.size(); i++) {
             if (voikoPelaajaOstaaOstoksen(pelaaja, i)) {
-                ostettavat += valikoima.get(i).toString();
-                if (hinnastossaHaarniskoja() && (i < 4 || i > 8)) {
-                    ostettavat += "         \t";
-                } else {
-                    ostettavat += "\t";
-                }
-                ostettavat += "hinta: " + hinta(i) + "\n";
+                ostettavat += String.format("%-20s", " " + valikoima.get(i).toString());
+                ostettavat += String.format("%-7s%9d", "hinta: ", hinta(i)) + "\n";
             }
         }
         return ostettavat;
     }
 
     /**
-     * Metodi palauttaa hinnaston, joka sisältää tavaroiden nimien lisäksi
-     * hinnan ja järjestyksen hinnastossa. Järjestysnumeroa käytettään hyväksi
-     * ostovaiheessa.
+     * Metodi palauttaa valikoiman, joka sisältää tavaroiden nimien lisäksi
+     * tavaran tärkeimmän ominaisuuden ja järjestyksen hinnastossa. 
+     * Järjestysnumeroa käytettään hyväksi ostovaiheessa.
      *
-     * @return hinnasto merkkijonona
+     * @return valikoima merkkijonona
      */
-    public String hinnastoMerkkijonona() {
+    public String valikoimaMerkkijonona() {
         String hinnasto = "";
+        
         for (int i = 1; i < valikoima.size(); i++) {
-            hinnasto += "" + i + ". " + valikoima.get(i).toString();
-            if (valikoima.get(i).toString().length() > 10) {
-                hinnasto += "\t" + arvo(i) + "\n";
-            } else {
-                hinnasto += "\t\t" + arvo(i) + "\n";
-            }
+            hinnasto += String.format("%-4s%-26s", " " + i + ".", " " + valikoima.get(i).toString());
+            hinnasto += String.format("%-10d%s", ominaisuus(i),"\n");
         }
         return hinnasto;
     }
@@ -172,19 +163,19 @@ public abstract class Kauppa<T> {
             return ((Ase) valikoima.get(i)).arvo();
         } else if (valikoima.get(0).getClass() == new Riepu().getClass()) {
             return ((Haarniska) valikoima.get(i)).arvo();
-        } else if (valikoima.get(0).getClass() == KossuPotion.class) {
+        } else if (valikoima.get(0).getClass() == VointiPotion.class) {
             return ((Apu) valikoima.get(i)).arvo();
         }
         return 0;
     }
 
-    private int arvo(int i) {
+    private int ominaisuus(int i) {
         if (valikoima.get(0).getClass() == new Nyrkki().getClass()) {
             return ((Ase) valikoima.get(i)).lyo();
         } else if (valikoima.get(0).getClass() == new Riepu().getClass()) {
             return ((Haarniska) valikoima.get(i)).suojaa();
-        } else if (valikoima.get(0).getClass() == KossuPotion.class) {
-            return ((Apu) valikoima.get(i)).arvo();                 // TODO
+        } else if (valikoima.get(0).getClass() == VointiPotion.class) {
+            return ((Apu) valikoima.get(i)).arvo();
         }
         return 0;
     }

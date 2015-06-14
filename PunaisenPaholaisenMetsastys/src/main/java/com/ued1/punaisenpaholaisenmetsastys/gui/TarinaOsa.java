@@ -12,6 +12,8 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,9 +37,11 @@ public class TarinaOsa extends JPanel {
     private Luola luola;
     private Parantaja parantaja;
     private Casino casino;
+    private Font fontti;
 
     public TarinaOsa(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja, Casino casino) {
         super(new GridLayout(2, 1));
+        setBackground(new Color(238,238,238));
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
         this.haarniskakauppa = new Haarniskakauppa();
@@ -47,6 +51,7 @@ public class TarinaOsa extends JPanel {
         this.luola = luola;
         this.parantaja = parantaja;
         this.casino = casino;
+        this.fontti = new Font("SansSerif", Font.PLAIN, 12);
         kuvanAsettaja = new KuvanAsettaja();
         luoKomponentit();
     }
@@ -54,6 +59,8 @@ public class TarinaOsa extends JPanel {
     private void luoKomponentit() {
         eka = new JLabel();
         toka = new JTextArea();
+        eka.setBackground(new Color(238,238,238));
+        toka.setBackground(new Color(238,238,238));
         paivita();
         eka.setFocusable(false);
         toka.setFocusable(false);
@@ -65,6 +72,7 @@ public class TarinaOsa extends JPanel {
      * Metodi päivittää tarinapaneelin tarinaosan.
      */
     public void paivita() {
+        toka.setFont(fontti);
         if (pelaaja.getPaikka() == Paikka.KYLA) {
             asetaKyla();
         } else if (pelaaja.getPaikka() == Paikka.ASEPAJA) {
@@ -136,17 +144,20 @@ public class TarinaOsa extends JPanel {
 
     private void asetaAsepaja() {
         kuvanAsettaja.asetaKuva(eka, "Asepaja");
-        toka.setText(asepaja.hinnastoMerkkijonona());
+        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setText(asepaja.valikoimaMerkkijonona());
     }
 
     private void asetaHaarniskaKauppa() {
         kuvanAsettaja.asetaKuva(eka, "Haarniskakauppa");
-        toka.setText(haarniskakauppa.hinnastoMerkkijonona());
+        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setText(haarniskakauppa.valikoimaMerkkijonona());
     }
 
     private void asetaKapakka() {
         kuvanAsettaja.asetaKuva(eka, "Kapakka");
-        toka.setText(kapakka.hinnastoMerkkijonona());
+        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setText(kapakka.valikoimaMerkkijonona());
     }
     
     private void asetaCasino() {
@@ -177,6 +188,7 @@ public class TarinaOsa extends JPanel {
 
     private void asetaKanni() {
         kuvanAsettaja.asetaKuva(eka, "Känni");
+        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
         String kanni = "";
         if(pelaaja.getVointi() < 2) {
             kanni += "\nOlet niin kännissä ettei vointisi\nvoi enää enempää laskea!";
@@ -184,7 +196,7 @@ public class TarinaOsa extends JPanel {
         } else {
             kanni = "\nHumaltuminen laskee vointiasi yhdellä!\n\n";
         }
-        kanni += kapakka.hinnastoMerkkijonona();
+        kanni += kapakka.valikoimaMerkkijonona();
         toka.setText(kanni);
     }
 
@@ -218,10 +230,12 @@ public class TarinaOsa extends JPanel {
     }
 
     private void asetaAseenOsto() {
+        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
         toka.setText(asepaja.ostettavissaOlevat(pelaaja));
     }
 
     private void asetaHaarniskaOsto() {
+        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
         toka.setText(haarniskakauppa.ostettavissaOlevat(pelaaja));
     }
 
@@ -235,6 +249,7 @@ public class TarinaOsa extends JPanel {
 
     private void asetaKapakkaOsto() {
         kuvanAsettaja.asetaKuva(eka, "Kapakka");
+        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
         toka.setText(kapakka.ostettavissaOlevat(pelaaja));
     }
 

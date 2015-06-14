@@ -24,7 +24,7 @@ public class HaarniskakauppaTest {
 
     @Test
     public void vaatteetLoytyvatValikoimasta() {
-        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Vaatteet().toString()));
+        assertTrue(kauppa.valikoimaMerkkijonona().contains(new Vaatteet().toString()));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class HaarniskakauppaTest {
 
     @Test
     public void vaatteetLoytyvatHinnastosta() {
-        assertTrue(kauppa.hinnastoMerkkijonona().contains(new Vaatteet().toString()));
+        assertTrue(kauppa.valikoimaMerkkijonona().contains(new Vaatteet().toString()));
     }
 
 }

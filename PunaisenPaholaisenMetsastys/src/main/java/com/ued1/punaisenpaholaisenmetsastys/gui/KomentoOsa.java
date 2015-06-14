@@ -9,6 +9,7 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Casino;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -26,6 +27,7 @@ public class KomentoOsa extends JPanel {
 
     public KomentoOsa(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
+        setBackground(new Color(238,238,238));
         fontti = new Font("SansSerif", Font.BOLD, 12);
         luoKomponentit();
     }
@@ -33,12 +35,17 @@ public class KomentoOsa extends JPanel {
     private void luoKomponentit() {
         komentoValikko = new JTextArea(kylaValikko());
         komentoValikko.setFocusable(false);
-        komentoValikko.setFont(fontti);
+        komentoValikko.setBackground(new Color(238,238,238));
+        komentoValikko.setFont(new Font("Monospaced",Font.BOLD,12));
         add(komentoValikko);
     }
 
     private String kylaValikko() {
-        return "[M]etsä\n[A]sepaja\n[H]aarniskakauppa\n[P]arantaja\n[K]apakka\n[C]asino\n[T]aisteluareena\n[ESC] Takaisin valikkoon";
+        String valikko = String.format("%-18s%-12s", "[M]etsä", "[A]sepaja");
+        valikko += "\n" + String.format("%-18s%-12s", "[H]aarniskakauppa", "[P]arantaja");
+        valikko += "\n" + String.format("%-18s%-12s", "[T]aisteluareena", "[C]asino");
+        valikko += "\n" + String.format("%-18s", "[K]apakka");
+        return valikko +="\n\n[ESC] Takaisin valikkoon";
     }
 
     /**
@@ -49,6 +56,7 @@ public class KomentoOsa extends JPanel {
     public void paivita(Paikka uusiPaikka) {
         komentoValikko.setFont(fontti);
         if (uusiPaikka == Paikka.KYLA) {
+            komentoValikko.setFont(new Font("Monospaced",Font.BOLD,12));
             komentoValikko.setText(kylaValikko());
         } else if (uusiPaikka == Paikka.ASEPAJA) {
             komentoValikko.setText("[O]sta ase\n[M]yy ase\n[T]akaisin");
@@ -60,12 +68,13 @@ public class KomentoOsa extends JPanel {
             komentoValikko.setText("[A]stu taisteluareenaan\n[T]akaisin kylään");
         } else if (uusiPaikka == Paikka.ASEENOSTO) {
             String ostettavatAseet = new Asepaja().ostokomennot(pelaaja);
+            komentoValikko.setFont(new Font("Monospaced", Font.BOLD, 12));
             komentoValikko.setText(ostettavatAseet);
         } else if (uusiPaikka == Paikka.ASEENMYYNTI) {
             komentoValikko.setText(lisaaAseenMyyntiKomento());
         } else if (uusiPaikka == Paikka.HAARNISKANOSTO) {
             String ostettavatHaarniskat = new Haarniskakauppa().ostokomennot(pelaaja);
-            komentoValikko.setFont(new Font("SansSerif Bold", Font.BOLD, 10));
+            komentoValikko.setFont(new Font("Monospaced", Font.BOLD, 12));
             komentoValikko.setText(ostettavatHaarniskat);
         } else if (uusiPaikka == Paikka.MONSTERITAISTELU) {
             komentoValikko.setText("[L]yö\n[J]uokse");

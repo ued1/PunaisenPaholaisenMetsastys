@@ -24,12 +24,12 @@ public class Kapakka extends Kauppa {
 
     private static ArrayList<Apu> lisaaAvutValikoimaan(Pelaaja pelaaja) {
         ArrayList<Apu> avut = new ArrayList<>();
-        Apu VointiPotion = new VointiPotion();
+        Apu vointiPotion = new VointiPotion();
         Apu kossuPotion = new KossuPotion(pelaaja);
         Apu pupu = new Pupu(pelaaja);
         Apu ohraPotion = new OhraPotion(pelaaja);
         Apu ruosteinenAvain = new RuosteinenAvain();
-        avut.add(kossuPotion); // ei näy listassa
+        avut.add(vointiPotion); // ei näy listassa
         avut.add(kossuPotion);
         avut.add(pupu);
         avut.add(ohraPotion);
@@ -55,11 +55,11 @@ public class Kapakka extends Kauppa {
     }
 
     @Override
-    public String hinnastoMerkkijonona() {
-        String kuvaus = "Kapakassa voit ostaa hyödyllisiä tai hyödyttömiä";
-        kuvaus += "\nasioita. Kokeileminen omalla vastuulla!\n\n";
-        kuvaus += "Nimi\t\tHinta\n\n";
-        return kuvaus += super.hinnastoMerkkijonona();
+    public String valikoimaMerkkijonona() {
+        String kuvaus = "Kapakassa voit ostaa hyödyllisiä tai";
+        kuvaus += "\nhyödyttömiä asioita.\n\nKokeileminen omalla vastuulla!\n\n";
+        kuvaus += String.format("%-30s%-6s", "     Nimi", "Hinta");
+        return kuvaus += "\n" + super.valikoimaMerkkijonona();
     }
 
 }

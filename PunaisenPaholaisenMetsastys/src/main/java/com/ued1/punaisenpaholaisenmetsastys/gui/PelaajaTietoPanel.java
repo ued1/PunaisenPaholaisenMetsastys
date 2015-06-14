@@ -38,6 +38,7 @@ public class PelaajaTietoPanel extends JPanel {
     public PelaajaTietoPanel(Pelaaja pelaaja) {
         super(new GridLayout(11, 2));
         this.pelaaja = pelaaja;
+        setBackground(new Color(238,238,238));
         tasoTeksti = new JLabel();
         kokemusTeksti = new JLabel();
         vointiTeksti = new JLabel();
@@ -58,7 +59,7 @@ public class PelaajaTietoPanel extends JPanel {
 
     private void lisaaKomponentit() {
         paivitaTiedot();
-        add(new JLabel("           Nimi:"));
+        add(new JLabel("             Nimi:"));
         add(new JLabel(pelaaja.getNimi()));
         add(ikoninAsettaja.asetaIkoni("Taso"));
         add(tasoTeksti);
