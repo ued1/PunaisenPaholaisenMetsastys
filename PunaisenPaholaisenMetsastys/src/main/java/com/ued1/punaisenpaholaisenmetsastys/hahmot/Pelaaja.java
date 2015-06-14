@@ -30,7 +30,7 @@ public class Pelaaja extends Hahmo {
         this.rahat = 0;
         this.paikka = Paikka.KYLA;
         this.kokemus = 0;
-        this.potionit = 0;
+        this.potionit = 5;
         this.avut = new ArrayList();
     }
 
@@ -223,5 +223,19 @@ public class Pelaaja extends Hahmo {
      */
     public ArrayList<Apu> getAvut() {
         return avut;
+    }
+    
+    /**
+     * Metodi poistaa pelaajalta avun.
+     * 
+     * @param apu Apu joka poistetaan.
+     * @return totuusarvo, true jos poisto onnistui.
+     */
+    public boolean poistaApu(Apu apu) {
+        if(onkoPelaajallaApu(apu)) {
+            avut.remove(apu);
+            return true;
+        }
+        return false;
     }
 }

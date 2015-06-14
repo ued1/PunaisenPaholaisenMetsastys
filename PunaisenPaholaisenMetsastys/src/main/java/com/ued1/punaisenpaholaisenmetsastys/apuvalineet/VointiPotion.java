@@ -1,11 +1,11 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.apuvalineet;
 
-public class VihannesPotion extends Apu {
+public class VointiPotion extends Apu {
 
     @Override
     public String toString() {
-        return "VihannesPotion";
+        return "VointiPotion";
     }
 
     @Override
@@ -15,7 +15,7 @@ public class VihannesPotion extends Apu {
 
     @Override
     public String kuvaus() {
-        return "VihannesPotion";
+        return "VointiPotion";
     }
 
     @Override

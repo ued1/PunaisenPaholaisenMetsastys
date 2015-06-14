@@ -3,6 +3,7 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Apu;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.OhraPotion;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.RuosteinenAvain;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.awt.Color;
@@ -28,9 +29,10 @@ public class PelaajaTietoPanel extends JPanel {
     private JLabel haarniskaTeksti;
     private JLabel puolustusTeksti;
     private JLabel rahaTeksti;
-    private JLabel potionTeksti;
-    private JLabel ekaApu;
-    private JLabel tokaApu;
+    private JLabel potionApu;
+    private JLabel pupuApu;
+    private JLabel olutApu;
+    private JLabel avainApu;
     private KuvanAsettaja ikoninAsettaja;
 
     public PelaajaTietoPanel(Pelaaja pelaaja) {
@@ -45,15 +47,16 @@ public class PelaajaTietoPanel extends JPanel {
         puolustusTeksti = new JLabel();
         rahaTeksti = new JLabel();
         ikoninAsettaja = new KuvanAsettaja();
-        potionTeksti = new JLabel();
-        ekaApu = ikoninAsettaja.asetaIkoni("Pupu");
-        tokaApu = ikoninAsettaja.asetaIkoni("OhraPotion");
-        ekaApu.setVisible(false);
-        tokaApu.setVisible(false);
-        luoKomponentit();
+        potionApu = ikoninAsettaja.asetaIkoni("VointiPotion");
+        pupuApu = ikoninAsettaja.asetaIkoni("Pupu");
+        olutApu = ikoninAsettaja.asetaIkoni("OhraPotion");
+        avainApu = ikoninAsettaja.asetaIkoni("Ruosteinen avain");
+        pupuApu.setVisible(false);
+        olutApu.setVisible(false);
+        lisaaKomponentit();
     }
 
-    private void luoKomponentit() {
+    private void lisaaKomponentit() {
         paivitaTiedot();
         add(new JLabel("           Nimi:"));
         add(new JLabel(pelaaja.getNimi()));
@@ -73,10 +76,10 @@ public class PelaajaTietoPanel extends JPanel {
         add(puolustusTeksti);
         add(ikoninAsettaja.asetaIkoni("Rahat"));
         add(rahaTeksti);
-        add(ikoninAsettaja.asetaIkoni("VihannesPotion"));
-        add(potionTeksti);
-        add(ekaApu);
-        add(tokaApu);
+        add(potionApu);
+        add(pupuApu);
+        add(olutApu);
+        add(avainApu);
     }
     
     private void paivitaTiedot() {
@@ -93,24 +96,30 @@ public class PelaajaTietoPanel extends JPanel {
         haarniskaTeksti.setText(pelaaja.getHaarniska().toString());
         puolustusTeksti.setText("" + pelaaja.suojaa());
         rahaTeksti.setText("" + pelaaja.getRahat());
-        potionTeksti.setText("" + pelaaja.getPotionit());
-        paivitaApuIkonit();
+        potionApu.setText("(" + pelaaja.getPotionit() + ")");
+        paivitaApuIkonienNakyvyys();
     }
     
                                     // TODO: parempi toteutus
-    private void paivitaApuIkonit() {
+    private void paivitaApuIkonienNakyvyys() {
         ArrayList<Apu> avut = pelaaja.getAvut();
         if(avut.contains(new Pupu(pelaaja))) {
-            ekaApu.setVisible(true);
+            pupuApu.setVisible(true);
         } else {
-            ekaApu.setVisible(false);
+            pupuApu.setVisible(false);
         }
         if(avut.contains(new OhraPotion(pelaaja))) {
-            tokaApu.setVisible(true);
+            olutApu.setVisible(true);
         } else {
-            tokaApu.setVisible(false);
+            olutApu.setVisible(false);
+        }
+        if(avut.contains(new RuosteinenAvain())) {
+            avainApu.setVisible(true);
+        } else {
+            avainApu.setVisible(false);
         }
     }
+    
 
     /**
      * Metodi päivittää pelaajapaneelin saadessaan repaint() käskyn.

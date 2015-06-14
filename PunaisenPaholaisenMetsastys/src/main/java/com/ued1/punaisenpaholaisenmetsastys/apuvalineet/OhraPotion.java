@@ -23,6 +23,7 @@ public class OhraPotion extends Apu {
     @Override
     public boolean auta() {
         pelaaja.vointiBuusti();
+        pelaaja.poistaApu(this);
         return true;
     }
 

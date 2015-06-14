@@ -5,7 +5,7 @@ import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.KossuPotion;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.OhraPotion;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.RuosteinenAvain;
-import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.VihannesPotion;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.VointiPotion;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class Kapakka extends Kauppa {
 
     private static ArrayList<Apu> lisaaAvutValikoimaan(Pelaaja pelaaja) {
         ArrayList<Apu> avut = new ArrayList<>();
-        Apu VihannesPotion = new VihannesPotion();
+        Apu VointiPotion = new VointiPotion();
         Apu kossuPotion = new KossuPotion(pelaaja);
         Apu pupu = new Pupu(pelaaja);
         Apu ohraPotion = new OhraPotion(pelaaja);

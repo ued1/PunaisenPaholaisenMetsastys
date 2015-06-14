@@ -52,12 +52,12 @@ public class KomennonValidoija {
             return hoidaHaarniskanOsto(koodi);
         } else if (paikka == Paikka.KAPAKKAOSTO) {
             return hoidaKapakkaOsto(koodi);
-        } else if (paikka == Paikka.MONSTERITAISTELUTAPPIO || paikka == Paikka.PAHOLAINENTAPPIO || paikka == Paikka.TAISTELUAREENATULOS) {
+        } else if (paikka == Paikka.MONSTERITAISTELUTAPPIO || paikka == Paikka.PAHOLAINENTAPPIO || paikka == Paikka.TAISTELUAREENATULOS || paikka == Paikka.METSAPUPU) {
             return hoidaJatka(koodi);
         } else if (paikka == Paikka.TAISTELUAREENAEI || paikka == Paikka.PEUKKUTULOS) {
             return hoidaTakaisin(koodi);
         } else if (paikka == Paikka.AREENATAISTELU || paikka == Paikka.PAHOLAINEN) {
-            return hoidaLyonti(koodi);
+            return hoidaLyonti(paikka, koodi);
         } else if (paikka == Paikka.LUOLA) {
             return hoidaLuola(koodi);
         } else if (paikka == Paikka.PARANTAJA) {
@@ -193,8 +193,12 @@ public class KomennonValidoija {
     }
 
     // [L]yö
-    private boolean hoidaLyonti(int koodi) {
+    private boolean hoidaLyonti(Paikka paikka, int koodi) {
         if (koodi == KeyEvent.VK_L) {
+            return true;
+        } else if(paikka == Paikka.AREENATAISTELU && koodi == KeyEvent.VK_O) {
+            return true;
+        } else if(paikka == Paikka.PAHOLAINEN && koodi == KeyEvent.VK_R) {
             return true;
         }
         return false;

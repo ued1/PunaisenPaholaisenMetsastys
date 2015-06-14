@@ -44,7 +44,7 @@ public class KuvanLataaja {
         lisaa("/kuvat/exp.png", "Kokemus");
         lisaa("/kuvat/voima.png", "Voima");
         lisaa("/kuvat/puolustus.png", "Puolustus");
-        lisaa("/kuvat/potion.png", "VihannesPotion");
+        lisaa("/kuvat/potion.png", "VointiPotion");
         lisaa("/kuvat/pupu.png", "Pupu");
         lisaa("/kuvat/olut.png", "OhraPotion");
         lisaa("/kuvat/avain.png", "Ruosteinen avain");
@@ -71,6 +71,7 @@ public class KuvanLataaja {
         lisaa("/kuvat/pupu.png", "Pupu");
         lisaa("/kuvat/olut.png", "OhraPotion");
         lisaa("/kuvat/avain.png", "Ruosteinen avain");
+        lisaa("/kuvat/evilpupu.png", "Ilkeä pupu");
     }
     
     private void lisaa(String sijainti, String kuvaus) {

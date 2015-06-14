@@ -1,5 +1,6 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
@@ -110,6 +111,8 @@ public class TarinaOsa extends JPanel {
             asetaPeukkupeli();
         } else if (pelaaja.getPaikka() == Paikka.PEUKKUTULOS) {
             asetaPeukkupeliTulos();
+        } else if (pelaaja.getPaikka() == Paikka.METSAPUPU) {
+            asetaMetsaPupu();
         }
 
     }
@@ -117,13 +120,17 @@ public class TarinaOsa extends JPanel {
     private void asetaKyla() {
         kuvanAsettaja.asetaKuva(eka, "Kylä");
         String kuvaus = "Tämä on kyläsi.";
-        kuvaus += "\n\nAsepajassa voit ostaa uusia aseita.";
-        kuvaus += "\n\nHaarniskakaupassa voit päivittää haarniskasi.";
-        kuvaus += "\n\nKapakasta löytyy kaikenlaista hyödyllista\nja hyödytöntä.";
-        kuvaus += "\n\nTaisteluareenalla voit kehittyä taistelijana";
-        kuvaus += "\nja nousta seuraavalla tasolle.";
-        kuvaus += "\n\nMetsästä löytyy monstereita, joita tappamalla";
-        kuvaus += "\nsaat lisää kultarahoja.";
+        kuvaus += "\n\nVoit vierailla kylän eri paikoissa";
+        kuvaus += "\nvalitsemalla sopivan komennon alhaalla";
+        kuvaus += "\nolevasta komentovalikosta.";
+        kuvaus += "\n\nHalutessasi voit palata päävalikkoon";
+        kuvaus += "\nja lukea tarkemmat kuvaukset ja ohjeet";
+        kuvaus += "\neri toiminnoista.";
+        if(pelaaja.getRahat() < 1) {
+            kuvaus += "\n\nSinulla ei ole yhtään rahaa.";
+            kuvaus += "\nTaistelemalla monstereita vastaan";
+            kuvaus += "\nmetsässä voit ansaita lisää rahaa.";
+        }
         toka.setText(kuvaus);
     }
 
@@ -150,6 +157,11 @@ public class TarinaOsa extends JPanel {
     private void asetaPeukkupeli() {
         kuvanAsettaja.asetaKuva(eka, "Peukkupeli");
         toka.setText(casino.getPeukkupeliKuvaus());
+    }
+    
+    private void asetaMetsaPupu() {
+        kuvanAsettaja.asetaKuva(eka, "Ilkeä pupu");
+        toka.setText(new Pupu(pelaaja).kuvaus());
     }
     
     private void asetaPeukkupeliTulos() {
@@ -187,12 +199,12 @@ public class TarinaOsa extends JPanel {
         kuvaus += "\nja ansaita kultarahoja. Jos häviät monsterille";
         kuvaus += "\nmenetät kaikki rahasi.";
         if(pelaaja.getPotionit() > 0) {
-            kuvaus += "\n\nVoit käyttää VihannesPotioneja";
+            kuvaus += "\n\nVoit käyttää VointiPotioneja";
             kuvaus += "\nparantaakseen vointiasi kun et ole";
             kuvaus += "\ntaistelussa.";
         } else {
             kuvaus += "\n\nTarvitset kylän Parantajalta";
-            kuvaus += "\nVihannesPotioneja, jotta voit parantaa";
+            kuvaus += "\nVointiPotioneja, jotta voit parantaa";
             kuvaus += "\nitseäsi metsässä taistelujen välissä.";
         }
         toka.setText(kuvaus);
@@ -248,7 +260,9 @@ public class TarinaOsa extends JPanel {
 
     private void asetaAreenaTaistelu() {
         kuvanAsettaja.asetaKuva(eka, "AreenaTaistelu");
-        toka.setText(areena.getVastustajanTiedot());
+        String kuvaus = areena.getVastustajanTiedot();
+        kuvaus += "\n\nVointisi: " + pelaaja.getVointi() + "/" + pelaaja.getMaxVointi();
+        toka.setText(kuvaus);
     }
 
     private void asetaMonsteriTaisteluTappio() {

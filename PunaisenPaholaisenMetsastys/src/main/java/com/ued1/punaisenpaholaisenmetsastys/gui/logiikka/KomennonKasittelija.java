@@ -1,6 +1,8 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
 
 import com.sun.glass.events.KeyEvent;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.OhraPotion;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
@@ -94,6 +96,8 @@ public class KomennonKasittelija {
             kasittelePeukkupeliKomento(komentoKoodi);
         } else if(paikka == Paikka.PEUKKUTULOS) {
             kasittelePeukkuTulosKomento(komentoKoodi);
+        } else if(paikka == Paikka.METSAPUPU) {
+            kasitteleMetsaPupuKomento(komentoKoodi);
         }
     }
     
@@ -121,8 +125,12 @@ public class KomennonKasittelija {
     
     private void kasitteleMetsaKomento(int komentoKoodi) {
         if(komentoKoodi == KeyEvent.VK_E) {
-            metsa.aloitaUusiTaistelu();
-            paivittaja.paivita(Paikka.MONSTERITAISTELU);
+            if(pelaaja.onkoPelaajallaApu(new Pupu(pelaaja)) && new Pupu(pelaaja).auta()) {
+                paivittaja.paivita(Paikka.METSAPUPU);
+            } else {
+                metsa.aloitaUusiTaistelu();
+                paivittaja.paivita(Paikka.MONSTERITAISTELU);
+            }
         } else if(komentoKoodi == KeyEvent.VK_V) {
             new Parantaja().parannaPotionilla(pelaaja);
             paivittaja.paivita(Paikka.METSA);
@@ -130,6 +138,12 @@ public class KomennonKasittelija {
             paivittaja.paivita(Paikka.KYLA);
         } else if(pelaaja.getTaso() == 10 && komentoKoodi == KeyEvent.VK_P) {
             paivittaja.paivita(Paikka.LUOLA);
+        }
+    }
+    
+    private void kasitteleMetsaPupuKomento(int komentoKoodi) {
+        if(komentoKoodi == KeyEvent.VK_J) {
+            paivittaja.paivita(Paikka.METSA);
         }
     }
         
@@ -288,6 +302,12 @@ public class KomennonKasittelija {
                 luola.asetaTulos();
                 paivittaja.paivita(Paikka.PAHOLAINEN);
             }
+        } else if(komentoKoodi == KeyEvent.VK_R) {
+            
+            // TODO
+            
+            
+            
         }
         
     }
@@ -296,10 +316,12 @@ public class KomennonKasittelija {
         if(komentoKoodi == KeyEvent.VK_L) {
             if(areena.getTaistelu().taistele()) {
                 paivittaja.paivita(Paikka.TAISTELUAREENATULOS);
-                
             } else {
                 paivittaja.paivita(Paikka.AREENATAISTELU);
             }
+        } else if(komentoKoodi == KeyEvent.VK_O && pelaaja.onkoPelaajallaApu(new OhraPotion(pelaaja))) {
+            new OhraPotion(pelaaja).auta();
+            paivittaja.paivita(Paikka.AREENATAISTELU);
         }
     }
     

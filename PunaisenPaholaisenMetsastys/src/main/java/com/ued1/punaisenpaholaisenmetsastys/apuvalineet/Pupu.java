@@ -2,6 +2,7 @@
 package com.ued1.punaisenpaholaisenmetsastys.apuvalineet;
 
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
+import java.util.Random;
 
 /**
  * Pupu on "Apu", joka varastaa pelaajan rahat.
@@ -19,15 +20,26 @@ public class Pupu extends Apu {
         return "Pupu";
     }
     
+    /**
+     * Pupu "auttaa" pelaajaa varastamalla pelaajan rahat 1/15 todennäköisyydellä.
+     * Pupu ei "auta" mikäli pelaajalla ei ole rahaa.
+     * 
+     * @return totuusarvo, true jos pupu vie rahat
+     */
     @Override
     public boolean auta() {
-        pelaaja.muutaRahoja(-pelaaja.getRahat());
-        return true;
+        Random arpoja = new Random();
+        if(pelaaja.getRahat() > 0 && arpoja.nextInt(16) == 5) {
+            pelaaja.muutaRahoja(-pelaaja.getRahat());
+            pelaaja.poistaApu(this);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public String kuvaus() {
-        return "Pupu varastaa kaikki rahasi\nja loikkii tiehensä!";
+        return "\nPupu varasti kaikki rahasi\nja loikki tiehensä!";
     }
 
     @Override

@@ -40,7 +40,7 @@ public class Parantaja {
     }
 
     /**
-     * Metodi tarkistaa voiko pelaaja ostaa VihannesPotionin. Osto on
+     * Metodi tarkistaa voiko pelaaja ostaa VointiPotionin. Osto on
      * mahdollinen jos pelaajalla on tarpeeksi rahaa ja pelaajalla on potioneja
      * korkeintaan 4.
      *
@@ -55,7 +55,7 @@ public class Parantaja {
     }
 
     /**
-     * Metodi ostaa pelaajalle VihannesPotionin, mikäli osto on mahdollinen.
+     * Metodi ostaa pelaajalle VointiPotionin, mikäli osto on mahdollinen.
      *
      * @param pelaaja Pelaaja, jolle ostetaan
      * @return totuusarvo, true jos osto onnistui
@@ -80,9 +80,9 @@ public class Parantaja {
         int erotus = hinta[pelaaja.getTaso()] - pelaaja.getRahat();
         String kuvaus = "\nParantaja parantaa sinut jos vointisi";
         kuvaus += "\nkaipaa parannusta.";
-        kuvaus += "\n\nVoit myös ostaa VihannesPotioneja,";
+        kuvaus += "\n\nVoit myös ostaa VointiPotioneja,";
         kuvaus += "\njoiden avulla voit parantaa myöhemmin itsesi.";
-        kuvaus += "\n\nVihannesPotion maksaa " + hinta[pelaaja.getTaso()];
+        kuvaus += "\n\nVointiPotion maksaa " + hinta[pelaaja.getTaso()];
         kuvaus += "\nkultarahaa";
         if (erotus <= 0) {
             kuvaus += " ja hinta vähennetään rahoistasi";
@@ -93,7 +93,7 @@ public class Parantaja {
             kuvaus += " lisää.";
         }
         kuvaus += "\n\nVoit kantaa enintään kymmentä";
-        kuvaus += "\nVihannesPotionia samaan aikaan.";
+        kuvaus += "\nVointiPotionia samaan aikaan.";
         return kuvaus;
     }
 
