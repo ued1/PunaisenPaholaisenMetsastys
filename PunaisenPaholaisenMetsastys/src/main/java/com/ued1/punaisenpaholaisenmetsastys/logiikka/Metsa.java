@@ -36,8 +36,14 @@ public class Metsa {
      */
     public void asetaTaistelunTulos() {
         if (pelaaja.onkoElossa()) {
-            pelaaja.muutaRahoja(tasollaRahaaTarjolla[pelaaja.getTaso()]);
-            pelaaja.muutaKokemusta(tasollaKokemustaTarjolla[pelaaja.getTaso()]);
+            int rahaPalkkio = tasollaRahaaTarjolla[pelaaja.getTaso()];
+            int kokemusPalkkio = tasollaKokemustaTarjolla[pelaaja.getTaso()];
+            if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+                rahaPalkkio *= 2;
+                kokemusPalkkio *= 2;
+            }
+            pelaaja.muutaRahoja(rahaPalkkio);
+            pelaaja.muutaKokemusta(kokemusPalkkio);
         } else {
             pelaaja.nollaaRahat();
             pelaaja.paranna();
@@ -50,7 +56,12 @@ public class Metsa {
     }
 
     private Monsteri generoiUusiMonsteriTaisteluun() {
-        int monsterinVointi = arvoPositiivinenLuku(2 * pelaaja.getMaxVointi());
+        int monsterinVointi;
+        if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+            monsterinVointi = arvoPositiivinenLuku(pelaaja.getMaxVointi());
+        } else {
+            monsterinVointi = arvoPositiivinenLuku(2 * pelaaja.getMaxVointi());
+        }
         int monsterinVoima = arvoPositiivinenLuku(pelaaja.lyo());
         int monsterinPuolustus = arvoPositiivinenLuku(pelaaja.suojaa());
         Monsteri monsteri = new Monsteri(monsterinVointi, monsterinVoima, monsterinPuolustus);

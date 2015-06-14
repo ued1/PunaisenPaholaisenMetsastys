@@ -6,6 +6,7 @@ import com.ued1.punaisenpaholaisenmetsastys.aseet.Ase;
 import com.ued1.punaisenpaholaisenmetsastys.aseet.Nyrkki;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Haarniska;
 import com.ued1.punaisenpaholaisenmetsastys.haarniskat.Riepu;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Vaikeus;
 import java.util.ArrayList;
 
 /**
@@ -21,8 +22,13 @@ public class Pelaaja extends Hahmo {
     private int kokemus;
     private int potionit;
     private ArrayList<Apu> avut;
+    private Vaikeus vaikeus;
 
     public Pelaaja(String nimi) {
+        this(nimi, Vaikeus.NORMAALI);
+    }
+    
+    public Pelaaja(String nimi, Vaikeus vaikeus) {
         super(nimi, 20, 20);
         this.taso = 1;
         this.ase = new Nyrkki();
@@ -30,8 +36,13 @@ public class Pelaaja extends Hahmo {
         this.rahat = 0;
         this.paikka = Paikka.KYLA;
         this.kokemus = 0;
-        this.potionit = 5;
+        if(vaikeus == Vaikeus.HELPPO) {
+            this.potionit = 10;
+        } else {
+            this.potionit = 5;
+        }
         this.avut = new ArrayList();
+        this.vaikeus = vaikeus;
     }
 
     public int getTaso() {
@@ -238,4 +249,13 @@ public class Pelaaja extends Hahmo {
         }
         return false;
     }
+    
+    public Vaikeus getVaikeus() {
+        return vaikeus;
+    }
+    
+    public void setVaikeus(Vaikeus uusiVaikeus) {
+        vaikeus = uusiVaikeus;
+    }
+    
 }

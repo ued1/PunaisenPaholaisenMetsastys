@@ -3,10 +3,13 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.NimenValinnanKuuntelija;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -18,9 +21,13 @@ public class NimenValintaPanel extends JPanel {
     private Kyla kyla;
     private JButton aloita;
     private JButton takaisin;
+    private JRadioButton normaali;
+    private JRadioButton helppo;
     private JTextField nimikentta;
     private JTextArea virhekentta;
     private JLabel valitseNimi;
+    private JLabel valitseVaikeus;
+    private ButtonGroup valintaNapit;
     private NimenValinnanKuuntelija kuuntelija;
     private final String ohje;
 
@@ -29,9 +36,12 @@ public class NimenValintaPanel extends JPanel {
         this.ohje = luoOhje();
         this.aloita = new JButton("Aloita peli");
         this.takaisin = new JButton("Takaisin");
+        this.normaali = new JRadioButton("Normaali", true);
+        this.helppo = new JRadioButton("Helppo", false);
+        this.valintaNapit = new ButtonGroup();
         this.nimikentta = new JTextField("");
         this.virhekentta = new JTextArea(ohje);
-        this.kuuntelija = new NimenValinnanKuuntelija(this, kyla, aloita, takaisin, nimikentta, virhekentta);
+        this.kuuntelija = new NimenValinnanKuuntelija(this, kyla, aloita, takaisin, nimikentta, virhekentta, normaali, helppo);
         alusta();
     }
     
@@ -56,9 +66,22 @@ public class NimenValintaPanel extends JPanel {
         virhekentta.setMinimumSize(new Dimension(300, 75));
         virhekentta.setAlignmentX(CENTER_ALIGNMENT);
         
-        valitseNimi = new JLabel("Valitse pelaajanimesi:");
+        valitseNimi = new JLabel("Valitse pelaajanimesi");
+        valitseNimi.setFont(new Font("Dialog", Font.BOLD, 15));
         valitseNimi.setForeground(Color.RED);
         valitseNimi.setAlignmentX(CENTER_ALIGNMENT);
+                
+        valitseVaikeus = new JLabel("Valitse vaikeusaste");
+        valitseVaikeus.setFont(new Font("Dialog", Font.BOLD, 15));
+        valitseVaikeus.setForeground(Color.RED);
+        valitseVaikeus.setAlignmentX(CENTER_ALIGNMENT);
+        
+        valintaNapit.add(normaali);
+        valintaNapit.add(helppo);
+        normaali.setBackground(Color.BLACK);
+        normaali.setForeground(Color.WHITE);
+        helppo.setBackground(Color.BLACK);
+        helppo.setForeground(Color.WHITE);
         
         asetaNormaaliTila();
         lisaaKuuntelijat();
@@ -75,6 +98,12 @@ public class NimenValintaPanel extends JPanel {
         add(new JLabel(" "));
         add(virhekentta);
         add(new JLabel(" "));
+        add(valitseVaikeus);
+        add(new JLabel(" "));
+        add(normaali);
+        add(helppo);
+        add(new JLabel(" "));
+        add(new JLabel(" "));
         add(aloita);
         add(new JLabel(" "));
         add(takaisin);
@@ -84,6 +113,8 @@ public class NimenValintaPanel extends JPanel {
         nimikentta.addActionListener(kuuntelija);
         aloita.addActionListener(kuuntelija);
         takaisin.addActionListener(kuuntelija);
+        normaali.addActionListener(kuuntelija);
+        helppo.addActionListener(kuuntelija);
     }
     
     

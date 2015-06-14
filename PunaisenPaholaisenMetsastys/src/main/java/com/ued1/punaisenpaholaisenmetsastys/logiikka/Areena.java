@@ -77,7 +77,7 @@ public class Areena {
             }
         } else {
             vastustaja.paranna();
-            ((Kilpailija)vastustaja).heikenna();
+            heikennaVastustajaa();
             pelaaja.paranna();
         }
     }
@@ -98,14 +98,23 @@ public class Areena {
     }
     
     private void heikennaVastustajaa() {
-        
-        
+        if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+            ((Kilpailija)vastustaja).heikenna();
+            ((Kilpailija)vastustaja).heikenna();
+        } else {
+            ((Kilpailija)vastustaja).heikenna();
+        }
     }
 
     private Hahmo generoiUusiVastustaja() {
-        int maxVointi = pelaaja.getMaxVointi() + 5; // TODO: muuta sopivaksi
-        int voima = pelaaja.lyo() + 2;              // TODO: muuta sopivaksi
-        int puolustus = pelaaja.suojaa() + 1;       // TODO: muuta sopivaksi
+        int maxVointi = pelaaja.getMaxVointi() + 5;
+        int voima = pelaaja.lyo() + 2;
+        int puolustus = pelaaja.suojaa() + 1;
+        if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+            maxVointi -= 5;
+            voima -= 2;
+            puolustus -= 1;
+        }
         Hahmo kilpailija = new Kilpailija(maxVointi, voima, puolustus);
         return kilpailija;
     }

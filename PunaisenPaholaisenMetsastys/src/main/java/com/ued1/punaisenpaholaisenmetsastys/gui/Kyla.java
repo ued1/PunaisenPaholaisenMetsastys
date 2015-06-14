@@ -9,6 +9,7 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Vaikeus;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -47,8 +48,8 @@ public class Kyla implements Runnable {
         frame.setVisible(true);
     }
     
-    private void asetaPelaaja(String pelaajanNimi) {
-        this.pelaaja = new Pelaaja(pelaajanNimi.trim());
+    private void asetaPelaaja(String pelaajanNimi, Vaikeus vaikeus) {
+        this.pelaaja = new Pelaaja(pelaajanNimi.trim(), vaikeus);
     }
     
     private void asetaPelialue() {
@@ -80,9 +81,9 @@ public class Kyla implements Runnable {
      * Asettaa pelinäkymän ja aloittaa uuden pelin.
      * @param pelaajanNimi uuden pelaajan nimi
      */
-    public void aloitaUusiPeli(String pelaajanNimi) {
+    public void aloitaUusiPeli(String pelaajanNimi, Vaikeus vaikeus) {
         tyhjennaFrame();
-        asetaPelaaja(pelaajanNimi);
+        asetaPelaaja(pelaajanNimi, vaikeus);
         luoPelinakyma(frame.getContentPane());
         piirraJaAsetaFokus();
     }
