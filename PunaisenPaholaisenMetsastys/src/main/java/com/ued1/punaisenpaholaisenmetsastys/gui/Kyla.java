@@ -122,7 +122,16 @@ public class Kyla implements Runnable {
         frame.removeKeyListener(kuuntelija);
         asetaAlkuvalikko();
     }
-        
+    
+    /**
+     * Asettaa asetusvalikon näkyviin.
+     */
+    public void asetaAsetusvalikko() {
+        tyhjennaFrame();
+        frame.getContentPane().add(new AsetuksetPanel(this, pelaaja));
+        piirraJaAsetaFokus();
+    }
+    
     /**
      * Asettaa ohjeen näkyviin.
      */

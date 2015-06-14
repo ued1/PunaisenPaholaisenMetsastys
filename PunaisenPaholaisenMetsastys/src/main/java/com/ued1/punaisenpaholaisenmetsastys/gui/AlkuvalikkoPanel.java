@@ -18,6 +18,7 @@ public class AlkuvalikkoPanel extends JPanel {
     private JButton jatka;
     private JButton aloita;
     private JButton lataa;
+    private JButton asetukset;
     private JButton ohje;
     private JButton lopeta;
     private AlkuvalikonKuuntelija kuuntelija;
@@ -28,10 +29,11 @@ public class AlkuvalikkoPanel extends JPanel {
         jatka = new JButton("Takaisin peliin");
         aloita = new JButton("Aloita uusi peli");
         lataa = new JButton("Lataa tallennettu peli");
+        asetukset = new JButton("Asetukset");
         ohje = new JButton("Pelin ohjeet");
         lopeta = new JButton("Lopeta peli");
         this.kyla = kyla;
-        kuuntelija = new AlkuvalikonKuuntelija(kyla, jatka, aloita, lataa, ohje, lopeta);
+        kuuntelija = new AlkuvalikonKuuntelija(kyla, jatka, aloita, lataa, ohje, lopeta, asetukset);
         paholainen = new JLabel();
         luoKomponentit();
     }
@@ -54,6 +56,7 @@ public class AlkuvalikkoPanel extends JPanel {
         lataa.addActionListener(kuuntelija);
         ohje.addActionListener(kuuntelija);
         lopeta.addActionListener(kuuntelija);
+        asetukset.addActionListener(kuuntelija);
     }
     
     private void asetaSuuntaus() {
@@ -63,6 +66,7 @@ public class AlkuvalikkoPanel extends JPanel {
         lataa.setAlignmentX(CENTER_ALIGNMENT);
         ohje.setAlignmentX(CENTER_ALIGNMENT);
         lopeta.setAlignmentX(CENTER_ALIGNMENT);
+        asetukset.setAlignmentX(CENTER_ALIGNMENT);
     }
     
     private void lisaaOsat() {
@@ -75,6 +79,10 @@ public class AlkuvalikkoPanel extends JPanel {
         add(new JLabel(" "));
         add(lataa);
         add(new JLabel(" "));
+        if(kyla.onkoPeliKaynnissa()) {
+            add(asetukset);
+            add(new JLabel(" "));
+        }
         add(ohje);
         add(new JLabel(" "));
         add(lopeta);
