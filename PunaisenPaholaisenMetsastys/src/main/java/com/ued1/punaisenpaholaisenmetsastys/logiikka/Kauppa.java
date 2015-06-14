@@ -111,6 +111,12 @@ public abstract class Kauppa<T> {
      */
     public String ostettavissaOlevat(Pelaaja pelaaja) {
         String merkkijono = "";
+        if(hinnastossaAseita() && !pelaaja.getAse().toString().equals("Nyrkki")) {
+            merkkijono += "\nSinun pitää ensin myydä aseesi";
+            merkkijono += "\njotta voit ostaa uuden.";
+            return merkkijono;
+        }
+        
         if (!voikoPelaajaOstaaOstoksen(pelaaja, 1)) {
             merkkijono += "\nRahasi eivät riitä mihinkään.";
             if (pelaaja.getRahat() == 0) {

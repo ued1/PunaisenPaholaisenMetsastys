@@ -38,9 +38,9 @@ public class Kyla implements Runnable {
     public void run() {
         frame = new JFrame("PunaisenPaholaisenMetsastys");
         frame.getContentPane().add(new AlkuvalikkoPanel(this));
-        frame.setPreferredSize(new Dimension(600,600));
-        frame.setMinimumSize(new Dimension(600,600));
-        frame.setMaximumSize(new Dimension(600,600));
+        frame.setPreferredSize(new Dimension(600,700));
+        frame.setMinimumSize(new Dimension(600,700));
+        frame.setMaximumSize(new Dimension(600,700));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.pack();
@@ -64,13 +64,13 @@ public class Kyla implements Runnable {
     private void luoPelinakyma(Container container) {
         asetaPelialue();
         PelaajaTietoPanel pelaajaTietoPanel = new PelaajaTietoPanel(pelaaja);
-        pelaajaTietoPanel.setPreferredSize(new Dimension(300, 600));
-        pelaajaTietoPanel.setMinimumSize(new Dimension(300, 600));
-        pelaajaTietoPanel.setMaximumSize(new Dimension(300, 600));
+        pelaajaTietoPanel.setPreferredSize(new Dimension(300, 700));
+        pelaajaTietoPanel.setMinimumSize(new Dimension(300, 700));
+        pelaajaTietoPanel.setMaximumSize(new Dimension(300, 700));
         TarinaPanel tarinaPanel = new TarinaPanel(pelaaja, metsa, areena, luola, parantaja, casino);
-        tarinaPanel.setPreferredSize(new Dimension(300,600));
-        tarinaPanel.setMinimumSize(new Dimension(300,600));
-        tarinaPanel.setMaximumSize(new Dimension(300,600));
+        tarinaPanel.setPreferredSize(new Dimension(300,700));
+        tarinaPanel.setMinimumSize(new Dimension(300,700));
+        tarinaPanel.setMaximumSize(new Dimension(300,700));
         container.add(tarinaPanel, BorderLayout.WEST);
         container.add(pelaajaTietoPanel, BorderLayout.EAST);
         kuuntelija = new KomennonKuuntelija(this, pelaaja,tarinaPanel,pelaajaTietoPanel,metsa, areena,luola, parantaja);

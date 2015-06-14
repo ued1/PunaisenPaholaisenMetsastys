@@ -241,9 +241,13 @@ public class TarinaOsa extends JPanel {
 
     private void asetaAseenMyynti() {
         if (asepaja.voikoMyydaAseen(pelaaja)) {
-            toka.setText("ohje aseen myyntiin");
+            String ohje = "\nOlet myymässä asettasi.";
+            ohje += "\n\nSaat puolet aseesi arvosta, " + pelaaja.getAse().arvo()/2;
+            ohje += "\ntakaisin kun myyt aseesi.";
+            ohje += "\n\nOletko varma, että haluat myydä aseesi?";
+            toka.setText(ohje);
         } else {
-            toka.setText("Et voi myydä omaa nyrkkiäsi");
+            toka.setText("\nEt voi myydä omaa nyrkkiäsi!");
         }
     }
 
