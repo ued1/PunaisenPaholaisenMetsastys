@@ -121,6 +121,8 @@ public class TarinaOsa extends JPanel {
             asetaPeukkupeliTulos();
         } else if (pelaaja.getPaikka() == Paikka.METSAPUPU) {
             asetaMetsaPupu();
+        } else if (pelaaja.getPaikka() == Paikka.RUOSTEINENAVAIN) {
+            asetaRuosteinenAvain();
         }
 
     }
@@ -183,7 +185,11 @@ public class TarinaOsa extends JPanel {
             kuvanAsettaja.asetaKuva(eka, "Peukku alas");
             toka.setText("\nHävisit. Menenit kaikki rahasi.");
         }
-        
+    }
+    
+    private void asetaRuosteinenAvain() {
+        kuvanAsettaja.asetaKuva(eka, "RuosteinenAvain");
+        toka.setText("ruosteinenAvain");
     }
 
     private void asetaKanni() {

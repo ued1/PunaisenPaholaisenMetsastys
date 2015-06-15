@@ -3,6 +3,7 @@ package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
 import com.sun.glass.events.KeyEvent;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.OhraPotion;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.RuosteinenAvain;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.gui.PelaajaTietoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.TarinaPanel;
@@ -302,12 +303,8 @@ public class KomennonKasittelija {
                 luola.asetaTulos();
                 paivittaja.paivita(Paikka.PAHOLAINEN);
             }
-        } else if(komentoKoodi == KeyEvent.VK_R) {
-            
-            // TODO
-            
-            
-            
+        } else if(komentoKoodi == KeyEvent.VK_R || pelaaja.onkoPelaajallaApu(new RuosteinenAvain())) {
+            paivittaja.paivita(Paikka.RUOSTEINENAVAIN);
         }
         
     }

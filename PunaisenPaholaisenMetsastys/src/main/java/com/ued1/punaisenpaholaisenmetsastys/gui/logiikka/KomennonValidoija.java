@@ -56,7 +56,7 @@ public class KomennonValidoija {
             return hoidaJatka(koodi);
         } else if (paikka == Paikka.TAISTELUAREENAEI || paikka == Paikka.PEUKKUTULOS) {
             return hoidaTakaisin(koodi);
-        } else if (paikka == Paikka.AREENATAISTELU || paikka == Paikka.PAHOLAINEN) {
+        } else if (paikka == Paikka.AREENATAISTELU) {
             return hoidaLyonti(paikka, koodi);
         } else if (paikka == Paikka.LUOLA) {
             return hoidaLuola(koodi);
@@ -64,6 +64,8 @@ public class KomennonValidoija {
             return hoidaParantaja(koodi);
         } else if (paikka == Paikka.CASINO) {
             return hoidaCasino(koodi);
+        } else if (paikka == Paikka.PAHOLAINEN) {
+            return hoidaPaholainen(koodi);
         }
         return false;
     }
@@ -215,6 +217,14 @@ public class KomennonValidoija {
     // Casino: [P]eukku [T]akaisin
     private boolean hoidaCasino(int koodi) {
         if ((koodi == KeyEvent.VK_P && pelaaja.getRahat() > 0) || koodi == KeyEvent.VK_T) {
+            return true;
+        }
+        return false;
+    }
+    
+    // Punainen Paholainen: [L]lyö [R]uosteinen avain
+    private boolean hoidaPaholainen(int koodi) {
+        if(koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_R) {
             return true;
         }
         return false;
