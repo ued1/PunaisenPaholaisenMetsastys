@@ -24,7 +24,7 @@ public class Kapakka extends Kauppa {
 
     private static ArrayList<Apu> lisaaAvutValikoimaan(Pelaaja pelaaja) {
         ArrayList<Apu> avut = new ArrayList<>();
-        Apu vointiPotion = new VointiPotion();
+        Apu vointiPotion = new VointiPotion(pelaaja);
         Apu kossuPotion = new KossuPotion(pelaaja);
         Apu pupu = new Pupu(pelaaja);
         Apu ohraPotion = new OhraPotion(pelaaja);

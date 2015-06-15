@@ -1,7 +1,15 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.apuvalineet;
 
+import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
+
 public class VointiPotion extends Apu {
+    
+    private Pelaaja pelaaja;
+    
+    public VointiPotion(Pelaaja pelaaja) {
+        this.pelaaja = pelaaja;
+    }
 
     @Override
     public String toString() {

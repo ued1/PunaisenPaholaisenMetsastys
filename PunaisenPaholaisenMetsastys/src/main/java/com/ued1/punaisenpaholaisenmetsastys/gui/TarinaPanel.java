@@ -26,7 +26,7 @@ public class TarinaPanel extends JPanel {
         
     public TarinaPanel(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja, Casino casino) {
         this.pelaaja = pelaaja;
-        this.komentoOsa = new KomentoOsa(pelaaja);
+        this.komentoOsa = new KomentoOsa(pelaaja, luola);
         this.tarinaOsa = new TarinaOsa(pelaaja, metsa, areena, luola, parantaja, casino);
         luoKomponentit();
     }

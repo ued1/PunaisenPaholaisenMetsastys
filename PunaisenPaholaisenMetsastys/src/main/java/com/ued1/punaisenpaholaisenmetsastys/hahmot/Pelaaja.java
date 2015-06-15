@@ -182,12 +182,32 @@ public class Pelaaja extends Hahmo {
     }
     
     /**
-     * Metodi muuttaa pelaajan kokemusta. Kokemus on aina vähintään nolla.
+     * Asetetaan kokemus. Kokemus voi olla vähintään 0 ja enintään 200000000.
+     * 
+     * @param uusiKokemus kokemus, joka pelaajalle asetetaan
+     */
+    public void setKokemus(int uusiKokemus) {
+        if(uusiKokemus < 0) {
+            kokemus = 0;
+        } else if(uusiKokemus > 200000000) {
+            kokemus = 200000000;
+        } else {
+            kokemus = uusiKokemus;
+        }
+    }
+    
+    /**
+     * Metodi muuttaa pelaajan kokemusta. Kokemus on aina vähintään nolla ja
+     * enintään 200000000.
      * 
      * @param muutos kokonaisluku joka lisätään pelaajan kokemukseen
      */
     public void muutaKokemusta(int muutos) {
-        kokemus = Math.max(0, kokemus+muutos);
+        if(kokemus + muutos > 200000000) {
+            kokemus = 200000000;
+        } else {
+            kokemus = Math.max(0, kokemus+muutos);
+        }
     }
     
     /**

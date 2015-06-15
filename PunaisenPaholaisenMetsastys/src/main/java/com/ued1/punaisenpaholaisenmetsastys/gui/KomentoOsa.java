@@ -8,6 +8,7 @@ import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Casino;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
+import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
 import java.awt.Color;
 import java.awt.Font;
@@ -24,9 +25,11 @@ public class KomentoOsa extends JPanel {
     private JTextArea komentoValikko;
     private Pelaaja pelaaja;
     private Font fontti;
+    private Luola luola;
 
-    public KomentoOsa(Pelaaja pelaaja) {
+    public KomentoOsa(Pelaaja pelaaja, Luola luola) {
         this.pelaaja = pelaaja;
+        this.luola = luola;
         setBackground(new Color(238,238,238));
         fontti = new Font("SansSerif", Font.BOLD, 12);
         luoKomponentit();
@@ -80,11 +83,11 @@ public class KomentoOsa extends JPanel {
             komentoValikko.setText("[L]yö\n[J]uokse");
         } else if (uusiPaikka == Paikka.MONSTERITAISTELUTAPPIO || uusiPaikka == Paikka.PAHOLAINENTAPPIO) {
             komentoValikko.setText("[J]atka peliä\n");
-        } else if (uusiPaikka == Paikka.TAISTELUAREENAEI) {
+        } else if (uusiPaikka == Paikka.TAISTELUAREENAEI || uusiPaikka == Paikka.METSAPUPU) {
             komentoValikko.setText("[T]akaisin");
         } else if (uusiPaikka == Paikka.AREENATAISTELU || uusiPaikka == Paikka.PAHOLAINEN) {
             komentoValikko.setText("[L]yö" + lisaaApuKomento(uusiPaikka));
-        } else if (uusiPaikka == Paikka.TAISTELUAREENATULOS || uusiPaikka == Paikka.METSAPUPU) {
+        } else if (uusiPaikka == Paikka.TAISTELUAREENATULOS || uusiPaikka == Paikka.RUOSTEINENAVAIN) {
             komentoValikko.setText("[J]atka");
         } else if (uusiPaikka == Paikka.KAPAKKA || uusiPaikka == Paikka.KANNI) {
             komentoValikko.setText("[O]sta\n[T]akaisin");
@@ -102,6 +105,10 @@ public class KomentoOsa extends JPanel {
             komentoValikko.setText("[A]loita\n[T]akaisin");
         } else if (uusiPaikka == Paikka.PEUKKUTULOS) {
             komentoValikko.setText("[T]akaisin");
+        } else if(uusiPaikka == Paikka.HEIKENNETTYPAHOLAINEN) {
+            komentoValikko.setText(lisaaHeikennettyPaholainenKomento());
+        } else if(uusiPaikka == Paikka.LOPPU) {
+            komentoValikko.setText("[V]iimeinen lyönti");
         }
     }
 
@@ -113,6 +120,17 @@ public class KomentoOsa extends JPanel {
         } else {
             return "";
         }
+    }
+    
+    private String lisaaHeikennettyPaholainenKomento() {
+        String komennot = "[L]yö";
+        if(luola.getPunainenPotion() > 0) {
+            komennot += "\n[P]unainen potion";
+        }
+        if(luola.getMustaPotion() > 0) {
+            komennot += "\n[M]usta potion";
+        }
+        return komennot;
     }
 
     private String lisaaMetsaKomennot() {
@@ -137,7 +155,7 @@ public class KomentoOsa extends JPanel {
     private String lisaaParantajaKomento() {
         String komento = "";
         if (new Parantaja().voikoOstaa(pelaaja)) {
-            komento += "[P]aranna\n[O]sta VihannesPotion\n[T]akaisin";
+            komento += "[P]aranna\n[O]sta VointiPotion\n[T]akaisin";
         } else {
             komento += "[P]aranna\n[T]akaisin";
         }

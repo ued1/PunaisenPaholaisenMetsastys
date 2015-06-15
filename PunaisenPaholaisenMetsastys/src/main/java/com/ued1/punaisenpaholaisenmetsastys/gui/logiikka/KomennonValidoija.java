@@ -52,9 +52,9 @@ public class KomennonValidoija {
             return hoidaHaarniskanOsto(koodi);
         } else if (paikka == Paikka.KAPAKKAOSTO) {
             return hoidaKapakkaOsto(koodi);
-        } else if (paikka == Paikka.MONSTERITAISTELUTAPPIO || paikka == Paikka.PAHOLAINENTAPPIO || paikka == Paikka.TAISTELUAREENATULOS || paikka == Paikka.METSAPUPU) {
+        } else if (paikka == Paikka.MONSTERITAISTELUTAPPIO || paikka == Paikka.PAHOLAINENTAPPIO || paikka == Paikka.TAISTELUAREENATULOS || paikka == Paikka.RUOSTEINENAVAIN) {
             return hoidaJatka(koodi);
-        } else if (paikka == Paikka.TAISTELUAREENAEI || paikka == Paikka.PEUKKUTULOS) {
+        } else if (paikka == Paikka.TAISTELUAREENAEI || paikka == Paikka.PEUKKUTULOS || paikka == Paikka.METSAPUPU) {
             return hoidaTakaisin(koodi);
         } else if (paikka == Paikka.AREENATAISTELU) {
             return hoidaLyonti(paikka, koodi);
@@ -66,6 +66,10 @@ public class KomennonValidoija {
             return hoidaCasino(koodi);
         } else if (paikka == Paikka.PAHOLAINEN) {
             return hoidaPaholainen(koodi);
+        } else if (paikka == Paikka.HEIKENNETTYPAHOLAINEN) {
+            return hoidaHeikennettyPaholainen(koodi);
+        } else if (paikka == Paikka.LOPPU) {
+            return hoidaLoppu(koodi);
         }
         return false;
     }
@@ -180,18 +184,12 @@ public class KomennonValidoija {
 
     // [J]atka
     private boolean hoidaJatka(int koodi) {
-        if (koodi == KeyEvent.VK_J) {
-            return true;
-        }
-        return false;
+        return (koodi == KeyEvent.VK_J);
     }
 
     // [T]akaisin
     private boolean hoidaTakaisin(int koodi) {
-        if (koodi == KeyEvent.VK_T) {
-            return true;
-        }
-        return false;
+        return (koodi == KeyEvent.VK_T);
     }
 
     // [L]yö
@@ -228,6 +226,19 @@ public class KomennonValidoija {
             return true;
         }
         return false;
+    }
+    
+    // Heikennetty Punainen Paholainen
+    private boolean hoidaHeikennettyPaholainen(int koodi) {
+        if(koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_M) {
+            return true;
+        }
+        return false;
+    }
+    
+    // Pelin loppu
+    private boolean hoidaLoppu(int koodi) {
+        return (koodi == KeyEvent.VK_V);
     }
         
 

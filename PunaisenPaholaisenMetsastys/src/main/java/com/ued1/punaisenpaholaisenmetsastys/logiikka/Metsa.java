@@ -13,7 +13,7 @@ public class Metsa {
 
     private Pelaaja pelaaja;
     private Taistelu taistelu;
-    private final int[] tasollaRahaaTarjolla = {0, 5, 10, 50, 100, 500, 5000, 10000, 50000, 100000, 500000};
+    private final int[] tasollaRahaaTarjolla = {0, 5, 10, 50, 100, 500, 5000, 10000, 50000, 500000, 5000000};
     private final int[] tasollaKokemustaTarjolla = {0, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000};
 
     public Metsa(Pelaaja pelaaja) {

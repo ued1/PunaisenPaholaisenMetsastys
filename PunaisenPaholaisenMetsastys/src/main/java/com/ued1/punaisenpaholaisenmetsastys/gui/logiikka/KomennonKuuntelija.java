@@ -26,7 +26,7 @@ public class KomennonKuuntelija implements KeyListener {
     public KomennonKuuntelija(Kyla kyla, Pelaaja pelaaja, TarinaPanel tarinaPanel, PelaajaTietoPanel pelaajaTietoPanel, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja) {
         this.pelaaja = pelaaja;
         this.pelaajaTietoPanel = pelaajaTietoPanel; // rivin voi poistaa kun CHEAT poistetaan
-        this.kasittelija = new KomennonKasittelija(pelaaja, tarinaPanel, pelaajaTietoPanel, metsa, areena, luola, parantaja);
+        this.kasittelija = new KomennonKasittelija(kyla, pelaaja, tarinaPanel, pelaajaTietoPanel, metsa, areena, luola, parantaja);
         this.validoija = new KomennonValidoija(pelaaja);
         this.kyla = kyla;
     }
@@ -37,24 +37,31 @@ public class KomennonKuuntelija implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // väliaikainen CHEAT kehityksen tueksi, +5000 rahaa kun painaa kylässä [x]
-        if(pelaaja.getPaikka() == Paikka.KYLA && e.getKeyCode() == KeyEvent.VK_X) {
-            pelaaja.muutaRahoja(500000);
-            pelaajaTietoPanel.repaint();
-        // väliaikainen CHEAT kehityksen tueksi, levelille 10 kun painaa kylässä [end]
-        } else if(pelaaja.getPaikka() == Paikka.KYLA && e.getKeyCode() == KeyEvent.VK_END) {
-            for(int i = 0; i < 10; i++) {
-                pelaaja.nostaTasoa();
-            }
-            pelaajaTietoPanel.repaint();
-        }
-        
+        // CHEAT
+        if (pelaaja.getNimi().equals("Assari") && pelaaja.getPaikka() == Paikka.KYLA) {
+            huijaa(e);
+        } // CHEAT END
+
         if (validoija.onkoKomento(pelaaja.getPaikka(), e.getKeyCode())) {
             kasittelija.kasitteleKomento(pelaaja.getPaikka(), e.getKeyCode());
-        } else if(pelaaja.getPaikka() == Paikka.KYLA && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+        } else if (pelaaja.getPaikka() == Paikka.KYLA && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             kyla.pelistaValikkoon();
         }
     }
+
+    // CHEAT
+    private void huijaa(KeyEvent e) {
+        int[] tarvittavaKokemus = {0, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000};
+        if (e.getKeyCode() == KeyEvent.VK_X) {
+            pelaaja.muutaRahoja(1000000);
+        } else if (e.getKeyCode() == KeyEvent.VK_PAGE_UP && pelaaja.getTaso() < 10) {
+            pelaaja.setKokemus(tarvittavaKokemus[pelaaja.getTaso()]);
+            pelaaja.nostaTasoa();
+        } else if(e.getKeyCode() == KeyEvent.VK_END && pelaaja.getTaso() < 10) {
+            pelaaja.setKokemus(tarvittavaKokemus[pelaaja.getTaso()]);
+        }
+        pelaajaTietoPanel.repaint();
+    } // CHEAT END
 
     @Override
     public void keyReleased(KeyEvent e) {

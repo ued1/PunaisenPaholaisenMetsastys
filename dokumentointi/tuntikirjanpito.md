@@ -94,3 +94,12 @@ Kylään lisätty Casino, Kapakan parantelua, JavaDoc lisäyksiä, sekvenssikaav
 7 tuntia
 Alkuvalikko paremmaksi, potionien toiminta, kilpailijoiden heikkeneminen, Apuvälineiden osto, testejä lisätty, ym.
 
+14.06.2015
+10 tuntia
+Apuvälineiden toiminnallisuus, peliin vaikeusase, testejä, grafiikkaa paranneltu, bugeja korjattu, ym
+
+15.06.2015
+4 tuntia
+Pelin loppu, bugeja korjattu, kuvia lisätty
+
+

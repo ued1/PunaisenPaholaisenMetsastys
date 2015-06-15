@@ -1,6 +1,7 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
+import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.RuosteinenAvain;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
@@ -41,7 +42,7 @@ public class TarinaOsa extends JPanel {
 
     public TarinaOsa(Pelaaja pelaaja, Metsa metsa, Areena areena, Luola luola, Parantaja parantaja, Casino casino) {
         super(new GridLayout(2, 1));
-        setBackground(new Color(238,238,238));
+        setBackground(new Color(238, 238, 238));
         this.pelaaja = pelaaja;
         this.asepaja = new Asepaja();
         this.haarniskakauppa = new Haarniskakauppa();
@@ -59,8 +60,8 @@ public class TarinaOsa extends JPanel {
     private void luoKomponentit() {
         eka = new JLabel();
         toka = new JTextArea();
-        eka.setBackground(new Color(238,238,238));
-        toka.setBackground(new Color(238,238,238));
+        eka.setBackground(new Color(238, 238, 238));
+        toka.setBackground(new Color(238, 238, 238));
         paivita();
         eka.setFocusable(false);
         toka.setFocusable(false);
@@ -123,6 +124,10 @@ public class TarinaOsa extends JPanel {
             asetaMetsaPupu();
         } else if (pelaaja.getPaikka() == Paikka.RUOSTEINENAVAIN) {
             asetaRuosteinenAvain();
+        } else if(pelaaja.getPaikka() == Paikka.HEIKENNETTYPAHOLAINEN) {
+            asetaHeikennettyPaholainen();
+        } else if(pelaaja.getPaikka() == Paikka.LOPPU) {
+            asetaLopetusLyonti();
         }
 
     }
@@ -136,7 +141,7 @@ public class TarinaOsa extends JPanel {
         kuvaus += "\n\nHalutessasi voit palata päävalikkoon";
         kuvaus += "\nja lukea tarkemmat kuvaukset ja ohjeet";
         kuvaus += "\neri toiminnoista.";
-        if(pelaaja.getRahat() < 1) {
+        if (pelaaja.getRahat() < 1) {
             kuvaus += "\n\nSinulla ei ole yhtään rahaa.";
             kuvaus += "\nTaistelemalla monstereita vastaan";
             kuvaus += "\nmetsässä voit ansaita lisää rahaa.";
@@ -146,39 +151,39 @@ public class TarinaOsa extends JPanel {
 
     private void asetaAsepaja() {
         kuvanAsettaja.asetaKuva(eka, "Asepaja");
-        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setFont(new Font("Monospaced", Font.PLAIN, 12));
         toka.setText(asepaja.valikoimaMerkkijonona());
     }
 
     private void asetaHaarniskaKauppa() {
         kuvanAsettaja.asetaKuva(eka, "Haarniskakauppa");
-        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setFont(new Font("Monospaced", Font.PLAIN, 12));
         toka.setText(haarniskakauppa.valikoimaMerkkijonona());
     }
 
     private void asetaKapakka() {
         kuvanAsettaja.asetaKuva(eka, "Kapakka");
-        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setFont(new Font("Monospaced", Font.PLAIN, 12));
         toka.setText(kapakka.valikoimaMerkkijonona());
     }
-    
+
     private void asetaCasino() {
         kuvanAsettaja.asetaKuva(eka, "Casino");
         toka.setText(casino.getCasinoKuvaus(pelaaja));
     }
-    
+
     private void asetaPeukkupeli() {
         kuvanAsettaja.asetaKuva(eka, "Peukkupeli");
         toka.setText(casino.getPeukkupeliKuvaus());
     }
-    
+
     private void asetaMetsaPupu() {
         kuvanAsettaja.asetaKuva(eka, "Ilkeä pupu");
         toka.setText(new Pupu(pelaaja).kuvaus());
     }
-    
+
     private void asetaPeukkupeliTulos() {
-        if(new Casino().pelaaPeukkua(pelaaja)) {
+        if (new Casino().pelaaPeukkua(pelaaja)) {
             kuvanAsettaja.asetaKuva(eka, "Peukku ylös");
             toka.setText("\nVoitit! Rahasi on tuplattu!");
         } else {
@@ -186,17 +191,24 @@ public class TarinaOsa extends JPanel {
             toka.setText("\nHävisit. Menenit kaikki rahasi.");
         }
     }
-    
+
     private void asetaRuosteinenAvain() {
-        kuvanAsettaja.asetaKuva(eka, "RuosteinenAvain");
-        toka.setText("ruosteinenAvain");
+        kuvanAsettaja.asetaKuva(eka, "Hauska ovi");
+        String teksti = "\nLöydät luolasta pilarin takaanta";
+        teksti += "\nhassun oven, johon ruosteinen avaimesi";
+        teksti += "\nnäyttää sopivan.";
+        teksti += "\n\nAvattuasi oven huomaat sen takaanta";
+        teksti += "\nlöytyvän monenlaisia välineitä, joista";
+        teksti += "\non sinulle hyötyä taistelussa Punaista";
+        teksti += "\nPaholaista vastaan.";
+        toka.setText(teksti);
     }
 
     private void asetaKanni() {
         kuvanAsettaja.asetaKuva(eka, "Känni");
-        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setFont(new Font("Monospaced", Font.PLAIN, 12));
         String kanni = "";
-        if(pelaaja.getVointi() < 2) {
+        if (pelaaja.getVointi() < 2) {
             kanni += "\nOlet niin kännissä ettei vointisi\nvoi enää enempää laskea!";
             kanni += "\nRahamääräsi kuitenkin jatkaa laskua.\n\n";
         } else {
@@ -216,7 +228,7 @@ public class TarinaOsa extends JPanel {
         String kuvaus = "\nMetsässä voit taistella monstereita vastaan";
         kuvaus += "\nja ansaita kultarahoja. Jos häviät monsterille";
         kuvaus += "\nmenetät kaikki rahasi.";
-        if(pelaaja.getPotionit() > 0) {
+        if (pelaaja.getPotionit() > 0) {
             kuvaus += "\n\nVoit käyttää VointiPotioneja";
             kuvaus += "\nparantaakseen vointiasi kun et ole";
             kuvaus += "\ntaistelussa.";
@@ -236,19 +248,29 @@ public class TarinaOsa extends JPanel {
     }
 
     private void asetaAseenOsto() {
-        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setFont(new Font("Monospaced", Font.PLAIN, 12));
         toka.setText(asepaja.ostettavissaOlevat(pelaaja));
+    }
+    
+    private void asetaLopetusLyonti() {
+        kuvanAsettaja.asetaKuva(eka, "LopetusLyönti");
+        String teksti = "\nOlet voittamassa Punaisen Paholaisen.";
+        teksti += "\n\nPaholaisella ei enää ole voimia taistella";
+        teksti += "\nvastaan. On lopetuslyönnin aika. Lyömällä";
+        teksti += "\nviimeisen kerran pelastat kylän ja sinusta";
+        teksti += "\ntulee voittaja.";
+        toka.setText(teksti);
     }
 
     private void asetaHaarniskaOsto() {
-        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setFont(new Font("Monospaced", Font.PLAIN, 12));
         toka.setText(haarniskakauppa.ostettavissaOlevat(pelaaja));
     }
 
     private void asetaAseenMyynti() {
         if (asepaja.voikoMyydaAseen(pelaaja)) {
             String ohje = "\nOlet myymässä asettasi.";
-            ohje += "\n\nSaat puolet aseesi arvosta, " + pelaaja.getAse().arvo()/2;
+            ohje += "\n\nSaat puolet aseesi arvosta, " + pelaaja.getAse().arvo() / 2;
             ohje += "\ntakaisin kun myyt aseesi.";
             ohje += "\n\nOletko varma, että haluat myydä aseesi?";
             toka.setText(ohje);
@@ -259,7 +281,7 @@ public class TarinaOsa extends JPanel {
 
     private void asetaKapakkaOsto() {
         kuvanAsettaja.asetaKuva(eka, "Kapakka");
-        toka.setFont(new Font("Monospaced",Font.PLAIN,12));
+        toka.setFont(new Font("Monospaced", Font.PLAIN, 12));
         toka.setText(kapakka.ostettavissaOlevat(pelaaja));
     }
 
@@ -281,6 +303,16 @@ public class TarinaOsa extends JPanel {
     private void asetaPaholainen() {
         kuvanAsettaja.asetaKuva(eka, "Paholainen");
         toka.setText(luola.getTaistelu().vastustaja().tiedotMerkkijonona());
+    }
+    
+    private void asetaHeikennettyPaholainen() {
+        kuvanAsettaja.asetaKuva(eka, "Paholainen");
+        String teksti = luola.getTaistelu().vastustaja().tiedotMerkkijonona();
+        teksti += "\n\nVoit käyttää löytämäsiäsi apuvälineitä:";
+        teksti += "\n - Punainen potioni (" + luola.getPunainenPotion() + ")";
+        teksti += "\n - Musta potioni (" + luola.getMustaPotion() + ")";
+        //teksti += "\n\nLöysin myös uuden ja vahvan aseen!";
+        toka.setText(teksti);
     }
 
     private void asetaAreenaTaistelu() {
@@ -305,6 +337,14 @@ public class TarinaOsa extends JPanel {
         String teksti = "Hävisit paholaiselle.";
         teksti += "\n\nPaholainen ottaa haarniskasi ja kaikki rahasi,";
         teksti += "\nmutta säästää henkesi.";
+        if(pelaaja.onkoPelaajallaApu(new RuosteinenAvain())) {
+            teksti += "\n\nMuistathan käyttää avaintasi";
+            teksti += "\nkun kohtaat Punaisen Paholaisen";
+            teksti += "\nuudestaan.";
+        } else {
+            teksti += "\n\nKapakasta löytyvästä apuvälineestä";
+            teksti += "\nsaattaisi olla hyötyä taistelussa!";
+        }
         toka.setText(teksti);
     }
 
@@ -320,11 +360,19 @@ public class TarinaOsa extends JPanel {
     private void asetaTaisteluAreenaEi() {
         kuvanAsettaja.asetaKuva(eka, "Taisteluareena");;
         // TODO: teksti jos on jo level 10
-        String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Haastaaksesi kilpailijoita";
-        tokateksti += "\nja noustaksesi seuraavalle tasolle tarvitset";
-        tokateksti += "\n" + (areena.seuraavanTasonKokemus() - pelaaja.getKokemus()) + " lisää kokemusta.";
-        tokateksti += "\n\nKokemuksesi: " + pelaaja.getKokemus();
-        tokateksti += "\nTarvittava kokemus: " + areena.seuraavanTasonKokemus();
+        String tokateksti = "Olet tasolla " + pelaaja.getTaso();
+        if (pelaaja.getTaso() == 10) {
+            tokateksti += ", mikä on korkein";
+            tokateksti += "\nmahdollinen taso.";
+            tokateksti += "\n\nOlet valmis haastaamaan Punaisen";
+            tokateksti += "\nPaholaisen. Löydät paholaisen metsästä.";
+        } else {
+            tokateksti += ". Haastaaksesi kilpailijoita\nja noustaksesi seuraavalle tasolle tarvitset";
+            tokateksti += "\n" + (areena.seuraavanTasonKokemus() - pelaaja.getKokemus()) + " lisää kokemusta.";
+            tokateksti += "\n\nKokemuksesi: " + pelaaja.getKokemus();
+            tokateksti += "\nTarvittava kokemus: " + areena.seuraavanTasonKokemus();
+        }
+
         toka.setText(tokateksti);
     }
 

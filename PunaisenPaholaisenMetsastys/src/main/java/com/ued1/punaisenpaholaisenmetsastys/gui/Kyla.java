@@ -140,6 +140,16 @@ public class Kyla implements Runnable {
         frame.getContentPane().add(new OhjePanel(this));
         piirraJaAsetaFokus();
     }
+    
+    /**
+     * Asettaa loppuvalikon.
+     */
+    public void asetaLoppuvalikko() {
+        frame.removeKeyListener(kuuntelija);
+        tyhjennaFrame();
+        frame.getContentPane().add(new LoppuPanel(this, pelaaja));
+        piirraJaAsetaFokus();
+    }
         
     private void tyhjennaFrame() {
         frame.getContentPane().removeAll();

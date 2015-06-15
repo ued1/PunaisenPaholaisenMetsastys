@@ -72,6 +72,9 @@ public class KuvanLataaja {
         lisaa("/kuvat/olut.png", "OhraPotion");
         lisaa("/kuvat/avain.png", "Ruosteinen avain");
         lisaa("/kuvat/evilpupu.png", "Ilkeä pupu");
+        lisaa("/kuvat/ovi.png", "Hauska ovi");
+        lisaa("/kuvat/areenataistelu.png", "AreenaTaistelu");
+        lisaa("/kuvat/paholainen2.png", "LopetusLyönti");
     }
     
     private void lisaa(String sijainti, String kuvaus) {
