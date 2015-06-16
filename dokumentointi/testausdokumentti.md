@@ -3,7 +3,7 @@
 - com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.*
 - com.ued1.punaisenpaholaisenmetsastys.tyokalut.NimenValidoija.java
 
-JUnit-testeillä on testattu pelilogiikkaa mahdollisimman kattavasti. 444 rivistä testit kattavat 336 eli 98% ja mutanteista on tapettu 78%. Täydelliseen testaukseen ei pyritä, sillä lisätesteistä saatava hyöty olisi ajankäyttöön nähden minimaalista.
+JUnit-testeillä on testattu pelilogiikkaa mahdollisimman kattavasti. 444 rivistä testit kattavat 436 eli 98% ja mutanteista on tapettu 78%. Täydelliseen testaukseen ei pyritä, sillä lisätesteistä saatava hyöty olisi ajankäyttöön nähden minimaalista.
 
 ####Käsintestaus: gui, gui.logiikka, alkuvalikko, osa tyokaluista, osa peliluokista
 - com.ued1.punaisenpaholaisenmetsastys.gui.*
