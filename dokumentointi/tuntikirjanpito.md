@@ -103,6 +103,6 @@ Apuvälineiden toiminnallisuus, peliin vaikeusase, testejä, grafiikkaa parannel
 Pelin loppu, bugeja korjattu, kuvia lisätty, paranneltu keikanlaista
 
 16.06.2015
-6 tuntia
-Paranneltu peliä ja dokumentteja, uusittu luokkajako
+9 tuntia
+Paranneltu peliä ja korjattu virheitä, uusittu luokkajako, lisätty tiedostonlukua, dokumentointia paranneltu ja lisätty.
 

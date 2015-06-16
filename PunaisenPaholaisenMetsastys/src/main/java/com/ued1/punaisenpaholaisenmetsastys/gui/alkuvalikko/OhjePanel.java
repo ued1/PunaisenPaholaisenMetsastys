@@ -1,13 +1,17 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui.alkuvalikko;
 
 import com.ued1.punaisenpaholaisenmetsastys.gui.Kyla;
+import com.ued1.punaisenpaholaisenmetsastys.tyokalut.TiedostonLukija;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
@@ -16,35 +20,49 @@ import javax.swing.JTextArea;
 public class OhjePanel extends JPanel {
 
     private JTextArea ohjeet;
+    private JScrollPane skrollattava;
     private JButton takaisin;
     private Kyla kyla;
 
     public OhjePanel(Kyla kyla) {
         this.ohjeet = new JTextArea();
+        this.skrollattava = new JScrollPane(ohjeet, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         this.kyla = kyla;
-        luoKomponentit();
+        alusta();
     }
 
-    private void luoKomponentit() {
+    private void alusta() {
         takaisin = new JButton("Takaisin");
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.BLACK);
         ohjeet.setText(ohjeString());
-        ohjeet.setForeground(Color.RED);
+        ohjeet.setForeground(Color.WHITE);
         ohjeet.setBackground(Color.BLACK);
-        ohjeet.setPreferredSize(new Dimension(600, 450));
-        ohjeet.setMaximumSize(new Dimension(600, 450));
-        ohjeet.setMinimumSize(new Dimension(600, 450));
+        ohjeet.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        skrollattava.setPreferredSize(new Dimension(550, 600));
+        skrollattava.setMaximumSize(new Dimension(550, 600));
+        skrollattava.setMinimumSize(new Dimension(550, 600));
+        skrollattava.setAlignmentX(CENTER_ALIGNMENT);
         ohjeet.setAlignmentX(CENTER_ALIGNMENT);
         takaisin.setAlignmentX(CENTER_ALIGNMENT);
+        ohjeet.setCaretPosition(0);
         lisaaTakaisinKuuntelija();
-        add(ohjeet);
+        
+        add(new JLabel(" "));
+        add(new JLabel(" "));
+        add(skrollattava);
+        add(new JLabel(" "));
         add(takaisin);
     }
 
     private String ohjeString() {
-        String merkkijono = "PunaisenPaholaisenMetsästys - ohjeet..";
-
+        String merkkijono = "";
+        try {
+            merkkijono = new TiedostonLukija("src/main/resources/tekstit/ohjeet.txt").lueTiedosto();
+        } catch (Exception e) {
+            merkkijono += "\nTosimies ei ohjeita tarvitse!";
+            merkkijono += "\nAloita peli ja mene itse kokeilemaan!";
+        }
         return merkkijono;
     }
 
