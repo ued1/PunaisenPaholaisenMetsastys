@@ -1,7 +1,7 @@
-package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
+package com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.kuuntelijat;
 
 import com.ued1.punaisenpaholaisenmetsastys.gui.Kyla;
-import com.ued1.punaisenpaholaisenmetsastys.gui.NimenValintaPanel;
+import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.NimenValintaPanel;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Vaikeus;
 import com.ued1.punaisenpaholaisenmetsastys.tyokalut.NimenValidoija;
 import java.awt.event.ActionEvent;
@@ -45,11 +45,11 @@ public class NimenValinnanKuuntelija implements ActionListener {
             kyla.asetaAlkuvalikko();
         } else if (e.getSource() == aloita) {
             hoidaAloitaNappi();
-        } else if(e.getSource() == nimikentta) {
+        } else if (e.getSource() == nimikentta) {
             hoidaEnterNappain();
-        } else if(e.getSource() == helppo) {
+        } else if (e.getSource() == helppo) {
             vaikeus = Vaikeus.HELPPO;
-        } else if(e.getSource() == normaali) {
+        } else if (e.getSource() == normaali) {
             vaikeus = Vaikeus.NORMAALI;
         }
     }
@@ -74,7 +74,5 @@ public class NimenValinnanKuuntelija implements ActionListener {
             virhekentta.setText("Nimi on OK, voit aloittaa pelin.");
         }
     }
-
-    
 
 }

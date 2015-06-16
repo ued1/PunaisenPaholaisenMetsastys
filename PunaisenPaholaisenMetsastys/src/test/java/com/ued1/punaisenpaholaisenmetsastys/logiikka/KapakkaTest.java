@@ -82,5 +82,10 @@ public class KapakkaTest {
         assertTrue(kapakka.osta(pelaaja, 3));
         assertFalse(kapakka.osta(pelaaja, 3));
     }
+    
+    @Test
+    public void valikoimassaAvunHinta() {
+        assertTrue(kapakka.valikoimaMerkkijonona().contains("" + new Pupu(pelaaja).arvo()));
+    }
             
 }

@@ -1,5 +1,6 @@
-package com.ued1.punaisenpaholaisenmetsastys.gui;
+package com.ued1.punaisenpaholaisenmetsastys.alkuvalikko;
 
+import com.ued1.punaisenpaholaisenmetsastys.gui.Kyla;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

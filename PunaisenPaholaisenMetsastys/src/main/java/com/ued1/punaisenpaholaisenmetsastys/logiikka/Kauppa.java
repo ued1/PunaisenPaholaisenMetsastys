@@ -157,7 +157,14 @@ public abstract class Kauppa<T> {
         String hinnasto = "";
         
         for (int i = 1; i < valikoima.size(); i++) {
-            hinnasto += String.format("%-4s%-26s", " " + i + ".", " " + valikoima.get(i).toString());
+            if(hinnastossaAseita()) {
+                hinnasto += String.format("%-12s", " " + valikoima.get(i).toString());
+                hinnasto += String.format("%13d     ", hinta(i));
+                
+            } else {
+                hinnasto += String.format("%-30s", " " + valikoima.get(i).toString());
+            }
+            
             hinnasto += String.format("%-10d%s", ominaisuus(i),"\n");
         }
         return hinnasto;

@@ -103,7 +103,9 @@ public class Asepaja extends Kauppa {
      */
     @Override
     public String valikoimaMerkkijonona() {
-        return String.format("%-28s%-8s", "Myynnissä oleva ase", "Voima") + "\n" + super.valikoimaMerkkijonona();
+        return String.format("%-19s%-10s%-7s", "Aseen nimi", "Hinta", "Voima") + "\n" + super.valikoimaMerkkijonona();
     }
+    
+       
     
 }

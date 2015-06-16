@@ -1,5 +1,5 @@
 
-package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
+package com.ued1.punaisenpaholaisenmetsastys.tyokalut;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -75,6 +75,7 @@ public class KuvanLataaja {
         lisaa("/kuvat/ovi.png", "Hauska ovi");
         lisaa("/kuvat/areenataistelu.png", "AreenaTaistelu");
         lisaa("/kuvat/paholainen2.png", "LopetusLyönti");
+        lisaa("/kuvat/loppu.png", "Loppukuva");
     }
     
     private void lisaa(String sijainti, String kuvaus) {

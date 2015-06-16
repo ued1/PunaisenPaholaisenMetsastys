@@ -3,7 +3,7 @@ package com.ued1.punaisenpaholaisenmetsastys.gui;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.RuosteinenAvain;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
-import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
+import com.ued1.punaisenpaholaisenmetsastys.tyokalut.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
@@ -199,7 +199,7 @@ public class TarinaOsa extends JPanel {
         teksti += "\nnäyttää sopivan.";
         teksti += "\n\nAvattuasi oven huomaat sen takaanta";
         teksti += "\nlöytyvän monenlaisia välineitä, joista";
-        teksti += "\non sinulle hyötyä taistelussa Punaista";
+        teksti += "\nsaattaa olla hyötyä taistelussa Punaista";
         teksti += "\nPaholaista vastaan.";
         toka.setText(teksti);
     }

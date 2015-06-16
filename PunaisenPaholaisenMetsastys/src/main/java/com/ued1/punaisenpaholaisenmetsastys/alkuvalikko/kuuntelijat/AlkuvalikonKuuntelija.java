@@ -1,5 +1,4 @@
-
-package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
+package com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.kuuntelijat;
 
 import com.ued1.punaisenpaholaisenmetsastys.gui.Kyla;
 import java.awt.event.ActionEvent;
@@ -10,7 +9,7 @@ import javax.swing.JButton;
  * Luokka hoitaa alkuvalikon nappien toiminnallisuuden.
  */
 public class AlkuvalikonKuuntelija implements ActionListener {
-    
+
     private JButton jatka;
     private JButton aloita;
     private JButton lataa;
@@ -28,43 +27,43 @@ public class AlkuvalikonKuuntelija implements ActionListener {
         this.ohje = ohje;
         this.lopeta = lopeta;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == aloita) {
+        if (e.getSource() == aloita) {
             hoidaAloita();
-        } else if(e.getSource() == lataa) {
+        } else if (e.getSource() == lataa) {
             hoidaLataa();
-        } else if(e.getSource() == ohje) {
+        } else if (e.getSource() == ohje) {
             hoidaOhje();
-        } else if(e.getSource() == lopeta) {
+        } else if (e.getSource() == lopeta) {
             hoidaLopeta();
-        } else if(e.getSource() == jatka && kyla.onkoPeliKaynnissa()) {
+        } else if (e.getSource() == jatka && kyla.onkoPeliKaynnissa()) {
             hoidaJatka();
-        } else if(e.getSource() == asetukset && kyla.onkoPeliKaynnissa()) {
+        } else if (e.getSource() == asetukset && kyla.onkoPeliKaynnissa()) {
             hoidaAsetukset();
         }
     }
-    
+
     // Jatkaa peliä
     private void hoidaJatka() {
         kyla.jatkaPelia();
     }
-    
+
     // Aloittaa uuden pelin
     private void hoidaAloita() {
         kyla.asetaNimenValinta();
     }
-    
+
     // Lataa aikaisempaa pelin
     private void hoidaLataa() {
-        
+
     }
-    
+
     private void hoidaAsetukset() {
         kyla.asetaAsetusvalikko();
     }
-    
+
     // Näyttää ohjeen
     private void hoidaOhje() {
         kyla.asetaOhje();
@@ -74,6 +73,5 @@ public class AlkuvalikonKuuntelija implements ActionListener {
     private void hoidaLopeta() {
         System.exit(0);
     }
-    
-    
+
 }

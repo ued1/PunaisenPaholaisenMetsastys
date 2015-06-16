@@ -1,6 +1,11 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
+import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.OhjePanel;
+import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.NimenValintaPanel;
+import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.LoppuPanel;
+import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.AsetuksetPanel;
+import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.AlkuvalikkoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonKuuntelija;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
@@ -75,6 +80,13 @@ public class Kyla implements Runnable {
         container.add(pelaajaTietoPanel, BorderLayout.EAST);
         kuuntelija = new KomennonKuuntelija(this, pelaaja,tarinaPanel,pelaajaTietoPanel,metsa, areena,luola, parantaja);
         frame.addKeyListener(kuuntelija);
+    }
+    
+    /**
+     * Lopettaa pelin poistamalla pelaajan.
+     */
+    public void poistaPelaaja() {
+        pelaaja = null;
     }
     
     /**

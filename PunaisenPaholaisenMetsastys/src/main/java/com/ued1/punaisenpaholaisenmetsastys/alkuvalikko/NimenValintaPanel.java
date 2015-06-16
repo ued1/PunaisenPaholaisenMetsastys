@@ -1,6 +1,7 @@
-package com.ued1.punaisenpaholaisenmetsastys.gui;
+package com.ued1.punaisenpaholaisenmetsastys.alkuvalikko;
 
-import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.NimenValinnanKuuntelija;
+import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.kuuntelijat.NimenValinnanKuuntelija;
+import com.ued1.punaisenpaholaisenmetsastys.gui.Kyla;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -44,7 +45,7 @@ public class NimenValintaPanel extends JPanel {
         this.kuuntelija = new NimenValinnanKuuntelija(this, kyla, aloita, takaisin, nimikentta, virhekentta, normaali, helppo);
         alusta();
     }
-    
+
     private String luoOhje() {
         String ohjeTeksti = "Nimen tulee olla pituudeltaan 2-15 merkkiä";
         ohjeTeksti += "\npitkä ja koostua suomen kielen aakkosiin";
@@ -54,10 +55,10 @@ public class NimenValintaPanel extends JPanel {
     }
 
     private void alusta() {
-        
+
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.BLACK);
-        
+
         nimikentta.setMaximumSize(new Dimension(100, 25));
         nimikentta.setAlignmentX(CENTER_ALIGNMENT);
         virhekentta.setEditable(false);
@@ -65,30 +66,30 @@ public class NimenValintaPanel extends JPanel {
         virhekentta.setMaximumSize(new Dimension(300, 75));
         virhekentta.setMinimumSize(new Dimension(300, 75));
         virhekentta.setAlignmentX(CENTER_ALIGNMENT);
-        
+
         valitseNimi = new JLabel("Valitse pelaajanimesi");
         valitseNimi.setFont(new Font("Dialog", Font.BOLD, 15));
         valitseNimi.setForeground(Color.RED);
         valitseNimi.setAlignmentX(CENTER_ALIGNMENT);
-                
+
         valitseVaikeus = new JLabel("Valitse vaikeusaste");
         valitseVaikeus.setFont(new Font("Dialog", Font.BOLD, 15));
         valitseVaikeus.setForeground(Color.RED);
         valitseVaikeus.setAlignmentX(CENTER_ALIGNMENT);
-        
+
         valintaNapit.add(normaali);
         valintaNapit.add(helppo);
         normaali.setBackground(Color.BLACK);
         normaali.setForeground(Color.WHITE);
         helppo.setBackground(Color.BLACK);
         helppo.setForeground(Color.WHITE);
-        
+
         asetaNormaaliTila();
         lisaaKuuntelijat();
         lisaaKomponentit();
-        
+
     }
-    
+
     private void lisaaKomponentit() {
         add(new JLabel(" "));
         add(new JLabel(" "));
@@ -108,7 +109,7 @@ public class NimenValintaPanel extends JPanel {
         add(new JLabel(" "));
         add(takaisin);
     }
-    
+
     private void lisaaKuuntelijat() {
         nimikentta.addActionListener(kuuntelija);
         aloita.addActionListener(kuuntelija);
@@ -116,8 +117,7 @@ public class NimenValintaPanel extends JPanel {
         normaali.addActionListener(kuuntelija);
         helppo.addActionListener(kuuntelija);
     }
-    
-    
+
     /**
      * Asettaa epäkelvosta pelaajanimestä johtuvat virhetilan näkyviin.
      */
@@ -126,7 +126,7 @@ public class NimenValintaPanel extends JPanel {
         virhekentta.setForeground(Color.WHITE);
         virhekentta.setBackground(Color.RED);
     }
-    
+
     /**
      * Asettaa epäkelvosta pelaajanimestä johtuneen virhetilan takaisin
      * normaaliksi.

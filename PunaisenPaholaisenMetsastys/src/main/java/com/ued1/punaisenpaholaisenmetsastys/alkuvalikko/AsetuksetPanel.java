@@ -1,7 +1,7 @@
+package com.ued1.punaisenpaholaisenmetsastys.alkuvalikko;
 
-package com.ued1.punaisenpaholaisenmetsastys.gui;
-
-import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.AsetustenVaihtaja;
+import com.ued1.punaisenpaholaisenmetsastys.gui.Kyla;
+import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.kuuntelijat.AsetustenVaihtaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import com.ued1.punaisenpaholaisenmetsastys.logiikka.Vaikeus;
 import java.awt.Color;
@@ -27,17 +27,17 @@ public class AsetuksetPanel extends JPanel {
     private JButton takaisin;
     private JLabel valitseVaikeus;
     private AsetustenVaihtaja asetustenVaihtaja;
-    
+
     public AsetuksetPanel(Kyla kyla, Pelaaja pelaaja) {
         this.kyla = kyla;
         this.pelaaja = pelaaja;
         luoNapit();
-        this.asetustenVaihtaja =  new AsetustenVaihtaja(kyla, pelaaja, takaisin, normaali, helppo);
+        this.asetustenVaihtaja = new AsetustenVaihtaja(kyla, pelaaja, takaisin, normaali, helppo);
         luoSisalto();
     }
-    
+
     private void luoNapit() {
-        if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+        if (pelaaja.getVaikeus() == Vaikeus.HELPPO) {
             normaali = new JRadioButton("Normaali", false);
             helppo = new JRadioButton("Helppo", true);
         } else {
@@ -46,23 +46,23 @@ public class AsetuksetPanel extends JPanel {
         }
         takaisin = new JButton("Takaisin");
     }
-    
+
     private void luoSisalto() {
         valintaNapit = new ButtonGroup();
         valitseVaikeus = new JLabel("Vaikeusasteen vaihtaminen");
-        
+
         komponenttienAsetukset();
-        
+
         valintaNapit.add(normaali);
         valintaNapit.add(helppo);
         lisaaKuuntelijat();
         lisaaKomponentit();
     }
-    
+
     private void komponenttienAsetukset() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.BLACK);
-        
+
         normaali.setBackground(Color.BLACK);
         normaali.setForeground(Color.WHITE);
         helppo.setBackground(Color.BLACK);
@@ -70,19 +70,19 @@ public class AsetuksetPanel extends JPanel {
         normaali.setAlignmentX(CENTER_ALIGNMENT);
         helppo.setAlignmentX(CENTER_ALIGNMENT);
         takaisin.setAlignmentX(CENTER_ALIGNMENT);
-        
+
         valitseVaikeus.setFont(new Font("Dialog", Font.BOLD, 15));
         valitseVaikeus.setForeground(Color.WHITE);
         valitseVaikeus.setAlignmentX(CENTER_ALIGNMENT);
-        
+
     }
-    
+
     private void lisaaKuuntelijat() {
         takaisin.addActionListener(asetustenVaihtaja);
         normaali.addActionListener(asetustenVaihtaja);
         helppo.addActionListener(asetustenVaihtaja);
     }
-    
+
     private void lisaaKomponentit() {
         add(new JLabel(""));
         add(valitseVaikeus);
@@ -92,5 +92,5 @@ public class AsetuksetPanel extends JPanel {
         add(new JLabel(""));
         add(takaisin);
     }
-    
+
 }

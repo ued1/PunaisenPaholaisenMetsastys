@@ -1,8 +1,8 @@
+package com.ued1.punaisenpaholaisenmetsastys.alkuvalikko;
 
-package com.ued1.punaisenpaholaisenmetsastys.gui;
-
-import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.AlkuvalikonKuuntelija;
-import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
+import com.ued1.punaisenpaholaisenmetsastys.gui.Kyla;
+import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.kuuntelijat.AlkuvalikonKuuntelija;
+import com.ued1.punaisenpaholaisenmetsastys.tyokalut.KuvanAsettaja;
 import java.awt.Color;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -10,11 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * AlkuvalikkoPanel on pelin alkuvalikko, jossa voi valita uuden pelin,
- * jatkaa aikaisempaa peliä, lukea ohjeen ja lopettaa pelin.
+ * AlkuvalikkoPanel on pelin alkuvalikko, jossa voi valita uuden pelin, jatkaa
+ * aikaisempaa peliä, lukea ohjeen, muuttaa asetuksia ja lopettaa pelin.
  */
 public class AlkuvalikkoPanel extends JPanel {
-    
+
     private JButton jatka;
     private JButton aloita;
     private JButton lataa;
@@ -24,7 +24,7 @@ public class AlkuvalikkoPanel extends JPanel {
     private AlkuvalikonKuuntelija kuuntelija;
     private JLabel paholainen;
     private Kyla kyla;
-    
+
     public AlkuvalikkoPanel(Kyla kyla) {
         jatka = new JButton("Takaisin peliin");
         aloita = new JButton("Aloita uusi peli");
@@ -37,19 +37,18 @@ public class AlkuvalikkoPanel extends JPanel {
         paholainen = new JLabel();
         luoKomponentit();
     }
-    
+
     private void luoKomponentit() {
-        
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.BLACK);
-        
+
         new KuvanAsettaja().asetaKuva(paholainen, "Paholainen");
-        
+
         asetaSuuntaus();
         lisaaKuuntelijat();
         lisaaOsat();
     }
-    
+
     private void lisaaKuuntelijat() {
         jatka.addActionListener(kuuntelija);
         aloita.addActionListener(kuuntelija);
@@ -58,7 +57,7 @@ public class AlkuvalikkoPanel extends JPanel {
         lopeta.addActionListener(kuuntelija);
         asetukset.addActionListener(kuuntelija);
     }
-    
+
     private void asetaSuuntaus() {
         paholainen.setAlignmentX(CENTER_ALIGNMENT);
         jatka.setAlignmentX(CENTER_ALIGNMENT);
@@ -68,10 +67,10 @@ public class AlkuvalikkoPanel extends JPanel {
         lopeta.setAlignmentX(CENTER_ALIGNMENT);
         asetukset.setAlignmentX(CENTER_ALIGNMENT);
     }
-    
+
     private void lisaaOsat() {
         add(paholainen);
-        if(kyla.onkoPeliKaynnissa()) {
+        if (kyla.onkoPeliKaynnissa()) {
             add(jatka);
             add(new JLabel(" "));
         }
@@ -79,7 +78,7 @@ public class AlkuvalikkoPanel extends JPanel {
         add(new JLabel(" "));
         add(lataa);
         add(new JLabel(" "));
-        if(kyla.onkoPeliKaynnissa()) {
+        if (kyla.onkoPeliKaynnissa()) {
             add(asetukset);
             add(new JLabel(" "));
         }
@@ -87,6 +86,5 @@ public class AlkuvalikkoPanel extends JPanel {
         add(new JLabel(" "));
         add(lopeta);
     }
-    
-}
 
+}

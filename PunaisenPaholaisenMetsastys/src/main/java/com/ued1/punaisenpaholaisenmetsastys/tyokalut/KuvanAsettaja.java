@@ -1,5 +1,5 @@
 
-package com.ued1.punaisenpaholaisenmetsastys.gui.logiikka;
+package com.ued1.punaisenpaholaisenmetsastys.tyokalut;
 
 import java.awt.image.BufferedImage;
 import java.util.Map;

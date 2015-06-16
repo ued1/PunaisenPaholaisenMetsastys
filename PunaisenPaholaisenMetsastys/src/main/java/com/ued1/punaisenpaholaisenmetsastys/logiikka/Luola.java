@@ -23,7 +23,7 @@ public class Luola {
         this.punainenPotion = 0;
         this.mustaPotion = 0;
         if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
-            this.paholainen = new Monsteri(1000, 150, 65, "Punainen Paholainen");
+            this.paholainen = new Monsteri(500, 150, 65, "Punainen Paholainen");
         } else {
             this.paholainen = new Monsteri(1000, 150, 65, "Punainen Paholainen");
         }

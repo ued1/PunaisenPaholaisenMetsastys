@@ -99,7 +99,10 @@ Alkuvalikko paremmaksi, potionien toiminta, kilpailijoiden heikkeneminen, Apuvä
 Apuvälineiden toiminnallisuus, peliin vaikeusase, testejä, grafiikkaa paranneltu, bugeja korjattu, ym
 
 15.06.2015
-4 tuntia
-Pelin loppu, bugeja korjattu, kuvia lisätty
+7 tuntia
+Pelin loppu, bugeja korjattu, kuvia lisätty, paranneltu keikanlaista
 
+16.06.2015
+6 tuntia
+Paranneltu peliä ja dokumentteja, uusittu luokkajako
 

@@ -31,7 +31,7 @@ public class LuolaTest {
     }
     
     @Test
-    public void metodiHastaPaholainenAlustaaTaistelunOikein() {
+    public void metodiHaastaPaholainenAlustaaTaistelunOikein() {
         assertTrue(luola.getTaistelu() != null);
     }
     
@@ -78,5 +78,65 @@ public class LuolaTest {
         tapaPelaajaJaAsetaTulos();
         assertEquals(pelaaja.getVointi(),pelaaja.getMaxVointi());
     }
+    
+    @Test
+    public void helppoPaholainenOnHelpompi() {
+        Pelaaja helppoPelaaja = new Pelaaja("Helppo", Vaikeus.HELPPO);
+        Luola helppoLuola = new Luola(helppoPelaaja);
+        luola.haastaPaholainen();
+        helppoLuola.haastaPaholainen();
+        assertTrue(luola.getTaistelu().vastustaja().getVointi() > helppoLuola.getTaistelu().vastustaja().getVointi());
+    }
+    
+    @Test
+    public void paholainenParantuuVoittaessa() {
+        haastaJaHaviaPaholaiselle();
+        assertEquals(luola.getTaistelu().vastustaja().getVointi(), luola.getTaistelu().vastustaja().getMaxVointi());
+    }
+        
+    private void haastaJaHaviaPaholaiselle() {
+        luola.haastaPaholainen();
+        while(!luola.getTaistelu().taistele()) {
+        }
+        luola.asetaTulos();
+    }
+    
+    @Test
+    public void asetaPotionitAsettaaOikein() {
+        assertEquals(0, luola.getMustaPotion());
+        assertEquals(0, luola.getPunainenPotion());
+        luola.asetaPotionit();
+        assertEquals(5, luola.getMustaPotion());
+        assertEquals(5, luola.getPunainenPotion());
+    }
+    
+    
+    @Test
+    public void potionitNollataanPaholaisenVoittaessa() {
+        luola.asetaPotionit();
+        haastaJaHaviaPaholaiselle();
+        assertEquals(0, luola.getMustaPotion());
+        assertEquals(0, luola.getPunainenPotion());
+    }
+    
+    @Test
+    public void punainenPotionToimiiOikein() {
+        luola.asetaPotionit();
+        int potionitAlussa = luola.getPunainenPotion();
+        pelaaja.laskeVointia();
+        luola.kaytaPunainenPotion();
+        assertEquals(potionitAlussa - 1, luola.getPunainenPotion());
+        assertEquals(pelaaja.getVointi(), pelaaja.getMaxVointi());
+    }
+    
+    @Test
+    public void mustaPotionToimiiOikein() {
+        luola.asetaPotionit();
+        int potionitAlussa = luola.getMustaPotion();
+        pelaaja.setVointi(200);
+        luola.kaytaMustaPotion();
+        assertEquals(potionitAlussa - 1, luola.getMustaPotion());
+        assertEquals(200-100-10-1, pelaaja.getVointi());
+    }    
     
 }

@@ -132,5 +132,12 @@ public class AsepajaTest {
         assertFalse(asepaja.osta(pelaaja, 666));
         assertFalse(asepaja.osta(pelaaja, asepaja.getValikoima().size()));
     }
+    
+    @Test
+    public void metodiOstettavissaOlevatIlmoittaaAseenMyynnista() {
+        pelaaja.setAse(new Tikari());
+        assertTrue(asepaja.ostettavissaOlevat(pelaaja).contains("ensin myydä aseesi"));
+    }
+    
 
 }

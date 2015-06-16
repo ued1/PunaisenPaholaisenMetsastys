@@ -1,33 +1,53 @@
-Dynaaminen tekstipohjainen rooli/seikkailupeli, jossa tavoitteena on etsiä ja tappaa kylääsi piinaava Punainen Paholainen. Tarina etenee tekstimuodossa, mutta käyttöliittymä ja toiminnot ovat graafisessa muodossa ja pelissä on tilanteeseen sopivia kuvia.
+##Aihemäärittely
 
-Kylää ympäröivässä metsässä on monstereita, joita vastaan taistelemalla voi ansaita kultarahoja. Kultarahoilla voi ostaa parempia aseita, haarniskoja ja muita apuvälineitä, joiden avulla pärjää paremmin taisteluissa. Kylän taisteluareenalla voi haastaa kilpailevia taistelijoita ja edetä seuraavalle tasolle. Kun on tarpeeksi korkealla tasolla, voi lopulta etsia ja haastaa Punaisen Paholaisen.
+Dynaaminen seikkailupeli, jossa tavoitteena on etsiä ja tappaa kylää piinaava Punainen Paholainen. Pelaaminen tapahtuu näppäimistöllä antamalla sopiva näppäinkomento kussakin tilanteessa.
 
-Kylän asepajassa voi ostaa parempia aseita.
-- Aseen ostaminen: uuden aseen voi ostaa, jos pelaajalla on tarpeeksi rahaa ja hän on ensin myynyt vanhan aseensa. Ostaessa aseen hinta vähennetään pelaajan kultarahoista ja pelaaja saa aseen käteensä.
-- Aseen myyminen: aseen myydessä puolet sen arvosta palautetaan kultarahoina takaisin. Omaa nyrkkiä, mikä on aloitusase, ei kuitenkaan voi myydä.
+Pelialueena on kylä ja sitä ympäröivä metsä. Kylästä löytyy asepaja, haarniskakauppa, taisteluareena, parantaja, kapakka ja casino, joita apunaan käyttäen pelaaja voi vahvistaa itseään. Metsässä puolestaan taistellaan monstereita vastaan, joita tappamalla pelaaja saa rahaa (varusteiden ostamiseen) ja kokemusta (kehittyäkseen taistelijana).
 
-Haarniskakaupassa voi ostaa parempaa suojausta itselleen
-- Haarniskan ostaminen: kuten asekaupassa, mutta vanhaa haarniskaa ei myydä (emme vahingossakaan halua kylään alastomia sotureita). Vanhasta haarniskasta ei myöskään palauteta rahaa kuten aseen tapauksessa.
+Kun pelaaja on kehittynyt tarpeeksi vahvaksi, voi hän etsiä metsästä Punaisen Paholaisen luolan ja haastaa Punaisen Paholaisen taisteluun. Peli loppuu, kun pelaaja tappaa Punaisen Paholaisen.
 
-Taisteluareenalla voi kehittää omaa osaamistaan.
-- Haastetaan kilpailijoita (pelin hahmoja, jotka kilpailevat kanssasi siitä, kuka tappaa Punaisen Paholaisen ensimmäisenä. Kilpailijat eivät oikeasti kuitenkaan koskaan tule haastamaan Punaista Paholaista) taisteluun. Tarpeeksi voittopisteitä kerättyään nousee seuraavalle tasolle, jolloin metsästä löytyy kovempia ja rahakkaampia monstereita (rahalla saa parempia varusteita, joilla puolestaan on mahdollista nousta seuraavalla tasolle, jne.).
-- Kilpailijoita tulee jokaisella tasolla vastaan (taso+1) kappaletta. He ovat huomattavasti monstereite vahvempia, mutta yrittää voi kuinka monta kertaa tahansa eikä sanktioita. Joissain tilanteissa varusteiden päivittäminen saattaa olla lähes välttämätöntä.
-- Ensimmäisen yrityksen alussa kilpailijat generoidaan perustuen pelaajaan vahvuuteen. Kilpailijan vahvuus säilyy alkuperäisenä uusissa yrityksissä vaikka pelaaja välillä päivittäisi varusteitaan.
+Pelaajan ominaisuuksia ovat taso, kokemus, vointi, maksimivointi, voima (määräytyy aseen perusteella) ja puolustusvoima (määräytyy haarniskan perusteella). Lisäksi pelaajalla voi olla rahaa ja erilaisia apuvälineitä kuten vointia parantavia potioneja.
 
-Metsässä taistellaan monstereita vastaan ja ansaitaan rahaa parempia varusteita varten
-- Etsimällä monsteria peli generoi sopivan tasoisen monsterin taisteluun. Monsterin vaikeus määräytyy pelaajan tason, lyontivoiman ja suojausvoiman perusteella. Voittamalla monsterin pelaajalla on enemmän kultarahoja käytettävissään, häviämällä menettää kaikki rahat. Useimmat monstereista ovat voitettavissa, loppujen kanssa tulee osata juosta karkuun välttääkseen kuoleman ja pelin loppumisen. Monsterien nimet arvotaan sattumanvaraisesti, mikään nimi ei ole sidoksissa tietyn tasoiseen monsteriin.
+####Käyttäjät
 
-Taistelut tapahtuvat hahmojen välillä joko metsässä (monsterit), taisteluareenalla (kilpailijat) tai luolassa (Punainen Paholainen). Pelaaja lyö aina ensin. Pelaajan lyödessä vastustaja puolustautuu. Lyöntivoimasta (50%-100% maksimilyöntivoima)
-vähennetään puolustajan puolustusvoima ja erotus vähentää vastustajan vointia erotuksen verran, mikäli se on suurempi kuin nolla, muussa tapauksessa pelaajan vahinko on 1. Mikäli vastustaja selviää hengissä, on vastustajan vuoro lyödä pelaajan puolustautuessa. Vastustajan tekemä vahinko lasketaan samalla kaavalla, mutta se on olla myös 0 edellä laskettu erotus on pienempi kuin yksi. Mikäli pelaaja on hengissä, on pelaajan vuoro lyödä. Metsässä ollessaan pelaaja voi päättää jatkaako taistelua vai juokseeko karkuun. Taisteluareenalla ja Punaista Paholaista vastaan taistellessa juokseminen ei ole mahdollista. Taistelun hävitessä pelaaja menettää rahansa (metsä, luola). Voittaessa pelaaja saa rahaa (taistelut monstereita vastaan) tai pelaajan ominaisuudet paranevat (taistelut kilpailijoita vastaan).
+- Pelaaja
 
-Paholaisen Luola aktivoituu metsässä pelin lopussa, kun on noussut tarpeeksi korkealle tasolle.
-- Pelaaja voi halutessaan haastaa Punaisen Paholaisen ja pelastaa kylän (pelin voitto), mutta hävitessään pelaaja menettää rahansa ja haarniskansa. Voittaessa peli loppuu voitoon.
+####Toiminnat alkuvalikossa
 
-Kylässä on myös kapakka, mistä voi ostaa apuvälineitä. Apuvälineet auttavat pelaajaa eri tilanteissa, mutta joistakin apuvälineistä voi olla pelaajalla myös haittaa.
+- Uuden pelin aloittaminen
+- Pelin jatkaminen
+- Ohjeiden lukeminen
+- Pelin asetusten vaihtaminen
+- Pelin lopettaminen
 
-Kylän parantaja parantaa pelaajan tarvittaessa. Parantajalta voi myös ostaa potioneja, joilla voi itse parantaa itsensä.
+####Toiminnat pelissä
 
-Kylän Casinolla voi pelata uhkapelejä. Peleissä on mahdollista mm. tuplata tai hävitä kaikki rahansa.
+- Alkuvalikkoon palaaminen
+- Siirtyminen paikasta toiseen
+- Monsteritaistelun aloittaminen
+- Lyöminen taistelussa
+- Karkuun juokseminen taistelussa
+- Potionien käyttäminen
+- Aseen ostaminen
+- Aseen myyminen
+- Haarniskan ostaminen
+- Parantaminen parantajalla
+- Potionien ostaminen
+- Areenataistelun aloittaminen
+- Casinolla pelaaminen
+- Kapakassa ostaminen
+- Pelin jatkaminen
+- Vastaaminen toiminnon varmistamiseen
 
-Hahmojen ominaisuuksia ovat vointi, voima, puolustus, taso ja kokemus. Vointi määräytyy pelaajan tason mukaan; mitä korkeampi taso sitä parempi vointi. Voinnin laskiessa nollaan saa pelaaja jonkinlaisen sanktion (esim. rahojen menetys). Vointia voi paranpaa lepäämällä milloin tahansa kunhan ei ole taistelu käynnissä. Voima määräytyy pelaajan aseen mukaan. Mitä suurempi lyöntivoima, sitä enemmän vahinkoa on mahdollista tehdä vastustajaan. Puolustusvoima määräytyy haarniskan mukaan.
+##Ohjelman rakenteellinen kuvaus
+
+Luokat jakautuvat kolmeen erilaiseen kokonaisuuteen: alkuvalikkoluokkiin, peliluokkiin, ja käyttöliittymään.
+
+Alkuvalikko koostuu JPanel-luokista ja niiden kuuntelijoista. Kuuntelijat antavat käskyn Kylä-oliolle, joka päivittää näkymän siirtyessä näkymästä toiseen. Kuuntelijat päivittävät myös Pelaaja-oliota.
+
+Peliluokat jakautuvat aseisiin, haarniskoihin, apuvälineisiin, hahmoihin ja pelilogiikkaan. Hahmoja ovat Pelaaja, Kilpailija ja Monsteri. Pelilogiikka jakautuu pelissä oleviin paikkoihin: Asepaja, Haarniskakauppa, Areena, Metsa, Kapakka, Luola, Casino ja Paranta, sekä Taisteluun, joka on käytössä metsässä, luolassa ja taisteluareenalla. Pelilogiikkaluokat päivittävät, pelilogiikan hoitamisen lisäksi, pelin Hahmoja ja antavat käyttöliittymälle tarvittavia merkkijonoja ja lukuja päivittyneen pelitilanteen näyttämistä varten.
+
+Pelin käyttöliittymä koostuu eri JPanel luokkien lisäksi käyttöliittymän logiikkaa hoitavista luokista. Pelaajan antama näppäimistökomento saa aikaan ketjun KomennonKuuntelija -> KomennonValidoija -> KomennonKasittelija -> PelitilanteenPaivittaja, missä KomennonKasittelija ohjaa pelilogiikkaa ja PelitilanteenPaivittaja antaa päivityskäskyn käyttöliittymän JPanel-olioille. Käyttöliittymä käyttää hyödyksi Pelaajan paikkatietoa (enum Paikka), minkä perusteella osa piirrettävistä kuvista ja näytettävistä teksteistä valikoituu.
+
+Lisäksi pelissä on kuvia ja ikoneja, joita näytetään pelitilanteissa, sekä työvälineitä kuten KuvanLataaja ja NimenValidoija.
 

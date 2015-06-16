@@ -255,6 +255,35 @@ public class PelaajaTest {
         assertEquals(0, pelaaja.getKokemus());
     }
     
+    @Test
+    public void kokemustaEiVoiAsettaaNegatiiviseksi() {
+        pelaaja.setKokemus(0);
+        assertEquals(0, pelaaja.getKokemus());
+        pelaaja.setKokemus(-1);
+        assertEquals(0, pelaaja.getKokemus());
+    }
+    
+    @Test
+    public void pelaajanKokemusEiVoiOllaLiikaa() {
+        pelaaja.setKokemus(199999999);
+        assertEquals(199999999, pelaaja.getKokemus());
+        pelaaja.setKokemus(200000000);
+        assertEquals(200000000, pelaaja.getKokemus());
+        pelaaja.setKokemus(200000001);
+        assertEquals(200000000, pelaaja.getKokemus());
+    }
+    
+    @Test
+    public void metodiMuutaKokemustaEiLisaaLiikaa() {
+        pelaaja.setKokemus(0);
+        pelaaja.muutaKokemusta(100000000);
+        pelaaja.muutaKokemusta(100000000);
+        assertEquals(200000000, pelaaja.getKokemus());
+        pelaaja.setKokemus(0);
+        pelaaja.muutaKokemusta(200000001);
+        assertEquals(200000000, pelaaja.getKokemus());
+    }
+    
     // rahojen nollaus
     @Test
     public void nollausNollaaRahat() {

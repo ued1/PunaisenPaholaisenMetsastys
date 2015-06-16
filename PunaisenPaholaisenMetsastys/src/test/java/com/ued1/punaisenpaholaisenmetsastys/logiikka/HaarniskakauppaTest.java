@@ -75,5 +75,10 @@ public class HaarniskakauppaTest {
     public void vaatteetLoytyvatHinnastosta() {
         assertTrue(kauppa.valikoimaMerkkijonona().contains(new Vaatteet().toString()));
     }
+    
+    @Test
+    public void valikoimassaHaarniskanPuolustusVoima() {
+        assertTrue(kauppa.valikoimaMerkkijonona().contains("" + new Vaatteet().suojaa()));
+    }
 
 }

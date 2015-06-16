@@ -4,7 +4,7 @@ import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Apu;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.OhraPotion;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.Pupu;
 import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.RuosteinenAvain;
-import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KuvanAsettaja;
+import com.ued1.punaisenpaholaisenmetsastys.tyokalut.KuvanAsettaja;
 import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
 import java.awt.Color;
 import java.awt.Graphics;
