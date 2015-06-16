@@ -1,13 +1,13 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
-import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Casino;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
+import com.ued1.punaisenpaholaisenmetsastys.peli.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Areena;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Casino;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Luola;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Metsa;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Parantaja;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.BoxLayout;

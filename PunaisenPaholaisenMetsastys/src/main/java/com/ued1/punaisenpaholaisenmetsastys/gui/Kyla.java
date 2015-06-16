@@ -1,20 +1,20 @@
 
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
-import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.OhjePanel;
-import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.NimenValintaPanel;
-import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.LoppuPanel;
-import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.AsetuksetPanel;
-import com.ued1.punaisenpaholaisenmetsastys.alkuvalikko.AlkuvalikkoPanel;
+import com.ued1.punaisenpaholaisenmetsastys.gui.alkuvalikko.OhjePanel;
+import com.ued1.punaisenpaholaisenmetsastys.gui.alkuvalikko.NimenValintaPanel;
+import com.ued1.punaisenpaholaisenmetsastys.gui.alkuvalikko.LoppuPanel;
+import com.ued1.punaisenpaholaisenmetsastys.gui.alkuvalikko.AsetuksetPanel;
+import com.ued1.punaisenpaholaisenmetsastys.gui.alkuvalikko.AlkuvalikkoPanel;
 import com.ued1.punaisenpaholaisenmetsastys.gui.logiikka.KomennonKuuntelija;
-import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Areena;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Casino;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Metsa;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Vaikeus;
+import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Areena;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Casino;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Luola;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Metsa;
+import com.ued1.punaisenpaholaisenmetsastys.peli.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Parantaja;
+import com.ued1.punaisenpaholaisenmetsastys.peli.Vaikeus;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;

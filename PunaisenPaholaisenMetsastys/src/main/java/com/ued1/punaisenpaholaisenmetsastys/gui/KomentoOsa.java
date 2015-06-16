@@ -1,15 +1,15 @@
 package com.ued1.punaisenpaholaisenmetsastys.gui;
 
-import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.OhraPotion;
-import com.ued1.punaisenpaholaisenmetsastys.apuvalineet.RuosteinenAvain;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Paikka;
-import com.ued1.punaisenpaholaisenmetsastys.hahmot.Pelaaja;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Asepaja;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Casino;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Haarniskakauppa;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Kapakka;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Luola;
-import com.ued1.punaisenpaholaisenmetsastys.logiikka.Parantaja;
+import com.ued1.punaisenpaholaisenmetsastys.peli.apuvalineet.OhraPotion;
+import com.ued1.punaisenpaholaisenmetsastys.peli.apuvalineet.RuosteinenAvain;
+import com.ued1.punaisenpaholaisenmetsastys.peli.Paikka;
+import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Asepaja;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Casino;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Haarniskakauppa;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Kapakka;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Luola;
+import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Parantaja;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;

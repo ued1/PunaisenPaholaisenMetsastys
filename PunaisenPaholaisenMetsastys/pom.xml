@@ -36,13 +36,13 @@
                 <version>1.1.4</version>
                 <configuration>
                     <targetClasses>
-                        <param>com.ued1.punaisenpaholaisenmetsastys.hahmot.*</param>
-                        <param>com.ued1.punaisenpaholaisenmetsastys.logiikka.*</param>
+                        <param>com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.*</param>
+                        <param>com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.*</param>
                         <param>com.ued1.punaisenpaholaisenmetsastys.tyokalut.NimenValidoija</param>
                     </targetClasses>
                     <targetTests>
-                        <param>com.ued1.punaisenpaholaisenmetsastys.hahmot.*</param>
-                        <param>com.ued1.punaisenpaholaisenmetsastys.logiikka.*</param>
+                        <param>com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.*</param>
+                        <param>com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.*</param>
                         <param>com.ued1.punaisenpaholaisenmetsastys.tyokalut.NimenValidoijaTest</param>
                     </targetTests>
                 </configuration>
