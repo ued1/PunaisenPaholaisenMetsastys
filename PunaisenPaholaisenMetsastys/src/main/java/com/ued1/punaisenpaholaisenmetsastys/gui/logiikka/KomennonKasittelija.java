@@ -236,6 +236,7 @@ public class KomennonKasittelija {
     }
 
     private void ostaPelaajalleAseJaLiiku(int aseenNumero) {
+        asepaja.osta(pelaaja, aseenNumero);
         paivittaja.paivita(Paikka.ASEPAJA);
     }
 
@@ -273,6 +274,7 @@ public class KomennonKasittelija {
     }
 
     private void ostaPelaajalleHaarniskaJaLiiku(int haarniskanNumero) {
+        haarniskaKauppa.osta(pelaaja, haarniskanNumero);
         paivittaja.paivita(Paikka.HAARNISKAKAUPPA);
     }
 
