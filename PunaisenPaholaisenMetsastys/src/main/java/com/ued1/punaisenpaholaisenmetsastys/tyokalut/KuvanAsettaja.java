@@ -45,7 +45,7 @@ public class KuvanAsettaja {
      * kuvausta vastaavalla tekstillä ilman kuvaa.
      *
      * @param label JLabel-olio, johon kuva halutaan asettaa
-     * @param kuvaus
+     * @param kuvaus Merkkijono, jonka perusteella kuva etsitään
      */
     public void asetaKuva(JLabel label, String kuvaus) {
         if (kuvat.containsKey(kuvaus)) {

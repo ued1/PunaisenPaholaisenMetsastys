@@ -4,7 +4,8 @@ package com.ued1.punaisenpaholaisenmetsastys.peli.apuvalineet;
 import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
 
 /**
- * OhraPotion on Apu, joka auttaa areenataistelussa.
+ * OhraPotion on Apu, joka auttaa areenataistelussa nostamalla pelaajan
+ * vointia hetkellisesti.
  */
 public class OhraPotion extends Apu {
     

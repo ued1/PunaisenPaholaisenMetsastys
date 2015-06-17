@@ -25,7 +25,7 @@ public class KomennonValidoija {
     }
 
     /**
-     * Metodi tarkastaa onko napinpainallus komento tilanteessa jossa ollaan.
+     * Metodi tarkistaa onko napinpainallus komento tilanteessa jossa ollaan.
      *
      * @param paikka Paikka tai tilanne, jossa ollaan
      * @param koodi Käyttäjän painaman napin keyevent-koodi
@@ -38,7 +38,10 @@ public class KomennonValidoija {
             return hoidaAsepaja(koodi);
         } else if (paikka == Paikka.HAARNISKAKAUPPA || paikka == Paikka.KAPAKKA) {
             return hoidaHaarniskakauppa(koodi);
-        } else if (paikka == Paikka.METSA) {
+        } else if (paikka == Paikka.METSA || paikka == Paikka.MONSTERITAISTELUVOITTO) {
+            if (paikka == Paikka.MONSTERITAISTELUVOITTO) {
+                pelaaja.setPaikka(Paikka.METSA);
+            }
             return hoidaMetsa(koodi);
         } else if (paikka == Paikka.MONSTERITAISTELU) {
             return hoidaMonsteritaistelu(koodi);

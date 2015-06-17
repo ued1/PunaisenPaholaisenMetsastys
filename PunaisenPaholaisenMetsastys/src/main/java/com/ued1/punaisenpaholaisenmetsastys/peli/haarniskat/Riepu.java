@@ -9,15 +9,15 @@ public class Riepu implements Haarniska {
     public int suojaa() {
         return 1;
     }
-    
+
     @Override
     public String toString() {
         return "Riepu";
     }
-    
+
     @Override
     public int arvo() {
         return 0;
     }
-    
+
 }

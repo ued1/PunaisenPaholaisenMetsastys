@@ -101,7 +101,6 @@ public class PelaajaTietoPanel extends JPanel {
         paivitaApuIkonienNakyvyys();
     }
 
-    // TODO: parempi toteutus
     private void paivitaApuIkonienNakyvyys() {
         ArrayList<Apu> avut = pelaaja.getAvut();
         if (avut.contains(new Pupu(pelaaja))) {

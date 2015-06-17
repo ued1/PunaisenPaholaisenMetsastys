@@ -31,7 +31,7 @@ public class Kilpailija extends Hahmo {
             "Alaston Anoppi", "Usko Eevertti", "Kenraali Kalsareissa", "Parraton Gandalf",
             "Karannut Vanki", "Kapteeni Koukku", "Batman Valeasussa",
             "Per Saukko", "Veli Sikiö", "Raitis Juoppo", "Karvainen Munkki",
-            "Isoperseinen Anorektikko", "Kuntoileva Pyhimys", "Pullisteleva Putin"};
+            "Kuntoileva Pyhimys", "Pullisteleva Putin"};
         Random randomluku = new Random();
         return nimet[randomluku.nextInt(nimet.length)];
     }

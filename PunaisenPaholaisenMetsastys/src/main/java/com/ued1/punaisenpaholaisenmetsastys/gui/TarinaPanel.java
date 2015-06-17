@@ -27,10 +27,10 @@ public class TarinaPanel extends JPanel {
         this.pelaaja = pelaaja;
         this.komentoOsa = new KomentoOsa(pelaaja, luola);
         this.tarinaOsa = new TarinaOsa(pelaaja, metsa, areena, luola, parantaja, casino);
-        luoKomponentit();
+        asetaPaneelit();
     }
 
-    private void luoKomponentit() {
+    private void asetaPaneelit() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         tarinaOsa.setPreferredSize(new Dimension(300, 520));
         tarinaOsa.setMinimumSize(new Dimension(300, 520));

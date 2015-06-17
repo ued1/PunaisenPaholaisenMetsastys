@@ -64,7 +64,8 @@ public class Areena {
     /**
      * Metodi asettaa taistelun tuloksen taistelun. Jos pelaaja on voittanut,
      * nousee voittojen määrä tai pelaaja pääsee seuraavalle tasolle. Muussa
-     * tapauksessa sekä pelaaja, että vastustaja parantuvat.
+     * tapauksessa sekä pelaaja, että vastustaja parantuvat. Vastustaja
+     * heikkenee voittaessa.
      */
     public void asetaTaistelunTulos() {
         if (pelaaja.onkoElossa()) {

@@ -80,8 +80,8 @@ public class TarinaOsa extends JPanel {
             asetaAsepaja();
         } else if (pelaaja.getPaikka() == Paikka.HAARNISKAKAUPPA) {
             asetaHaarniskaKauppa();
-        } else if (pelaaja.getPaikka() == Paikka.METSA) {
-            asetaMetsa();
+        } else if (pelaaja.getPaikka() == Paikka.METSA || pelaaja.getPaikka() == Paikka.MONSTERITAISTELUVOITTO) {
+            asetaMetsa(pelaaja.getPaikka());
         } else if (pelaaja.getPaikka() == Paikka.ASEENOSTO) {
             asetaAseenOsto();
         } else if (pelaaja.getPaikka() == Paikka.ASEENMYYNTI) {
@@ -222,11 +222,18 @@ public class TarinaOsa extends JPanel {
         toka.setText(parantaja.getKuvaus(pelaaja));
     }
 
-    private void asetaMetsa() {
+    private void asetaMetsa(Paikka paikka) {
         kuvanAsettaja.asetaKuva(eka, "Metsä");
-        String kuvaus = "\nMetsässä voit taistella monstereita vastaan";
-        kuvaus += "\nja ansaita kultarahoja. Jos häviät monsterille";
-        kuvaus += "\nmenetät kaikki rahasi.";
+        String kuvaus = "";
+        if (paikka == Paikka.METSA) {
+            kuvaus = "\nMetsässä voit taistella monstereita vastaan";
+            kuvaus += "\nja ansaita kultarahoja. Jos häviät monsterille";
+            kuvaus += "\nmenetät kaikki rahasi.";
+        } else if (paikka == Paikka.MONSTERITAISTELUVOITTO) {
+            kuvaus += "\nVoitit monsterin! Sait lisää rahaa";
+            kuvaus += "\nja kokemusta.";
+        }
+
         if (pelaaja.getPotionit() > 0) {
             kuvaus += "\n\nVoit käyttää VointiPotioneja";
             kuvaus += "\nparantaakseen vointiasi kun et ole";
@@ -370,7 +377,6 @@ public class TarinaOsa extends JPanel {
             tokateksti += "\n\nKokemuksesi: " + pelaaja.getKokemus();
             tokateksti += "\nTarvittava kokemus: " + areena.seuraavanTasonKokemus();
         }
-
         toka.setText(tokateksti);
     }
 
@@ -386,6 +392,9 @@ public class TarinaOsa extends JPanel {
             tokateksti += "Hävisit taistelun.\n\nVoit halutessasi yrittää heti uudestaan,";
             tokateksti += "\nmutta paremmilla varusteilla voisi taistelu";
             tokateksti += "\nolla helpompaa!";
+            tokateksti += "\n\nVastustajasi loukkasi itseään, joten hän";
+            tokateksti += "\non hieman heikommassa kunnossa taistelun";
+            tokateksti += "\nalkaessa uudestaan.";
         }
         toka.setText(tokateksti);
         areena.asetaTaistelunTulos();

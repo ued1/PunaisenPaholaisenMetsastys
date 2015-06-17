@@ -101,31 +101,31 @@ public class AsepajaTest {
         asepaja.osta(pelaaja, 2);
         assertEquals(alkuraha - new Maila().arvo(), pelaaja.getRahat());
     }
-    
+
     @Test
     public void ostokomennoissaEiNyrkkia() {
         assertFalse(asepaja.ostokomennot(pelaaja).contains(new Nyrkki().toString()));
     }
-    
+
     @Test
     public void ostokomennoissaEiKeppiaJosEiRahaa() {
         assertFalse(asepaja.ostokomennot(pelaaja).contains(new Keppi().toString()));
     }
-    
+
     @Test
     public void ostokomennoissaKeppiJosRahaa() {
         pelaaja.muutaRahoja(10000);
         assertTrue(asepaja.ostokomennot(pelaaja).contains(new Keppi().toString()));
     }
-    
+
     @Test
     public void eiVoiOstaaAsettaTaulukonUlkopuolelta() {
         pelaaja.muutaRahoja(200000000);
         assertFalse(asepaja.osta(pelaaja, asepaja.getValikoima().size()));
-        assertFalse(asepaja.osta(pelaaja, asepaja.getValikoima().size()+1));
+        assertFalse(asepaja.osta(pelaaja, asepaja.getValikoima().size() + 1));
         assertFalse(asepaja.osta(pelaaja, -1));
     }
-    
+
     @Test
     public void taulukonUlkopuoleltaEiVoiOstaaAsetta() {
         pelaaja.muutaRahoja(200000000);
@@ -133,12 +133,11 @@ public class AsepajaTest {
         assertFalse(asepaja.osta(pelaaja, 666));
         assertFalse(asepaja.osta(pelaaja, asepaja.getValikoima().size()));
     }
-    
+
     @Test
     public void metodiOstettavissaOlevatIlmoittaaAseenMyynnista() {
         pelaaja.setAse(new Tikari());
         assertTrue(asepaja.ostettavissaOlevat(pelaaja).contains("ensin myydä aseesi"));
     }
-    
 
 }

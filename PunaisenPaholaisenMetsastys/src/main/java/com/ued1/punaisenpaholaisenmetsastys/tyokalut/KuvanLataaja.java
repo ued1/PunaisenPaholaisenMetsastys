@@ -19,7 +19,7 @@ public class KuvanLataaja {
     /**
      * Lataa pelaajatietopaneelissa ikonit ja palauttaa ne Map-oliona.
      *
-     * @return
+     * @return ladatut ikonit map-oliona
      */
     public Map lataaIkonit() {
         lisaaIkonit();
@@ -28,6 +28,8 @@ public class KuvanLataaja {
 
     /**
      * Lataa pelissa näytettävät kuvat ja palauttaa ne Map-oliona.
+     * 
+     * @return ladatus kuvat map-oliona
      */
     public Map lataaKuvat() {
         lisaaKuvat();

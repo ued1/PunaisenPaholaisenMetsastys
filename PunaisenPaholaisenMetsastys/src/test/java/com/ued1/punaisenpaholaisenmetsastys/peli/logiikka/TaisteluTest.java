@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TaisteluTest {
-    
+
     private Hahmo pelaaja;
     private Hahmo kovisMonsteri;
     private Hahmo tasainenMonsteri;
@@ -39,7 +39,7 @@ public class TaisteluTest {
         eiTaistelua = new Taistelu(pelaaja, eiTaisteluaMonsteri);
         paattyyHeti = new Taistelu(pelaaja, kuoleeHetiMonsteri);
     }
-    
+
     @Test
     public void taistelussaVointiLaskeeOikein() {
         hutiTaistelu.taistele();
@@ -58,38 +58,32 @@ public class TaisteluTest {
         assertEquals(pelaaja.getMaxVointi(), pelaaja.getVointi());
         assertFalse(kuoleeHetiMonsteri.onkoElossa());
     }
-    
-        
+
     @Test
     public void taisteluAlkanutKunMolemmatLyo() {
         assertFalse(tasainenTaistelu.taistele());
         assertTrue(tasainenTaistelu.onkoKaynnissa());
     }
-    
 
     private void taisteleMontaKertaa(Taistelu taistelu, int kerrat) {
         for (int i = 0; i < kerrat; i++) {
             taistelu.taistele();
         }
     }
-    
+
     @Test
     public void taisteluEiAlkanutJosKumpikaanEiLyonyt() {
         assertFalse(tasainenTaistelu.onkoKaynnissa());
     }
-    
+
     @Test
     public void taisteluAsetetaanEiAlkaneeksiKunSeLoppuu() {
         int vointi = pelaaja.getVointi();
-        for(int i = 0; i < vointi-1; i++) {
+        for (int i = 0; i < vointi - 1; i++) {
             pelaaja.laskeVointia();
         }
         assertTrue(kovisTaistelu.taistele());
         assertFalse(kovisTaistelu.onkoKaynnissa());
     }
-    
-    
-    
-    
 
 }

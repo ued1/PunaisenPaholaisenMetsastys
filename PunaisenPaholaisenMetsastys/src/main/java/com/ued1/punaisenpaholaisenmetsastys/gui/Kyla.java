@@ -92,6 +92,7 @@ public class Kyla implements Runnable {
      * Asettaa pelinäkymän ja aloittaa uuden pelin.
      *
      * @param pelaajanNimi uuden pelaajan nimi
+     * @param vaikeus pelaajan vaikeusaste, Vaikeus.HELPPO tai Vaikeus.NORMAALI
      */
     public void aloitaUusiPeli(String pelaajanNimi, Vaikeus vaikeus) {
         tyhjennaFrame();

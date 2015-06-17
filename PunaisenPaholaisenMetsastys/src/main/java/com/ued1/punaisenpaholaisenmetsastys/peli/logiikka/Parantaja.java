@@ -42,7 +42,7 @@ public class Parantaja {
     /**
      * Metodi tarkistaa voiko pelaaja ostaa VointiPotionin. Osto on mahdollinen
      * jos pelaajalla on tarpeeksi rahaa ja pelaajalla on potioneja korkeintaan
-     * 4.
+     * 9.
      *
      * @param pelaaja Pelaaja, jolle ollaan ostamassa
      * @return totuusarvo, true jos voi ostaa

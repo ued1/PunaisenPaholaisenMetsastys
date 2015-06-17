@@ -1,4 +1,3 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.peli.logiikka;
 
 import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Casino;
@@ -12,16 +11,16 @@ public class CasinoTest {
 
     private Casino casino;
     private Pelaaja pelaaja;
-    
+
     public CasinoTest() {
     }
-    
+
     @Before
     public void setUp() {
         casino = new Casino();
         pelaaja = new Pelaaja("Uhkapelaaja");
     }
-    
+
     @Test
     public void kasinonKuvausOikein() {
         assertTrue(casino.getCasinoKuvaus(pelaaja).contains("Peukkupeli"));
@@ -29,12 +28,12 @@ public class CasinoTest {
         pelaaja.muutaRahoja(1);
         assertFalse(casino.getCasinoKuvaus(pelaaja).contains("pitää olla rahaa"));
     }
-    
+
     @Test
     public void peukkuPelinKuvausOikein() {
         assertTrue(casino.getPeukkupeliKuvaus().contains("eukkupelissä"));
     }
-    
+
     @Test
     public void peukkupelissaPelaajanRahatMuuttuvatOikein() {
         asetaRahatJaPelaaPeukkua(11);
@@ -48,19 +47,18 @@ public class CasinoTest {
         asetaRahatJaPelaaPeukkua(200);
         assertTrue(pelaaja.getRahat() == 400 || pelaaja.getRahat() == 0);
     }
-    
+
     @Test
     public void komennoissaPelitJosPelaajallaRahaa() {
         assertFalse(casino.getKomennot(pelaaja).contains("eukkupeli"));
         pelaaja.muutaRahoja(1);
         assertTrue(casino.getKomennot(pelaaja).contains("eukkupeli"));
     }
-    
+
     private void asetaRahatJaPelaaPeukkua(int panos) {
         pelaaja.nollaaRahat();
         pelaaja.muutaRahoja(panos);
         casino.pelaaPeukkua(pelaaja);
     }
-    
 
 }

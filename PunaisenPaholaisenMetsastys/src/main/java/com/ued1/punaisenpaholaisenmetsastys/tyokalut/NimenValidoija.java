@@ -14,6 +14,7 @@ public class NimenValidoija {
     /**
      * Metodi tarkistaa onko merkkijono sopiva pelaajan nimeksi. Nimen täytyy
      * olla pituudeltaan 2-15 ja sisältää suomalaisia aakkosten kirjaimia.
+     * Välilyönti ei ole sallittu nimen sisällä.
      *
      * @param tarkistettavaNimi nimi, joka tarkistetaan
      * @return totuusarvo, true jos nimi on kelvollinen

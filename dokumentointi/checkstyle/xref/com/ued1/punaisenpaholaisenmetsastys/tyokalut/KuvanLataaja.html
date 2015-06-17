@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US" lang="en_US">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>KuvanLataaja xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../apidocs/com/ued1/punaisenpaholaisenmetsastys/tyokalut/KuvanLataaja.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> com.ued1.punaisenpaholaisenmetsastys.tyokalut;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.awt.image.BufferedImage;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> java.util.HashMap;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> javax.imageio.ImageIO;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment"> * Luokan tehtävänä on ladata pelin tarvitsevat kuvat ja ikonit.</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../com/ued1/punaisenpaholaisenmetsastys/tyokalut/KuvanLataaja.html">KuvanLataaja</a> {
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>      <strong class="jxr_keyword">private</strong> Map&lt;String, BufferedImage&gt; kuvat;
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../com/ued1/punaisenpaholaisenmetsastys/tyokalut/KuvanLataaja.html">KuvanLataaja</a>() {
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>          kuvat = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>      }
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_javadoccomment">     * Lataa pelaajatietopaneelissa ikonit ja palauttaa ne Map-oliona.</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">     * @return ladatut ikonit map-oliona</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>      <strong class="jxr_keyword">public</strong> Map lataaIkonit() {
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          lisaaIkonit();
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          <strong class="jxr_keyword">return</strong> kuvat;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      }
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment">     * Lataa pelissa näytettävät kuvat ja palauttaa ne Map-oliona.</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment">     * @return ladatus kuvat map-oliona</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>      <strong class="jxr_keyword">public</strong> Map lataaKuvat() {
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          lisaaKuvat();
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          <strong class="jxr_keyword">return</strong> kuvat;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      }
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> lisaaIkonit() {
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>          kuvat.clear();
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          lisaa(<span class="jxr_string">"/kuvat/arrow_up.png"</span>, <span class="jxr_string">"Taso"</span>);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          lisaa(<span class="jxr_string">"/kuvat/heart.png"</span>, <span class="jxr_string">"Vointi"</span>);
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          lisaa(<span class="jxr_string">"/kuvat/sword.png"</span>, <span class="jxr_string">"Ase"</span>);
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          lisaa(<span class="jxr_string">"/kuvat/armor.png"</span>, <span class="jxr_string">"Haarniska"</span>);
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          lisaa(<span class="jxr_string">"/kuvat/gold.png"</span>, <span class="jxr_string">"Rahat"</span>);
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          lisaa(<span class="jxr_string">"/kuvat/exp.png"</span>, <span class="jxr_string">"Kokemus"</span>);
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          lisaa(<span class="jxr_string">"/kuvat/voima.png"</span>, <span class="jxr_string">"Voima"</span>);
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          lisaa(<span class="jxr_string">"/kuvat/puolustus.png"</span>, <span class="jxr_string">"Puolustus"</span>);
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          lisaa(<span class="jxr_string">"/kuvat/potion.png"</span>, <span class="jxr_string">"VointiPotion"</span>);
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          lisaa(<span class="jxr_string">"/kuvat/pupu.png"</span>, <span class="jxr_string">"Pupu"</span>);
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          lisaa(<span class="jxr_string">"/kuvat/olut.png"</span>, <span class="jxr_string">"OhraPotion"</span>);
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          lisaa(<span class="jxr_string">"/kuvat/avain.png"</span>, <span class="jxr_string">"Ruosteinen avain"</span>);
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>      }
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> lisaaKuvat() {
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          kuvat.clear();
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          lisaa(<span class="jxr_string">"/kuvat/metsa.png"</span>, <span class="jxr_string">"Metsä"</span>);
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          lisaa(<span class="jxr_string">"/kuvat/kyla.png"</span>, <span class="jxr_string">"Kylä"</span>);
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          lisaa(<span class="jxr_string">"/kuvat/areena.png"</span>, <span class="jxr_string">"Taisteluareena"</span>);
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          lisaa(<span class="jxr_string">"/kuvat/tappio.png"</span>, <span class="jxr_string">"Taistelutappio"</span>);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          lisaa(<span class="jxr_string">"/kuvat/victory.png"</span>, <span class="jxr_string">"Taisteluvoitto"</span>);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          lisaa(<span class="jxr_string">"/kuvat/asepaja.png"</span>, <span class="jxr_string">"Asepaja"</span>);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          lisaa(<span class="jxr_string">"/kuvat/tavern.png"</span>, <span class="jxr_string">"Kapakka"</span>);
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          lisaa(<span class="jxr_string">"/kuvat/luola.png"</span>, <span class="jxr_string">"Luola"</span>);
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>          lisaa(<span class="jxr_string">"/kuvat/paholainen.png"</span>, <span class="jxr_string">"Paholainen"</span>);
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          lisaa(<span class="jxr_string">"/kuvat/drunk.png"</span>, <span class="jxr_string">"Känni"</span>);
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          lisaa(<span class="jxr_string">"/kuvat/hkauppa.png"</span>, <span class="jxr_string">"Haarniskakauppa"</span>);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          lisaa(<span class="jxr_string">"/kuvat/doctor.png"</span>, <span class="jxr_string">"Parantaja"</span>);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>          lisaa(<span class="jxr_string">"/kuvat/casino.png"</span>, <span class="jxr_string">"Casino"</span>);
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>          lisaa(<span class="jxr_string">"/kuvat/peukkualas.png"</span>, <span class="jxr_string">"Peukku alas"</span>);
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          lisaa(<span class="jxr_string">"/kuvat/peukkuylos.png"</span>, <span class="jxr_string">"Peukku ylös"</span>);
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>          lisaa(<span class="jxr_string">"/kuvat/peukkupeli.png"</span>, <span class="jxr_string">"Peukkupeli"</span>);
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          lisaa(<span class="jxr_string">"/kuvat/pupu.png"</span>, <span class="jxr_string">"Pupu"</span>);
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          lisaa(<span class="jxr_string">"/kuvat/olut.png"</span>, <span class="jxr_string">"OhraPotion"</span>);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>          lisaa(<span class="jxr_string">"/kuvat/avain.png"</span>, <span class="jxr_string">"Ruosteinen avain"</span>);
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>          lisaa(<span class="jxr_string">"/kuvat/evilpupu.png"</span>, <span class="jxr_string">"Ilkeä pupu"</span>);
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          lisaa(<span class="jxr_string">"/kuvat/ovi.png"</span>, <span class="jxr_string">"Hauska ovi"</span>);
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>          lisaa(<span class="jxr_string">"/kuvat/areenataistelu.png"</span>, <span class="jxr_string">"AreenaTaistelu"</span>);
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          lisaa(<span class="jxr_string">"/kuvat/paholainen2.png"</span>, <span class="jxr_string">"LopetusLyönti"</span>);
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>          lisaa(<span class="jxr_string">"/kuvat/loppu.png"</span>, <span class="jxr_string">"Loppukuva"</span>);
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>      }
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> lisaa(String sijainti, String kuvaus) {
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>          <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>              BufferedImage kuva = ImageIO.read(<strong class="jxr_keyword">this</strong>.getClass().getResource(sijainti));
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>              kuvat.put(kuvaus, kuva);
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>          } <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>              <em class="jxr_comment">// Ei tehdä mitään</em>
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>          }
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>      }
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+</body>
+</html>

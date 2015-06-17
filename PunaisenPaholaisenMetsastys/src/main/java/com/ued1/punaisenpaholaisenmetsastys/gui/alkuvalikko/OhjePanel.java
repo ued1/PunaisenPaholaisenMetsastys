@@ -39,15 +39,15 @@ public class OhjePanel extends JPanel {
         ohjeet.setForeground(Color.WHITE);
         ohjeet.setBackground(Color.BLACK);
         ohjeet.setFont(new Font("Monospaced", Font.PLAIN, 12));
-        skrollattava.setPreferredSize(new Dimension(550, 600));
-        skrollattava.setMaximumSize(new Dimension(550, 600));
-        skrollattava.setMinimumSize(new Dimension(550, 600));
+        skrollattava.setPreferredSize(new Dimension(550, 550));
+        skrollattava.setMaximumSize(new Dimension(550, 550));
+        skrollattava.setMinimumSize(new Dimension(550, 550));
         skrollattava.setAlignmentX(CENTER_ALIGNMENT);
         ohjeet.setAlignmentX(CENTER_ALIGNMENT);
         takaisin.setAlignmentX(CENTER_ALIGNMENT);
         ohjeet.setCaretPosition(0);
         lisaaTakaisinKuuntelija();
-        
+
         add(new JLabel(" "));
         add(new JLabel(" "));
         add(skrollattava);

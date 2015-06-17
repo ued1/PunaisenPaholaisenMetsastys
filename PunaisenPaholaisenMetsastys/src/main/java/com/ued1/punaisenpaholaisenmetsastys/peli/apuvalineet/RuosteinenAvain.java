@@ -1,15 +1,15 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.peli.apuvalineet;
 
 /**
- * RuosteinenAvain on Apu, jota tarvitaan taistelussa Punaista Paholaista vastaan.
+ * RuosteinenAvain on Apu, jota tarvitaan taistelussa Punaista Paholaista
+ * vastaan.
  */
 public class RuosteinenAvain extends Apu {
 
     public RuosteinenAvain() {
-        
+
     }
-    
+
     @Override
     public String toString() {
         return "Ruosteinen avain";
@@ -29,7 +29,5 @@ public class RuosteinenAvain extends Apu {
     public int arvo() {
         return 100000000;
     }
-    
-    
-    
+
 }

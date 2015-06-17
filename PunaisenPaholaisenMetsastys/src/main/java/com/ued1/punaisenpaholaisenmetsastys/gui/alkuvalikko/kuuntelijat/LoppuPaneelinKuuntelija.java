@@ -28,7 +28,6 @@ public class LoppuPaneelinKuuntelija implements ActionListener {
         } else if (e.getSource() == lopetus) {
             System.exit(0);
         }
-
     }
 
 }

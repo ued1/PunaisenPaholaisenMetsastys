@@ -1,4 +1,3 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.peli.logiikka;
 
 import com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.Kapakka;
@@ -11,26 +10,26 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class KapakkaTest {
-    
+
     public Pelaaja pelaaja;
     public KossuPotion kossu;
     public Kapakka kapakka;
-    
+
     public KapakkaTest() {
         pelaaja = new Pelaaja("Testaaja");
         kossu = new KossuPotion(pelaaja);
     }
-    
+
     @Before
     public void setUp() {
         kapakka = new Kapakka(pelaaja);
     }
-    
+
     @Test
     public void KossuPotionLoytyyValikoimasta() {
         assertTrue(kapakka.valikoimaMerkkijonona().contains(kossu.toString()));
     }
-    
+
     @Test
     public void PupuListattuOstettavissaKunRahaa() {
         assertTrue(kapakka.getValikoima().get(2).toString().contains("Pupu"));
@@ -38,13 +37,13 @@ public class KapakkaTest {
         pelaaja.muutaRahoja(new Pupu(pelaaja).arvo());
         assertTrue(kapakka.ostettavissaOlevat(pelaaja).contains("Pupu"));
     }
-    
+
     @Test
     public void metodiOstettavissaOlevatIlmoittaaJosEiRahaa() {
         pelaaja.muutaRahoja(-200000000);
         assertTrue(kapakka.ostettavissaOlevat(pelaaja).contains("Sinulla ei ole yhtään rahaa"));
     }
-    
+
     @Test
     public void pelaajaVoiOstaaPupunKunTarpeeksiRahaa() {
         assertTrue(kapakka.getValikoima().get(2).toString().contains("Pupu"));
@@ -52,13 +51,13 @@ public class KapakkaTest {
         pelaaja.muutaRahoja(new Pupu(pelaaja).arvo());
         assertTrue(kapakka.voikoPelaajaOstaaOstoksen(pelaaja, 2));
     }
-    
+
     @Test
     public void pelaajaEiVoiOstaaValikoimanUlkopuolelta() {
         assertFalse(kapakka.osta(pelaaja, -1));
         assertFalse(kapakka.osta(pelaaja, 444));
     }
-    
+
     @Test
     public void pelaajaVoiOstaaKossunKunRahaa() {
         assertFalse(kapakka.osta(pelaaja, 1));
@@ -67,7 +66,7 @@ public class KapakkaTest {
         pelaaja.muutaRahoja(1);
         assertTrue(kapakka.osta(pelaaja, 1));
     }
-    
+
     @Test
     public void eiVoiOstaaKahtaPupua() {
         pelaaja.muutaRahoja(new Pupu(pelaaja).arvo() * 2);
@@ -75,7 +74,7 @@ public class KapakkaTest {
         assertTrue(kapakka.osta(pelaaja, 2));
         assertFalse(kapakka.osta(pelaaja, 2));
     }
-    
+
     @Test
     public void voiOstaaKaksiEriApua() {
         pelaaja.muutaRahoja(99999999);
@@ -83,10 +82,10 @@ public class KapakkaTest {
         assertTrue(kapakka.osta(pelaaja, 3));
         assertFalse(kapakka.osta(pelaaja, 3));
     }
-    
+
     @Test
     public void valikoimassaAvunHinta() {
         assertTrue(kapakka.valikoimaMerkkijonona().contains("" + new Pupu(pelaaja).arvo()));
     }
-            
+
 }

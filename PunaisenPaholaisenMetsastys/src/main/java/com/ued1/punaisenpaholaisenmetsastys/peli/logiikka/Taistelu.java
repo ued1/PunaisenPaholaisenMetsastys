@@ -34,9 +34,9 @@ public class Taistelu {
      * Hahmo lyö ollenkaan. Lyöjän lyöntivoima on random-luku väliltä 50% ja
      * 100% maksimilyöntivoimasta. Vahinko lasketaan vähentämällä edellä
      * lasketusta lyöntivoimasta puolustajan puolustusvoima ja puolustajan
-     * vointi laskee erotuksen verran. Ensimmäisen hahmon aiheittama vahinko on
-     * aina >=1 ja toisen >=0. Metodi kertoo kutsujalle onko taistelu ohi, eli
-     * onko toisen vointi laskenut nollaan.
+     * vointi laskee erotuksen verran. Ensimmäisen hahmon aiheuttama vahinko on
+     * aina vähintään 1 ja toisen hävintään nolla. Metodi kertoo kutsujalle onko
+     * taistelu ohi, eli onko toisen vointi laskenut nollaan.
      *
      * @return totuusarvo taistelun päättymisestä, true jos taistelu on saatu
      * päätöḱseen

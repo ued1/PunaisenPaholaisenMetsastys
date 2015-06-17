@@ -10,7 +10,6 @@ import java.io.InputStreamReader;
 public class TiedostonLukija {
 
     public TiedostonLukija() {
-
     }
 
     /**
@@ -24,7 +23,7 @@ public class TiedostonLukija {
     public String lueTiedosto(String sijainti) throws Exception {
 
         InputStream inputStream = getClass().getResourceAsStream(sijainti);
-        BufferedReader lukija = new BufferedReader(new InputStreamReader(inputStream));
+        BufferedReader lukija = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
 
         String rivi = "";
         String teksti = "";

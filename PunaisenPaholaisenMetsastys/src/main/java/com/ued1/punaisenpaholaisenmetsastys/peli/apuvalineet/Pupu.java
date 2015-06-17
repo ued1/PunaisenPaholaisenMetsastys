@@ -4,7 +4,7 @@ import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
 import java.util.Random;
 
 /**
- * Pupu on "Apu", joka varastaa pelaajan rahat.
+ * Pupu on "Apu", joka varastaa pelaajan.
  */
 public class Pupu extends Apu {
 
@@ -21,7 +21,8 @@ public class Pupu extends Apu {
 
     /**
      * Pupu "auttaa" pelaajaa varastamalla pelaajan rahat 1/15
-     * todennäköisyydellä. Pupu ei "auta" mikäli pelaajalla ei ole rahaa.
+     * todennäköisyydellä kun pelaaja on aloittamassa monsteritaistelua.
+     * Pupu ei "auta" mikäli pelaajalla ei ole rahaa.
      *
      * @return totuusarvo, true jos pupu vie rahat
      */

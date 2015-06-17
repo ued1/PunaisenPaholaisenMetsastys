@@ -64,7 +64,7 @@ public class KomennonKasittelija {
         } else if (paikka == Paikka.ASEPAJA) {
             kasitteleAsepajaKomento(komentoKoodi);
         } else if (paikka == Paikka.HAARNISKAKAUPPA) {
-            kasitteleHaarniskaKauppaKomento(komentoKoodi);
+            kasitteleOstaTaiTakaisin(komentoKoodi, Paikka.HAARNISKANOSTO);
         } else if (paikka == Paikka.MONSTERITAISTELU) {
             kasitteleMonsteriTaisteluKomento(komentoKoodi);
         } else if (paikka == Paikka.TAISTELUAREENA) {
@@ -84,7 +84,7 @@ public class KomennonKasittelija {
         } else if (paikka == Paikka.TAISTELUAREENATULOS) {
             kasitteleTaisteluAreenaTulos(komentoKoodi);
         } else if (paikka == Paikka.KAPAKKA) {
-            kasitteleKapakkaKomento(komentoKoodi);
+            kasitteleOstaTaiTakaisin(komentoKoodi, Paikka.KAPAKKAOSTO);
         } else if (paikka == Paikka.LUOLA) {
             kasitteleLuolaKomento(komentoKoodi);
         } else if (paikka == Paikka.PAHOLAINEN) {
@@ -170,18 +170,10 @@ public class KomennonKasittelija {
         }
     }
 
-    private void kasitteleHaarniskaKauppaKomento(int komentoKoodi) {
+    // Haarniskakauppa ja Kapakka
+    private void kasitteleOstaTaiTakaisin(int komentoKoodi, Paikka paikka) {
         if (komentoKoodi == KeyEvent.VK_O) {
-            paivittaja.paivita(Paikka.HAARNISKANOSTO);
-        } else if (komentoKoodi == KeyEvent.VK_T) {
-            paivittaja.paivita(Paikka.KYLA);
-        }
-    }
-
-    // TODO: yhtistä ylä ja alapuoli
-    private void kasitteleKapakkaKomento(int komentoKoodi) {
-        if (komentoKoodi == KeyEvent.VK_O) {
-            paivittaja.paivita(Paikka.KAPAKKAOSTO);
+            paivittaja.paivita(paikka);
         } else if (komentoKoodi == KeyEvent.VK_T) {
             paivittaja.paivita(Paikka.KYLA);
         }
@@ -282,7 +274,7 @@ public class KomennonKasittelija {
         if (komentoKoodi == KeyEvent.VK_L) {
             if (metsa.getTaistelu().taistele()) {
                 if (pelaaja.onkoElossa()) {
-                    paivittaja.paivita(Paikka.METSA);
+                    paivittaja.paivita(Paikka.MONSTERITAISTELUVOITTO);
                     metsa.asetaTaistelunTulos();
                 } else {
                     paivittaja.paivita(Paikka.MONSTERITAISTELUTAPPIO);
@@ -349,7 +341,6 @@ public class KomennonKasittelija {
     }
 
     private void kasitteleMonsteriTaisteluTappioKomento(int komentoKoodi) {
-
         if (komentoKoodi == KeyEvent.VK_J) {
             metsa.asetaTaistelunTulos();
             paivittaja.paivita(Paikka.METSA);
@@ -370,7 +361,6 @@ public class KomennonKasittelija {
             areena.aloitaUusiTaistelu();
             paivittaja.paivita(Paikka.AREENATAISTELU);
         }
-
     }
 
     private void kasitteleTaisteluAreenaEi(int komentoKoodi) {

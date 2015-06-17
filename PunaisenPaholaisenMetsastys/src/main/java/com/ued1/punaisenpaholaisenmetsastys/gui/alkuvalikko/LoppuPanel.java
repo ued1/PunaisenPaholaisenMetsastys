@@ -60,7 +60,7 @@ public class LoppuPanel extends JPanel {
         lopeta.setAlignmentX(CENTER_ALIGNMENT);
         alkuvalikkoon.setAlignmentX(CENTER_ALIGNMENT);
     }
-    
+
     private void lisaaKomponentit() {
         add(loppukuva);
         add(new JLabel(" "));

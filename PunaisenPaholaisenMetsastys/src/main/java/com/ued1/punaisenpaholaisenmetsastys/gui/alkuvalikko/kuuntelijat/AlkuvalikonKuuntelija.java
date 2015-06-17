@@ -12,17 +12,15 @@ public class AlkuvalikonKuuntelija implements ActionListener {
 
     private JButton jatka;
     private JButton aloita;
-    private JButton lataa;
     private JButton asetukset;
     private JButton ohje;
     private JButton lopeta;
     private Kyla kyla;
 
-    public AlkuvalikonKuuntelija(Kyla kyla, JButton jatka, JButton aloita, JButton lataa, JButton ohje, JButton lopeta, JButton asetukset) {
+    public AlkuvalikonKuuntelija(Kyla kyla, JButton jatka, JButton aloita, JButton ohje, JButton lopeta, JButton asetukset) {
         this.jatka = jatka;
         this.kyla = kyla;
         this.aloita = aloita;
-        this.lataa = lataa;
         this.asetukset = asetukset;
         this.ohje = ohje;
         this.lopeta = lopeta;
@@ -32,8 +30,6 @@ public class AlkuvalikonKuuntelija implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == aloita) {
             hoidaAloita();
-        } else if (e.getSource() == lataa) {
-            hoidaLataa();
         } else if (e.getSource() == ohje) {
             hoidaOhje();
         } else if (e.getSource() == lopeta) {
@@ -55,11 +51,7 @@ public class AlkuvalikonKuuntelija implements ActionListener {
         kyla.asetaNimenValinta();
     }
 
-    // Lataa aikaisempaa pelin
-    private void hoidaLataa() {
-
-    }
-
+    // Asetukset
     private void hoidaAsetukset() {
         kyla.asetaAsetusvalikko();
     }

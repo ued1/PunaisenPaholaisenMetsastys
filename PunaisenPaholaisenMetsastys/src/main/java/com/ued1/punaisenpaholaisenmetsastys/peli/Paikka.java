@@ -1,10 +1,10 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.peli;
 
 /**
  * Enum Paikka määrittelee käytettävissä olevat paikka ja tilatiedot pelaajalle
  */
 public enum Paikka {
+
     KYLA, ASEPAJA, HAARNISKAKAUPPA,
     TAISTELUAREENA, METSA, TAISTELU,
     ASEENOSTO, ASEENMYYNTI, HAARNISKANOSTO,
@@ -14,5 +14,6 @@ public enum Paikka {
     PAHOLAINEN, LOPPU, PAHOLAINENTAPPIO,
     KAPAKKAOSTO, KANNI, PARANTAJA, CASINO,
     PEUKKUPELI, PEUKKUTULOS, METSAPUPU,
-    RUOSTEINENAVAIN, HEIKENNETTYPAHOLAINEN
+    RUOSTEINENAVAIN, HEIKENNETTYPAHOLAINEN,
+    MONSTERITAISTELUVOITTO
 }

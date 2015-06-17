@@ -32,10 +32,10 @@ public class KomentoOsa extends JPanel {
         this.luola = luola;
         setBackground(new Color(238, 238, 238));
         fontti = new Font("SansSerif", Font.BOLD, 12);
-        luoKomponentit();
+        lisaaKomentoValikko();
     }
 
-    private void luoKomponentit() {
+    private void lisaaKomentoValikko() {
         komentoValikko = new JTextArea(kylaValikko());
         komentoValikko.setFocusable(false);
         komentoValikko.setBackground(new Color(238, 238, 238));
@@ -65,7 +65,7 @@ public class KomentoOsa extends JPanel {
             komentoValikko.setText("[O]sta ase\n[M]yy ase\n[T]akaisin");
         } else if (uusiPaikka == Paikka.HAARNISKAKAUPPA) {
             komentoValikko.setText("[O]sta haarniska\n[T]akaisin");
-        } else if (uusiPaikka == Paikka.METSA) {
+        } else if (uusiPaikka == Paikka.METSA || uusiPaikka == Paikka.MONSTERITAISTELUVOITTO) {
             komentoValikko.setText(lisaaMetsaKomennot());
         } else if (uusiPaikka == Paikka.TAISTELUAREENA) {
             komentoValikko.setText("[A]stu taisteluareenaan\n[T]akaisin kylään");

@@ -1,12 +1,14 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.peli.apuvalineet;
 
 import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
 
+/**
+ * VointoPotion parantaa pelaaja.
+ */
 public class VointiPotion extends Apu {
-    
+
     private Pelaaja pelaaja;
-    
+
     public VointiPotion(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
     }
@@ -30,5 +32,5 @@ public class VointiPotion extends Apu {
     public int arvo() {
         return 0;
     }
-    
+
 }

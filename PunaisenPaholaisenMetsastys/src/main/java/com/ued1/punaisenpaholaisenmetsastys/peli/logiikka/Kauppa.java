@@ -1,6 +1,5 @@
 package com.ued1.punaisenpaholaisenmetsastys.peli.logiikka;
 
-// Yläluokka kaupoille: Asepaja, Haarniskakauppa, Välinekauppa(TODO)
 import com.ued1.punaisenpaholaisenmetsastys.peli.apuvalineet.Apu;
 import com.ued1.punaisenpaholaisenmetsastys.peli.apuvalineet.VointiPotion;
 import com.ued1.punaisenpaholaisenmetsastys.peli.aseet.Ase;
@@ -68,7 +67,6 @@ public abstract class Kauppa<T> {
         if (hinnastossaApuja() && pelaaja.onkoPelaajallaApu((Apu) valikoima.get(ostoksenNumero))) {
             return false;
         }
-
         if ((aseEhdot || eiAseita) && pelaaja.getRahat() >= hinta(ostoksenNumero)) {
             return true;
         }
@@ -111,8 +109,7 @@ public abstract class Kauppa<T> {
     public String ostettavissaOlevat(Pelaaja pelaaja) {
         String merkkijono = "";
         if (hinnastossaAseita() && !pelaaja.getAse().toString().equals("Nyrkki")) {
-            merkkijono += "\nSinun pitää ensin myydä aseesi";
-            merkkijono += "\njotta voit ostaa uuden.";
+            merkkijono += "\nSinun pitää ensin myydä aseesi\njotta voit ostaa uuden.";
             return merkkijono;
         }
 
@@ -125,9 +122,7 @@ public abstract class Kauppa<T> {
             }
             merkkijono += "\nhalvin ostos, " + valikoima.get(1).toString();
             merkkijono += ", maksaa " + hinta(1);
-            merkkijono += "\nkultarahaa.";
-            merkkijono += "\n\nTarvitset lisää rahaa tehdäkseen";
-            merkkijono += "\nostoksia täällä.";
+            merkkijono += "\nkultarahaa.\n\nTarvitset lisää rahaa tehdäkseen\nostoksia täällä.";
         } else {
             merkkijono += "Rahasi riittävät seuraaviin ostoksiin:\n";
             merkkijono += lisaaOstettavissaOlevat(pelaaja);
@@ -155,16 +150,13 @@ public abstract class Kauppa<T> {
      */
     public String valikoimaMerkkijonona() {
         String hinnasto = "";
-
         for (int i = 1; i < valikoima.size(); i++) {
             if (hinnastossaAseita()) {
                 hinnasto += String.format("%-12s", " " + valikoima.get(i).toString());
                 hinnasto += String.format("%13d     ", hinta(i));
-
             } else {
                 hinnasto += String.format("%-30s", " " + valikoima.get(i).toString());
             }
-
             hinnasto += String.format("%-10d%s", ominaisuus(i), "\n");
         }
         return hinnasto;
@@ -193,24 +185,14 @@ public abstract class Kauppa<T> {
     }
 
     private boolean hinnastossaAseita() {
-        if (valikoima.size() > 0 && valikoima.get(0).getClass() == new Nyrkki().getClass()) {
-            return true;
-        }
-        return false;
+        return (valikoima.size() > 0 && valikoima.get(0).getClass() == new Nyrkki().getClass());
     }
 
     private boolean hinnastossaApuja() {
-        if (valikoima.size() > 0 && valikoima.get(0).getClass() == new VointiPotion(new Pelaaja("Apupelaaja")).getClass()) {
-            return true;
-        }
-        return false;
+        return (valikoima.size() > 0 && valikoima.get(0).getClass() == new VointiPotion(new Pelaaja("Apupelaaja")).getClass());
     }
 
     private boolean hinnastossaHaarniskoja() {
-        if (valikoima.size() > 0 && valikoima.get(0).getClass() == new Riepu().getClass()) {
-            return true;
-        }
-        return false;
+        return (valikoima.size() > 0 && valikoima.get(0).getClass() == new Riepu().getClass());
     }
-
 }

@@ -17,7 +17,6 @@ public class AlkuvalikkoPanel extends JPanel {
 
     private JButton jatka;
     private JButton aloita;
-    private JButton lataa;
     private JButton asetukset;
     private JButton ohje;
     private JButton lopeta;
@@ -28,17 +27,16 @@ public class AlkuvalikkoPanel extends JPanel {
     public AlkuvalikkoPanel(Kyla kyla) {
         jatka = new JButton("Takaisin peliin");
         aloita = new JButton("Aloita uusi peli");
-        lataa = new JButton("Lataa tallennettu peli");
         asetukset = new JButton("Asetukset");
         ohje = new JButton("Pelin ohjeet");
         lopeta = new JButton("Lopeta peli");
         this.kyla = kyla;
-        kuuntelija = new AlkuvalikonKuuntelija(kyla, jatka, aloita, lataa, ohje, lopeta, asetukset);
+        kuuntelija = new AlkuvalikonKuuntelija(kyla, jatka, aloita, ohje, lopeta, asetukset);
         paholainen = new JLabel();
-        luoKomponentit();
+        alusta();
     }
 
-    private void luoKomponentit() {
+    private void alusta() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.BLACK);
 
@@ -52,7 +50,6 @@ public class AlkuvalikkoPanel extends JPanel {
     private void lisaaKuuntelijat() {
         jatka.addActionListener(kuuntelija);
         aloita.addActionListener(kuuntelija);
-        lataa.addActionListener(kuuntelija);
         ohje.addActionListener(kuuntelija);
         lopeta.addActionListener(kuuntelija);
         asetukset.addActionListener(kuuntelija);
@@ -62,7 +59,6 @@ public class AlkuvalikkoPanel extends JPanel {
         paholainen.setAlignmentX(CENTER_ALIGNMENT);
         jatka.setAlignmentX(CENTER_ALIGNMENT);
         aloita.setAlignmentX(CENTER_ALIGNMENT);
-        lataa.setAlignmentX(CENTER_ALIGNMENT);
         ohje.setAlignmentX(CENTER_ALIGNMENT);
         lopeta.setAlignmentX(CENTER_ALIGNMENT);
         asetukset.setAlignmentX(CENTER_ALIGNMENT);
@@ -75,8 +71,6 @@ public class AlkuvalikkoPanel extends JPanel {
             add(new JLabel(" "));
         }
         add(aloita);
-        add(new JLabel(" "));
-        add(lataa);
         add(new JLabel(" "));
         if (kyla.onkoPeliKaynnissa()) {
             add(asetukset);

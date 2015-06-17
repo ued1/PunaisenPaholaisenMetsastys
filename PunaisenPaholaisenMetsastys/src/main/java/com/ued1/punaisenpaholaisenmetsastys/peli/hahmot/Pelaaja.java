@@ -71,7 +71,8 @@ public class Pelaaja extends Hahmo {
     }
 
     /**
-     * Metodi palauttaa pelaajan maksimilyöntivoiman.
+     * Metodi palauttaa pelaajan maksimilyöntivoiman. Maksimilyöntivoima
+     * määräytyy aseen mukaan.
      *
      * @return lyöntivoima kokonaislukuna
      */
@@ -81,7 +82,8 @@ public class Pelaaja extends Hahmo {
     }
 
     /**
-     * Metodi palauttaa pelaajan puolustusvoiman.
+     * Metodi palauttaa pelaajan puolustusvoiman. Puolustusvoima määräytyy
+     * haarniskan mukaan.
      *
      * @return puolustusvoima kokonaislukuna
      */
@@ -105,7 +107,7 @@ public class Pelaaja extends Hahmo {
     /**
      * Palauttaa pelaajalla olevien potionien määrän.
      *
-     * @return potionien määrä, kokonaisluku 0..5.
+     * @return potionien määrä, kokonaisluku 0..10.
      */
     public int getPotionit() {
         return potionit;
@@ -270,6 +272,11 @@ public class Pelaaja extends Hahmo {
         return false;
     }
 
+    /**
+     * Pelaaja palauttaa pelaajan valitseman pelin vaikeusasteen.
+     * 
+     * @return pelaajan asettama vaikeusaste
+     */
     public Vaikeus getVaikeus() {
         return vaikeus;
     }
