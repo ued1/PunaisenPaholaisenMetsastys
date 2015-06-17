@@ -131,6 +131,8 @@ public class KomennonKasittelija {
             paivittaja.paivita(Paikka.PARANTAJA);
         } else if (komentoKoodi == KeyEvent.VK_C) {
             paivittaja.paivita(Paikka.CASINO);
+        } else if (pelaaja.getNimi().equalsIgnoreCase("assari")) {
+            huijaa(komentoKoodi);
         }
     }
 
@@ -218,7 +220,6 @@ public class KomennonKasittelija {
         } else if (komentoKoodi == KeyEvent.VK_T) {
             paivittaja.paivita(Paikka.KYLA);
         } else if (komentoKoodi == KeyEvent.VK_O && parantaja.voikoOstaa(pelaaja)) {
-            // TODO: K/E ja viesti ostetusta potionista
             parantaja.ostaPotion(pelaaja);
             paivittaja.paivita(Paikka.PARANTAJA);
         }
@@ -235,10 +236,7 @@ public class KomennonKasittelija {
     }
 
     private void ostaPelaajalleAseJaLiiku(int aseenNumero) {
-        if (asepaja.osta(pelaaja, aseenNumero)) {
-            // TODO: ilmoitus uudesta aseesta
-        }
-        paivittaja.paivita(Paikka.ASEPAJA); // fix
+        paivittaja.paivita(Paikka.ASEPAJA);
     }
 
     private void kasitteleAvunOstoKomento(int komentoKoodi) {
@@ -253,7 +251,6 @@ public class KomennonKasittelija {
             kapakka.osta(pelaaja, komentoKoodi - 48);
             paivittaja.paivita(Paikka.KAPAKKA);
         }
-
     }
 
     private void kasitteleAseenMyyntiKomento(int komentoKoodi) {
@@ -276,9 +273,6 @@ public class KomennonKasittelija {
     }
 
     private void ostaPelaajalleHaarniskaJaLiiku(int haarniskanNumero) {
-        if (haarniskaKauppa.osta(pelaaja, haarniskanNumero)) {
-            // TODO: ilmoitus uudesta haarniskasta
-        }
         paivittaja.paivita(Paikka.HAARNISKAKAUPPA);
     }
 
@@ -394,11 +388,25 @@ public class KomennonKasittelija {
             paivittaja.paivita(Paikka.CASINO);
         }
     }
-    
+
     private void kasitteleLoppu(int komentoKoodi) {
         if (komentoKoodi == KeyEvent.VK_V) {
             kyla.asetaLoppuvalikko();
         }
     }
+
+    // CHEAT
+    private void huijaa(int komentoKoodi) {
+        int[] tarvittavaKokemus = {0, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000};
+        if (komentoKoodi == KeyEvent.VK_X) {
+            pelaaja.muutaRahoja(1000000);
+        } else if (komentoKoodi == KeyEvent.VK_PAGE_UP && pelaaja.getTaso() < 10) {
+            pelaaja.setKokemus(tarvittavaKokemus[pelaaja.getTaso()]);
+            pelaaja.nostaTasoa();
+        } else if (komentoKoodi == KeyEvent.VK_END && pelaaja.getTaso() < 10) {
+            pelaaja.setKokemus(tarvittavaKokemus[pelaaja.getTaso()]);
+        }
+        pelaajaTietoPanel.repaint();
+    } // CHEAT END
 
 }

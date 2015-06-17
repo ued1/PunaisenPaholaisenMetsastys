@@ -58,7 +58,7 @@ public class OhjePanel extends JPanel {
     private String ohjeString() {
         String merkkijono = "";
         try {
-            merkkijono = new TiedostonLukija("src/main/resources/tekstit/ohjeet.txt").lueTiedosto();
+            merkkijono = new TiedostonLukija().lueTiedosto("/tekstit/ohjeet.txt");
         } catch (Exception e) {
             merkkijono += "\nTosimies ei ohjeita tarvitse!";
             merkkijono += "\nAloita peli ja mene itse kokeilemaan!";

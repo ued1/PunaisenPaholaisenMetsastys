@@ -10,7 +10,7 @@ import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
  * voittaa vastustajia ja nousta seuraavalle tasolle.
  */
 public class Areena {
-    
+
     private Pelaaja pelaaja;
     private Taistelu taistelu;
     private int voitetut;
@@ -26,7 +26,7 @@ public class Areena {
     /**
      * Metodi tarkistaa onko pelaaja valmis areenataisteluun. Pelaajalla täytyy
      * tarvittava määrä kokemusta aloittaakseen areenataistelun.
-     * 
+     *
      * @return totuusarvo true jos valmis, false jos ei tarpeeksi kokemusta
      */
     public boolean onkoPelaajaValmisAreenaan() {
@@ -39,7 +39,7 @@ public class Areena {
     /**
      * Metodi kertoo kuinka paljon pelaajalla on oltava kokemusta aloittaakseen
      * areenataistelun.
-     * 
+     *
      * @return tarvittava kokemus kokonaislukuna
      */
     public int seuraavanTasonKokemus() {
@@ -51,10 +51,10 @@ public class Areena {
     }
 
     /**
-     * Metodi kertoo kuinka monta ottelua pelaajan tulee vielä voittaa noustaakseen
-     * seuraavalle tasolle. Otteluita on voitettava seuraavan tason numeron verran,
-     * esimerkiksi 5 ottelua noustaakseen tasolle 5.
-     * 
+     * Metodi kertoo kuinka monta ottelua pelaajan tulee vielä voittaa
+     * noustaakseen seuraavalle tasolle. Otteluita on voitettava seuraavan tason
+     * numeron verran, esimerkiksi 5 ottelua noustaakseen tasolle 5.
+     *
      * @return tarvittavien voittojen määrä kokonaislukuna
      */
     public int getOtteluitaJaljella() {
@@ -85,8 +85,8 @@ public class Areena {
 
     /**
      * Metodi alustaa uuden taistelun. Vastustaja arvotaan sopivaksi perustuen
-     * pelaajan vahvuuteen. Mikäli pelaaja hävisi edellisen taistelun,
-     * on vastustaja sama. Vastustajan lyönti- ja puolustusvoimaa on kuitenkin
+     * pelaajan vahvuuteen. Mikäli pelaaja hävisi edellisen taistelun, on
+     * vastustaja sama. Vastustajan lyönti- ja puolustusvoimaa on kuitenkin
      * laskettu.
      */
     public void aloitaUusiTaistelu() {
@@ -97,13 +97,13 @@ public class Areena {
         pelaaja.paranna();
         taistelu = new Taistelu(pelaaja, vastustaja);
     }
-    
+
     private void heikennaVastustajaa() {
-        if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
-            ((Kilpailija)vastustaja).heikenna();
-            ((Kilpailija)vastustaja).heikenna();
+        if (pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+            ((Kilpailija) vastustaja).heikenna();
+            ((Kilpailija) vastustaja).heikenna();
         } else {
-            ((Kilpailija)vastustaja).heikenna();
+            ((Kilpailija) vastustaja).heikenna();
         }
     }
 
@@ -111,7 +111,7 @@ public class Areena {
         int maxVointi = pelaaja.getMaxVointi() + 5;
         int voima = pelaaja.lyo() + 2;
         int puolustus = pelaaja.suojaa() + 1;
-        if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+        if (pelaaja.getVaikeus() == Vaikeus.HELPPO) {
             maxVointi -= 5;
             voima -= 2;
             puolustus -= 1;
@@ -123,7 +123,7 @@ public class Areena {
     /**
      * Metodi palauttaa meneillään olevan taistelun tai null-arvon mikäli
      * taistelua ei ole käynnissä.
-     * 
+     *
      * @return taistelu joka on käynnissä
      */
     public Taistelu getTaistelu() {
@@ -134,7 +134,7 @@ public class Areena {
      * Palauttaa tarinapaneelin tarinaosaan sopivan merkkijonon joko vastustajan
      * tiedoista, mikäli taistelu on alustettu, tai kerrotaan vastustajan
      * tietojen selviävän myöhemmin.
-     * 
+     *
      * @return tilanteeseen sopiva merkkijono tarinapaneeliin
      */
     public String getVastustajanTiedot() {

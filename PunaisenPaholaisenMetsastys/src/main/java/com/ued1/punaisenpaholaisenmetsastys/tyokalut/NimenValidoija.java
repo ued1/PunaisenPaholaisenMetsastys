@@ -28,7 +28,7 @@ public class NimenValidoija {
         }
         return true;
     }
-    
+
     private boolean onkoSopivaPituus(String nimi) {
         return (nimi.length() >= MINIMIPITUUS && nimi.length() <= MAKSIMIPITUUS);
     }
@@ -36,11 +36,11 @@ public class NimenValidoija {
     private boolean onkoVainKirjaimia(String nimi) {
         for (int i = 0; i < nimi.length(); i++) {
             if (nimi.charAt(i) >= (int) 'A' && nimi.charAt(i) <= (int) 'Z') {
-
+                // ei tehdä mitään
             } else if (nimi.charAt(i) >= (int) 'a' && nimi.charAt(i) <= (int) 'z') {
-
+                // ei tehdä mitään
             } else if ("ÅåÄäÖö".contains("" + nimi.charAt(i))) {
-
+                // ei tehdä mitään
             } else {
                 return false;
             }

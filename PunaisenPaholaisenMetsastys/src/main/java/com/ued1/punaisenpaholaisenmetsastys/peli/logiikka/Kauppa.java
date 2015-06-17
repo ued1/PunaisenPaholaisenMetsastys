@@ -62,13 +62,13 @@ public abstract class Kauppa<T> {
     public boolean voikoPelaajaOstaaOstoksen(Pelaaja pelaaja, int ostoksenNumero) {
         boolean aseEhdot = hinnastossaAseita() && pelaaja.getAse().toString().equals("Nyrkki");
         boolean eiAseita = !hinnastossaAseita();
-        if(ostoksenNumero < 1 || ostoksenNumero >= valikoima.size()) {
+        if (ostoksenNumero < 1 || ostoksenNumero >= valikoima.size()) {
             return false;
         }
-        if(hinnastossaApuja() && pelaaja.onkoPelaajallaApu((Apu)valikoima.get(ostoksenNumero))) {
+        if (hinnastossaApuja() && pelaaja.onkoPelaajallaApu((Apu) valikoima.get(ostoksenNumero))) {
             return false;
         }
-        
+
         if ((aseEhdot || eiAseita) && pelaaja.getRahat() >= hinta(ostoksenNumero)) {
             return true;
         }
@@ -92,7 +92,7 @@ public abstract class Kauppa<T> {
                     ostettavatOstokset += String.format("%-3s", " [" + i);
                 }
                 ostettavatOstokset += String.format("%-18s", "] " + valikoima.get(i).toString());
-                if (i != valikoima.size()-1 && (i % 2 == 0 || hinnastossaApuja())) {
+                if (i != valikoima.size() - 1 && (i % 2 == 0 || hinnastossaApuja())) {
                     ostettavatOstokset += "\n";
                 }
             }
@@ -110,12 +110,12 @@ public abstract class Kauppa<T> {
      */
     public String ostettavissaOlevat(Pelaaja pelaaja) {
         String merkkijono = "";
-        if(hinnastossaAseita() && !pelaaja.getAse().toString().equals("Nyrkki")) {
+        if (hinnastossaAseita() && !pelaaja.getAse().toString().equals("Nyrkki")) {
             merkkijono += "\nSinun pitää ensin myydä aseesi";
             merkkijono += "\njotta voit ostaa uuden.";
             return merkkijono;
         }
-        
+
         if (!voikoPelaajaOstaaOstoksen(pelaaja, 1)) {
             merkkijono += "\nRahasi eivät riitä mihinkään.";
             if (pelaaja.getRahat() == 0) {
@@ -148,24 +148,24 @@ public abstract class Kauppa<T> {
 
     /**
      * Metodi palauttaa valikoiman, joka sisältää tavaroiden nimien lisäksi
-     * tavaran tärkeimmän ominaisuuden ja järjestyksen hinnastossa. 
+     * tavaran tärkeimmän ominaisuuden ja järjestyksen hinnastossa.
      * Järjestysnumeroa käytettään hyväksi ostovaiheessa.
      *
      * @return valikoima merkkijonona
      */
     public String valikoimaMerkkijonona() {
         String hinnasto = "";
-        
+
         for (int i = 1; i < valikoima.size(); i++) {
-            if(hinnastossaAseita()) {
+            if (hinnastossaAseita()) {
                 hinnasto += String.format("%-12s", " " + valikoima.get(i).toString());
                 hinnasto += String.format("%13d     ", hinta(i));
-                
+
             } else {
                 hinnasto += String.format("%-30s", " " + valikoima.get(i).toString());
             }
-            
-            hinnasto += String.format("%-10d%s", ominaisuus(i),"\n");
+
+            hinnasto += String.format("%-10d%s", ominaisuus(i), "\n");
         }
         return hinnasto;
     }

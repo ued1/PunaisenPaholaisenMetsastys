@@ -23,12 +23,11 @@ public class Luola {
         this.taistelu = null;
         this.punainenPotion = 0;
         this.mustaPotion = 0;
-        if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+        if (pelaaja.getVaikeus() == Vaikeus.HELPPO) {
             this.paholainen = new Monsteri(500, 150, 65, "Punainen Paholainen");
         } else {
             this.paholainen = new Monsteri(1000, 150, 65, "Punainen Paholainen");
         }
-        
     }
 
     /**
@@ -54,9 +53,7 @@ public class Luola {
      * jatkaa peliä. Pelaajan voittessa peli loppuu.
      */
     public void asetaTulos() {
-        if (pelaaja.onkoElossa()) {
-            //TODO
-        } else {
+        if (!pelaaja.onkoElossa()) {
             pelaaja.setHaarniska(new Riepu());
             pelaaja.muutaRahoja(-pelaaja.getRahat());
             pelaaja.paranna();

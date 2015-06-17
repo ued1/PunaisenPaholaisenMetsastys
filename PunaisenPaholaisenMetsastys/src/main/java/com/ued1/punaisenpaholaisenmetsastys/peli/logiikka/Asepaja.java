@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * Luokka hoitaa pelin asepajan logiikan.
  */
 public class Asepaja extends Kauppa {
-    
+
     /**
      * Konstruktori antaa valmiin hinnaston yläluokalle (Kauppa) kutsuessaan
      * yläluokan konstruktoria.
@@ -51,20 +51,21 @@ public class Asepaja extends Kauppa {
         aseet.add(new Excalibur());
         return aseet;
     }
-        
+
     /**
-     * Metodia käytetään aseen ostamiseen. 
+     * Metodia käytetään aseen ostamiseen.
+     *
      * @param pelaaja Pelaaja, jolle ase ostetaan
      * @param aseenNumero Asevalikoimassa näkyvän aseen numero
-     * @return oston onnistumisesta kertova totuusarvo, true jos osto onnistui 
+     * @return oston onnistumisesta kertova totuusarvo, true jos osto onnistui
      */
     @Override
     public boolean osta(Pelaaja pelaaja, int aseenNumero) {
-        if(aseenNumero >= getValikoima().size() || aseenNumero < 0) {
+        if (aseenNumero >= getValikoima().size() || aseenNumero < 0) {
             return false;
-        } else if(voikoOstaaAseen(pelaaja, (Ase)getValikoima().get(aseenNumero))) {
-            pelaaja.setAse((Ase)getValikoima().get(aseenNumero));
-            pelaaja.muutaRahoja(0 - (((Ase)getValikoima().get(aseenNumero)).arvo()));
+        } else if (voikoOstaaAseen(pelaaja, (Ase) getValikoima().get(aseenNumero))) {
+            pelaaja.setAse((Ase) getValikoima().get(aseenNumero));
+            pelaaja.muutaRahoja(0 - (((Ase) getValikoima().get(aseenNumero)).arvo()));
             return true;
         }
         return false;
@@ -72,8 +73,10 @@ public class Asepaja extends Kauppa {
 
     /**
      * Metodia käytetään aseen myymiseen.
+     *
      * @param pelaaja Pelaaja, jonka ase halutaan myydä
-     * @return myynnin onnistumisesta kertova totuusarvo, true jos myynti onnistui
+     * @return myynnin onnistumisesta kertova totuusarvo, true jos myynti
+     * onnistui
      */
     public boolean myy(Pelaaja pelaaja) {
         if (voikoMyydaAseen(pelaaja)) {
@@ -85,8 +88,9 @@ public class Asepaja extends Kauppa {
     }
 
     /**
-     * Metodi tarkistaa voiko pelaaja myydä aseensa. Myynti on mahdollista
-     * kun pelaajan aseena on mikä tahansa muu ase kuin nyrkki.
+     * Metodi tarkistaa voiko pelaaja myydä aseensa. Myynti on mahdollista kun
+     * pelaajan aseena on mikä tahansa muu ase kuin nyrkki.
+     *
      * @param pelaaja Pelaaja, jonka asetta ollaan myymässä
      * @return totuusarvo, true jos myynti on mahdollinen
      */
@@ -96,10 +100,11 @@ public class Asepaja extends Kauppa {
         }
         return true;
     }
-    
+
     /**
      * Metodi tarkistaa voiko pelaaja ostaa tietyn aseen. Osto on mahdollinen
      * jos pelaajalla on riittävästi rahaa ja hänellä on aseena nyrkki.
+     *
      * @param pelaaja Pelaaja, jonka ostokyky tarkistetaan
      * @param ase Ase, jota ollaan ostamassa
      * @return totuusarvo, true jos osto on mahdollinen
@@ -114,13 +119,12 @@ public class Asepaja extends Kauppa {
     /**
      * Metodi palauttaa asepajan hinnaston otsikoineen. Aseet ovat numeroituina
      * ja hinnoiteltuina.
+     *
      * @return asepajan hinnasto merkkijonona
      */
     @Override
     public String valikoimaMerkkijonona() {
         return String.format("%-19s%-10s%-7s", "Aseen nimi", "Hinta", "Voima") + "\n" + super.valikoimaMerkkijonona();
     }
-    
-       
-    
+
 }

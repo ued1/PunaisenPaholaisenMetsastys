@@ -38,7 +38,7 @@ public class PelaajaTietoPanel extends JPanel {
     public PelaajaTietoPanel(Pelaaja pelaaja) {
         super(new GridLayout(11, 2));
         this.pelaaja = pelaaja;
-        setBackground(new Color(238,238,238));
+        setBackground(new Color(238, 238, 238));
         tasoTeksti = new JLabel();
         kokemusTeksti = new JLabel();
         vointiTeksti = new JLabel();
@@ -82,12 +82,12 @@ public class PelaajaTietoPanel extends JPanel {
         add(olutApu);
         add(avainApu);
     }
-    
+
     private void paivitaTiedot() {
         tasoTeksti.setText("" + pelaaja.getTaso());
         kokemusTeksti.setText("" + pelaaja.getKokemus());
         vointiTeksti.setText(pelaaja.getVointi() + "/" + pelaaja.getMaxVointi());
-        if(pelaaja.getVointi() < pelaaja.getMaxVointi()) {
+        if (pelaaja.getVointi() < pelaaja.getMaxVointi()) {
             vointiTeksti.setForeground(Color.RED);
         } else {
             vointiTeksti.setForeground(Color.BLACK);
@@ -100,27 +100,26 @@ public class PelaajaTietoPanel extends JPanel {
         potionApu.setText("(" + pelaaja.getPotionit() + ")");
         paivitaApuIkonienNakyvyys();
     }
-    
-                                    // TODO: parempi toteutus
+
+    // TODO: parempi toteutus
     private void paivitaApuIkonienNakyvyys() {
         ArrayList<Apu> avut = pelaaja.getAvut();
-        if(avut.contains(new Pupu(pelaaja))) {
+        if (avut.contains(new Pupu(pelaaja))) {
             pupuApu.setVisible(true);
         } else {
             pupuApu.setVisible(false);
         }
-        if(avut.contains(new OhraPotion(pelaaja))) {
+        if (avut.contains(new OhraPotion(pelaaja))) {
             olutApu.setVisible(true);
         } else {
             olutApu.setVisible(false);
         }
-        if(avut.contains(new RuosteinenAvain())) {
+        if (avut.contains(new RuosteinenAvain())) {
             avainApu.setVisible(true);
         } else {
             avainApu.setVisible(false);
         }
     }
-    
 
     /**
      * Metodi päivittää pelaajapaneelin saadessaan repaint() käskyn.

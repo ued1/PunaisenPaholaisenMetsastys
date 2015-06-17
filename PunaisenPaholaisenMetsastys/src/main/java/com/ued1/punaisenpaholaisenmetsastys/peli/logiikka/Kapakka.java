@@ -41,13 +41,13 @@ public class Kapakka extends Kauppa {
     public boolean osta(Pelaaja pelaaja, int ostoksenNumero) {
         if (voikoPelaajaOstaaOstoksen(pelaaja, ostoksenNumero)) {
             if (ostoksenNumero < 2) {
-                ((Apu)getValikoima().get(ostoksenNumero)).auta();
-            } else if (pelaaja.onkoPelaajallaApu((Apu)getValikoima().get(ostoksenNumero))) {
+                ((Apu) getValikoima().get(ostoksenNumero)).auta();
+            } else if (pelaaja.onkoPelaajallaApu((Apu) getValikoima().get(ostoksenNumero))) {
                 return false;
             }
-            pelaaja.muutaRahoja(0 - (((Apu)getValikoima().get(ostoksenNumero)).arvo()));
-            if(ostoksenNumero > 1) {
-                pelaaja.lisaaApu((Apu)getValikoima().get(ostoksenNumero));
+            pelaaja.muutaRahoja(0 - (((Apu) getValikoima().get(ostoksenNumero)).arvo()));
+            if (ostoksenNumero > 1) {
+                pelaaja.lisaaApu((Apu) getValikoima().get(ostoksenNumero));
             }
             return true;
         }

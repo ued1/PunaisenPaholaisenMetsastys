@@ -1,4 +1,3 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.tyokalut;
 
 import java.awt.image.BufferedImage;
@@ -10,22 +9,23 @@ import javax.imageio.ImageIO;
  * Luokan tehtävänä on ladata pelin tarvitsevat kuvat ja ikonit.
  */
 public class KuvanLataaja {
-    
+
     private Map<String, BufferedImage> kuvat;
 
     public KuvanLataaja() {
         kuvat = new HashMap<>();
     }
-    
+
     /**
      * Lataa pelaajatietopaneelissa ikonit ja palauttaa ne Map-oliona.
-     * @return 
+     *
+     * @return
      */
     public Map lataaIkonit() {
         lisaaIkonit();
         return kuvat;
     }
-    
+
     /**
      * Lataa pelissa näytettävät kuvat ja palauttaa ne Map-oliona.
      */
@@ -33,7 +33,7 @@ public class KuvanLataaja {
         lisaaKuvat();
         return kuvat;
     }
-    
+
     private void lisaaIkonit() {
         kuvat.clear();
         lisaa("/kuvat/arrow_up.png", "Taso");
@@ -49,7 +49,7 @@ public class KuvanLataaja {
         lisaa("/kuvat/olut.png", "OhraPotion");
         lisaa("/kuvat/avain.png", "Ruosteinen avain");
     }
-    
+
     private void lisaaKuvat() {
         kuvat.clear();
         lisaa("/kuvat/metsa.png", "Metsä");
@@ -77,7 +77,7 @@ public class KuvanLataaja {
         lisaa("/kuvat/paholainen2.png", "LopetusLyönti");
         lisaa("/kuvat/loppu.png", "Loppukuva");
     }
-    
+
     private void lisaa(String sijainti, String kuvaus) {
         try {
             BufferedImage kuva = ImageIO.read(this.getClass().getResource(sijainti));
@@ -86,6 +86,5 @@ public class KuvanLataaja {
             // Ei tehdä mitään
         }
     }
-    
-    
+
 }

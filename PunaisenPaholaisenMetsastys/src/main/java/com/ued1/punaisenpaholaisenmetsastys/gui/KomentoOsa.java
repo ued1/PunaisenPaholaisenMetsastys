@@ -30,7 +30,7 @@ public class KomentoOsa extends JPanel {
     public KomentoOsa(Pelaaja pelaaja, Luola luola) {
         this.pelaaja = pelaaja;
         this.luola = luola;
-        setBackground(new Color(238,238,238));
+        setBackground(new Color(238, 238, 238));
         fontti = new Font("SansSerif", Font.BOLD, 12);
         luoKomponentit();
     }
@@ -38,8 +38,8 @@ public class KomentoOsa extends JPanel {
     private void luoKomponentit() {
         komentoValikko = new JTextArea(kylaValikko());
         komentoValikko.setFocusable(false);
-        komentoValikko.setBackground(new Color(238,238,238));
-        komentoValikko.setFont(new Font("Monospaced",Font.BOLD,12));
+        komentoValikko.setBackground(new Color(238, 238, 238));
+        komentoValikko.setFont(new Font("Monospaced", Font.BOLD, 12));
         add(komentoValikko);
     }
 
@@ -48,7 +48,7 @@ public class KomentoOsa extends JPanel {
         valikko += "\n" + String.format("%-18s%-12s", "[H]aarniskakauppa", "[P]arantaja");
         valikko += "\n" + String.format("%-18s%-12s", "[T]aisteluareena", "[C]asino");
         valikko += "\n" + String.format("%-18s", "[K]apakka");
-        return valikko +="\n\n[ESC] Takaisin valikkoon";
+        return valikko += "\n\n[ESC] Takaisin valikkoon";
     }
 
     /**
@@ -59,7 +59,7 @@ public class KomentoOsa extends JPanel {
     public void paivita(Paikka uusiPaikka) {
         komentoValikko.setFont(fontti);
         if (uusiPaikka == Paikka.KYLA) {
-            komentoValikko.setFont(new Font("Monospaced",Font.BOLD,12));
+            komentoValikko.setFont(new Font("Monospaced", Font.BOLD, 12));
             komentoValikko.setText(kylaValikko());
         } else if (uusiPaikka == Paikka.ASEPAJA) {
             komentoValikko.setText("[O]sta ase\n[M]yy ase\n[T]akaisin");
@@ -105,9 +105,9 @@ public class KomentoOsa extends JPanel {
             komentoValikko.setText("[A]loita\n[T]akaisin");
         } else if (uusiPaikka == Paikka.PEUKKUTULOS) {
             komentoValikko.setText("[T]akaisin");
-        } else if(uusiPaikka == Paikka.HEIKENNETTYPAHOLAINEN) {
+        } else if (uusiPaikka == Paikka.HEIKENNETTYPAHOLAINEN) {
             komentoValikko.setText(lisaaHeikennettyPaholainenKomento());
-        } else if(uusiPaikka == Paikka.LOPPU) {
+        } else if (uusiPaikka == Paikka.LOPPU) {
             komentoValikko.setText("[V]iimeinen lyönti");
         }
     }
@@ -121,13 +121,13 @@ public class KomentoOsa extends JPanel {
             return "";
         }
     }
-    
+
     private String lisaaHeikennettyPaholainenKomento() {
         String komennot = "[L]yö";
-        if(luola.getPunainenPotion() > 0) {
+        if (luola.getPunainenPotion() > 0) {
             komennot += "\n[P]unainen potion";
         }
-        if(luola.getMustaPotion() > 0) {
+        if (luola.getMustaPotion() > 0) {
             komennot += "\n[M]usta potion";
         }
         return komennot;

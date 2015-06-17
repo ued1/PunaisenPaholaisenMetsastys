@@ -124,12 +124,11 @@ public class TarinaOsa extends JPanel {
             asetaMetsaPupu();
         } else if (pelaaja.getPaikka() == Paikka.RUOSTEINENAVAIN) {
             asetaRuosteinenAvain();
-        } else if(pelaaja.getPaikka() == Paikka.HEIKENNETTYPAHOLAINEN) {
+        } else if (pelaaja.getPaikka() == Paikka.HEIKENNETTYPAHOLAINEN) {
             asetaHeikennettyPaholainen();
-        } else if(pelaaja.getPaikka() == Paikka.LOPPU) {
+        } else if (pelaaja.getPaikka() == Paikka.LOPPU) {
             asetaLopetusLyonti();
         }
-
     }
 
     private void asetaKyla() {
@@ -251,7 +250,7 @@ public class TarinaOsa extends JPanel {
         toka.setFont(new Font("Monospaced", Font.PLAIN, 12));
         toka.setText(asepaja.ostettavissaOlevat(pelaaja));
     }
-    
+
     private void asetaLopetusLyonti() {
         kuvanAsettaja.asetaKuva(eka, "LopetusLyönti");
         String teksti = "\nOlet voittamassa Punaisen Paholaisen.";
@@ -304,14 +303,14 @@ public class TarinaOsa extends JPanel {
         kuvanAsettaja.asetaKuva(eka, "Paholainen");
         toka.setText(luola.getTaistelu().vastustaja().tiedotMerkkijonona());
     }
-    
+
     private void asetaHeikennettyPaholainen() {
         kuvanAsettaja.asetaKuva(eka, "Paholainen");
         String teksti = luola.getTaistelu().vastustaja().tiedotMerkkijonona();
         teksti += "\n\nVoit käyttää löytämäsiäsi apuvälineitä:";
         teksti += "\n - Punainen potioni (" + luola.getPunainenPotion() + ")";
         teksti += "\n - Musta potioni (" + luola.getMustaPotion() + ")";
-        //teksti += "\n\nLöysin myös uuden ja vahvan aseen!";
+        teksti += "\n\nVointisi: " + pelaaja.getVointi() + "/" + pelaaja.getMaxVointi();
         toka.setText(teksti);
     }
 
@@ -337,7 +336,7 @@ public class TarinaOsa extends JPanel {
         String teksti = "Hävisit paholaiselle.";
         teksti += "\n\nPaholainen ottaa haarniskasi ja kaikki rahasi,";
         teksti += "\nmutta säästää henkesi.";
-        if(pelaaja.onkoPelaajallaApu(new RuosteinenAvain())) {
+        if (pelaaja.onkoPelaajallaApu(new RuosteinenAvain())) {
             teksti += "\n\nMuistathan käyttää avaintasi";
             teksti += "\nkun kohtaat Punaisen Paholaisen";
             teksti += "\nuudestaan.";
@@ -353,7 +352,6 @@ public class TarinaOsa extends JPanel {
         String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Noustaksesi seuraavalle";
         tokateksti += "\ntasolle sinun on voitettava vielä " + areena.getOtteluitaJaljella() + " ottelua.\n\n";
         tokateksti += areena.getVastustajanTiedot();
-
         toka.setText(tokateksti);
     }
 
@@ -392,5 +390,4 @@ public class TarinaOsa extends JPanel {
         toka.setText(tokateksti);
         areena.asetaTaistelunTulos();
     }
-
 }

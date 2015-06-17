@@ -39,7 +39,7 @@ public class Metsa {
         if (pelaaja.onkoElossa()) {
             int rahaPalkkio = tasollaRahaaTarjolla[pelaaja.getTaso()];
             int kokemusPalkkio = tasollaKokemustaTarjolla[pelaaja.getTaso()];
-            if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+            if (pelaaja.getVaikeus() == Vaikeus.HELPPO) {
                 rahaPalkkio *= 2;
                 kokemusPalkkio *= 2;
             }
@@ -58,7 +58,7 @@ public class Metsa {
 
     private Monsteri generoiUusiMonsteriTaisteluun() {
         int monsterinVointi;
-        if(pelaaja.getVaikeus() == Vaikeus.HELPPO) {
+        if (pelaaja.getVaikeus() == Vaikeus.HELPPO) {
             monsterinVointi = arvoPositiivinenLuku(pelaaja.getMaxVointi());
         } else {
             monsterinVointi = arvoPositiivinenLuku(2 * pelaaja.getMaxVointi());

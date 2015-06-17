@@ -78,6 +78,9 @@ public class KomennonValidoija {
     private boolean hoidaKyla(int koodi) {
         if (koodi == KeyEvent.VK_M || koodi == KeyEvent.VK_A || koodi == KeyEvent.VK_H || koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_K || koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_C) {
             return true;
+        } else if (pelaaja.getNimi().equalsIgnoreCase("assari") && (koodi == KeyEvent.VK_X || koodi == KeyEvent.VK_PAGE_UP || koodi == KeyEvent.VK_END)) {
+
+            return true;
         }
         return false;
     }
@@ -123,7 +126,7 @@ public class KomennonValidoija {
         }
         return false;
     }
-    
+
     // Parantaja: [P]aranna [T]akaisin [O]sta potion
     private boolean hoidaParantaja(int koodi) {
         if (koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_O) {
@@ -196,9 +199,9 @@ public class KomennonValidoija {
     private boolean hoidaLyonti(Paikka paikka, int koodi) {
         if (koodi == KeyEvent.VK_L) {
             return true;
-        } else if(paikka == Paikka.AREENATAISTELU && koodi == KeyEvent.VK_O) {
+        } else if (paikka == Paikka.AREENATAISTELU && koodi == KeyEvent.VK_O) {
             return true;
-        } else if(paikka == Paikka.PAHOLAINEN && koodi == KeyEvent.VK_R) {
+        } else if (paikka == Paikka.PAHOLAINEN && koodi == KeyEvent.VK_R) {
             return true;
         }
         return false;
@@ -211,7 +214,7 @@ public class KomennonValidoija {
         }
         return false;
     }
-    
+
     // Casino: [P]eukku [T]akaisin
     private boolean hoidaCasino(int koodi) {
         if ((koodi == KeyEvent.VK_P && pelaaja.getRahat() > 0) || koodi == KeyEvent.VK_T) {
@@ -219,27 +222,26 @@ public class KomennonValidoija {
         }
         return false;
     }
-    
+
     // Punainen Paholainen: [L]lyö [R]uosteinen avain
     private boolean hoidaPaholainen(int koodi) {
-        if(koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_R) {
+        if (koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_R) {
             return true;
         }
         return false;
     }
-    
+
     // Heikennetty Punainen Paholainen
     private boolean hoidaHeikennettyPaholainen(int koodi) {
-        if(koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_M) {
+        if (koodi == KeyEvent.VK_L || koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_M) {
             return true;
         }
         return false;
     }
-    
+
     // Pelin loppu
     private boolean hoidaLoppu(int koodi) {
         return (koodi == KeyEvent.VK_V);
     }
-        
 
 }

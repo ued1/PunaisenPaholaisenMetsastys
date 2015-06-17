@@ -35,14 +35,14 @@ public class Parantaja {
             return false;
         }
         pelaaja.paranna();
-        pelaaja.setPotionit(pelaaja.getPotionit()-1);
+        pelaaja.setPotionit(pelaaja.getPotionit() - 1);
         return true;
     }
 
     /**
-     * Metodi tarkistaa voiko pelaaja ostaa VointiPotionin. Osto on
-     * mahdollinen jos pelaajalla on tarpeeksi rahaa ja pelaajalla on potioneja
-     * korkeintaan 4.
+     * Metodi tarkistaa voiko pelaaja ostaa VointiPotionin. Osto on mahdollinen
+     * jos pelaajalla on tarpeeksi rahaa ja pelaajalla on potioneja korkeintaan
+     * 4.
      *
      * @param pelaaja Pelaaja, jolle ollaan ostamassa
      * @return totuusarvo, true jos voi ostaa

@@ -7,15 +7,14 @@ import java.util.Random;
  * Kylän Casinolla voi pelata rahojaan ja tavoitella voittoa.
  */
 public class Casino {
-    
-    
+
     public Casino() {
     }
-    
+
     /**
-     * Metodi palauttaa TarinaOsaan sopivan kuvauksen Casinosta.
-     * Kuvaukseen valittaa pelaajan varallisuus.
-     * 
+     * Metodi palauttaa TarinaOsaan sopivan kuvauksen Casinosta. Kuvaukseen
+     * valittaa pelaajan varallisuus.
+     *
      * @param pelaaja Pelaaja, joka on casinolla
      * @return kuvaus merkkijonona
      */
@@ -23,16 +22,16 @@ public class Casino {
         String kuvaus = "\nCasinolla voit pelata uhkapelejä.";
         kuvaus += "\nTarjolla ovat seuraavat pelit:";
         kuvaus += "\n\nPeukkupeli - tuplaa tai häviä rahasi";
-        if(pelaaja.getRahat() < 1) {
+        if (pelaaja.getRahat() < 1) {
             kuvaus += "\n\nSinulla pitää olla rahaa,";
             kuvaus += "\njotta voit pelata!";
         }
         return kuvaus;
     }
-    
+
     /**
      * Metodi palauttaa TarinaOsaan sopivan kuvauksen Peukkupelistä.
-     * 
+     *
      * @return peukkupelin kuvaus merkkijonona
      */
     public String getPeukkupeliKuvaus() {
@@ -44,17 +43,17 @@ public class Casino {
         kuvaus += "\nTämän jälkeen joko rikastut tai köyhdyt.";
         return kuvaus;
     }
-    
+
     /**
-     * Casinon peli, missä on 50% voittomahdollisuus. Arvolla true voittaa
-     * ja arvolla false häviää.
-     * 
+     * Casinon peli, missä on 50% voittomahdollisuus. Arvolla true voittaa ja
+     * arvolla false häviää.
+     *
      * @param pelaaja Pelaaja joka on pelaamassa
      * @return totuusarvo, true jos pelaaja voittaa
      */
     public boolean pelaaPeukkua(Pelaaja pelaaja) {
         int pelaajanRahat = pelaaja.getRahat();
-        if(arvoTrueTaiFalse()) {
+        if (arvoTrueTaiFalse()) {
             pelaaja.muutaRahoja(pelaajanRahat);
             return true;
         } else {
@@ -62,28 +61,25 @@ public class Casino {
             return false;
         }
     }
-    
+
     /**
      * Metodi palauttaa KomentoOsaan sopivan komentovalikon. Pelaajan
      * varallisuus vaikuttaa komentoihin.
-     * 
+     *
      * @param pelaaja Pelaaja joka on casinolla
      * @return KomentoOsaan sopiva merkkijono
      */
     public String getKomennot(Pelaaja pelaaja) {
         String komennot = "";
-        if(pelaaja.getRahat() > 0) {
+        if (pelaaja.getRahat() > 0) {
             komennot += "[P]eukkupeli\n";
         }
         return komennot += "[T]akaisin";
     }
-    
+
     private boolean arvoTrueTaiFalse() {
         Random arpoja = new Random();
         return (arpoja.nextInt(2) == 1);
     }
-    
-    
-    
-    
+
 }

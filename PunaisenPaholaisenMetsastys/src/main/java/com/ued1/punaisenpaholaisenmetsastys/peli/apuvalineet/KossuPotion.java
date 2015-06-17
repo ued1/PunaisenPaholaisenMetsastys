@@ -1,4 +1,3 @@
-
 package com.ued1.punaisenpaholaisenmetsastys.peli.apuvalineet;
 
 import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
@@ -7,13 +6,13 @@ import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
  * KossuPotion on Apu, joka laskee pelaajan vointia yhdellä.
  */
 public class KossuPotion extends Apu {
-    
+
     private Pelaaja pelaaja;
-    
+
     public KossuPotion(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
     }
-    
+
     @Override
     public String toString() {
         return "KossuPotion";
@@ -21,7 +20,7 @@ public class KossuPotion extends Apu {
 
     @Override
     public boolean auta() {
-        if(pelaaja.getVointi()>1) {
+        if (pelaaja.getVointi() > 1) {
             pelaaja.laskeVointia();
             return true;
         }
@@ -37,5 +36,5 @@ public class KossuPotion extends Apu {
     public int arvo() {
         return 2;
     }
-    
+
 }

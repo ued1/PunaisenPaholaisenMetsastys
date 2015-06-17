@@ -10,10 +10,11 @@ import com.ued1.punaisenpaholaisenmetsastys.peli.Vaikeus;
 import java.util.ArrayList;
 
 /**
- * Luokka pelaaja määrittelee pelin pelaajan ja ylläpitää pelaajan ominaisuuksia.
+ * Luokka pelaaja määrittelee pelin pelaajan ja ylläpitää pelaajan
+ * ominaisuuksia.
  */
 public class Pelaaja extends Hahmo {
-        
+
     private int taso;
     private Ase ase;
     private Haarniska haarniska;
@@ -27,7 +28,7 @@ public class Pelaaja extends Hahmo {
     public Pelaaja(String nimi) {
         this(nimi, Vaikeus.NORMAALI);
     }
-    
+
     public Pelaaja(String nimi, Vaikeus vaikeus) {
         super(nimi, 20, 20);
         this.taso = 1;
@@ -36,7 +37,7 @@ public class Pelaaja extends Hahmo {
         this.rahat = 0;
         this.paikka = Paikka.KYLA;
         this.kokemus = 0;
-        if(vaikeus == Vaikeus.HELPPO) {
+        if (vaikeus == Vaikeus.HELPPO) {
             this.potionit = 10;
         } else {
             this.potionit = 5;
@@ -48,13 +49,13 @@ public class Pelaaja extends Hahmo {
     public int getTaso() {
         return taso;
     }
-        
+
     /**
      * Metodi nostaa pelaajan tasoa ja parantaa tarvittaessa pelaajan, ellei
      * pelaaja ole maksimitasolla 10.
      */
     public void nostaTasoa() {
-        if(taso < 10) {
+        if (taso < 10) {
             setMaxVointi(20 + 40 * taso);
             taso++;
             paranna();
@@ -68,10 +69,10 @@ public class Pelaaja extends Hahmo {
     public void setAse(Ase uusiAse) {
         ase = uusiAse;
     }
-    
+
     /**
      * Metodi palauttaa pelaajan maksimilyöntivoiman.
-     * 
+     *
      * @return lyöntivoima kokonaislukuna
      */
     @Override
@@ -81,7 +82,7 @@ public class Pelaaja extends Hahmo {
 
     /**
      * Metodi palauttaa pelaajan puolustusvoiman.
-     * 
+     *
      * @return puolustusvoima kokonaislukuna
      */
     @Override
@@ -92,7 +93,7 @@ public class Pelaaja extends Hahmo {
     public Haarniska getHaarniska() {
         return haarniska;
     }
-    
+
     public void setHaarniska(Haarniska uusiHaarniska) {
         haarniska = uusiHaarniska;
     }
@@ -100,27 +101,26 @@ public class Pelaaja extends Hahmo {
     public int getRahat() {
         return rahat;
     }
-    
-    
+
     /**
      * Palauttaa pelaajalla olevien potionien määrän.
-     * 
+     *
      * @return potionien määrä, kokonaisluku 0..5.
      */
     public int getPotionit() {
         return potionit;
     }
-    
+
     /**
      * Metodi asettaa potionien määrän. Potioneja voi olla 0-10.
-     * 
+     *
      * @param maara potionien uusi määrä, pakotetaan välille 0-10.
      */
     public void setPotionit(int maara) {
         potionit = maara;
-        if(potionit < 0) {
+        if (potionit < 0) {
             potionit = 0;
-        } else if(potionit > 10) {
+        } else if (potionit > 10) {
             potionit = 10;
         }
     }
@@ -128,7 +128,7 @@ public class Pelaaja extends Hahmo {
     /**
      * Metodi muuttaa pelaajan rahoja. Pelaajan rahat voiva olla väliltä
      * 0..200000000.
-     * 
+     *
      * @param muutos kokonaisluku joka lisätään pelaajan rahoihin
      */
     public void muutaRahoja(int muutos) {
@@ -139,17 +139,17 @@ public class Pelaaja extends Hahmo {
             rahat = 200000000;
         }
     }
-    
+
     /**
      * Metodi asettaa pelaajan rahat nollaan.
      */
     public void nollaaRahat() {
         muutaRahoja(-rahat);
     }
-    
+
     /**
      * Metodi palauttaa pelaajan tiedot merkkijonona.
-     * 
+     *
      * @return pelaajan tiedot merkkijonona
      */
     @Override
@@ -163,119 +163,119 @@ public class Pelaaja extends Hahmo {
         tiedot += "\nRahat: " + rahat;
         return tiedot;
     }
-    
+
     /**
      * Metodi palauttaa pelaajan paikan (tilanteen).
-     * 
+     *
      * @return pelaajan paikka tai tilanne
      */
     public Paikka getPaikka() {
         return paikka;
     }
-    
+
     public void setPaikka(Paikka uusiPaikka) {
         paikka = uusiPaikka;
     }
-    
+
     public int getKokemus() {
         return kokemus;
     }
-    
+
     /**
      * Asetetaan kokemus. Kokemus voi olla vähintään 0 ja enintään 200000000.
-     * 
+     *
      * @param uusiKokemus kokemus, joka pelaajalle asetetaan
      */
     public void setKokemus(int uusiKokemus) {
-        if(uusiKokemus < 0) {
+        if (uusiKokemus < 0) {
             kokemus = 0;
-        } else if(uusiKokemus > 200000000) {
+        } else if (uusiKokemus > 200000000) {
             kokemus = 200000000;
         } else {
             kokemus = uusiKokemus;
         }
     }
-    
+
     /**
      * Metodi muuttaa pelaajan kokemusta. Kokemus on aina vähintään nolla ja
      * enintään 200000000.
-     * 
+     *
      * @param muutos kokonaisluku joka lisätään pelaajan kokemukseen
      */
     public void muutaKokemusta(int muutos) {
-        if(kokemus + muutos > 200000000) {
+        if (kokemus + muutos > 200000000) {
             kokemus = 200000000;
         } else {
-            kokemus = Math.max(0, kokemus+muutos);
+            kokemus = Math.max(0, kokemus + muutos);
         }
     }
-    
+
     /**
      * Metodi antaa pelaajalle vointibuustin lisäämällä pelaajan vointia
-     * hetkellisesti. Uusi vointi on vähintään maxVointi ja enintään
-     * maxVointi * 1.5.
+     * hetkellisesti. Uusi vointi on vähintään maxVointi ja enintään maxVointi *
+     * 1.5.
      */
     public void vointiBuusti() {
-        if(getVointi() < getMaxVointi()/2) {
+        if (getVointi() < getMaxVointi() / 2) {
             paranna();
         } else {
-            setVointi(Math.min(getVointi()*2, (int)(getMaxVointi()*1.5)));
+            setVointi(Math.min(getVointi() * 2, (int) (getMaxVointi() * 1.5)));
         }
     }
-    
+
     /**
      * Metodi lisää pelaajalle avun jos pelaajalla ei kyseistä apua ole.
-     * 
+     *
      * @param apu Apu joka lisätään
      * @return totuusarvo, true jos lisääminen onnistui
      */
     public boolean lisaaApu(Apu apu) {
-        if(!onkoPelaajallaApu(apu)) {
+        if (!onkoPelaajallaApu(apu)) {
             avut.add(apu);
             return true;
         }
         return false;
     }
-    
+
     /**
      * Metodi tarkistaa onko pelaajalla kyseistä apua.
-     * 
+     *
      * @param apu Apu joka tarkistetaan.
      * @return totuusarvo, true jos pelaajalla on apu
      */
     public boolean onkoPelaajallaApu(Apu apu) {
         return avut.contains(apu);
     }
-    
+
     /**
      * Metodi palauttaa pelaajan avut.
-     * 
+     *
      * @return Pelaajan avut ArrayList-oliona
      */
     public ArrayList<Apu> getAvut() {
         return avut;
     }
-    
+
     /**
      * Metodi poistaa pelaajalta avun.
-     * 
+     *
      * @param apu Apu joka poistetaan.
      * @return totuusarvo, true jos poisto onnistui.
      */
     public boolean poistaApu(Apu apu) {
-        if(onkoPelaajallaApu(apu)) {
+        if (onkoPelaajallaApu(apu)) {
             avut.remove(apu);
             return true;
         }
         return false;
     }
-    
+
     public Vaikeus getVaikeus() {
         return vaikeus;
     }
-    
+
     public void setVaikeus(Vaikeus uusiVaikeus) {
         vaikeus = uusiVaikeus;
     }
-    
+
 }

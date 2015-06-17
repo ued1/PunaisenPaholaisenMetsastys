@@ -11,9 +11,10 @@ public class Kilpailija extends Hahmo {
     private int puolustus;
 
     /**
-     * Kilpailijan konstruktorille annetaan maksimivointi, lyöntivoima ja puolustusvoima.
-     * Kilpailijan nimi arvotaan ennalta määriteltyjen nimien joukosta.
-     * 
+     * Kilpailijan konstruktorille annetaan maksimivointi, lyöntivoima ja
+     * puolustusvoima. Kilpailijan nimi arvotaan ennalta määriteltyjen nimien
+     * joukosta.
+     *
      * @param maxVointi maksimivointi
      * @param voima lyöntivoima
      * @param puolustus puolustusvoima
@@ -36,9 +37,9 @@ public class Kilpailija extends Hahmo {
     }
 
     /**
-     * Palauttaa kilpailijan lyöntivoiman. Kilpailijan lyöntivoima on ennalta valittu,
-     * kilpailijoilla ei ole aseita kuten pelaajalla.
-     * 
+     * Palauttaa kilpailijan lyöntivoiman. Kilpailijan lyöntivoima on ennalta
+     * valittu, kilpailijoilla ei ole aseita kuten pelaajalla.
+     *
      * @return kilpailijan lyöntivoima
      */
     @Override
@@ -47,9 +48,9 @@ public class Kilpailija extends Hahmo {
     }
 
     /**
-     * Palauttaa kilpailijan puolustusvoiman. Kilpailijan puolustusvoima on ennalta valittu,
-     * kilpailijoilla ei ole haarniskoja kuten pelaajalla.
-     * 
+     * Palauttaa kilpailijan puolustusvoiman. Kilpailijan puolustusvoima on
+     * ennalta valittu, kilpailijoilla ei ole haarniskoja kuten pelaajalla.
+     *
      * @return kilpailijan puolustusvoima
      */
     @Override
@@ -60,7 +61,7 @@ public class Kilpailija extends Hahmo {
     /**
      * Metodi palauttaa kilpailijan tiedot merkkijona. Tiedot ovat muotoiltu
      * sopiviksi tarinapaneelia varten.
-     * 
+     *
      * @return kilpailijan tiedot merkkijonona
      */
     @Override
@@ -71,16 +72,16 @@ public class Kilpailija extends Hahmo {
         tiedot += "\n  Puolustus: " + puolustus;
         return tiedot;
     }
-    
+
     /**
      * Metodi heikentää kilpailijaa laskemalla kilpailijan lyönti- ja
      * puolutusvoimaa yhdellä. Voimat eivät voi laskea nollaan.
      */
     public void heikenna() {
-        if(voima > 1) {
+        if (voima > 1) {
             voima--;
         }
-        if(puolustus > 1) {
+        if (puolustus > 1) {
             puolustus--;
         }
     }
