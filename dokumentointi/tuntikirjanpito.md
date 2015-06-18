@@ -108,5 +108,8 @@ Paranneltu peliä ja korjattu virheitä, uusittu luokkajako, lisätty tiedostonl
 
 17.08.2015
 8 tuntia
-Viimeistelyä, javadoc, pit, checkstyle
+Viimeistelyä, javadoc, pit, checkstyle, ym.
 
+18.08.2015
+5 tuntia
+Viimeistelyä
