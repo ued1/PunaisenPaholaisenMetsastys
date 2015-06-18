@@ -4,7 +4,7 @@ import com.ued1.punaisenpaholaisenmetsastys.peli.hahmot.Pelaaja;
 import java.util.Random;
 
 /**
- * Pupu on "Apu", joka varastaa pelaajan.
+ * Pupu on Apu, joka varastaa pelaajan rahat.
  */
 public class Pupu extends Apu {
 

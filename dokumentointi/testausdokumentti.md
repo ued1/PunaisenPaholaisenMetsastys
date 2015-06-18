@@ -3,7 +3,7 @@
 - com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.*
 - com.ued1.punaisenpaholaisenmetsastys.tyokalut.NimenValidoija.java
 
-JUnit-testeillä on testattu pelilogiikkaa mahdollisimman kattavasti. 444 rivistä testit kattavat 436 eli 98% ja mutanteista on tapettu 78%. Täydelliseen testaukseen ei pyritä, sillä lisätesteistä saatava hyöty olisi ajankäyttöön nähden minimaalista.
+JUnit-testeillä on testattu pelilogiikkaa mahdollisimman kattavasti. 537 rivistä testit kattavat 531 eli 99% ja mutanteista on tapettu 81%. Täydelliseen testaukseen ei pyritä, sillä lisätesteistä saatava hyöty olisi ajankäyttöön nähden minimaalista.
 
 ###Käsintestaus: gui, gui.logiikka, alkuvalikko, osa tyokaluista, osa peliluokista
 - com.ued1.punaisenpaholaisenmetsastys.gui.*
@@ -15,7 +15,7 @@ JUnit-testeillä on testattu pelilogiikkaa mahdollisimman kattavasti. 444 rivist
 - com.ued1.punaisenpaholaisenmetsastys.peli.aseet.*
 - com.ued1.punaisenpaholaisenmetsastys.peli.haarniskat.*
 
-Peli on luonteeltaan sellainen, että käyttäjän antama komento aiheuttaa käyttöliittymässä usean olion ketjureaktion, jonka seurauksena mahdollisen virheen sattuessa virhe näkyisi selvästi käyttäjälle. Tämän vuoksi muut kuin pelilogiikka ja hahmo-luokat on testattu käsintestauksella kokeilemalla peliä jokaisen pienen muokkauksen jälkeen.
+Peli on luonteeltaan sellainen, että käyttäjän antama komento aiheuttaa käyttöliittymässä usean olion ketjureaktion, jonka seurauksena mahdollisen virheen sattuessa virhe näkyisi selvästi käyttäjälle. Tämän vuoksi muut kuin pelilogiikka ja hahmo-luokat on testattu käsintestauksella kokeilemalla peliä jokaisen pienen muokkauksen jälkeen ja käyttämällä runsaasti aikaa pelaamiseen.
 
 ####KuvanLataaja.java, KuvanAsettaja.java
 
@@ -27,5 +27,5 @@ Ylläolevia luokkia on testattu pelaamalla pelia ja kokeilemalla jokaisen lisäy
 
 ####Alkuvalikko (useita luokkia)
 
-Alkuvalikkoa on testattu kokeilemalla jokaisen lisätyn toiminnon jälkeen että kyseinen toiminto johtaa haluttuun tulokseen. Nimenvalintaan liittyvää NimenValidoijaa on testattu sekä JUnit-testeillä että käsin. Ohjepaneelia on testattu lisäämällä ensin Tiedostonlukija ja kokeiltu ohjelmaa ilman tarvittavaa tiedostoa.
+Alkuvalikkoa on testattu kokeilemalla jokaisen lisätyn toiminnon jälkeen että kyseinen toiminto johtaa haluttuun tulokseen. Nimenvalintaan liittyvää NimenValidoijaa on testattu sekä JUnit-testeillä että käsin. Ohjepaneelia on testattu lisäämällä ensin Tiedostonlukija ja kokeiltu ohjelmaa ilman tarvittavaa tiedostoa. Tiedostonluvun toimimuus on myös testattu JAR:n kanssa sekä Linuxissa että Windowsissa.
 

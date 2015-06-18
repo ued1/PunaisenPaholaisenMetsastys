@@ -106,3 +106,7 @@ Pelin loppu, bugeja korjattu, kuvia lisätty, paranneltu keikanlaista
 9 tuntia
 Paranneltu peliä ja korjattu virheitä, uusittu luokkajako, lisätty tiedostonlukua, dokumentointia paranneltu ja lisätty.
 
+17.08.2015
+8 tuntia
+Viimeistelyä, javadoc, pit, checkstyle
+

@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 /**
  * AlkuvalikkoPanel on pelin alkuvalikko, jossa voi valita uuden pelin, jatkaa
- * aikaisempaa peliä, lukea ohjeen, muuttaa asetuksia ja lopettaa pelin.
+ * käynnissä olevaa peliä, lukea ohjeen, muuttaa asetuksia tai lopettaa pelin.
  */
 public class AlkuvalikkoPanel extends JPanel {
 

@@ -1,8 +1,8 @@
 package com.ued1.punaisenpaholaisenmetsastys.peli.apuvalineet;
 
 /**
- * Apuvälineet auttavat pelaajaa eri tilanteissa. Joistakin avuista voi olla
- * haittaa hyödyn sijaan.
+ * Apuvälineet auttavat tai haittaavat pelaajaa eri tilanteissa. Joistakin
+ * avuista voi olla haittaa hyödyn sijaan.
  */
 public abstract class Apu {
 
