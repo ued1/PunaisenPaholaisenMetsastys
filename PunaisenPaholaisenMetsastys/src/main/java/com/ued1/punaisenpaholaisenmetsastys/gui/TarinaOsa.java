@@ -368,8 +368,7 @@ public class TarinaOsa extends JPanel {
     }
 
     private void asetaTaisteluAreenaEi() {
-        kuvanAsettaja.asetaKuva(eka, "Taisteluareena");;
-        // TODO: teksti jos on jo level 10
+        kuvanAsettaja.asetaKuva(eka, "Taisteluareena");
         String tokateksti = "Olet tasolla " + pelaaja.getTaso();
         if (pelaaja.getTaso() == 10) {
             tokateksti += ", mikä on korkein";
