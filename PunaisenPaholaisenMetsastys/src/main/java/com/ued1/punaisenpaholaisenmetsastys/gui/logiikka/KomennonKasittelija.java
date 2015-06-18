@@ -112,6 +112,14 @@ public class KomennonKasittelija {
         }
     }
 
+    private void liikutaTaisteluAreenaan() {
+        if (areena.onkoPelaajaValmisAreenaan()) {
+            paivittaja.paivita(Paikka.TAISTELUAREENA);
+        } else {
+            paivittaja.paivita(Paikka.TAISTELUAREENAEI);
+        }
+    }
+
     private void kasitteleKylaKomento(int komentoKoodi) {
         if (komentoKoodi == KeyEvent.VK_M) {
             paivittaja.paivita(Paikka.METSA);
@@ -120,11 +128,7 @@ public class KomennonKasittelija {
         } else if (komentoKoodi == KeyEvent.VK_H) {
             paivittaja.paivita(Paikka.HAARNISKAKAUPPA);
         } else if (komentoKoodi == KeyEvent.VK_T) {
-            if (areena.onkoPelaajaValmisAreenaan()) {
-                paivittaja.paivita(Paikka.TAISTELUAREENA);
-            } else {
-                paivittaja.paivita(Paikka.TAISTELUAREENAEI);
-            }
+            liikutaTaisteluAreenaan();
         } else if (komentoKoodi == KeyEvent.VK_K) {
             paivittaja.paivita(Paikka.KAPAKKA);
         } else if (komentoKoodi == KeyEvent.VK_P) {
@@ -291,7 +295,7 @@ public class KomennonKasittelija {
     private void kasittelePaholainenKomento(int komentoKoodi) {
         if (komentoKoodi == KeyEvent.VK_L) {
             taistelePaholaistaVastaan(Paikka.PAHOLAINEN);
-        } else if (komentoKoodi == KeyEvent.VK_R || pelaaja.onkoPelaajallaApu(new RuosteinenAvain())) {
+        } else if (komentoKoodi == KeyEvent.VK_R && pelaaja.onkoPelaajallaApu(new RuosteinenAvain())) {
             paivittaja.paivita(Paikka.RUOSTEINENAVAIN);
         }
     }
@@ -371,7 +375,7 @@ public class KomennonKasittelija {
 
     private void kasitteleTaisteluAreenaTulos(int komentoKoodi) {
         if (komentoKoodi == KeyEvent.VK_J) {
-            paivittaja.paivita(Paikka.KYLA);
+            liikutaTaisteluAreenaan();
         }
     }
 

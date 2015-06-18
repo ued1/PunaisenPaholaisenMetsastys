@@ -18,7 +18,8 @@ Pelin asetusten vaihtaminen
 
   Pelin asetukset valitaan uutta peliä aloittaessa tai vaihtoehtoisesti
   myöhemmin palaamalla kylän valikossa [ESC]-näppäimellä valikkoon ja
-  valitsemalla "Asetukset".
+  valitsemalla "Asetukset". Asetukset-valikko näkyvissä vain kun peli
+  on alkanut ja pelaaja palaa valikkoon.
 
 Pelin lopettaminen
 
@@ -28,6 +29,9 @@ Pelin lopettaminen
 
 Käyttöohjeet - peli
 
+  Tavoitteena pelissä on etsiä ja tappaa Punainen Paholainen. Löytääkseen
+  Paholaisen on pelaajan ensin kehityttävä taistelijana ja noustava tasolta 
+  yksi tasolle kymmenen.
 
 Alkuvalikkoon palaaminen
 

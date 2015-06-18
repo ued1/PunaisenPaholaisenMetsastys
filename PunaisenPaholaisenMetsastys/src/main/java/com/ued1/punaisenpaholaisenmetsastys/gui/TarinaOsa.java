@@ -357,7 +357,12 @@ public class TarinaOsa extends JPanel {
     private void asetaTaisteluAreena() {
         kuvanAsettaja.asetaKuva(eka, "Taisteluareena");;
         String tokateksti = "Olet tasolla " + pelaaja.getTaso() + ". Noustaksesi seuraavalle";
-        tokateksti += "\ntasolle sinun on voitettava vielä " + areena.getOtteluitaJaljella() + " ottelua.\n\n";
+        tokateksti += "\ntasolle sinun on voitettava vielä ";
+        if (areena.getOtteluitaJaljella() == 1) {
+            tokateksti += "1 ottelu.\n\n";
+        } else {
+            tokateksti += areena.getOtteluitaJaljella() + " ottelua.\n\n";
+        }
         tokateksti += areena.getVastustajanTiedot();
         toka.setText(tokateksti);
     }
@@ -385,8 +390,8 @@ public class TarinaOsa extends JPanel {
         if (pelaaja.onkoElossa()) {
             kuvanAsettaja.asetaKuva(eka, "Taisteluvoitto");
             tokateksti += "Voitit taistelun!\n\n";
-            tokateksti += "Voit palata takaisin areenaan heti kun\n";
-            tokateksti += "koet olevasi valmis seuraavaan taisteluun.";
+            tokateksti += "Voit aloittaa uuden heti kun olet\n";
+            tokateksti += "valmis seuraavaan taisteluun.";
         } else {
             kuvanAsettaja.asetaKuva(eka, "Taistelutappio");
             tokateksti += "Hävisit taistelun.\n\nVoit halutessasi yrittää heti uudestaan,";

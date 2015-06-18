@@ -16,6 +16,8 @@
 
 ##Peli
 
+- Tavoitteena pelissä on etsiä ja tappaa Punainen Paholainen. Löytääkseen Paholaisen on pelaajan ensin kehityttävä taistelijana ja noustava tasolta yksi tasolle kymmenen.
+
 ####Alkuvalikkoon palaaminen
 - Palaaminen alkuvalikkoon on mahdollista painamalla [ESC]-näppäintä kylävalikossa. Peliä voi jatkaa valitsemalla "Takaisin peliin" alkuvalikosta.
 

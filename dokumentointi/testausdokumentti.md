@@ -3,7 +3,7 @@
 - com.ued1.punaisenpaholaisenmetsastys.peli.logiikka.*
 - com.ued1.punaisenpaholaisenmetsastys.tyokalut.NimenValidoija.java
 
-JUnit-testeillä on testattu pelilogiikkaa mahdollisimman kattavasti. 537 rivistä testit kattavat 531 eli 99% ja mutanteista on tapettu 81%. Täydelliseen testaukseen ei pyritä, sillä lisätesteistä saatava hyöty olisi ajankäyttöön nähden minimaalista.
+JUnit-testeillä on testattu pelilogiikkaa mahdollisimman kattavasti. 537 rivistä testit kattavat 531 eli 99% ja mutanteista on tapettu 81%.
 
 ###Käsintestaus: gui, gui.logiikka, alkuvalikko, osa tyokaluista, osa peliluokista
 - com.ued1.punaisenpaholaisenmetsastys.gui.*
@@ -17,6 +17,8 @@ JUnit-testeillä on testattu pelilogiikkaa mahdollisimman kattavasti. 537 rivist
 
 Peli on luonteeltaan sellainen, että käyttäjän antama komento aiheuttaa käyttöliittymässä usean olion ketjureaktion, jonka seurauksena mahdollisen virheen sattuessa virhe näkyisi selvästi käyttäjälle. Tämän vuoksi muut kuin pelilogiikka ja hahmo-luokat on testattu käsintestauksella kokeilemalla peliä jokaisen pienen muokkauksen jälkeen ja käyttämällä runsaasti aikaa pelaamiseen.
 
+Toimimuus on testattu myös JAR-tiedoston avulla Linuxissa ja Windowsissa.
+
 ####KuvanLataaja.java, KuvanAsettaja.java
 
 Luokka KuvanLataaja lataa ohjelman tarvitsemia kuvia resource/kuvat hakemistosta ja tallentaa niitä KuvanAsettajalle annettavaan Map-olioon. Luokka asettaa KuvanLataajalta saamia BufferedImage-olioita JLabel-olioiden ikoneiksi. Luokkia on testattu kokeilemalla käyttämällä keksittyjä kuviennimiä tai tahalteen kirjoitettu tiedoston nimi tai polku väärin. Puuttuvat kuvat tai virheelliset tiedostonnimet näkyvät käyttöliittymässä puuttuvina kuvina. Mikäli ohjelma ei pysty lataamaan tai ei löydä haluttua kuvaa, piirtyy kyseinen JLabel-olio ilman ikonia sisältäen pelkästään ikonin kuvauksen JLabelin tekstinä. Mikäli kuvan asettaminen onnistuu, asetetaan kuvaus ToolTip-tekstiksi.
@@ -27,5 +29,5 @@ Ylläolevia luokkia on testattu pelaamalla pelia ja kokeilemalla jokaisen lisäy
 
 ####Alkuvalikko (useita luokkia)
 
-Alkuvalikkoa on testattu kokeilemalla jokaisen lisätyn toiminnon jälkeen että kyseinen toiminto johtaa haluttuun tulokseen. Nimenvalintaan liittyvää NimenValidoijaa on testattu sekä JUnit-testeillä että käsin. Ohjepaneelia on testattu lisäämällä ensin Tiedostonlukija ja kokeiltu ohjelmaa ilman tarvittavaa tiedostoa. Tiedostonluvun toimimuus on myös testattu JAR:n kanssa sekä Linuxissa että Windowsissa.
+Alkuvalikkoa on testattu kokeilemalla jokaisen lisätyn toiminnon jälkeen että kyseinen toiminto johtaa haluttuun tulokseen. Nimenvalintaan liittyvää NimenValidoijaa on testattu sekä JUnit-testeillä että käsin. Ohjepaneelia on testattu lisäämällä ensin Tiedostonlukija ja kokeiltu ohjelmaa ilman tarvittavaa tiedostoa. Tiedostonluvun toimimuus on myös testattu JAR:n kanssa sekä Linuxissa että Windowsissa varmistamalla, että polku ja merkistökoodaus toimivat oikein.
 

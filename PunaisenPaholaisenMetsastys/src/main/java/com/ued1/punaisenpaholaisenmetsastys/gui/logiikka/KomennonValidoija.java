@@ -77,7 +77,7 @@ public class KomennonValidoija {
         return false;
     }
 
-    // Kylä: [M]etsa [A]sepaja [H]aarniskakauppa [T]aisteluareena [K]apakka [P]arantaja
+    // Kylä: [M]etsa [A]sepaja [H]aarniskakauppa [T]aisteluareena [K]apakka [P]arantaja [C]asino
     private boolean hoidaKyla(int koodi) {
         if (koodi == KeyEvent.VK_M || koodi == KeyEvent.VK_A || koodi == KeyEvent.VK_H || koodi == KeyEvent.VK_T || koodi == KeyEvent.VK_K || koodi == KeyEvent.VK_P || koodi == KeyEvent.VK_C) {
             return true;
@@ -104,7 +104,7 @@ public class KomennonValidoija {
         return false;
     }
 
-    // Metsän päävalikko: [E]tsi [L]epää [T]akaisin [P]unainen Paholainen
+    // Metsän päävalikko: [E]tsi [L]epää [T]akaisin [P]unainen Paholainen [V]ointipotion
     private boolean hoidaMetsa(int koodi) {
         if (koodi == KeyEvent.VK_E || koodi == KeyEvent.VK_V || koodi == KeyEvent.VK_T) {
             return true;
